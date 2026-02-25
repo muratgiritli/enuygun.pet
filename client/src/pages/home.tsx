@@ -30,13 +30,21 @@ import { SiWhatsapp, SiInstagram, SiGoogle } from "react-icons/si";
 const PHONE = "+905422114944";
 const WHATSAPP_URL = `https://wa.me/905422114944?text=Merhaba,%20Enuygun.pet%20mağazanızdaki%20ürünler%20hakkında%20bilgi%20almak%20istiyorum.`;
 const MAPS_URL = "https://www.google.com/maps?cid=1443692801456575727";
-const INSTAGRAM_URL = "https://www.instagram.com/samsungillerr/";
+const INSTAGRAM_URL = "https://www.instagram.com/enuygun.pet/";
+
+const STORE_HERO = "https://static.wixstatic.com/media/63853e_77a3ee3fa9d942a7af5b6f25a0520653~mv2.jpeg";
+const STORE_PHOTOS = [
+  "https://static.wixstatic.com/media/63853e_f5ae600f104c4dfcae521fe694ba017b~mv2.jpeg",
+  "https://static.wixstatic.com/media/63853e_4c33bdb1dc274eab8358c2d598f7cfee~mv2.jpeg",
+  "https://static.wixstatic.com/media/63853e_ba5ea5e88a5a41409f4742caf8dced1c~mv2.jpeg",
+  "https://static.wixstatic.com/media/63853e_346d0d0b96154639b0a27296b18d70f5~mv2.jpeg",
+];
 
 const categories = [
-  { icon: Cat, title: "Kedi Ürünleri", desc: "Mama, kum, oyuncak, yatak", image: "/images/cat-products.png" },
-  { icon: Dog, title: "Köpek Ürünleri", desc: "Mama, tasma, oyuncak, aksesuar", image: "/images/accessories.png" },
-  { icon: Bird, title: "Kuş Ürünleri", desc: "Yem, kafes, aksesuar", image: "/images/bird-products.png" },
-  { icon: Fish, title: "Akvaryum", desc: "Balık yemi, filtre, aksesuar", image: "/images/cat-dog-food.png" },
+  { icon: Cat, title: "Kedi Ürünleri", desc: "Mama, kum, oyuncak, yatak", image: STORE_PHOTOS[1] },
+  { icon: Dog, title: "Köpek Ürünleri", desc: "Mama, tasma, oyuncak, aksesuar", image: STORE_PHOTOS[2] },
+  { icon: Bird, title: "Kuş Ürünleri", desc: "Yem, kafes, aksesuar", image: STORE_PHOTOS[3] },
+  { icon: Fish, title: "Akvaryum", desc: "Balık yemi, filtre, aksesuar", image: STORE_PHOTOS[0] },
 ];
 
 const features = [
@@ -47,10 +55,11 @@ const features = [
 ];
 
 const galleryImages = [
-  { src: "/images/hero-store.png", alt: "EnuygunPet mağaza içi görünüm" },
-  { src: "/images/cat-dog-food.png", alt: "Kedi ve köpek mamaları" },
-  { src: "/images/accessories.png", alt: "Evcil hayvan aksesuarları" },
-  { src: "/images/bird-products.png", alt: "Kuş ürünleri ve kafesleri" },
+  { src: STORE_HERO, alt: "EnuygunPet mağaza ön görünüm - Samsun Atakum" },
+  { src: STORE_PHOTOS[0], alt: "Atakum petshop ürün reyonları" },
+  { src: STORE_PHOTOS[1], alt: "Samsun pet shop kedi ürünleri" },
+  { src: STORE_PHOTOS[2], alt: "Köpek aksesuarları Atakum" },
+  { src: STORE_PHOTOS[3], alt: "Kuş yemleri ve kafesleri" },
 ];
 
 export default function Home() {
@@ -122,7 +131,7 @@ export default function Home() {
         <section className="relative" aria-label="Hero bölümü">
           <div className="relative h-[55vh] min-h-[340px] max-h-[480px]">
             <img
-              src="/images/hero-store.png"
+              src={STORE_HERO}
               alt="EnuygunPet Samsun Atakum Petshop Gross Market mağaza görünümü"
               className="w-full h-full object-cover"
               loading="eager"
@@ -378,7 +387,7 @@ export default function Home() {
                 </div>
                 <div>
                   <p className="text-sm font-semibold text-foreground">Instagram</p>
-                  <p className="text-[11px] text-muted-foreground">@samsungillerr</p>
+                  <p className="text-[11px] text-muted-foreground">@enuygun.pet</p>
                 </div>
               </Card>
             </a>
