@@ -5,10 +5,11 @@ Mobile-first landing page for EnuygunPet, a pet shop gross market located in Sam
 
 ## Architecture
 - **Frontend**: React + TypeScript + Tailwind CSS + shadcn/ui
-- **Backend**: Express.js (minimal, serves static files)
+- **Backend**: Express.js (image proxy + static files)
 - **Routing**: wouter
 - **Animations**: framer-motion
 - **Icons**: lucide-react + react-icons
+- **PWA**: Service Worker + Web App Manifest
 
 ## Key Features
 - Mobile-first responsive design (phone app-like experience)
@@ -22,21 +23,31 @@ Mobile-first landing page for EnuygunPet, a pet shop gross market located in Sam
 - Product categories showcase
 - Popular brands display
 - Business hours, ratings, and contact info
+- PWA support (installable as phone app)
+- Image proxy with caching for optimized loading
+- Service Worker for offline caching
 
 ## Business Info
 - **Name**: EnuygunPet - Petshop Gross Market
 - **Address**: Yeni Mahalle Atatürk 3. Kısım Bulvarı No:113, Atakum / SAMSUN
 - **Phone**: 0542 211 49 44
 - **Hours**: Every day 09:00 - 21:00
-- **Instagram**: @samsungillerr
+- **Instagram**: @enuygun.pet
 - **Website**: https://www.enuygun.pet/
 
 ## File Structure
 - `client/src/pages/home.tsx` - Main landing page component
 - `client/src/App.tsx` - App router
 - `client/index.html` - SEO meta tags, structured data, schema.org
-- `client/public/images/` - Generated store/product images
+- `client/public/manifest.json` - PWA manifest
+- `client/public/sw.js` - Service Worker
+- `client/public/icons/` - PWA app icons (192x192, 512x512)
+- `client/public/images/` - Generated store/product images (fallback)
 - `client/src/index.css` - Theme colors (green/amber pet theme)
+- `server/routes.ts` - Image proxy endpoint with caching
+
+## API Endpoints
+- `GET /api/image-proxy?url=...&w=...&q=...` - Proxies and caches Wix images with optional width/quality params
 
 ## Theme
 - Primary: Green (pet/nature theme) - hsl(160, 65%, 32%)
@@ -52,3 +63,11 @@ Mobile-first landing page for EnuygunPet, a pet shop gross market located in Sam
 - Canonical URL
 - Open Graph / Twitter Cards
 - Semantic HTML5 sections with aria-labels
+
+## PWA Features
+- Web App Manifest with app name, icons, theme color
+- Service Worker with cache-first strategy for images
+- Stale-while-revalidate strategy for static assets
+- Install prompt for Android (beforeinstallprompt)
+- iOS install guide (Share > Add to Home Screen)
+- Standalone display mode
