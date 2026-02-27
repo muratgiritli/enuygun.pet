@@ -7,6 +7,63 @@ export async function registerRoutes(
   app: Express
 ): Promise<Server> {
 
+  app.get("/sitemap.xml", (_req, res) => {
+    const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>https://www.enuygun.pet/</loc>
+    <lastmod>${new Date().toISOString().split("T")[0]}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://static.wixstatic.com/media/63853e_77a3ee3fa9d942a7af5b6f25a0520653~mv2.jpeg</image:loc>
+      <image:title>EnuygunPet Samsun Atakum Petshop Gross Market</image:title>
+      <image:caption>Samsun Atakum'un en büyük petshop gross marketi - mağaza ön görünüm</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://static.wixstatic.com/media/63853e_f5ae600f104c4dfcae521fe694ba017b~mv2.jpeg</image:loc>
+      <image:title>Atakum petshop ürün reyonları</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://static.wixstatic.com/media/63853e_4c33bdb1dc274eab8358c2d598f7cfee~mv2.jpeg</image:loc>
+      <image:title>Samsun pet shop kedi ürünleri</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://static.wixstatic.com/media/63853e_ba5ea5e88a5a41409f4742caf8dced1c~mv2.jpeg</image:loc>
+      <image:title>Köpek aksesuarları Atakum</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://static.wixstatic.com/media/63853e_346d0d0b96154639b0a27296b18d70f5~mv2.jpeg</image:loc>
+      <image:title>Kuş yemleri ve kafesleri</image:title>
+    </image:image>
+  </url>
+</urlset>`;
+    res.set("Content-Type", "application/xml");
+    res.set("Cache-Control", "public, max-age=86400");
+    res.send(sitemap);
+  });
+
+  app.get("/robots.txt", (_req, res) => {
+    const robots = `User-agent: *
+Allow: /
+
+Sitemap: https://www.enuygun.pet/sitemap.xml
+
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Yandex
+Allow: /
+`;
+    res.set("Content-Type", "text/plain");
+    res.set("Cache-Control", "public, max-age=86400");
+    res.send(robots);
+  });
+
   app.get("/api/image-proxy", async (req, res) => {
     const imageUrl = req.query.url as string;
     const width = parseInt(req.query.w as string) || 0;
