@@ -475,7 +475,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="px-4 pb-28" aria-label="Sıkça sorulan sorular">
+        <section className="px-4 pb-4" aria-label="Sıkça sorulan sorular">
           <h2 className="text-lg font-bold text-foreground mb-3" data-testid="text-faq-title">Sıkça Sorulan Sorular</h2>
           <div className="space-y-2.5">
             <FaqItem
@@ -496,6 +496,13 @@ export default function Home() {
             />
           </div>
         </section>
+
+        <footer className="px-4 pt-6 pb-28 border-t border-border mt-6" data-testid="footer">
+          <div className="text-center space-y-1.5">
+            <p className="text-xs text-muted-foreground">Sizpa Internet Ticaret Ltd.Sti.</p>
+            <p className="text-[10px] text-muted-foreground/70">&copy; {new Date().getFullYear()} EnuygunPet - Tüm hakları saklıdır.</p>
+          </div>
+        </footer>
       </main>
 
       <nav className="fixed bottom-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-xl border-t border-border safe-bottom" aria-label="Hızlı iletişim">
