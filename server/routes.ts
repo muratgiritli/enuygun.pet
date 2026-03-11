@@ -1,6 +1,10 @@
 import type { Express } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
+import keywordsData from "./keywords.json";
+
+const keywords = keywordsData as Array<{ keyword: string; slug: string }>;
+const keywordBySlug = new Map(keywords.map(k => [k.slug, k]));
 
 export async function registerRoutes(
   httpServer: Server,
@@ -8,12 +12,17 @@ export async function registerRoutes(
 ): Promise<Server> {
 
   app.get("/sitemap.xml", (_req, res) => {
+    const today = new Date().toISOString().split("T")[0];
+    const keywordUrls = keywords
+      .map(k => `  <url>\n    <loc>https://www.enuygun.pet/${k.slug}</loc>\n    <lastmod>${today}</lastmod>\n    <changefreq>monthly</changefreq>\n    <priority>0.7</priority>\n  </url>`)
+      .join("\n");
+
     const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://www.enuygun.pet/</loc>
-    <lastmod>${new Date().toISOString().split("T")[0]}</lastmod>
+    <lastmod>${today}</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <image:image>
@@ -38,6 +47,7 @@ export async function registerRoutes(
       <image:title>Kuş yemleri ve kafesleri</image:title>
     </image:image>
   </url>
+${keywordUrls}
 </urlset>`;
     res.set("Content-Type", "application/xml");
     res.set("Cache-Control", "public, max-age=86400");
@@ -62,6 +72,21 @@ Allow: /
     res.set("Content-Type", "text/plain");
     res.set("Cache-Control", "public, max-age=86400");
     res.send(robots);
+  });
+
+  app.get("/api/keywords", (_req, res) => {
+    res.set("Cache-Control", "public, max-age=3600");
+    res.json(keywords);
+  });
+
+  app.get("/api/keyword/:slug", (req, res) => {
+    const { slug } = req.params;
+    const kw = keywordBySlug.get(slug);
+    if (!kw) return res.status(404).json({ message: "Not found" });
+
+    const related = getRelated(kw.keyword, kw.slug, keywords);
+    res.set("Cache-Control", "public, max-age=3600");
+    res.json({ ...kw, related });
   });
 
   app.get("/api/image-proxy", async (req, res) => {
@@ -118,4 +143,19 @@ Allow: /
   });
 
   return httpServer;
+}
+
+function getRelated(keyword: string, slug: string, all: Array<{ keyword: string; slug: string }>) {
+  const words = keyword.toLowerCase().split(/\s+/).filter(w => w.length > 3);
+  const scored = all
+    .filter(k => k.slug !== slug)
+    .map(k => {
+      const kWords = k.keyword.toLowerCase().split(/\s+/);
+      const score = words.reduce((acc, w) => acc + (kWords.some(kw => kw.includes(w) || w.includes(kw)) ? 1 : 0), 0);
+      return { ...k, score };
+    })
+    .filter(k => k.score > 0)
+    .sort((a, b) => b.score - a.score)
+    .slice(0, 8);
+  return scored.map(k => ({ keyword: k.keyword, slug: k.slug }));
 }
