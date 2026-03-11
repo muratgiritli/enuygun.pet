@@ -1,0 +1,8 @@
+uploads = []
+generated = []
+
+[[outputs]]
+id = "Zdyy8Nx97jMM0mOhs-uuH"
+uri = "file://tum-url-listesi.txt"
+type = "text"
+title = "EnuygunPet - Tüm URL Listesi (2952 sayfa)"
