@@ -240,3 +240,9 @@ id = "xAR2lMe4B-08B4lAJVxfQ"
 uri = "file://hills-kopek-url-listesi.txt"
 type = "text"
 title = "Hill's Science Plan Köpek Mama Sayfaları - 38 URL"
+
+[[outputs]]
+id = "KxjQBxXZw_7s5e-Js9lRc"
+uri = "file://reflex-kopek-mama-url-listesi.txt"
+type = "text"
+title = "Reflex Köpek Mama Sayfaları - 30 URL"
