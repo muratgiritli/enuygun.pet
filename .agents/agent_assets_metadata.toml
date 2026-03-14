@@ -276,3 +276,9 @@ id = "DBvdv7KMKCASbVqW0i1Ba"
 uri = "file://royalcanin-kedi-url-listesi.txt"
 type = "text"
 title = "Royal Canin Kedi Mama Sayfaları - 51 URL"
+
+[[outputs]]
+id = "7yrAg21qARrPNNnYJgcBa"
+uri = "file://karisik-marka-mama-url-listesi.txt"
+type = "text"
+title = "Karışık Marka Mama Sayfaları - 88 URL"
