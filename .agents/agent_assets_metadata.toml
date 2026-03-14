@@ -84,3 +84,9 @@ id = "2AY-Yz_2dC6ZdIivhT1qU"
 uri = "file://oyuncak-url-listesi.txt"
 type = "text"
 title = "Kedi & Köpek Oyuncak Sayfaları - 60 URL"
+
+[[outputs]]
+id = "jLj74ExUL8MXAyV_23gxC"
+uri = "file://mama-kabi-url-listesi.txt"
+type = "text"
+title = "Mama & Su Kabı Sayfaları - 49 URL"
