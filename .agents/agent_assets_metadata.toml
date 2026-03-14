@@ -120,3 +120,9 @@ id = "JcWXLiaht3LOCP-vxPYWV"
 uri = "file://goz-kulak-bakim-url-listesi.txt"
 type = "text"
 title = "Göz & Kulak Bakım Sayfaları - 44 URL"
+
+[[outputs]]
+id = "gcq7CTm3hJiK9FPVBcdoC"
+uri = "file://kiyafet-url-listesi.txt"
+type = "text"
+title = "Kedi & Köpek Kıyafet Sayfaları - 58 URL"
