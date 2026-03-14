@@ -174,3 +174,9 @@ id = "ofcgjUkIxgSsoHLsMNB6n"
 uri = "file://gimcat-sticks-url-listesi.txt"
 type = "text"
 title = "GimCat Sticks Sayfaları - 10 URL"
+
+[[outputs]]
+id = "vV8znK0mI78tMdoKJpEiv"
+uri = "file://gimcat-snackcream-url-listesi.txt"
+type = "text"
+title = "GimCat Snack Cream Sayfaları - 16 URL"
