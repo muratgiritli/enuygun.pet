@@ -252,3 +252,9 @@ id = "t3ha69yecAAOeC0TjGI_5"
 uri = "file://reflex-kedi-mama-url-listesi.txt"
 type = "text"
 title = "Reflex Kedi Mama Sayfaları - 28 URL"
+
+[[outputs]]
+id = "vQuFLWTBA1CWs8Z-ZYHn8"
+uri = "file://proplan-kopek-url-listesi.txt"
+type = "text"
+title = "Pro Plan Köpek Mama Sayfaları - 26 URL"
