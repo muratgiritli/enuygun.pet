@@ -264,3 +264,9 @@ id = "aMyh_eqLgjxpBLmL73ga_"
 uri = "file://proplan-kedi-url-listesi.txt"
 type = "text"
 title = "Pro Plan Kedi Mama Sayfaları - 22 URL"
+
+[[outputs]]
+id = "jsdbA4I2DStvsOputT47_"
+uri = "file://royalcanin-kopek-url-listesi.txt"
+type = "text"
+title = "Royal Canin Köpek Mama Sayfaları - 50 URL"
