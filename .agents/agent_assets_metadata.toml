@@ -48,3 +48,9 @@ id = "8vygewurKHEcBExuKPrfb"
 uri = "file://kedi-odul-cesit-url-listesi.txt"
 type = "text"
 title = "Kedi Ödül Çeşit Sayfaları - 20 URL"
+
+[[outputs]]
+id = "9__18YBZyVyneRWUiKjih"
+uri = "file://kopek-cis-pedi-url-listesi.txt"
+type = "text"
+title = "Köpek Çiş Pedi Sayfaları - 50 URL"
