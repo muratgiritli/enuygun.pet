@@ -66,3 +66,9 @@ id = "giE-0lMNDXWvt2bu-jKej"
 uri = "file://kus-urunleri-url-listesi.txt"
 type = "text"
 title = "Kuş Ürünleri Sayfaları - 94 URL"
+
+[[outputs]]
+id = "w23m8a9OYkr6tSL0ybZZa"
+uri = "file://kus-marka-url-listesi.txt"
+type = "text"
+title = "Kuş Marka Ürün Sayfaları - 116 URL"
