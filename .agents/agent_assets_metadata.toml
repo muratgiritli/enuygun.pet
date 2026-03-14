@@ -204,3 +204,9 @@ id = "s64Md6NB1MZr3w78yttrK"
 uri = "file://meo-creamy-url-listesi.txt"
 type = "text"
 title = "Me-O Creamy Treats Sayfaları - 36 URL"
+
+[[outputs]]
+id = "ZLz6352EdKxkqGBTgTBn2"
+uri = "file://wanpy-odul-url-listesi.txt"
+type = "text"
+title = "Wanpy Ödül Sayfaları - 64 URL"
