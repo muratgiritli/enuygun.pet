@@ -180,3 +180,9 @@ id = "vV8znK0mI78tMdoKJpEiv"
 uri = "file://gimcat-snackcream-url-listesi.txt"
 type = "text"
 title = "GimCat Snack Cream Sayfaları - 16 URL"
+
+[[outputs]]
+id = "vl-2q_TMyNSbRPFlc5yHA"
+uri = "file://gimcat-shinycat-url-listesi.txt"
+type = "text"
+title = "GimCat Shinycat Konserve Sayfaları - 8 URL"
