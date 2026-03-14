@@ -234,3 +234,9 @@ id = "JQr1Lzm_VqdJQNOAe-NIp"
 uri = "file://felix-url-listesi.txt"
 type = "text"
 title = "Felix Kedi Mama Sayfaları - 58 URL"
+
+[[outputs]]
+id = "xAR2lMe4B-08B4lAJVxfQ"
+uri = "file://hills-kopek-url-listesi.txt"
+type = "text"
+title = "Hill's Science Plan Köpek Mama Sayfaları - 38 URL"
