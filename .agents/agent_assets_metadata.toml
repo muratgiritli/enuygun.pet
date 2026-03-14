@@ -30,3 +30,9 @@ id = "ocXS1DoLzHGQrUbgrB7T6"
 uri = "file://kopek-konservesi-url-listesi.txt"
 type = "text"
 title = "Köpek Konservesi Sayfaları - 102 URL"
+
+[[outputs]]
+id = "E0jkmwRE4ZF-zdsfU-_8i"
+uri = "file://kedi-odul-url-listesi.txt"
+type = "text"
+title = "Kedi Ödül Sayfaları - 20 URL"
