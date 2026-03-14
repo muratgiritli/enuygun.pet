@@ -186,3 +186,9 @@ id = "vl-2q_TMyNSbRPFlc5yHA"
 uri = "file://gimcat-shinycat-url-listesi.txt"
 type = "text"
 title = "GimCat Shinycat Konserve Sayfaları - 8 URL"
+
+[[outputs]]
+id = "DpTOlLqYDUTzGjr4VY3vE"
+uri = "file://reflex-kedi-odul-url-listesi.txt"
+type = "text"
+title = "Reflex Kedi Ödül Sayfaları - 38 URL"
