@@ -138,3 +138,9 @@ id = "6p4l-VjbtMYyrCjgcSz08"
 uri = "file://tasima-cantasi-url-listesi.txt"
 type = "text"
 title = "Taşıma Çantası & Kafes Sayfaları - 52 URL"
+
+[[outputs]]
+id = "k242TTz5NeBXjroEwoNxQ"
+uri = "file://yatak-url-listesi.txt"
+type = "text"
+title = "Kedi & Köpek Yatak Sayfaları - 66 URL"
