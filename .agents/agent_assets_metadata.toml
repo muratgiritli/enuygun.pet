@@ -132,3 +132,9 @@ id = "SKQ_cq0ejDXeYekrk--64"
 uri = "file://tirmalama-url-listesi.txt"
 type = "text"
 title = "Kedi Tırmalama Ürün Sayfaları - 45 URL"
+
+[[outputs]]
+id = "6p4l-VjbtMYyrCjgcSz08"
+uri = "file://tasima-cantasi-url-listesi.txt"
+type = "text"
+title = "Taşıma Çantası & Kafes Sayfaları - 52 URL"
