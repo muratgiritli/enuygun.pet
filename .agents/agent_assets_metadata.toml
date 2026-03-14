@@ -168,3 +168,9 @@ id = "Lq9cPRmBdZzNU19HBsFrB"
 uri = "file://gimcat-odul-url-listesi.txt"
 type = "text"
 title = "GimCat Ödül Sayfaları - 14 URL"
+
+[[outputs]]
+id = "ofcgjUkIxgSsoHLsMNB6n"
+uri = "file://gimcat-sticks-url-listesi.txt"
+type = "text"
+title = "GimCat Sticks Sayfaları - 10 URL"
