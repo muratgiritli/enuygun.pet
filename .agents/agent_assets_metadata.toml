@@ -192,3 +192,9 @@ id = "DpTOlLqYDUTzGjr4VY3vE"
 uri = "file://reflex-kedi-odul-url-listesi.txt"
 type = "text"
 title = "Reflex Kedi Ödül Sayfaları - 38 URL"
+
+[[outputs]]
+id = "vt-Y4LlZ705Oxpe-LNJwb"
+uri = "file://reflex-kopek-odul-url-listesi.txt"
+type = "text"
+title = "Reflex Köpek Ödül Sayfaları - 36 URL"
