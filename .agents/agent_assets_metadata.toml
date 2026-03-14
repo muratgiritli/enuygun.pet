@@ -24,3 +24,9 @@ id = "njhtiFWRyvKPzSSMWGaUI"
 uri = "file://kopek-mamasi-url-listesi.txt"
 type = "text"
 title = "Köpek Maması Ürün Sayfaları - 124 URL"
+
+[[outputs]]
+id = "ocXS1DoLzHGQrUbgrB7T6"
+uri = "file://kopek-konservesi-url-listesi.txt"
+type = "text"
+title = "Köpek Konservesi Sayfaları - 102 URL"
