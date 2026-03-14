@@ -60,3 +60,9 @@ id = "TjuL2tMOmtjQCtk77kBbi"
 uri = "file://kopek-cis-pedi-marka-url-listesi.txt"
 type = "text"
 title = "Köpek Çiş Pedi Marka Sayfaları - 60 URL"
+
+[[outputs]]
+id = "giE-0lMNDXWvt2bu-jKej"
+uri = "file://kus-urunleri-url-listesi.txt"
+type = "text"
+title = "Kuş Ürünleri Sayfaları - 94 URL"
