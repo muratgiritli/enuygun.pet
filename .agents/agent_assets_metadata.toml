@@ -270,3 +270,9 @@ id = "jsdbA4I2DStvsOputT47_"
 uri = "file://royalcanin-kopek-url-listesi.txt"
 type = "text"
 title = "Royal Canin Köpek Mama Sayfaları - 50 URL"
+
+[[outputs]]
+id = "DBvdv7KMKCASbVqW0i1Ba"
+uri = "file://royalcanin-kedi-url-listesi.txt"
+type = "text"
+title = "Royal Canin Kedi Mama Sayfaları - 51 URL"
