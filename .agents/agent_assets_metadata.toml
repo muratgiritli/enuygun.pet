@@ -18,3 +18,9 @@ id = "6LFXi2eYJCKoqeqUMG_1v"
 uri = "file://kedi-kumu-url-listesi.txt"
 type = "text"
 title = "Kedi Kumu Ü rün Sayfaları - 89 URL"
+
+[[outputs]]
+id = "njhtiFWRyvKPzSSMWGaUI"
+uri = "file://kopek-mamasi-url-listesi.txt"
+type = "text"
+title = "Köpek Maması Ürün Sayfaları - 124 URL"
