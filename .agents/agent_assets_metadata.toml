@@ -144,3 +144,9 @@ id = "k242TTz5NeBXjroEwoNxQ"
 uri = "file://yatak-url-listesi.txt"
 type = "text"
 title = "Kedi & Köpek Yatak Sayfaları - 66 URL"
+
+[[outputs]]
+id = "BvYgNct8EkxKwODCaVG0s"
+uri = "file://kopek-odul-kemik-url-listesi.txt"
+type = "text"
+title = "Köpek Ödül & Çiğneme Kemiği Sayfaları - 64 URL"
