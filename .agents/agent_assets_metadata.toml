@@ -258,3 +258,9 @@ id = "vQuFLWTBA1CWs8Z-ZYHn8"
 uri = "file://proplan-kopek-url-listesi.txt"
 type = "text"
 title = "Pro Plan Köpek Mama Sayfaları - 26 URL"
+
+[[outputs]]
+id = "aMyh_eqLgjxpBLmL73ga_"
+uri = "file://proplan-kedi-url-listesi.txt"
+type = "text"
+title = "Pro Plan Kedi Mama Sayfaları - 22 URL"
