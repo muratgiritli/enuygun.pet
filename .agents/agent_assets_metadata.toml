@@ -126,3 +126,9 @@ id = "gcq7CTm3hJiK9FPVBcdoC"
 uri = "file://kiyafet-url-listesi.txt"
 type = "text"
 title = "Kedi & Köpek Kıyafet Sayfaları - 58 URL"
+
+[[outputs]]
+id = "SKQ_cq0ejDXeYekrk--64"
+uri = "file://tirmalama-url-listesi.txt"
+type = "text"
+title = "Kedi Tırmalama Ürün Sayfaları - 45 URL"
