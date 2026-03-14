@@ -42,3 +42,9 @@ id = "SzidlZ7et4VH1Ze1c7__1"
 uri = "file://kedi-odul-marka-url-listesi.txt"
 type = "text"
 title = "Kedi Ödül Marka Sayfaları - 101 URL"
+
+[[outputs]]
+id = "8vygewurKHEcBExuKPrfb"
+uri = "file://kedi-odul-cesit-url-listesi.txt"
+type = "text"
+title = "Kedi Ödül Çeşit Sayfaları - 20 URL"
