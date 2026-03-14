@@ -198,3 +198,9 @@ id = "vt-Y4LlZ705Oxpe-LNJwb"
 uri = "file://reflex-kopek-odul-url-listesi.txt"
 type = "text"
 title = "Reflex Köpek Ödül Sayfaları - 36 URL"
+
+[[outputs]]
+id = "s64Md6NB1MZr3w78yttrK"
+uri = "file://meo-creamy-url-listesi.txt"
+type = "text"
+title = "Me-O Creamy Treats Sayfaları - 36 URL"
