@@ -156,3 +156,9 @@ id = "vtE_75q5Oo9zDxLEr-IO5"
 uri = "file://kopek-odul-marka-url-listesi.txt"
 type = "text"
 title = "Markalı Köpek Ödül Sayfaları - 58 URL"
+
+[[outputs]]
+id = "a1br9Dz19CQZWhSjrJT_L"
+uri = "file://gimcat-macun-url-listesi.txt"
+type = "text"
+title = "GimCat Macun Sayfaları - 18 URL"
