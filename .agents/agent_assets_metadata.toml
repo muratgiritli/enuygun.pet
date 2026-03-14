@@ -216,3 +216,9 @@ id = "Fh-QqYwYXVFzmPJRYGNYg"
 uri = "file://8in1-url-listesi.txt"
 type = "text"
 title = "8in1 Ürün Sayfaları - 56 URL"
+
+[[outputs]]
+id = "HpjMuHOkdPIQ-Phge3j5Q"
+uri = "file://delibon-url-listesi.txt"
+type = "text"
+title = "Delibon Ürün Sayfaları - 38 URL"
