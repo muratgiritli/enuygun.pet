@@ -150,3 +150,9 @@ id = "BvYgNct8EkxKwODCaVG0s"
 uri = "file://kopek-odul-kemik-url-listesi.txt"
 type = "text"
 title = "Köpek Ödül & Çiğneme Kemiği Sayfaları - 64 URL"
+
+[[outputs]]
+id = "vtE_75q5Oo9zDxLEr-IO5"
+uri = "file://kopek-odul-marka-url-listesi.txt"
+type = "text"
+title = "Markalı Köpek Ödül Sayfaları - 58 URL"
