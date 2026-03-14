@@ -210,3 +210,9 @@ id = "ZLz6352EdKxkqGBTgTBn2"
 uri = "file://wanpy-odul-url-listesi.txt"
 type = "text"
 title = "Wanpy Ödül Sayfaları - 64 URL"
+
+[[outputs]]
+id = "Fh-QqYwYXVFzmPJRYGNYg"
+uri = "file://8in1-url-listesi.txt"
+type = "text"
+title = "8in1 Ürün Sayfaları - 56 URL"
