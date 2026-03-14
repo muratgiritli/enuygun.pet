@@ -78,3 +78,9 @@ id = "jidFyXYcgVd-aaVpR3ldB"
 uri = "file://kedi-tuvaleti-url-listesi.txt"
 type = "text"
 title = "Kedi Tuvaleti Sayfaları - 42 URL"
+
+[[outputs]]
+id = "2AY-Yz_2dC6ZdIivhT1qU"
+uri = "file://oyuncak-url-listesi.txt"
+type = "text"
+title = "Kedi & Köpek Oyuncak Sayfaları - 60 URL"
