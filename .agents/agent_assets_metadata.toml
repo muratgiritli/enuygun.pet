@@ -114,3 +114,9 @@ id = "vWyG6IVcQoObb6C2CtfQh"
 uri = "file://sampuan-url-listesi.txt"
 type = "text"
 title = "Kedi & Köpek Şampuan Sayfaları - 66 URL"
+
+[[outputs]]
+id = "JcWXLiaht3LOCP-vxPYWV"
+uri = "file://goz-kulak-bakim-url-listesi.txt"
+type = "text"
+title = "Göz & Kulak Bakım Sayfaları - 44 URL"
