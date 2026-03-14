@@ -246,3 +246,9 @@ id = "KxjQBxXZw_7s5e-Js9lRc"
 uri = "file://reflex-kopek-mama-url-listesi.txt"
 type = "text"
 title = "Reflex Köpek Mama Sayfaları - 30 URL"
+
+[[outputs]]
+id = "t3ha69yecAAOeC0TjGI_5"
+uri = "file://reflex-kedi-mama-url-listesi.txt"
+type = "text"
+title = "Reflex Kedi Mama Sayfaları - 28 URL"
