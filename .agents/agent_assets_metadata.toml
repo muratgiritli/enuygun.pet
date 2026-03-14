@@ -96,3 +96,9 @@ id = "Gmqljik983aFktxsj0a1P"
 uri = "file://tasma-tasima-url-listesi.txt"
 type = "text"
 title = "Tasma & Taşıma Ürün Sayfaları - 51 URL"
+
+[[outputs]]
+id = "viUY6i2vn4-0tYzPw2wAt"
+uri = "file://kedi-malt-url-listesi.txt"
+type = "text"
+title = "Kedi Malt Macunu Sayfaları - 54 URL"
