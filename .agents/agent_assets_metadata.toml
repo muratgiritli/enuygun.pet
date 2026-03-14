@@ -12,3 +12,9 @@ id = "_3q8lb2ybtpocYdhx0coC"
 uri = "file://urun-sayfalari-url-listesi.txt"
 type = "text"
 title = "Mama Ü rün Sayfaları - 131 URL"
+
+[[outputs]]
+id = "6LFXi2eYJCKoqeqUMG_1v"
+uri = "file://kedi-kumu-url-listesi.txt"
+type = "text"
+title = "Kedi Kumu Ü rün Sayfaları - 89 URL"
