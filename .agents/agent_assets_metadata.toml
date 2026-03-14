@@ -228,3 +228,9 @@ id = "sI_Bv9Nl7ZPNTqHjd42RP"
 uri = "file://whiskas-url-listesi.txt"
 type = "text"
 title = "Whiskas Kedi Mama Sayfaları - 56 URL"
+
+[[outputs]]
+id = "JQr1Lzm_VqdJQNOAe-NIp"
+uri = "file://felix-url-listesi.txt"
+type = "text"
+title = "Felix Kedi Mama Sayfaları - 58 URL"
