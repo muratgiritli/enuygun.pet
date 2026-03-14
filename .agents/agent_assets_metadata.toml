@@ -108,3 +108,9 @@ id = "FW3vPGLnILPfYSTfjY9GI"
 uri = "file://pire-urunleri-url-listesi.txt"
 type = "text"
 title = "Pire Ürünleri Sayfaları - 65 URL"
+
+[[outputs]]
+id = "vWyG6IVcQoObb6C2CtfQh"
+uri = "file://sampuan-url-listesi.txt"
+type = "text"
+title = "Kedi & Köpek Şampuan Sayfaları - 66 URL"
