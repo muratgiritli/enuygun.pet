@@ -318,3 +318,9 @@ id = "7AJYeoQF9d6z9Tc7jJal-"
 uri = "file://son-1-saat-url-listesi.txt"
 type = "text"
 title = "Son 1 Saat - 507 URL Listesi (Düz Metin)"
+
+[[outputs]]
+id = "aA_4g01QqkK5dezWLokB_"
+uri = "file://buyuk-katalog-url-listesi.txt"
+type = "text"
+title = "Büyük Katalog - 876 Yeni URL"
