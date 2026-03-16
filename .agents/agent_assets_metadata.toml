@@ -282,3 +282,9 @@ id = "7yrAg21qARrPNNnYJgcBa"
 uri = "file://karisik-marka-mama-url-listesi.txt"
 type = "text"
 title = "Karışık Marka Mama Sayfaları - 88 URL"
+
+[[outputs]]
+id = "PCtNCvVuOCOvYxIFMZpFq"
+uri = "file://kedi-mama-karisik-url-listesi.txt"
+type = "text"
+title = "Karışık Kedi Mama Sayfaları - 78 URL"
