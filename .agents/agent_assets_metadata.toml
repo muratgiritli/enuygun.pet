@@ -312,3 +312,9 @@ id = "DqDzCOj6XYai_ClFt3PyC"
 uri = "file://son-1-saat-sitemap.xml"
 type = "unspecified"
 title = "Son 1 Saat Sitemap - 507 URL"
+
+[[outputs]]
+id = "7AJYeoQF9d6z9Tc7jJal-"
+uri = "file://son-1-saat-url-listesi.txt"
+type = "text"
+title = "Son 1 Saat - 507 URL Listesi (Düz Metin)"
