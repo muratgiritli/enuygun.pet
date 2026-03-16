@@ -306,3 +306,9 @@ id = "deV_REA5C7ZgZLmdNzixg"
 uri = "file://kedi-yas-mama-url-listesi.txt"
 type = "text"
 title = "Kedi Yaş Mama & Konserve Sayfaları - 214 URL"
+
+[[outputs]]
+id = "DqDzCOj6XYai_ClFt3PyC"
+uri = "file://son-1-saat-sitemap.xml"
+type = "unspecified"
+title = "Son 1 Saat Sitemap - 507 URL"
