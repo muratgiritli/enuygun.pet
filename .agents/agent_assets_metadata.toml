@@ -300,3 +300,9 @@ id = "y4SeuZPTsSv9ufxVldjmZ"
 uri = "file://kedi-mama3-url-listesi.txt"
 type = "text"
 title = "Kedi Mama Sayfaları 3 - 67 URL"
+
+[[outputs]]
+id = "deV_REA5C7ZgZLmdNzixg"
+uri = "file://kedi-yas-mama-url-listesi.txt"
+type = "text"
+title = "Kedi Yaş Mama & Konserve Sayfaları - 214 URL"
