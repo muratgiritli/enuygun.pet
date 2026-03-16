@@ -288,3 +288,9 @@ id = "PCtNCvVuOCOvYxIFMZpFq"
 uri = "file://kedi-mama-karisik-url-listesi.txt"
 type = "text"
 title = "Karışık Kedi Mama Sayfaları - 78 URL"
+
+[[outputs]]
+id = "6mmOZn4QkQbeIXDhROOMy"
+uri = "file://kedi-mama2-url-listesi.txt"
+type = "text"
+title = "Kedi Mama Sayfaları 2 - 42 URL"
