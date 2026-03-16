@@ -294,3 +294,9 @@ id = "6mmOZn4QkQbeIXDhROOMy"
 uri = "file://kedi-mama2-url-listesi.txt"
 type = "text"
 title = "Kedi Mama Sayfaları 2 - 42 URL"
+
+[[outputs]]
+id = "y4SeuZPTsSv9ufxVldjmZ"
+uri = "file://kedi-mama3-url-listesi.txt"
+type = "text"
+title = "Kedi Mama Sayfaları 3 - 67 URL"
