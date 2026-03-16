@@ -324,3 +324,9 @@ id = "aA_4g01QqkK5dezWLokB_"
 uri = "file://buyuk-katalog-url-listesi.txt"
 type = "text"
 title = "Büyük Katalog - 876 Yeni URL"
+
+[[outputs]]
+id = "kwxSOIBUN4QUyrE60IuyM"
+uri = "file://yerel-seo-url-listesi.txt"
+type = "text"
+title = "Yerel SEO Sayfaları - 135 URL"
