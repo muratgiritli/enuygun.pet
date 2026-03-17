@@ -13,8 +13,30 @@ export async function registerRoutes(
 
   app.get("/sitemap.xml", (_req, res) => {
     const today = new Date().toISOString().split("T")[0];
+
+    const IMGS = [
+      { loc: "https://static.wixstatic.com/media/63853e_77a3ee3fa9d942a7af5b6f25a0520653~mv2.jpeg", base: "EnuygunPet Samsun Atakum petshop gross market mağaza" },
+      { loc: "https://static.wixstatic.com/media/63853e_f5ae600f104c4dfcae521fe694ba017b~mv2.jpeg", base: "Atakum petshop ürün reyonları kedi köpek mama" },
+      { loc: "https://static.wixstatic.com/media/63853e_4c33bdb1dc274eab8358c2d598f7cfee~mv2.jpeg", base: "Samsun pet shop kedi ürünleri mama kumu aksesuar" },
+      { loc: "https://static.wixstatic.com/media/63853e_ba5ea5e88a5a41409f4742caf8dced1c~mv2.jpeg", base: "Samsun Atakum köpek mama aksesuar petshop" },
+      { loc: "https://static.wixstatic.com/media/63853e_346d0d0b96154639b0a27296b18d70f5~mv2.jpeg", base: "Samsun petshop kuş yemi kafes malzemeleri" },
+    ];
+
+    function pickImg(kw: string) {
+      const k = kw.toLowerCase();
+      if (k.includes("kuş") || k.includes("kus") || k.includes("papağan") || k.includes("kanarya")) return IMGS[4];
+      if (k.includes("köpek") || k.includes("kopek")) return IMGS[3];
+      if (k.includes("kedi") && (k.includes("kum") || k.includes("ödül") || k.includes("odul"))) return IMGS[2];
+      if (k.includes("kedi")) return IMGS[2];
+      return IMGS[0];
+    }
+
     const keywordUrls = keywords
-      .map(k => `  <url>\n    <loc>https://www.enuygun.pet/${k.slug}</loc>\n    <lastmod>${today}</lastmod>\n    <changefreq>monthly</changefreq>\n    <priority>0.7</priority>\n  </url>`)
+      .map(k => {
+        const img = pickImg(k.keyword);
+        const altTitle = `${k.keyword} - Samsun Atakum EnuygunPet Petshop`;
+        return `  <url>\n    <loc>https://www.enuygun.pet/${k.slug}</loc>\n    <lastmod>${today}</lastmod>\n    <changefreq>monthly</changefreq>\n    <priority>0.7</priority>\n    <image:image>\n      <image:loc>${img.loc}</image:loc>\n      <image:title>${altTitle}</image:title>\n      <image:caption>${img.base} - ${k.keyword}</image:caption>\n    </image:image>\n  </url>`;
+      })
       .join("\n");
 
     const sitemap = `<?xml version="1.0" encoding="UTF-8"?>

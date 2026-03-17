@@ -12,6 +12,22 @@ const WHATSAPP_URL = `https://wa.me/905422114944`;
 const MAPS_URL = "https://www.google.com/maps?cid=1443692801456575727";
 const ADDRESS = "Atatürk Bulvarı, Atakum / Samsun";
 
+const STORE_IMAGES = {
+  general: "https://static.wixstatic.com/media/63853e_77a3ee3fa9d942a7af5b6f25a0520653~mv2.jpeg",
+  reyonlar: "https://static.wixstatic.com/media/63853e_f5ae600f104c4dfcae521fe694ba017b~mv2.jpeg",
+  kedi: "https://static.wixstatic.com/media/63853e_4c33bdb1dc274eab8358c2d598f7cfee~mv2.jpeg",
+  kopek: "https://static.wixstatic.com/media/63853e_ba5ea5e88a5a41409f4742caf8dced1c~mv2.jpeg",
+  kus: "https://static.wixstatic.com/media/63853e_346d0d0b96154639b0a27296b18d70f5~mv2.jpeg",
+};
+
+function pickImage(keyword: string) {
+  const k = keyword.toLowerCase();
+  if (k.includes("kuş") || k.includes("kus") || k.includes("papağan") || k.includes("kanarya") || k.includes("muhabbet")) return STORE_IMAGES.kus;
+  if (k.includes("köpek") || k.includes("kopek")) return STORE_IMAGES.kopek;
+  if (k.includes("kedi")) return STORE_IMAGES.kedi;
+  return STORE_IMAGES.general;
+}
+
 interface KeywordData {
   keyword: string;
   slug: string;
@@ -165,8 +181,24 @@ export default function KeywordPage() {
       const title = `${data.keyword} Samsun Atakum | EnuygunPet Gross Market`;
       document.title = title;
       const desc = `Samsun Atakum'da ${data.keyword} için EnuygunPet Gross Market. En uygun fiyat, geniş stok. Haftanın her günü 09:00-21:00 açık. WhatsApp ile hemen bilgi alın.`;
-      let metaDesc = document.querySelector('meta[name="description"]');
-      if (metaDesc) metaDesc.setAttribute("content", desc);
+      const imgUrl = pickImage(data.keyword);
+
+      const setMeta = (sel: string, attr: string, val: string) => {
+        let el = document.querySelector(sel);
+        if (!el) { el = document.createElement("meta"); document.head.appendChild(el); }
+        el.setAttribute(attr, val);
+      };
+
+      setMeta('meta[name="description"]', "content", desc);
+      setMeta('meta[property="og:title"]', "content", title);
+      setMeta('meta[property="og:description"]', "content", desc);
+      setMeta('meta[property="og:image"]', "content", imgUrl);
+      setMeta('meta[property="og:image:alt"]', "content", `${data.keyword} - Samsun Atakum EnuygunPet Petshop Gross Market`);
+      setMeta('meta[property="og:url"]', "content", `https://www.enuygun.pet/${data.slug}`);
+      setMeta('meta[property="og:type"]', "content", "website");
+      setMeta('meta[name="twitter:card"]', "content", "summary_large_image");
+      setMeta('meta[name="twitter:image"]', "content", imgUrl);
+      setMeta('meta[name="twitter:title"]', "content", title);
     }
   }, [data]);
 
@@ -183,6 +215,8 @@ export default function KeywordPage() {
   }
 
   const { article, faqs } = generateContent(data.keyword);
+  const imgUrl = pickImage(data.keyword);
+  const imgAlt = `${data.keyword} - Samsun Atakum EnuygunPet Petshop Gross Market`;
 
   const schema = {
     "@context": "https://schema.org",
@@ -194,6 +228,13 @@ export default function KeywordPage() {
         "name": `${data.keyword} Samsun Atakum | EnuygunPet`,
         "description": `Samsun Atakum'da ${data.keyword} için EnuygunPet Gross Market. En uygun fiyat, geniş stok.`,
         "isPartOf": { "@id": "https://www.enuygun.pet/#website" },
+        "primaryImageOfPage": {
+          "@type": "ImageObject",
+          "url": imgUrl,
+          "name": imgAlt,
+          "description": imgAlt,
+          "caption": imgAlt,
+        },
         "breadcrumb": {
           "@type": "BreadcrumbList",
           "itemListElement": [
@@ -201,6 +242,20 @@ export default function KeywordPage() {
             { "@type": "ListItem", "position": 2, "name": data.keyword, "item": `https://www.enuygun.pet/${data.slug}` },
           ],
         },
+      },
+      {
+        "@type": "ImageObject",
+        "url": imgUrl,
+        "name": imgAlt,
+        "description": imgAlt,
+        "caption": imgAlt,
+        "contentUrl": imgUrl,
+        "license": "https://www.enuygun.pet",
+        "acquireLicensePage": "https://www.enuygun.pet",
+        "creditText": "EnuygunPet Gross Market Samsun Atakum",
+        "creator": { "@type": "Organization", "name": "EnuygunPet Gross Market" },
+        "copyrightNotice": "EnuygunPet",
+        "representativeOfPage": true,
       },
       {
         "@type": "FAQPage",
@@ -215,6 +270,13 @@ export default function KeywordPage() {
         "@id": "https://www.enuygun.pet/#localbusiness",
         "name": "EnuygunPet Gross Market",
         "telephone": PHONE,
+        "image": [
+          "https://static.wixstatic.com/media/63853e_77a3ee3fa9d942a7af5b6f25a0520653~mv2.jpeg",
+          "https://static.wixstatic.com/media/63853e_f5ae600f104c4dfcae521fe694ba017b~mv2.jpeg",
+          "https://static.wixstatic.com/media/63853e_4c33bdb1dc274eab8358c2d598f7cfee~mv2.jpeg",
+          "https://static.wixstatic.com/media/63853e_ba5ea5e88a5a41409f4742caf8dced1c~mv2.jpeg",
+          "https://static.wixstatic.com/media/63853e_346d0d0b96154639b0a27296b18d70f5~mv2.jpeg",
+        ],
         "address": {
           "@type": "PostalAddress",
           "streetAddress": "Atatürk Bulvarı",
@@ -268,6 +330,20 @@ export default function KeywordPage() {
         <h1 className="text-xl font-bold text-foreground mb-4 leading-tight" data-testid="text-keyword-title">
           {data.keyword} — Samsun Atakum
         </h1>
+
+        <div className="mb-5 rounded-xl overflow-hidden border border-border">
+          <img
+            src={imgUrl}
+            alt={imgAlt}
+            title={imgAlt}
+            className="w-full h-44 object-cover"
+            loading="eager"
+            fetchPriority="high"
+          />
+          <p className="text-[10px] text-muted-foreground text-center py-1.5 bg-muted/30">
+            EnuygunPet Gross Market — Atatürk Bulvarı, Atakum / Samsun
+          </p>
+        </div>
 
         <Card className="p-4 mb-5 border border-card-border">
           <div className="flex items-center gap-2 mb-3">
