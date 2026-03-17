@@ -330,3 +330,9 @@ id = "kwxSOIBUN4QUyrE60IuyM"
 uri = "file://yerel-seo-url-listesi.txt"
 type = "text"
 title = "Son Eklenen Yerel SEO - 135 URL"
+
+[[outputs]]
+id = "iw-pO03opr6F7hGKroz83"
+uri = "file://samsun-google-url-listesi.txt"
+type = "text"
+title = "Samsun Google Aramaları - 872 URL"
