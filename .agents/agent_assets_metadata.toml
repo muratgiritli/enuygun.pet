@@ -588,3 +588,9 @@ id = "CU_J5QggyOq8-cfrcC9bH"
 uri = "file://kopek-tasmasi-url.txt"
 type = "text"
 title = "Köpek Tasması Sayfaları - 47 URL"
+
+[[outputs]]
+id = "UG6QlCzmQ6QmG4NcIjX-X"
+uri = "file://kedi-tirmalama-url.txt"
+type = "text"
+title = "Kedi Tırmalama Sayfaları - 43 URL"
