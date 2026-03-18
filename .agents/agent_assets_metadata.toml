@@ -480,3 +480,9 @@ id = "jIuIvh8HQrelK2u1VqaMt"
 uri = "file://kedi-tuvaleti-xxl-url.txt"
 type = "text"
 title = "XXL Kedi Tuvaleti Sayfaları - 48 URL"
+
+[[outputs]]
+id = "wWKweBCCjtAniLj5nZMA8"
+uri = "file://vancat-kedi-kumu-url.txt"
+type = "text"
+title = "Vancat Kedi Kumu Sayfaları - 47 URL"
