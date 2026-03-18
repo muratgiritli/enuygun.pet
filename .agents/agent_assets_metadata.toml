@@ -582,3 +582,9 @@ id = "s0cDW5LdugBEcMyFoLTyE"
 uri = "file://furminator-url.txt"
 type = "text"
 title = "Furminator Sayfaları - 47 URL"
+
+[[outputs]]
+id = "CU_J5QggyOq8-cfrcC9bH"
+uri = "file://kopek-tasmasi-url.txt"
+type = "text"
+title = "Köpek Tasması Sayfaları - 47 URL"
