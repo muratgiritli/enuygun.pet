@@ -630,3 +630,9 @@ id = "_QEzmJry-FHc0qIT5huRR"
 uri = "file://prochoice-kedi-mamasi-url.txt"
 type = "text"
 title = "Prochoice Kedi Maması Sayfaları - 46 URL"
+
+[[outputs]]
+id = "NULX7WJd-acV-U62HsIXN"
+uri = "file://prochoice-kopek-mamasi-url.txt"
+type = "text"
+title = "Prochoice Köpek Maması Sayfaları - 48 URL"
