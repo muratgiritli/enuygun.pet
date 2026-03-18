@@ -378,3 +378,9 @@ id = "zyrrBf2RYn-gRjKcF7GMv"
 uri = "file://hills-kedi-url.txt"
 type = "text"
 title = "Hill's Kedi Mama Sayfaları - 44 URL"
+
+[[outputs]]
+id = "uHlM_7JxQtdi7e6nI1HXo"
+uri = "file://hills-kopek-url.txt"
+type = "text"
+title = "Hill's Köpek Mama Sayfaları - 46 URL"
