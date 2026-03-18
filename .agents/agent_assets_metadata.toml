@@ -618,3 +618,9 @@ id = "nFi8M_gSmJ5DNTTGUKQxV"
 uri = "file://properformance-kedi-mamasi-url.txt"
 type = "text"
 title = "Properformance Kedi Maması Sayfaları - 47 URL"
+
+[[outputs]]
+id = "hmaGuz81kU7YaHbaF4PEs"
+uri = "file://properformance-kopek-mamasi-url.txt"
+type = "text"
+title = "Properformance Köpek Maması Sayfaları - 48 URL"
