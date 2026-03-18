@@ -600,3 +600,9 @@ id = "WA7mBps8-QVQ2PnshRTO6"
 uri = "file://kopek-sampuani-url.txt"
 type = "text"
 title = "Köpek Şampuanı Sayfaları - 47 URL"
+
+[[outputs]]
+id = "XPneEJqQ2AK6IwTBZ1WJ3"
+uri = "file://papagan-kafesi-url.txt"
+type = "text"
+title = "Papağan Kafesi Sayfaları - 46 URL"
