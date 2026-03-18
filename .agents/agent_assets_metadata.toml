@@ -498,3 +498,9 @@ id = "XL2GhvmwF7ACmy7eD3oYj"
 uri = "file://kopek-kulubesi-url.txt"
 type = "text"
 title = "Köpek Kulübesi Sayfaları - 46 URL"
+
+[[outputs]]
+id = "VleKuTW2noK5CRqKygmnE"
+uri = "file://kedi-dogum-evi-url.txt"
+type = "text"
+title = "Kedi Doğum Evi Sayfaları - 49 URL"
