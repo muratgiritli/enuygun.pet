@@ -474,3 +474,9 @@ id = "YTj8INOhoVwsTAUG30XTj"
 uri = "file://gimcat-url.txt"
 type = "text"
 title = "GimCat Sayfaları - 45 URL"
+
+[[outputs]]
+id = "jIuIvh8HQrelK2u1VqaMt"
+uri = "file://kedi-tuvaleti-xxl-url.txt"
+type = "text"
+title = "XXL Kedi Tuvaleti Sayfaları - 48 URL"
