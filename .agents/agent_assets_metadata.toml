@@ -552,3 +552,9 @@ id = "zGayJcyoIE6SvWx5ySYe_"
 uri = "file://quik-talaş-url.txt"
 type = "text"
 title = "Quik Kemirgen Talaşı Sayfaları - 49 URL"
+
+[[outputs]]
+id = "qjWTbQoxPcy0eyIJTtALf"
+uri = "file://kemirgen-otu-url.txt"
+type = "text"
+title = "Kemirgen Otu / Yonca Sayfaları - 50 URL"
