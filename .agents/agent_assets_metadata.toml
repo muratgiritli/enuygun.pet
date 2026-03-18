@@ -540,3 +540,9 @@ id = "w7AZNR4P4LJiVjT4yTgw9"
 uri = "file://kedi-tasima-cantasi-url.txt"
 type = "text"
 title = "Kedi Taşıma Çantası Sayfaları - 46 URL"
+
+[[outputs]]
+id = "Shmer8miI60R8uxiEnhUt"
+uri = "file://gold-wings-url.txt"
+type = "text"
+title = "Gold Wings Muhabbet Yemi Sayfaları - 47 URL"
