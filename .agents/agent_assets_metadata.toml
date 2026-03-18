@@ -606,3 +606,9 @@ id = "XPneEJqQ2AK6IwTBZ1WJ3"
 uri = "file://papagan-kafesi-url.txt"
 type = "text"
 title = "Papağan Kafesi Sayfaları - 46 URL"
+
+[[outputs]]
+id = "2M7PPnaFKVm5Nxu8aB9IY"
+uri = "file://muhabbet-kusu-kafesi-url.txt"
+type = "text"
+title = "Muhabbet Kuşu Kafesi Sayfaları - 48 URL"
