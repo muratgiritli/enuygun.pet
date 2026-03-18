@@ -492,3 +492,9 @@ id = "7sPgYW2lgxyQ025PK1L_S"
 uri = "file://biokats-kedi-kumu-url.txt"
 type = "text"
 title = "Biokat's Kedi Kumu Sayfaları - 48 URL"
+
+[[outputs]]
+id = "XL2GhvmwF7ACmy7eD3oYj"
+uri = "file://kopek-kulubesi-url.txt"
+type = "text"
+title = "Köpek Kulübesi Sayfaları - 46 URL"
