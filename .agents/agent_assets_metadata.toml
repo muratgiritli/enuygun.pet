@@ -342,3 +342,9 @@ id = "Vq-pJwcHHCfszsiUsSzzN"
 uri = "file://cazip-enuygun-url-listesi.txt"
 type = "text"
 title = "Cazip & EnUygun Sayfaları - 107 URL"
+
+[[outputs]]
+id = "rp4i6HSJ10KNJKRS-gC_8"
+uri = "file://samsun-atakum-yeni-url.txt"
+type = "text"
+title = "Samsun/Atakum Yeni Sayfalar - 15 URL"
