@@ -534,3 +534,9 @@ id = "-FPJIoxrjlhlG1uwWN8GH"
 uri = "file://kopek-tasima-cantasi-url.txt"
 type = "text"
 title = "Köpek Taşıma Çantası Sayfaları - 48 URL"
+
+[[outputs]]
+id = "w7AZNR4P4LJiVjT4yTgw9"
+uri = "file://kedi-tasima-cantasi-url.txt"
+type = "text"
+title = "Kedi Taşıma Çantası Sayfaları - 46 URL"
