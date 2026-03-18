@@ -336,3 +336,9 @@ id = "iw-pO03opr6F7hGKroz83"
 uri = "file://samsun-google-url-listesi.txt"
 type = "text"
 title = "Samsun Google Aramaları - 872 URL"
+
+[[outputs]]
+id = "Vq-pJwcHHCfszsiUsSzzN"
+uri = "file://cazip-enuygun-url-listesi.txt"
+type = "text"
+title = "Cazip & EnUygun Sayfaları - 107 URL"
