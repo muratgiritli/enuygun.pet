@@ -366,3 +366,9 @@ id = "f55jB7Y5H5k1rvhdUl5Iz"
 uri = "file://royal-canin-kedi-url.txt"
 type = "text"
 title = "Royal Canin Kedi Mama Sayfaları - 41 URL"
+
+[[outputs]]
+id = "dPlHFEw5GoMp1CysVoSIp"
+uri = "file://royal-canin-kopek-url.txt"
+type = "text"
+title = "Royal Canin Köpek Mama Sayfaları - 44 URL"
