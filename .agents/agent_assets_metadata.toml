@@ -450,3 +450,9 @@ id = "TR87QHYEw1qngFWbkYRh7"
 uri = "file://felicia-kedi-url.txt"
 type = "text"
 title = "Felicia Kedi Mama Sayfaları - 46 URL"
+
+[[outputs]]
+id = "_w6l45TnwBx4eUHK0OpjZ"
+uri = "file://felicia-kopek-url.txt"
+type = "text"
+title = "Felicia Köpek Mama Sayfaları - 49 URL"
