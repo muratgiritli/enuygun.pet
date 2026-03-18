@@ -462,3 +462,9 @@ id = "-1ri27DX1524SbH1UfUOF"
 uri = "file://wanpy-kedi-url.txt"
 type = "text"
 title = "Wanpy Kedi Ödül Mama Sayfaları - 46 URL"
+
+[[outputs]]
+id = "Z27lZ9LwvKAGUrjvQgMkc"
+uri = "file://wanpy-kopek-url.txt"
+type = "text"
+title = "Wanpy Köpek Ödül Sayfaları - 50 URL"
