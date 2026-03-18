@@ -348,3 +348,9 @@ id = "rp4i6HSJ10KNJKRS-gC_8"
 uri = "file://samsun-atakum-yeni-url.txt"
 type = "text"
 title = "Samsun/Atakum Yeni Sayfalar - 15 URL"
+
+[[outputs]]
+id = "IFTD_ad3Gwx_HnH7fXF6-"
+uri = "file://cazippet-url.txt"
+type = "text"
+title = "Cazip Pet Rakip Sayfaları - 47 URL"
