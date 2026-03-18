@@ -426,3 +426,9 @@ id = "nbom_k36BvrF__m-o9OJb"
 uri = "file://lavital-kedi-url.txt"
 type = "text"
 title = "LaVital Kedi Mama Sayfaları - 47 URL"
+
+[[outputs]]
+id = "n0gRDEb0YubFY5QAupgre"
+uri = "file://lavital-kopek-url.txt"
+type = "text"
+title = "LaVital Köpek Mama Sayfaları - 50 URL"
