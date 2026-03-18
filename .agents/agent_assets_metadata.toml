@@ -444,3 +444,9 @@ id = "IDQfREVLIQuiBM-b4Ijid"
 uri = "file://pronature-kopek-url.txt"
 type = "text"
 title = "Pronature Köpek Mama Sayfaları - 48 URL"
+
+[[outputs]]
+id = "TR87QHYEw1qngFWbkYRh7"
+uri = "file://felicia-kedi-url.txt"
+type = "text"
+title = "Felicia Kedi Mama Sayfaları - 46 URL"
