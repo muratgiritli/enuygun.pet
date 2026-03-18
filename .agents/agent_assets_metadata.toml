@@ -408,3 +408,9 @@ id = "AqWrALAJh7maG0puSOEy9"
 uri = "file://nd-kopek-url.txt"
 type = "text"
 title = "N&D Köpek Mama Sayfaları - 47 URL"
+
+[[outputs]]
+id = "hz4dvFvZGUkCEMEL7f2ZU"
+uri = "file://brit-care-kedi-url.txt"
+type = "text"
+title = "Brit Care Kedi Mama Sayfaları - 43 URL"
