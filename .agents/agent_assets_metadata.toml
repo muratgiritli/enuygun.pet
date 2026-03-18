@@ -384,3 +384,9 @@ id = "uHlM_7JxQtdi7e6nI1HXo"
 uri = "file://hills-kopek-url.txt"
 type = "text"
 title = "Hill's Köpek Mama Sayfaları - 46 URL"
+
+[[outputs]]
+id = "ktYhkyLXgfdHpv-YCUxEZ"
+uri = "file://proplan-kopek-url.txt"
+type = "text"
+title = "Pro Plan Köpek Mama Sayfaları - 47 URL"
