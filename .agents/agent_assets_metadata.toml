@@ -354,3 +354,9 @@ id = "IFTD_ad3Gwx_HnH7fXF6-"
 uri = "file://cazippet-url.txt"
 type = "text"
 title = "Cazip Pet Rakip Sayfaları - 47 URL"
+
+[[outputs]]
+id = "rgtylUM91uxuSBN_HKt-M"
+uri = "file://reflex-kedi-url.txt"
+type = "text"
+title = "Reflex Kedi Mama Sayfaları - 42 URL"
