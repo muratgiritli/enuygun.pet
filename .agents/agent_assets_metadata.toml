@@ -396,3 +396,9 @@ id = "PRa5wGk3bz-aN1JRHglJv"
 uri = "file://proplan-kedi-url.txt"
 type = "text"
 title = "Pro Plan Kedi Mama Sayfaları - 40 URL"
+
+[[outputs]]
+id = "a0-dS9Rg1NVxP1zFe58bS"
+uri = "file://nd-kedi-url.txt"
+type = "text"
+title = "N&D Kedi Mama Sayfaları - 45 URL"
