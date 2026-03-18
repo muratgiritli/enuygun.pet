@@ -415,22 +415,61 @@ export default function KeywordPage() {
         </Card>
 
         {data.related.length > 0 && (
-          <section className="mb-5" aria-label="İlgili ürünler">
-            <h2 className="text-base font-bold text-foreground mb-3">İlgili Aramalar</h2>
-            <div className="flex flex-wrap gap-2">
-              {data.related.map(r => (
+          <section className="mb-5" aria-label="Benzer ürünler">
+            <h2 className="text-base font-bold text-foreground mb-3">Benzer Ürünler</h2>
+            <div className="grid grid-cols-2 gap-2">
+              {data.related.slice(0, 8).map(r => (
                 <Link key={r.slug} href={`/${r.slug}`}>
                   <a
-                    className="text-xs px-3 py-1.5 rounded-full border border-border bg-muted/40 text-foreground hover:border-primary hover:text-primary transition-colors"
+                    className="flex items-center gap-2 p-2.5 rounded-lg border border-border bg-muted/30 hover:border-primary hover:bg-primary/5 transition-colors group"
                     data-testid={`link-related-${r.slug}`}
                   >
-                    {r.keyword}
+                    <ChevronRight className="w-3.5 h-3.5 text-primary shrink-0" />
+                    <span className="text-xs text-foreground group-hover:text-primary leading-snug line-clamp-2">{r.keyword}</span>
                   </a>
                 </Link>
               ))}
             </div>
+            {data.related.length > 8 && (
+              <div className="flex flex-wrap gap-1.5 mt-2">
+                {data.related.slice(8).map(r => (
+                  <Link key={r.slug} href={`/${r.slug}`}>
+                    <a
+                      className="text-xs px-2.5 py-1 rounded-full border border-border bg-muted/40 text-muted-foreground hover:border-primary hover:text-primary transition-colors"
+                      data-testid={`link-related-extra-${r.slug}`}
+                    >
+                      {r.keyword}
+                    </a>
+                  </Link>
+                ))}
+              </div>
+            )}
           </section>
         )}
+
+        <section className="mb-5" aria-label="Ana kategoriler">
+          <h2 className="text-base font-bold text-foreground mb-3">Ana Kategoriler</h2>
+          <div className="grid grid-cols-2 gap-2">
+            {[
+              { label: "Kedi Maması", slug: "kedi-mamasi" },
+              { label: "Köpek Maması", slug: "kopek-mamasi" },
+              { label: "Kedi Kumu", slug: "kedi-kumu-samsun" },
+              { label: "Kuş Yemleri", slug: "gold-wings-muhabbet-yemi" },
+              { label: "Kedi Aksesuarları", slug: "kedi-tirmalama" },
+              { label: "Köpek Aksesuarları", slug: "kopek-tasmasi" },
+            ].map(cat => (
+              <Link key={cat.slug} href={`/${cat.slug}`}>
+                <a
+                  className="flex items-center gap-2 p-2.5 rounded-lg border border-border bg-primary/5 hover:border-primary hover:bg-primary/10 transition-colors group"
+                  data-testid={`link-category-${cat.slug}`}
+                >
+                  <div className="w-1.5 h-1.5 rounded-full bg-primary shrink-0" />
+                  <span className="text-xs font-medium text-foreground group-hover:text-primary">{cat.label}</span>
+                </a>
+              </Link>
+            ))}
+          </div>
+        </section>
       </main>
 
       <footer className="border-t border-border px-4 py-5 mt-2" data-testid="keyword-footer">

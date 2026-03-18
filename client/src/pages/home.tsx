@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { Link } from "wouter";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -46,10 +47,54 @@ function optimizedImg(url: string, width: number = 0) {
 }
 
 const categories = [
-  { icon: Cat, title: "Kedi Ürünleri", desc: "Mama, kum, oyuncak, yatak", image: STORE_PHOTOS[1] },
-  { icon: Dog, title: "Köpek Ürünleri", desc: "Mama, tasma, oyuncak, aksesuar", image: STORE_PHOTOS[2] },
-  { icon: Bird, title: "Kuş Ürünleri", desc: "Yem, kafes, aksesuar", image: STORE_PHOTOS[3] },
-  { icon: Fish, title: "Akvaryum", desc: "Balık yemi, filtre, aksesuar", image: STORE_PHOTOS[0] },
+  { icon: Cat, title: "Kedi Ürünleri", desc: "Mama, kum, oyuncak, yatak", image: STORE_PHOTOS[1], slug: "kedi-mamasi" },
+  { icon: Dog, title: "Köpek Ürünleri", desc: "Mama, tasma, oyuncak, aksesuar", image: STORE_PHOTOS[2], slug: "kopek-mamasi" },
+  { icon: Bird, title: "Kuş Ürünleri", desc: "Yem, kafes, aksesuar", image: STORE_PHOTOS[3], slug: "gold-wings-muhabbet-yemi" },
+  { icon: Fish, title: "Akvaryum", desc: "Balık yemi, filtre, aksesuar", image: STORE_PHOTOS[0], slug: "akvaryum-balik-yemi" },
+];
+
+const popularSearches = [
+  { label: "Royal Canin Kedi Maması", slug: "royal-canin-kedi-mamasi" },
+  { label: "Pro Plan Köpek Maması", slug: "pro-plan-kopek-mamasi" },
+  { label: "Kedi Kumu Samsun", slug: "kedi-kumu-samsun" },
+  { label: "Köpek Maması Samsun", slug: "kopek-mamasi-samsun" },
+  { label: "Kedi Maması Atakum", slug: "kedi-mamasi-atakum" },
+  { label: "Brit Care Kedi", slug: "brit-care-kedi-mamasi" },
+  { label: "Hill's Kedi Maması", slug: "hills-kedi-mamasi" },
+  { label: "Vancat Kedi Kumu", slug: "vancat-kedi-kumu" },
+  { label: "Köpek Tasması", slug: "kopek-tasmasi" },
+  { label: "Kedi Tırmalama", slug: "kedi-tirmalama" },
+  { label: "Furminator Tarak", slug: "furminator-tarak" },
+  { label: "Muhabbet Kuşu Kafesi", slug: "muhabbet-kusu-kafesi" },
+  { label: "Papağan Kafesi", slug: "papagan-kafesi" },
+  { label: "Kedi Taşıma Çantası", slug: "kedi-tasima-cantasi" },
+  { label: "Köpek Şampuanı", slug: "kopek-sampuani" },
+  { label: "Felicia Kedi Maması", slug: "felicia-kedi-mamasi" },
+  { label: "Reflex Kedi Maması", slug: "reflex-kedi-mamasi" },
+  { label: "N&D Kedi Maması", slug: "nd-kedi-mamasi" },
+  { label: "Proline Kedi Kumu", slug: "proline-kedi-kumu" },
+  { label: "Pelet Kedi Kumu", slug: "pelet-kedi-kumu" },
+  { label: "Köpek Kulübesi", slug: "kopek-kulubesi" },
+  { label: "Kedi Yatağı", slug: "kedi-yatagi" },
+  { label: "GimCat Ödül", slug: "gimcat-odul" },
+  { label: "Wanpy Kedi Ödülü", slug: "wanpy-kedi-odulu" },
+];
+
+const brandLinks = [
+  { name: "Royal Canin", slug: "royal-canin-kedi-mamasi" },
+  { name: "Pro Plan", slug: "pro-plan-kedi-mamasi" },
+  { name: "Acana", slug: "acana-kedi-mamasi" },
+  { name: "Orijen", slug: "orijen-kedi-mamasi" },
+  { name: "Reflex", slug: "reflex-kedi-mamasi" },
+  { name: "N&D", slug: "nd-kedi-mamasi" },
+  { name: "Brit Care", slug: "brit-care-kedi-mamasi" },
+  { name: "GimCat", slug: "gimcat-odul" },
+  { name: "Trixie", slug: "trixie-kedi-oyuncagi" },
+  { name: "Ferplast", slug: "ferplast-kedi-kafesi" },
+  { name: "Felix", slug: "felix-kedi-mamasi" },
+  { name: "Whiskas", slug: "whiskas-kedi-mamasi" },
+  { name: "Pedigree", slug: "pedigree-kopek-mamasi" },
+  { name: "Hill's", slug: "hills-kedi-mamasi" },
 ];
 
 const features = [
@@ -289,6 +334,8 @@ export default function Home() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.1 * i + 0.3 }}
               >
+                <Link href={`/${cat.slug}`}>
+                <a data-testid={`link-category-${i}`}>
                 <Card className="group relative border border-card-border" data-testid={`card-category-${i}`}>
                   <div className="relative h-28 rounded-t-md">
                     <img
@@ -308,6 +355,8 @@ export default function Home() {
                     <p className="text-[11px] text-muted-foreground mt-0.5 leading-snug">{cat.desc}</p>
                   </div>
                 </Card>
+                </a>
+                </Link>
               </motion.div>
             ))}
           </div>
@@ -376,13 +425,30 @@ export default function Home() {
         <section className="px-4 mt-8" aria-label="Popüler markalar">
           <h2 className="text-lg font-bold text-foreground mb-3" data-testid="text-brands-title">Popüler Markalar</h2>
           <div className="flex flex-wrap gap-2">
-            {[
-              "Royal Canin", "Pro Plan", "Acana", "Orijen", "Reflex", "N&D", "Brit Care",
-              "Gimcat", "Trixie", "Ferplast", "Catit", "Felix", "Whiskas", "Pedigree"
-            ].map((brand) => (
-              <Badge key={brand} variant="secondary" className="text-xs py-1 px-2.5" data-testid={`badge-brand-${brand}`}>
-                {brand}
-              </Badge>
+            {brandLinks.map((brand) => (
+              <Link key={brand.slug} href={`/${brand.slug}`}>
+                <a data-testid={`link-brand-${brand.slug}`}>
+                  <Badge variant="secondary" className="text-xs py-1 px-2.5 cursor-pointer hover:bg-primary/10 hover:text-primary transition-colors">
+                    {brand.name}
+                  </Badge>
+                </a>
+              </Link>
+            ))}
+          </div>
+        </section>
+
+        <section className="px-4 mt-8" aria-label="Popüler aramalar">
+          <h2 className="text-lg font-bold text-foreground mb-3" data-testid="text-popular-title">Popüler Aramalar</h2>
+          <div className="flex flex-wrap gap-2">
+            {popularSearches.map((item) => (
+              <Link key={item.slug} href={`/${item.slug}`}>
+                <a
+                  className="text-xs px-3 py-1.5 rounded-full border border-border bg-muted/40 text-foreground hover:border-primary hover:text-primary hover:bg-primary/5 transition-colors"
+                  data-testid={`link-popular-${item.slug}`}
+                >
+                  {item.label}
+                </a>
+              </Link>
             ))}
           </div>
         </section>
