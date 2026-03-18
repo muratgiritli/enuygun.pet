@@ -360,3 +360,9 @@ id = "rgtylUM91uxuSBN_HKt-M"
 uri = "file://reflex-kedi-url.txt"
 type = "text"
 title = "Reflex Kedi Mama Sayfaları - 42 URL"
+
+[[outputs]]
+id = "f55jB7Y5H5k1rvhdUl5Iz"
+uri = "file://royal-canin-kedi-url.txt"
+type = "text"
+title = "Royal Canin Kedi Mama Sayfaları - 41 URL"
