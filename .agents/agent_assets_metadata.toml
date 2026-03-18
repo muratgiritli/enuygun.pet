@@ -420,3 +420,9 @@ id = "6viC3LyZej6ZmXDSs3e83"
 uri = "file://brit-care-kopek-url.txt"
 type = "text"
 title = "Brit Care Köpek Mama Sayfaları - 48 URL"
+
+[[outputs]]
+id = "nbom_k36BvrF__m-o9OJb"
+uri = "file://lavital-kedi-url.txt"
+type = "text"
+title = "LaVital Kedi Mama Sayfaları - 47 URL"
