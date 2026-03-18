@@ -528,3 +528,9 @@ id = "aWk1t3KlW-qxBOSHW4I9S"
 uri = "file://proline-kedi-kumu-url.txt"
 type = "text"
 title = "Proline Kedi Kumu Sayfaları - 46 URL"
+
+[[outputs]]
+id = "-FPJIoxrjlhlG1uwWN8GH"
+uri = "file://kopek-tasima-cantasi-url.txt"
+type = "text"
+title = "Köpek Taşıma Çantası Sayfaları - 48 URL"
