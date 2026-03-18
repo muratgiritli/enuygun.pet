@@ -522,3 +522,9 @@ id = "yIJYFQcLykS0_r-NpDoMt"
 uri = "file://sleepy-cis-pedi-url.txt"
 type = "text"
 title = "Sleepy Köpek Çiş Pedi Sayfaları - 50 URL"
+
+[[outputs]]
+id = "aWk1t3KlW-qxBOSHW4I9S"
+uri = "file://proline-kedi-kumu-url.txt"
+type = "text"
+title = "Proline Kedi Kumu Sayfaları - 46 URL"
