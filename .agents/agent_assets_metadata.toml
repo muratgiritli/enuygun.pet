@@ -594,3 +594,9 @@ id = "UG6QlCzmQ6QmG4NcIjX-X"
 uri = "file://kedi-tirmalama-url.txt"
 type = "text"
 title = "Kedi Tırmalama Sayfaları - 43 URL"
+
+[[outputs]]
+id = "WA7mBps8-QVQ2PnshRTO6"
+uri = "file://kopek-sampuani-url.txt"
+type = "text"
+title = "Köpek Şampuanı Sayfaları - 47 URL"
