@@ -576,3 +576,9 @@ id = "uVymwhPD-CXuNbl5PmpfG"
 uri = "file://proline-karbonlu-url.txt"
 type = "text"
 title = "Proline Aktif Karbonlu Kedi Kumu Sayfaları - 38 URL"
+
+[[outputs]]
+id = "s0cDW5LdugBEcMyFoLTyE"
+uri = "file://furminator-url.txt"
+type = "text"
+title = "Furminator Sayfaları - 47 URL"
