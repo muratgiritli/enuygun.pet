@@ -402,3 +402,9 @@ id = "a0-dS9Rg1NVxP1zFe58bS"
 uri = "file://nd-kedi-url.txt"
 type = "text"
 title = "N&D Kedi Mama Sayfaları - 45 URL"
+
+[[outputs]]
+id = "AqWrALAJh7maG0puSOEy9"
+uri = "file://nd-kopek-url.txt"
+type = "text"
+title = "N&D Köpek Mama Sayfaları - 47 URL"
