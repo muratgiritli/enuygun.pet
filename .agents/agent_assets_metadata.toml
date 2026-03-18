@@ -414,3 +414,9 @@ id = "hz4dvFvZGUkCEMEL7f2ZU"
 uri = "file://brit-care-kedi-url.txt"
 type = "text"
 title = "Brit Care Kedi Mama Sayfaları - 43 URL"
+
+[[outputs]]
+id = "6viC3LyZej6ZmXDSs3e83"
+uri = "file://brit-care-kopek-url.txt"
+type = "text"
+title = "Brit Care Köpek Mama Sayfaları - 48 URL"
