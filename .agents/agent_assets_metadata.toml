@@ -468,3 +468,9 @@ id = "Z27lZ9LwvKAGUrjvQgMkc"
 uri = "file://wanpy-kopek-url.txt"
 type = "text"
 title = "Wanpy Köpek Ödül Sayfaları - 50 URL"
+
+[[outputs]]
+id = "YTj8INOhoVwsTAUG30XTj"
+uri = "file://gimcat-url.txt"
+type = "text"
+title = "GimCat Sayfaları - 45 URL"
