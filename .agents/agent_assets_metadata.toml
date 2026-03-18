@@ -486,3 +486,9 @@ id = "wWKweBCCjtAniLj5nZMA8"
 uri = "file://vancat-kedi-kumu-url.txt"
 type = "text"
 title = "Vancat Kedi Kumu Sayfaları - 47 URL"
+
+[[outputs]]
+id = "7sPgYW2lgxyQ025PK1L_S"
+uri = "file://biokats-kedi-kumu-url.txt"
+type = "text"
+title = "Biokat's Kedi Kumu Sayfaları - 48 URL"
