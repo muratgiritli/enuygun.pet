@@ -612,3 +612,9 @@ id = "2M7PPnaFKVm5Nxu8aB9IY"
 uri = "file://muhabbet-kusu-kafesi-url.txt"
 type = "text"
 title = "Muhabbet Kuşu Kafesi Sayfaları - 48 URL"
+
+[[outputs]]
+id = "nFi8M_gSmJ5DNTTGUKQxV"
+uri = "file://properformance-kedi-mamasi-url.txt"
+type = "text"
+title = "Properformance Kedi Maması Sayfaları - 47 URL"
