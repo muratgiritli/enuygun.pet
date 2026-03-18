@@ -504,3 +504,9 @@ id = "VleKuTW2noK5CRqKygmnE"
 uri = "file://kedi-dogum-evi-url.txt"
 type = "text"
 title = "Kedi Doğum Evi Sayfaları - 49 URL"
+
+[[outputs]]
+id = "hlGBfoeO7RLsXgjbzZ9o4"
+uri = "file://kedi-sut-tozu-url.txt"
+type = "text"
+title = "Kedi Süt Tozu Sayfaları - 48 URL"
