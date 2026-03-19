@@ -1,8 +1,8 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useRoute, Link } from "wouter";
 import { useQuery } from "@tanstack/react-query";
-import { Phone, MapPin, Clock, Navigation, ChevronRight, Home, ArrowLeft } from "lucide-react";
-import { SiWhatsapp } from "react-icons/si";
+import { Phone, MapPin, Clock, Navigation, ChevronRight, Home, ArrowLeft, Share2, Copy, Check } from "lucide-react";
+import { SiWhatsapp, SiFacebook, SiX, SiInstagram } from "react-icons/si";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import NotFound from "@/pages/not-found";
