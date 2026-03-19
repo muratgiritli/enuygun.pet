@@ -2,6 +2,7 @@ import type { Express } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
 import keywordsData from "./keywords.json";
+import { postToTwitter, postToFacebook, postToInstagram, postToAllPlatforms } from "./social";
 
 const keywords = keywordsData as Array<{ keyword: string; slug: string }>;
 const keywordBySlug = new Map(keywords.map(k => [k.slug, k]));
@@ -170,6 +171,39 @@ Allow: /
     const related = getRelated(kw.keyword, kw.slug, keywords);
     res.set("Cache-Control", "public, max-age=3600");
     res.json({ ...kw, related });
+  });
+
+  app.post("/api/social/post-all", async (req, res) => {
+    const { keyword, slug, secret } = req.body;
+    if (secret !== process.env.SOCIAL_POST_SECRET) {
+      return res.status(401).json({ error: "Yetkisiz istek" });
+    }
+    if (!keyword || !slug) {
+      return res.status(400).json({ error: "keyword ve slug gerekli" });
+    }
+    const results = await postToAllPlatforms(keyword, slug);
+    res.json({ results });
+  });
+
+  app.post("/api/social/twitter", async (req, res) => {
+    const { keyword, slug, secret } = req.body;
+    if (secret !== process.env.SOCIAL_POST_SECRET) return res.status(401).json({ error: "Yetkisiz" });
+    const result = await postToTwitter(keyword, slug);
+    res.json(result);
+  });
+
+  app.post("/api/social/facebook", async (req, res) => {
+    const { keyword, slug, secret } = req.body;
+    if (secret !== process.env.SOCIAL_POST_SECRET) return res.status(401).json({ error: "Yetkisiz" });
+    const result = await postToFacebook(keyword, slug);
+    res.json(result);
+  });
+
+  app.post("/api/social/instagram", async (req, res) => {
+    const { keyword, slug, secret } = req.body;
+    if (secret !== process.env.SOCIAL_POST_SECRET) return res.status(401).json({ error: "Yetkisiz" });
+    const result = await postToInstagram(keyword, slug);
+    res.json(result);
   });
 
   app.get("/api/image-proxy", async (req, res) => {
