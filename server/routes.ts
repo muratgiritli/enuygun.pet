@@ -2,10 +2,13 @@ import type { Express } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
 import keywordsData from "./keywords.json";
+import healthKeywordsData from "./health-keywords.json";
 import { postToTwitter, postToFacebook, postToInstagram, postToAllPlatforms } from "./social";
 
 const keywords = keywordsData as Array<{ keyword: string; slug: string }>;
 const keywordBySlug = new Map(keywords.map(k => [k.slug, k]));
+const healthKeywords = healthKeywordsData as Array<{ keyword: string; slug: string; category: string; categoryName: string }>;
+const healthBySlug = new Map(healthKeywords.map(k => [k.slug, k]));
 
 export async function registerRoutes(
   httpServer: Server,
@@ -56,6 +59,10 @@ export async function registerRoutes(
     <loc>https://www.enuygun.pet/sitemap-home.xml</loc>
     <lastmod>${today}</lastmod>
   </sitemap>
+  <sitemap>
+    <loc>https://www.enuygun.pet/sitemap-health.xml</loc>
+    <lastmod>${today}</lastmod>
+  </sitemap>
 ${sitemapEntries}
 </sitemapindex>`;
 
@@ -96,6 +103,36 @@ ${sitemapEntries}
       <image:title>Kuş yemleri ve kafesleri</image:title>
     </image:image>
   </url>
+</urlset>`;
+    res.set("Content-Type", "application/xml");
+    res.set("Cache-Control", "public, max-age=86400");
+    res.send(sitemap);
+  });
+
+  app.get("/sitemap-health.xml", (_req, res) => {
+    const today = new Date().toISOString().split("T")[0];
+    const IMG = "https://static.wixstatic.com/media/63853e_4c33bdb1dc274eab8358c2d598f7cfee~mv2.jpeg";
+
+    const urlEntries = healthKeywords.map(k => {
+      const title = xmlEscape(`${k.keyword} - Kedi Sağlığı EnuygunPet`);
+      const caption = xmlEscape(`${k.categoryName} - ${k.keyword} - Samsun Atakum Petshop`);
+      return `  <url>
+    <loc>https://www.enuygun.pet/kedi-hastaliklari/${k.slug}</loc>
+    <lastmod>${today}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>${IMG}</image:loc>
+      <image:title>${title}</image:title>
+      <image:caption>${caption}</image:caption>
+    </image:image>
+  </url>`;
+    }).join("\n");
+
+    const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+${urlEntries}
 </urlset>`;
     res.set("Content-Type", "application/xml");
     res.set("Cache-Control", "public, max-age=86400");
