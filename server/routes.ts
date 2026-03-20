@@ -12,39 +12,60 @@ export async function registerRoutes(
   app: Express
 ): Promise<Server> {
 
+  const SITEMAP_IMGS = [
+    { loc: "https://static.wixstatic.com/media/63853e_77a3ee3fa9d942a7af5b6f25a0520653~mv2.jpeg", base: "EnuygunPet Samsun Atakum petshop gross market mağaza" },
+    { loc: "https://static.wixstatic.com/media/63853e_f5ae600f104c4dfcae521fe694ba017b~mv2.jpeg", base: "Atakum petshop ürün reyonları kedi köpek mama" },
+    { loc: "https://static.wixstatic.com/media/63853e_4c33bdb1dc274eab8358c2d598f7cfee~mv2.jpeg", base: "Samsun pet shop kedi ürünleri mama kumu aksesuar" },
+    { loc: "https://static.wixstatic.com/media/63853e_ba5ea5e88a5a41409f4742caf8dced1c~mv2.jpeg", base: "Samsun Atakum köpek mama aksesuar petshop" },
+    { loc: "https://static.wixstatic.com/media/63853e_346d0d0b96154639b0a27296b18d70f5~mv2.jpeg", base: "Samsun petshop kuş yemi kafes malzemeleri" },
+  ];
+
+  function xmlEscape(str: string): string {
+    return str.replace(/&(?!amp;|lt;|gt;|quot;|apos;)/g, "&amp;");
+  }
+
+  function pickSitemapImg(kw: string) {
+    const k = kw.toLowerCase();
+    if (k.includes("kuş") || k.includes("kus") || k.includes("papağan") || k.includes("kanarya")) return SITEMAP_IMGS[4];
+    if (k.includes("köpek") || k.includes("kopek")) return SITEMAP_IMGS[3];
+    if (k.includes("kedi") && (k.includes("kum") || k.includes("ödül") || k.includes("odul"))) return SITEMAP_IMGS[2];
+    if (k.includes("kedi")) return SITEMAP_IMGS[2];
+    return SITEMAP_IMGS[0];
+  }
+
+  function buildKeywordUrl(k: { keyword: string; slug: string }, today: string): string {
+    const img = pickSitemapImg(k.keyword);
+    const altTitle = xmlEscape(`${k.keyword} - Samsun Atakum EnuygunPet Petshop`);
+    const caption = xmlEscape(`${img.base} - ${k.keyword}`);
+    return `  <url>\n    <loc>https://www.enuygun.pet/${k.slug}</loc>\n    <lastmod>${today}</lastmod>\n    <changefreq>monthly</changefreq>\n    <priority>0.7</priority>\n    <image:image>\n      <image:loc>${img.loc}</image:loc>\n      <image:title>${altTitle}</image:title>\n      <image:caption>${caption}</image:caption>\n    </image:image>\n  </url>`;
+  }
+
+  const TOTAL_SITEMAPS = 50;
+  const chunkSize = Math.ceil(keywords.length / TOTAL_SITEMAPS);
+
   app.get("/sitemap.xml", (_req, res) => {
     const today = new Date().toISOString().split("T")[0];
+    const sitemapEntries = Array.from({ length: TOTAL_SITEMAPS }, (_, i) => {
+      const n = i + 1;
+      return `  <sitemap>\n    <loc>https://www.enuygun.pet/sitemap-${n}.xml</loc>\n    <lastmod>${today}</lastmod>\n  </sitemap>`;
+    }).join("\n");
 
-    function xmlEscape(str: string): string {
-      return str.replace(/&(?!amp;|lt;|gt;|quot;|apos;)/g, "&amp;");
-    }
+    const index = `<?xml version="1.0" encoding="UTF-8"?>
+<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <sitemap>
+    <loc>https://www.enuygun.pet/sitemap-home.xml</loc>
+    <lastmod>${today}</lastmod>
+  </sitemap>
+${sitemapEntries}
+</sitemapindex>`;
 
-    const IMGS = [
-      { loc: "https://static.wixstatic.com/media/63853e_77a3ee3fa9d942a7af5b6f25a0520653~mv2.jpeg", base: "EnuygunPet Samsun Atakum petshop gross market mağaza" },
-      { loc: "https://static.wixstatic.com/media/63853e_f5ae600f104c4dfcae521fe694ba017b~mv2.jpeg", base: "Atakum petshop ürün reyonları kedi köpek mama" },
-      { loc: "https://static.wixstatic.com/media/63853e_4c33bdb1dc274eab8358c2d598f7cfee~mv2.jpeg", base: "Samsun pet shop kedi ürünleri mama kumu aksesuar" },
-      { loc: "https://static.wixstatic.com/media/63853e_ba5ea5e88a5a41409f4742caf8dced1c~mv2.jpeg", base: "Samsun Atakum köpek mama aksesuar petshop" },
-      { loc: "https://static.wixstatic.com/media/63853e_346d0d0b96154639b0a27296b18d70f5~mv2.jpeg", base: "Samsun petshop kuş yemi kafes malzemeleri" },
-    ];
+    res.set("Content-Type", "application/xml");
+    res.set("Cache-Control", "public, max-age=86400");
+    res.send(index);
+  });
 
-    function pickImg(kw: string) {
-      const k = kw.toLowerCase();
-      if (k.includes("kuş") || k.includes("kus") || k.includes("papağan") || k.includes("kanarya")) return IMGS[4];
-      if (k.includes("köpek") || k.includes("kopek")) return IMGS[3];
-      if (k.includes("kedi") && (k.includes("kum") || k.includes("ödül") || k.includes("odul"))) return IMGS[2];
-      if (k.includes("kedi")) return IMGS[2];
-      return IMGS[0];
-    }
-
-    const keywordUrls = keywords
-      .map(k => {
-        const img = pickImg(k.keyword);
-        const altTitle = xmlEscape(`${k.keyword} - Samsun Atakum EnuygunPet Petshop`);
-        const caption = xmlEscape(`${img.base} - ${k.keyword}`);
-        return `  <url>\n    <loc>https://www.enuygun.pet/${k.slug}</loc>\n    <lastmod>${today}</lastmod>\n    <changefreq>monthly</changefreq>\n    <priority>0.7</priority>\n    <image:image>\n      <image:loc>${img.loc}</image:loc>\n      <image:title>${altTitle}</image:title>\n      <image:caption>${caption}</image:caption>\n    </image:image>\n  </url>`;
-      })
-      .join("\n");
-
+  app.get("/sitemap-home.xml", (_req, res) => {
+    const today = new Date().toISOString().split("T")[0];
     const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
@@ -75,7 +96,25 @@ export async function registerRoutes(
       <image:title>Kuş yemleri ve kafesleri</image:title>
     </image:image>
   </url>
-${keywordUrls}
+</urlset>`;
+    res.set("Content-Type", "application/xml");
+    res.set("Cache-Control", "public, max-age=86400");
+    res.send(sitemap);
+  });
+
+  app.get("/sitemap-:n.xml", (req, res) => {
+    const n = parseInt(req.params.n);
+    if (isNaN(n) || n < 1 || n > TOTAL_SITEMAPS) {
+      return res.status(404).send("Sitemap bulunamadı");
+    }
+    const today = new Date().toISOString().split("T")[0];
+    const start = (n - 1) * chunkSize;
+    const chunk = keywords.slice(start, start + chunkSize);
+    const urlEntries = chunk.map(k => buildKeywordUrl(k, today)).join("\n");
+    const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+${urlEntries}
 </urlset>`;
     res.set("Content-Type", "application/xml");
     res.set("Cache-Control", "public, max-age=86400");
