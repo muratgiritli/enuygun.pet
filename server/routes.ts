@@ -3,12 +3,19 @@ import { createServer, type Server } from "http";
 import { storage } from "./storage";
 import keywordsData from "./keywords.json";
 import healthKeywordsData from "./health-keywords.json";
+import kopekHealthData from "./kopek-health-keywords.json";
+import papaganHealthData from "./papagan-health-keywords.json";
+import muhabbetHealthData from "./muhabbet-health-keywords.json";
 import { postToTwitter, postToFacebook, postToInstagram, postToAllPlatforms } from "./social";
 
+type HealthKw = { keyword: string; slug: string; category: string; categoryName: string };
 const keywords = keywordsData as Array<{ keyword: string; slug: string }>;
 const keywordBySlug = new Map(keywords.map(k => [k.slug, k]));
-const healthKeywords = healthKeywordsData as Array<{ keyword: string; slug: string; category: string; categoryName: string }>;
+const healthKeywords = healthKeywordsData as HealthKw[];
 const healthBySlug = new Map(healthKeywords.map(k => [k.slug, k]));
+const kopekKeywords = kopekHealthData as HealthKw[];
+const papaganKeywords = papaganHealthData as HealthKw[];
+const muhabbetKeywords = muhabbetHealthData as HealthKw[];
 
 export async function registerRoutes(
   httpServer: Server,
@@ -61,6 +68,18 @@ export async function registerRoutes(
   </sitemap>
   <sitemap>
     <loc>https://www.enuygun.pet/sitemap-health.xml</loc>
+    <lastmod>${today}</lastmod>
+  </sitemap>
+  <sitemap>
+    <loc>https://www.enuygun.pet/sitemap-kopek.xml</loc>
+    <lastmod>${today}</lastmod>
+  </sitemap>
+  <sitemap>
+    <loc>https://www.enuygun.pet/sitemap-papagan.xml</loc>
+    <lastmod>${today}</lastmod>
+  </sitemap>
+  <sitemap>
+    <loc>https://www.enuygun.pet/sitemap-muhabbet.xml</loc>
     <lastmod>${today}</lastmod>
   </sitemap>
 ${sitemapEntries}
