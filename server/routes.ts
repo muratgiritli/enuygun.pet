@@ -15,6 +15,10 @@ export async function registerRoutes(
   app.get("/sitemap.xml", (_req, res) => {
     const today = new Date().toISOString().split("T")[0];
 
+    function xmlEscape(str: string): string {
+      return str.replace(/&(?!amp;|lt;|gt;|quot;|apos;)/g, "&amp;");
+    }
+
     const IMGS = [
       { loc: "https://static.wixstatic.com/media/63853e_77a3ee3fa9d942a7af5b6f25a0520653~mv2.jpeg", base: "EnuygunPet Samsun Atakum petshop gross market mağaza" },
       { loc: "https://static.wixstatic.com/media/63853e_f5ae600f104c4dfcae521fe694ba017b~mv2.jpeg", base: "Atakum petshop ürün reyonları kedi köpek mama" },
@@ -35,8 +39,9 @@ export async function registerRoutes(
     const keywordUrls = keywords
       .map(k => {
         const img = pickImg(k.keyword);
-        const altTitle = `${k.keyword} - Samsun Atakum EnuygunPet Petshop`;
-        return `  <url>\n    <loc>https://www.enuygun.pet/${k.slug}</loc>\n    <lastmod>${today}</lastmod>\n    <changefreq>monthly</changefreq>\n    <priority>0.7</priority>\n    <image:image>\n      <image:loc>${img.loc}</image:loc>\n      <image:title>${altTitle}</image:title>\n      <image:caption>${img.base} - ${k.keyword}</image:caption>\n    </image:image>\n  </url>`;
+        const altTitle = xmlEscape(`${k.keyword} - Samsun Atakum EnuygunPet Petshop`);
+        const caption = xmlEscape(`${img.base} - ${k.keyword}`);
+        return `  <url>\n    <loc>https://www.enuygun.pet/${k.slug}</loc>\n    <lastmod>${today}</lastmod>\n    <changefreq>monthly</changefreq>\n    <priority>0.7</priority>\n    <image:image>\n      <image:loc>${img.loc}</image:loc>\n      <image:title>${altTitle}</image:title>\n      <image:caption>${caption}</image:caption>\n    </image:image>\n  </url>`;
       })
       .join("\n");
 
