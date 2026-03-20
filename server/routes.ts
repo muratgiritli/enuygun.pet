@@ -295,6 +295,26 @@ Allow: /
     res.json({ ...kw, related });
   });
 
+  const healthDataMap: Record<string, { list: HealthKw[]; urlPrefix: string; animalTr: string }> = {
+    kedi:     { list: healthKeywords,   urlPrefix: "kedi-hastaliklari",          animalTr: "Kedi" },
+    kopek:    { list: kopekKeywords,    urlPrefix: "kopek-hastaliklari",         animalTr: "Köpek" },
+    papagan:  { list: papaganKeywords,  urlPrefix: "papagan-hastaliklari",       animalTr: "Papağan" },
+    muhabbet: { list: muhabbetKeywords, urlPrefix: "muhabbet-kusu-hastaliklari", animalTr: "Muhabbet Kuşu" },
+  };
+
+  app.get("/api/health/:animal/:slug", (req, res) => {
+    const { animal, slug } = req.params;
+    const group = healthDataMap[animal];
+    if (!group) return res.status(404).json({ message: "Not found" });
+    const kw = group.list.find(k => k.slug === slug);
+    if (!kw) return res.status(404).json({ message: "Not found" });
+    const related = group.list
+      .filter(k => k.category === kw.category && k.slug !== kw.slug)
+      .slice(0, 8);
+    res.set("Cache-Control", "public, max-age=3600");
+    res.json({ ...kw, animalTr: group.animalTr, urlPrefix: group.urlPrefix, related });
+  });
+
   app.post("/api/social/post-all", async (req, res) => {
     const { keyword, slug, secret } = req.body;
     if (secret !== process.env.SOCIAL_POST_SECRET) {

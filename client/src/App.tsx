@@ -6,16 +6,17 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import Home from "@/pages/home";
 import NotFound from "@/pages/not-found";
 import KeywordPage from "@/pages/keyword-page";
-
-function KeywordOrNotFound() {
-  return <KeywordPage />;
-}
+import HealthPage from "@/pages/health-page";
 
 function Router() {
   return (
     <Switch>
       <Route path="/" component={Home} />
-      <Route path="/:slug" component={KeywordOrNotFound} />
+      <Route path="/kedi-hastaliklari/:slug" component={HealthPage} />
+      <Route path="/kopek-hastaliklari/:slug" component={HealthPage} />
+      <Route path="/papagan-hastaliklari/:slug" component={HealthPage} />
+      <Route path="/muhabbet-kusu-hastaliklari/:slug" component={HealthPage} />
+      <Route path="/:slug" component={KeywordPage} />
       <Route component={NotFound} />
     </Switch>
   );
