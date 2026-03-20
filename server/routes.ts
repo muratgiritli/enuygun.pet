@@ -129,33 +129,55 @@ ${sitemapEntries}
   });
 
   app.get("/sitemap-health.xml", (_req, res) => {
-    const today = new Date().toISOString().split("T")[0];
     const IMG = "https://static.wixstatic.com/media/63853e_4c33bdb1dc274eab8358c2d598f7cfee~mv2.jpeg";
+    res.set("Content-Type", "application/xml");
+    res.set("Cache-Control", "public, max-age=86400");
+    res.send(buildHealthSitemap(healthKeywords, IMG, "kedi-hastaliklari"));
+  });
 
-    const urlEntries = healthKeywords.map(k => {
-      const title = xmlEscape(`${k.keyword} - Kedi Sağlığı EnuygunPet`);
+  function buildHealthSitemap(list: HealthKw[], imgUrl: string, urlPrefix: string): string {
+    const today = new Date().toISOString().split("T")[0];
+    const urlEntries = list.map(k => {
+      const title = xmlEscape(`${k.keyword} - ${k.categoryName} - EnuygunPet`);
       const caption = xmlEscape(`${k.categoryName} - ${k.keyword} - Samsun Atakum Petshop`);
       return `  <url>
-    <loc>https://www.enuygun.pet/kedi-hastaliklari/${k.slug}</loc>
+    <loc>https://www.enuygun.pet/${urlPrefix}/${k.slug}</loc>
     <lastmod>${today}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <image:image>
-      <image:loc>${IMG}</image:loc>
+      <image:loc>${imgUrl}</image:loc>
       <image:title>${title}</image:title>
       <image:caption>${caption}</image:caption>
     </image:image>
   </url>`;
     }).join("\n");
-
-    const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
+    return `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
 ${urlEntries}
 </urlset>`;
+  }
+
+  app.get("/sitemap-kopek.xml", (_req, res) => {
+    const IMG = "https://static.wixstatic.com/media/63853e_ba5ea5e30dcd46b1909f6e7b8a63e3df~mv2.jpeg";
     res.set("Content-Type", "application/xml");
     res.set("Cache-Control", "public, max-age=86400");
-    res.send(sitemap);
+    res.send(buildHealthSitemap(kopekKeywords, IMG, "kopek-hastaliklari"));
+  });
+
+  app.get("/sitemap-papagan.xml", (_req, res) => {
+    const IMG = "https://static.wixstatic.com/media/63853e_346d0d0e8e5e4c9680b61bc0d4d65cf0~mv2.jpeg";
+    res.set("Content-Type", "application/xml");
+    res.set("Cache-Control", "public, max-age=86400");
+    res.send(buildHealthSitemap(papaganKeywords, IMG, "papagan-hastaliklari"));
+  });
+
+  app.get("/sitemap-muhabbet.xml", (_req, res) => {
+    const IMG = "https://static.wixstatic.com/media/63853e_346d0d0e8e5e4c9680b61bc0d4d65cf0~mv2.jpeg";
+    res.set("Content-Type", "application/xml");
+    res.set("Cache-Control", "public, max-age=86400");
+    res.send(buildHealthSitemap(muhabbetKeywords, IMG, "muhabbet-kusu-hastaliklari"));
   });
 
   app.get("/sitemap-:n.xml", (req, res) => {
