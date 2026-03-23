@@ -544,8 +544,15 @@ export default function KeywordPage() {
               Ana Sayfaya Dön
             </a>
           </Link>
-          <p className="text-xs text-muted-foreground">Sizpa Internet Ticaret Ltd.Şti.</p>
           <p className="text-[10px] text-muted-foreground/70">© {new Date().getFullYear()} EnuygunPet — Tüm hakları saklıdır.</p>
+          <p className="text-[10px] text-muted-foreground/60">
+            Bu web sitesi,{" "}
+            <a href="https://www.sizpa.net/" target="_blank" rel="noopener noreferrer"
+              className="underline hover:text-primary transition-colors">
+              Sizpa Yazılım
+            </a>{" "}
+            tarafından tasarlanmış ve geliştirilmiştir.
+          </p>
         </div>
       </footer>
     </div>

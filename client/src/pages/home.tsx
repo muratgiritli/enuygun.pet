@@ -565,8 +565,15 @@ export default function Home() {
 
         <footer className="px-4 pt-6 pb-28 border-t border-border mt-6" data-testid="footer">
           <div className="text-center space-y-1.5">
-            <p className="text-xs text-muted-foreground">Sizpa Internet Ticaret Ltd.Sti.</p>
-            <p className="text-[10px] text-muted-foreground/70">&copy; {new Date().getFullYear()} EnuygunPet - Tüm hakları saklıdır.</p>
+            <p className="text-[10px] text-muted-foreground/70">&copy; {new Date().getFullYear()} EnuygunPet — Tüm hakları saklıdır.</p>
+            <p className="text-[10px] text-muted-foreground/60">
+              Bu web sitesi,{" "}
+              <a href="https://www.sizpa.net/" target="_blank" rel="noopener noreferrer"
+                className="underline hover:text-primary transition-colors">
+                Sizpa Yazılım
+              </a>{" "}
+              tarafından tasarlanmış ve geliştirilmiştir.
+            </p>
           </div>
         </footer>
       </main>

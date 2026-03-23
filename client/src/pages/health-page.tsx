@@ -442,6 +442,18 @@ export default function HealthPage() {
             </a>
           </div>
         </Card>
+
+        <footer className="mt-8 pb-6 text-center space-y-1">
+          <p className="text-[10px] text-muted-foreground/70">© {new Date().getFullYear()} EnuygunPet — Tüm hakları saklıdır.</p>
+          <p className="text-[10px] text-muted-foreground/60">
+            Bu web sitesi,{" "}
+            <a href="https://www.sizpa.net/" target="_blank" rel="noopener noreferrer"
+              className="underline hover:text-primary transition-colors">
+              Sizpa Yazılım
+            </a>{" "}
+            tarafından tasarlanmış ve geliştirilmiştir.
+          </p>
+        </footer>
       </main>
     </div>
   );
