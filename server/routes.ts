@@ -6,6 +6,9 @@ import healthKeywordsData from "./health-keywords.json";
 import kopekHealthData from "./kopek-health-keywords.json";
 import papaganHealthData from "./papagan-health-keywords.json";
 import muhabbetHealthData from "./muhabbet-health-keywords.json";
+import blogPostsData from "./blog-posts.json";
+import localSeoData from "./local-seo.json";
+import categoriesData from "./categories.json";
 import { postToTwitter, postToFacebook, postToInstagram, postToAllPlatforms } from "./social";
 
 type HealthKw = { keyword: string; slug: string; category: string; categoryName: string };
@@ -16,6 +19,18 @@ const healthBySlug = new Map(healthKeywords.map(k => [k.slug, k]));
 const kopekKeywords = kopekHealthData as HealthKw[];
 const papaganKeywords = papaganHealthData as HealthKw[];
 const muhabbetKeywords = muhabbetHealthData as HealthKw[];
+
+type BlogPost = { slug: string; title: string; cat: string; desc: string; products: string[]; sections: { h: string; p: string }[] };
+const blogPosts = blogPostsData as BlogPost[];
+const blogBySlug = new Map(blogPosts.map(b => [b.slug, b]));
+
+type LocalPage = { slug: string; title: string; h1: string; district: string; neighborhood: string | null; desc: string; intro: string; sections: { h: string; p: string }[] };
+const localPages = localSeoData as LocalPage[];
+const localBySlug = new Map(localPages.map(p => [p.slug, p]));
+
+type CategoryPage = { slug: string; title: string; h1: string; desc: string; intro: string; relatedBlogs: string[]; relatedKeywords: string[]; brands: string[]; sections: { h: string; p: string }[] };
+const categoryPages = categoriesData as CategoryPage[];
+const categoryBySlug = new Map(categoryPages.map(c => [c.slug, c]));
 
 export async function registerRoutes(
   httpServer: Server,
@@ -80,6 +95,18 @@ export async function registerRoutes(
   </sitemap>
   <sitemap>
     <loc>https://www.enuygun.pet/sitemap-muhabbet.xml</loc>
+    <lastmod>${today}</lastmod>
+  </sitemap>
+  <sitemap>
+    <loc>https://www.enuygun.pet/sitemap-blog.xml</loc>
+    <lastmod>${today}</lastmod>
+  </sitemap>
+  <sitemap>
+    <loc>https://www.enuygun.pet/sitemap-kategoriler.xml</loc>
+    <lastmod>${today}</lastmod>
+  </sitemap>
+  <sitemap>
+    <loc>https://www.enuygun.pet/sitemap-local.xml</loc>
     <lastmod>${today}</lastmod>
   </sitemap>
 ${sitemapEntries}
@@ -346,6 +373,75 @@ Allow: /
     if (secret !== process.env.SOCIAL_POST_SECRET) return res.status(401).json({ error: "Yetkisiz" });
     const result = await postToInstagram(keyword, slug);
     res.json(result);
+  });
+
+  // Blog API
+  app.get("/api/blog", (_req, res) => {
+    res.json(blogPosts.map(b => ({ slug: b.slug, title: b.title, cat: b.cat, desc: b.desc })));
+  });
+
+  app.get("/api/blog/:slug", (req, res) => {
+    const post = blogBySlug.get(req.params.slug);
+    if (!post) return res.status(404).json({ error: "Blog yazısı bulunamadı" });
+    const related = blogPosts.filter(b => b.slug !== post.slug && b.cat === post.cat).slice(0, 4).map(b => ({ slug: b.slug, title: b.title }));
+    const productLinks = post.products.map(p => {
+      const kw = keywords.find(k => k.slug === p || k.slug.includes(p.split('-')[0]));
+      return { slug: p, keyword: kw?.keyword || p.replace(/-/g, ' ') };
+    });
+    res.json({ ...post, related, productLinks });
+  });
+
+  // Category API
+  app.get("/api/category", (_req, res) => {
+    res.json(categoryPages.map(c => ({ slug: c.slug, title: c.title, desc: c.desc })));
+  });
+
+  app.get("/api/category/:slug", (req, res) => {
+    const cat = categoryBySlug.get(req.params.slug);
+    if (!cat) return res.status(404).json({ error: "Kategori bulunamadı" });
+    const relatedBlogData = cat.relatedBlogs.map(s => {
+      const b = blogBySlug.get(s);
+      return b ? { slug: b.slug, title: b.title } : null;
+    }).filter(Boolean);
+    res.json({ ...cat, relatedBlogData });
+  });
+
+  // Local SEO API
+  app.get("/api/local", (_req, res) => {
+    res.json(localPages.map(p => ({ slug: p.slug, title: p.title, district: p.district, neighborhood: p.neighborhood })));
+  });
+
+  app.get("/api/local/:slug", (req, res) => {
+    const page = localBySlug.get(req.params.slug);
+    if (!page) return res.status(404).json({ error: "Sayfa bulunamadı" });
+    res.json(page);
+  });
+
+  // Sitemap for blog
+  app.get("/sitemap-blog.xml", (_req, res) => {
+    const urls = blogPosts.map(b =>
+      `  <url><loc>https://enuygunpet.com/blog/${b.slug}</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>`
+    ).join("\n");
+    res.set("Content-Type", "application/xml");
+    res.send(`<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls}\n</urlset>`);
+  });
+
+  // Sitemap for categories
+  app.get("/sitemap-kategoriler.xml", (_req, res) => {
+    const urls = categoryPages.map(c =>
+      `  <url><loc>https://enuygunpet.com/${c.slug}</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>`
+    ).join("\n");
+    res.set("Content-Type", "application/xml");
+    res.send(`<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls}\n</urlset>`);
+  });
+
+  // Sitemap for local SEO
+  app.get("/sitemap-local.xml", (_req, res) => {
+    const urls = localPages.map(p =>
+      `  <url><loc>https://enuygunpet.com/local/${p.slug}</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>`
+    ).join("\n");
+    res.set("Content-Type", "application/xml");
+    res.send(`<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls}\n</urlset>`);
   });
 
   app.get("/api/image-proxy", async (req, res) => {

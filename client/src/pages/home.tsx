@@ -25,6 +25,8 @@ import {
   X,
   Download,
   Share2,
+  BookOpen,
+  ChevronRight,
 } from "lucide-react";
 import { SiWhatsapp, SiInstagram, SiGoogle } from "react-icons/si";
 
@@ -359,6 +361,62 @@ export default function Home() {
                 </Link>
               </motion.div>
             ))}
+          </div>
+        </section>
+
+        <section className="px-4 mt-8" aria-label="Kategori sayfaları">
+          <div className="flex items-center justify-between gap-2 mb-3">
+            <h2 className="text-lg font-bold text-foreground">Popüler Kategoriler</h2>
+            <Tag className="w-4 h-4 text-primary" />
+          </div>
+          <div className="grid grid-cols-2 gap-2">
+            {[
+              { slug: "kedi-mamasi", label: "Kedi Maması" },
+              { slug: "kopek-mamasi", label: "Köpek Maması" },
+              { slug: "kedi-kumu", label: "Kedi Kumu" },
+              { slug: "atakum-petshop", label: "Atakum Petshop" },
+              { slug: "petshop-samsun", label: "Samsun Petshop" },
+              { slug: "kapida-teslim-petshop", label: "Kapıda Teslim" },
+            ].map(c => (
+              <Link key={c.slug} href={`/${c.slug}`}>
+                <a className="flex items-center justify-between group p-3 rounded-xl bg-card border border-border hover:border-primary/40 hover:bg-primary/5 transition-all" data-testid={`link-hub-${c.slug}`}>
+                  <span className="text-sm font-medium text-foreground">{c.label}</span>
+                  <ChevronRight className="w-4 h-4 text-muted-foreground group-hover:text-primary group-hover:translate-x-0.5 transition-all shrink-0" />
+                </a>
+              </Link>
+            ))}
+          </div>
+        </section>
+
+        <section className="px-4 mt-8" aria-label="Blog rehberleri">
+          <div className="flex items-center justify-between gap-2 mb-3">
+            <h2 className="text-lg font-bold text-foreground">Bakım Rehberi</h2>
+            <BookOpen className="w-4 h-4 text-primary" />
+          </div>
+          <div className="space-y-2">
+            {[
+              "Kısır Kedi Maması Hangisi",
+              "Kedi Neden Kusar Nedenleri ve Çözümler",
+              "Köpek Neden Mama Yemez 7 Neden ve Çözümler",
+              "En İyi Kedi Maması Hangisi 2025 Rehberi",
+              "Yavru Kedi Nasıl Beslenir Kapsamlı Rehber",
+            ].map((title, i) => {
+              const blogSlug = ["kisir-kedi-mamasi-hangisi","kedi-neden-kusar-nedenleri-ve-cozumler","kopek-neden-mama-yemez-7-neden-ve-cozumler","en-iyi-kedi-mamasi-hangisi-2025-rehberi","yavru-kedi-nasil-beslenir-kapsamli-rehber"][i];
+              return (
+                <Link key={blogSlug} href={`/blog/${blogSlug}`}>
+                  <a className="flex items-center justify-between group p-3 rounded-xl bg-card border border-border hover:border-primary/40 hover:bg-primary/5 transition-all" data-testid={`link-blog-home-${i}`}>
+                    <span className="text-sm text-foreground">{title}</span>
+                    <ChevronRight className="w-4 h-4 text-muted-foreground group-hover:text-primary group-hover:translate-x-0.5 transition-all shrink-0" />
+                  </a>
+                </Link>
+              );
+            })}
+            <Link href="/blog">
+              <a className="flex items-center justify-center gap-1.5 mt-1 text-sm text-primary hover:underline" data-testid="link-all-blogs">
+                Tüm Blog Yazıları
+                <ChevronRight className="w-4 h-4" />
+              </a>
+            </Link>
           </div>
         </section>
 
