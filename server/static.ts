@@ -25,7 +25,8 @@ export function serveStatic(app: Express) {
     if (!indexHtml) {
       return res.sendFile(indexHtmlPath);
     }
-    const meta = getPageMeta(req.path);
+    const urlPath = req.originalUrl.split("?")[0];
+    const meta = getPageMeta(urlPath);
     const html = injectMeta(indexHtml, meta);
     res.setHeader("Content-Type", "text/html; charset=utf-8");
     res.send(html);
