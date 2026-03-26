@@ -52,7 +52,7 @@ const categories = [
   { icon: Cat, title: "Kedi Ürünleri", desc: "Mama, kum, oyuncak, yatak", image: STORE_PHOTOS[1], slug: "kedi-mamasi" },
   { icon: Dog, title: "Köpek Ürünleri", desc: "Mama, tasma, oyuncak, aksesuar", image: STORE_PHOTOS[2], slug: "kopek-mamasi" },
   { icon: Bird, title: "Kuş Ürünleri", desc: "Yem, kafes, aksesuar", image: STORE_PHOTOS[3], slug: "gold-wings-muhabbet-yemi" },
-  { icon: Fish, title: "Akvaryum", desc: "Balık yemi, filtre, aksesuar", image: STORE_PHOTOS[0], slug: "akvaryum-balik-yemi" },
+  { icon: Fish, title: "Akvaryum", desc: "Balık yemi, filtre, aksesuar", image: STORE_PHOTOS[0], slug: "balik-yemi-samsun" },
 ];
 
 const popularSearches = [
@@ -60,7 +60,7 @@ const popularSearches = [
   { label: "Pro Plan Köpek Maması", slug: "pro-plan-kopek-mamasi" },
   { label: "Kedi Kumu Samsun", slug: "kedi-kumu-samsun" },
   { label: "Köpek Maması Samsun", slug: "kopek-mamasi-samsun" },
-  { label: "Kedi Maması Atakum", slug: "kedi-mamasi-atakum" },
+  { label: "Kedi Maması Atakum", slug: "kedi-mamasi-atakum-samsun" },
   { label: "Brit Care Kedi", slug: "brit-care-kedi-mamasi" },
   { label: "Hill's Kedi Maması", slug: "hills-kedi-mamasi" },
   { label: "Vancat Kedi Kumu", slug: "vancat-kedi-kumu" },
@@ -78,7 +78,7 @@ const popularSearches = [
   { label: "Pelet Kedi Kumu", slug: "pelet-kedi-kumu" },
   { label: "Köpek Kulübesi", slug: "kopek-kulubesi" },
   { label: "Kedi Yatağı", slug: "kedi-yatagi" },
-  { label: "GimCat Ödül", slug: "gimcat-odul" },
+  { label: "GimCat Ödül", slug: "gimcat" },
   { label: "Wanpy Kedi Ödülü", slug: "wanpy-kedi-odulu" },
 ];
 
@@ -90,12 +90,12 @@ const brandLinks = [
   { name: "Reflex", slug: "reflex-kedi-mamasi" },
   { name: "N&D", slug: "nd-kedi-mamasi" },
   { name: "Brit Care", slug: "brit-care-kedi-mamasi" },
-  { name: "GimCat", slug: "gimcat-odul" },
-  { name: "Trixie", slug: "trixie-kedi-oyuncagi" },
-  { name: "Ferplast", slug: "ferplast-kedi-kafesi" },
+  { name: "GimCat", slug: "gimcat" },
+  { name: "Trixie", slug: "trixie-kedi" },
+  { name: "Ferplast", slug: "ferplast-kus-kafesi" },
   { name: "Felix", slug: "felix-kedi-mamasi" },
   { name: "Whiskas", slug: "whiskas-kedi-mamasi" },
-  { name: "Pedigree", slug: "pedigree-kopek-mamasi" },
+  { name: "Pedigree", slug: "pedigree-kopek-mamasi-15-kg" },
   { name: "Hill's", slug: "hills-kedi-mamasi" },
 ];
 
