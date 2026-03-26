@@ -361,13 +361,28 @@ export default function HealthPage() {
         </div>
 
         {/* Article content */}
-        <article className="prose prose-sm max-w-none mb-8" data-testid="health-article">
+        <article className="prose prose-sm max-w-none mb-6" data-testid="health-article">
           {paragraphs.map((p, i) => (
             <p key={i} className="text-foreground/90 leading-relaxed mb-4">
               {p}
             </p>
           ))}
         </article>
+
+        {/* Store information */}
+        <section className="mb-6 space-y-3">
+          <h2 className="text-base font-bold text-foreground">EnuygunPet'te Ürün ve Destek</h2>
+          <p className="text-sm text-muted-foreground leading-relaxed">
+            EnuygunPet Gross Market olarak evcil hayvan sağlığını destekleyen ürünleri gross market fiyatıyla sunuyoruz. Veteriner önerileriyle uyumlu mama, takviye ve bakım ürünlerini Samsun Atakum mağazamızda bulabilirsiniz. Mağazamızda kedi maması, köpek maması, kuş yemi, vitamin takviyeleri, probiyotikler ve özel diyet mamaları stoğumuzda mevcuttur.
+          </p>
+          <p className="text-sm text-muted-foreground leading-relaxed">
+            Royal Canin, Hills Prescription Diet, Pro Plan Veterinary Diets ve Brit Care gibi veteriner onaylı markaların ürünleri mağazamızda bulunmaktadır. Ürün seçiminde kararsız kaldığınızda WhatsApp hattımız (+90 542 211 49 44) üzerinden uzman personelimizden yardım alabilirsiniz. Haftanın her günü saat 09:00 ile 21:00 arasında Atatürk Bulvarı Atakum adresimizde hizmetinizdeyiz.
+          </p>
+          <h2 className="text-sm font-bold text-foreground">Neden EnuygunPet?</h2>
+          <p className="text-sm text-muted-foreground leading-relaxed">
+            Samsun'un en büyük petshop gross marketi olarak binlerce ürün çeşidi, uzman danışmanlık ve gross market fiyat avantajı sunuyoruz. Perakende fiyatlarının %30-50 altında alışveriş yapabilirsiniz. Evcil hayvanınızın sağlık durumuna uygun ürünü bulmak için mağazamızı ziyaret edin veya bize ulaşın.
+          </p>
+        </section>
 
         {/* Product recommendation */}
         <Card className="p-5 mb-8 border-primary/20 bg-primary/5">

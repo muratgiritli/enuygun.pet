@@ -457,26 +457,47 @@ export default function KeywordPage() {
           </div>
         </section>
 
-        <Card className="p-4 mb-5 border border-card-border">
-          <h2 className="text-sm font-bold text-foreground mb-3 flex items-center gap-2">
+        <section className="mb-5 space-y-4" aria-label="Mağaza hakkında">
+          <h2 className="text-base font-bold text-foreground flex items-center gap-2">
             <MapPin className="w-4 h-4 text-primary" />
-            Mağaza Bilgileri
+            EnuygunPet Gross Market Hakkında
           </h2>
-          <div className="space-y-2">
+          <p className="text-xs text-muted-foreground leading-relaxed">
+            EnuygunPet, Samsun Atakum'da Atatürk Bulvarı No:113 adresinde faaliyet gösteren Samsun'un en büyük petshop gross marketidir. Kedi maması, köpek maması, kuş yemi, kedi kumu, tasma, oyuncak, yatak, kafes ve akvaryum malzemeleri dahil on binlerce ürün çeşidi tek çatı altında sunulmaktadır.
+          </p>
+          <p className="text-xs text-muted-foreground leading-relaxed">
+            Gross market modelimiz sayesinde perakende fiyatlarının çok altında alışveriş yapabilirsiniz. Royal Canin, Hills Science Plan, Pro Plan, Brit Care, Reflex, Enjoy, Acana, Orijen, Pedigree, Whiskas ve Felix gibi Türkiye'nin önde gelen markalarının tüm ürün gamlarını stoğumuzda bulunduruyoruz. Büyük gramaj ve toplu alımlarda fiyat avantajı daha da belirginleşmektedir.
+          </p>
+
+          <h2 className="text-sm font-bold text-foreground">Ürün Kategorilerimiz</h2>
+          <p className="text-xs text-muted-foreground leading-relaxed">
+            Mağazamızda beş ana kategoride ürün sunmaktayız: <strong>Kedi ürünleri</strong> (mama, kum, oyuncak, tırmalama tahtası, taşıma çantası), <strong>Köpek ürünleri</strong> (mama, tasma, koşum, oyuncak, yatak, bakım ürünleri), <strong>Kuş ürünleri</strong> (yem, kafes, tünek, mineral taşı, vitamin), <strong>Balık ve akvaryum ürünleri</strong> (yem, filtre, ışık, süsleme), <strong>Küçük hayvan ürünleri</strong> (hamster, tavşan, guinea pig yemi ve kafesleri). Her kategoride geniş marka ve gramaj seçenekleri mevcuttur.
+          </p>
+
+          <h2 className="text-sm font-bold text-foreground">Neden EnuygunPet?</h2>
+          <p className="text-xs text-muted-foreground leading-relaxed">
+            Samsun'da petshop arayan evcil hayvan sahiplerinin EnuygunPet'i tercih etme nedenleri şunlardır: Gross market fiyat avantajı — perakende fiyatların %30–50 altında fiyatlar. Geniş stok — binlerce ürün çeşidi her zaman raflarda, stoksuz kalmak nadiren yaşanır. Uzman danışmanlık — personelimiz beslenme ve bakım konusunda deneyimlidir. Kolay erişim — Atatürk Bulvarı üzerinde, geniş otopark imkânı mevcut.
+          </p>
+
+          <div className="border border-border rounded-lg p-3 space-y-2">
+            <h2 className="text-sm font-bold text-foreground flex items-center gap-2">
+              <MapPin className="w-3.5 h-3.5 text-primary" />
+              Mağaza Bilgileri
+            </h2>
             <div className="flex items-center gap-2 text-xs text-muted-foreground">
-              <MapPin className="w-3.5 h-3.5 text-primary shrink-0" />
+              <MapPin className="w-3 h-3 text-primary shrink-0" />
               <span>{ADDRESS}</span>
             </div>
             <div className="flex items-center gap-2 text-xs text-muted-foreground">
-              <Clock className="w-3.5 h-3.5 text-primary shrink-0" />
-              <span>Her gün 09:00 - 21:00</span>
+              <Clock className="w-3 h-3 text-primary shrink-0" />
+              <span>Haftanın her günü 09:00 – 21:00</span>
             </div>
             <div className="flex items-center gap-2 text-xs text-muted-foreground">
-              <Phone className="w-3.5 h-3.5 text-primary shrink-0" />
+              <Phone className="w-3 h-3 text-primary shrink-0" />
               <a href={`tel:${PHONE}`} className="hover:text-primary">{PHONE}</a>
             </div>
           </div>
-        </Card>
+        </section>
 
         {data.related.length > 0 && (
           <section className="mb-5" aria-label="Benzer ürünler">

@@ -102,6 +102,24 @@ export default function LocalPage() {
           </section>
         ))}
 
+        <section className="space-y-4">
+          <h2 className="text-base font-bold text-foreground">EnuygunPet Gross Market Hakkında</h2>
+          <p className="text-sm text-muted-foreground leading-relaxed">
+            EnuygunPet, Samsun Atakum'da Atatürk Bulvarı No:113 adresinde faaliyet gösteren Samsun'un en büyük petshop gross marketidir. Kedi maması, köpek maması, kuş yemi, kedi kumu, tasma, oyuncak, yatak, kafes ve akvaryum malzemeleri dahil on binlerce ürün çeşidi tek çatı altında sunulmaktadır. Royal Canin, Hills Science Plan, Pro Plan, Brit Care, Reflex ve Enjoy gibi önde gelen markaların tüm ürün gamları stoğumuzda mevcuttur.
+          </p>
+          <p className="text-sm text-muted-foreground leading-relaxed">
+            Gross market modelimiz sayesinde perakende fiyatlarının çok altında alışveriş yapabilirsiniz. Büyük gramaj ve toplu alımlarda fiyat avantajı daha da belirginleşmektedir. Uzman personelimiz evcil hayvanınızın beslenme ve bakım ihtiyaçları hakkında ücretsiz danışmanlık sunmaktadır.
+          </p>
+          <h2 className="text-sm font-bold text-foreground">Ürün Kategorileri</h2>
+          <p className="text-sm text-muted-foreground leading-relaxed">
+            Kedi ürünleri (mama, kum, oyuncak, tırmalama, taşıma çantası), köpek ürünleri (mama, tasma, koşum, oyuncak, yatak), kuş ürünleri (yem, kafes, tünek, vitamin), balık ve akvaryum ürünleri (yem, filtre, ışık, dekorasyon) ile küçük hayvan ürünleri (hamster, tavşan, guinea pig) kategorilerinde geniş ürün yelpazesi sunuyoruz.
+          </p>
+          <h2 className="text-sm font-bold text-foreground">Neden EnuygunPet?</h2>
+          <p className="text-sm text-muted-foreground leading-relaxed">
+            Gross market fiyat avantajı, geniş stok, uzman danışmanlık ve kolay erişim imkânıyla Samsun'un en güvenilir petshop markasıyız. Haftanın her günü 09:00–21:00 saatleri arasında açığız. WhatsApp hattımız (+90 542 211 49 44) üzerinden stok sorgusu ve sipariş alıyoruz.
+          </p>
+        </section>
+
         <Card className="p-4 bg-primary text-primary-foreground rounded-2xl">
           <p className="text-sm font-semibold mb-1">EnuygunPet Gross Market</p>
           <p className="text-xs text-primary-foreground/80 mb-3">Atatürk Bulvarı, Atakum / Samsun — Her gün 09:00-21:00</p>

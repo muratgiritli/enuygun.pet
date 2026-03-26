@@ -99,6 +99,20 @@ export default function BlogPage() {
           </section>
         ))}
 
+        <section className="space-y-3 border-t border-border pt-6">
+          <h2 className="text-base font-bold text-foreground">EnuygunPet'te Satın Alın</h2>
+          <p className="text-sm text-muted-foreground leading-relaxed">
+            Bu içerikte bahsedilen tüm ürünleri Samsun Atakum'daki EnuygunPet Gross Market mağazamızda bulabilirsiniz. Royal Canin, Hills Science Plan, Pro Plan, Brit Care, Reflex ve daha pek çok markayı gross market fiyatıyla sunuyoruz. Mağazamız Atatürk Bulvarı No:113, Atakum / Samsun adresinde haftanın her günü 09:00–21:00 saatleri arasında açıktır.
+          </p>
+          <p className="text-sm text-muted-foreground leading-relaxed">
+            Ürün stok sorgusu, fiyat bilgisi ve sipariş için WhatsApp hattımız (+90 542 211 49 44) üzerinden bize ulaşabilirsiniz. Uzman personelimiz evcil hayvanınızın ihtiyacına en uygun ürünü önerir. Kedi maması, köpek maması, kuş yemi, kedi kumu, vitamin takviyeleri ve bakım ürünlerinden oluşan geniş stok yapımızla tüm ihtiyaçlarınıza tek adreste hizmet veriyoruz.
+          </p>
+          <h2 className="text-sm font-bold text-foreground">Neden EnuygunPet?</h2>
+          <p className="text-sm text-muted-foreground leading-relaxed">
+            Gross market fiyat avantajı, geniş stok ve uzman danışmanlıkla Samsun'un en büyük petshopuyuz. Perakende fiyatların %30-50 altında alışveriş imkânı, büyük gramaj seçenekleri ve toplu alım indirimleri sunuyoruz.
+          </p>
+        </section>
+
         {post.productLinks && post.productLinks.length > 0 && (
           <Card className="p-4 bg-amber-50 dark:bg-amber-950/20 border-amber-200 dark:border-amber-800">
             <div className="flex items-center gap-2 mb-3">
