@@ -60,8 +60,49 @@ export default function CategoryPage() {
     </div>
   );
 
+  const schema = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "CollectionPage",
+        "@id": `https://www.enuygun.pet/${cat.slug}`,
+        "url": `https://www.enuygun.pet/${cat.slug}`,
+        "name": cat.title,
+        "description": cat.desc,
+        "inLanguage": "tr-TR",
+        "isPartOf": { "@id": "https://www.enuygun.pet/#website" }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Ana Sayfa", "item": "https://www.enuygun.pet/" },
+          { "@type": "ListItem", "position": 2, "name": cat.h1, "item": `https://www.enuygun.pet/${cat.slug}` }
+        ]
+      },
+      {
+        "@type": "Service",
+        "name": cat.h1,
+        "description": cat.desc,
+        "serviceType": "Evcil Hayvan Ürünleri Satışı",
+        "provider": { "@id": "https://www.enuygun.pet/#organization" },
+        "areaServed": { "@type": "City", "name": "Samsun" },
+        "offers": (cat.brands || []).map((brand: string) => ({
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Product",
+            "name": `${cat.h1} - ${brand}`,
+            "brand": { "@type": "Brand", "name": brand }
+          },
+          "priceCurrency": "TRY",
+          "availability": "https://schema.org/InStock"
+        }))
+      }
+    ]
+  };
+
   return (
     <div className="min-h-screen bg-background flex flex-col">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       <header className="bg-primary text-primary-foreground px-4 pt-10 pb-6">
         <div className="max-w-2xl mx-auto">
           <Link href="/">

@@ -76,8 +76,56 @@ export default function LocalPage() {
     ? `${page.district} ${page.neighborhood}`
     : page.district;
 
+  const schema = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "LocalBusiness",
+        "@id": `https://www.enuygun.pet/local/${page.slug}#localbusiness`,
+        "name": page.h1,
+        "description": page.desc,
+        "url": `https://www.enuygun.pet/local/${page.slug}`,
+        "telephone": "+905422114944",
+        "image": "https://static.wixstatic.com/media/63853e_77a3ee3fa9d942a7af5b6f25a0520653~mv2.jpeg",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Yeni Mahalle Atatürk 3. Kısım Bulvarı No:113",
+          "addressLocality": "Atakum",
+          "addressRegion": "Samsun",
+          "postalCode": "55200",
+          "addressCountry": "TR"
+        },
+        "geo": { "@type": "GeoCoordinates", "latitude": 41.3286, "longitude": 36.2917 },
+        "openingHoursSpecification": [{
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+          "opens": "09:00",
+          "closes": "21:00"
+        }],
+        "areaServed": { "@type": "City", "name": "Samsun" },
+        "parentOrganization": { "@id": "https://www.enuygun.pet/#organization" }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Ana Sayfa", "item": "https://www.enuygun.pet/" },
+          { "@type": "ListItem", "position": 2, "name": page.district, "item": `https://www.enuygun.pet/local/${page.slug}` }
+        ]
+      },
+      {
+        "@type": "Service",
+        "name": page.h1,
+        "description": page.desc,
+        "serviceType": "Evcil Hayvan Ürünleri Satışı",
+        "provider": { "@id": "https://www.enuygun.pet/#organization" },
+        "areaServed": { "@type": "Place", "name": locationLabel }
+      }
+    ]
+  };
+
   return (
     <div className="min-h-screen bg-background flex flex-col">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       <header className="bg-primary text-primary-foreground px-4 pt-10 pb-6">
         <div className="max-w-2xl mx-auto">
           <Link href="/">

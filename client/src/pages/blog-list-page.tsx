@@ -53,8 +53,32 @@ export default function BlogListPage() {
     return acc;
   }, {});
 
+  const schema = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Blog",
+        "@id": "https://www.enuygun.pet/blog",
+        "url": "https://www.enuygun.pet/blog",
+        "name": "EnuygunPet — Evcil Hayvan Bakım Rehberi",
+        "description": "Kedi, köpek, kuş ve tüm evcil hayvanlar için uzman bakım, beslenme ve sağlık rehberleri.",
+        "inLanguage": "tr-TR",
+        "publisher": { "@id": "https://www.enuygun.pet/#organization" },
+        "isPartOf": { "@id": "https://www.enuygun.pet/#website" }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Ana Sayfa", "item": "https://www.enuygun.pet/" },
+          { "@type": "ListItem", "position": 2, "name": "Bakım Rehberi", "item": "https://www.enuygun.pet/blog" }
+        ]
+      }
+    ]
+  };
+
   return (
     <div className="min-h-screen bg-background flex flex-col">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       <header className="bg-primary text-primary-foreground px-4 pt-10 pb-6">
         <div className="max-w-2xl mx-auto">
           <Link href="/">

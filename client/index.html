@@ -136,12 +136,41 @@
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "LocalBusiness",
-      "name": "EnuygunPet Petshop Gross Market",
-      "image": "https://static.wixstatic.com/media/63853e_77a3ee3fa9d942a7af5b6f25a0520653~mv2.jpeg",
-      "@id": "https://www.enuygun.pet/",
+      "@type": "WebSite",
+      "@id": "https://www.enuygun.pet/#website",
       "url": "https://www.enuygun.pet/",
+      "name": "EnuygunPet - Samsun Atakum Petshop Gross Market",
+      "description": "Samsun Atakum'un en büyük petshop gross marketi. Kedi, köpek, kuş ürünleri en uygun fiyatlarla.",
+      "inLanguage": "tr-TR",
+      "publisher": { "@id": "https://www.enuygun.pet/#organization" },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://www.enuygun.pet/?q={search_term_string}"
+        },
+        "query-input": "required name=search_term_string"
+      }
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "@id": "https://www.enuygun.pet/#organization",
+      "name": "EnuygunPet Gross Market",
+      "alternateName": "EnuygunPet Samsun Atakum Petshop",
+      "url": "https://www.enuygun.pet/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://www.enuygun.pet/favicon.png",
+        "width": 512,
+        "height": 512
+      },
+      "image": "https://static.wixstatic.com/media/63853e_77a3ee3fa9d942a7af5b6f25a0520653~mv2.jpeg",
       "telephone": "+905422114944",
+      "email": "info@enuygun.pet",
       "address": {
         "@type": "PostalAddress",
         "streetAddress": "Yeni Mahalle Atatürk 3. Kısım Bulvarı No:113",
@@ -150,16 +179,25 @@
         "postalCode": "55200",
         "addressCountry": "TR"
       },
-      "geo": {
-        "@type": "GeoCoordinates",
-        "latitude": 41.3286,
-        "longitude": 36.2917
-      },
-      "openingHoursSpecification": {
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
-        "opens": "09:00",
-        "closes": "21:00"
+      "sameAs": [
+        "https://www.instagram.com/enuygun.pet/",
+        "https://www.facebook.com/enuygun.pet",
+        "https://x.com/enuygunpet",
+        "https://www.youtube.com/@samsunenuygunpet",
+        "https://wa.me/905422114944"
+      ],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+905422114944",
+        "contactType": "customer service",
+        "availableLanguage": "Turkish",
+        "areaServed": "TR",
+        "hoursAvailable": {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+          "opens": "09:00",
+          "closes": "21:00"
+        }
       }
     }
     </script>
@@ -167,15 +205,29 @@
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        {
-          "@type": "ListItem",
-          "position": 1,
-          "name": "Ana Sayfa",
-          "item": "https://www.enuygun.pet/"
-        }
-      ]
+      "@type": "Service",
+      "name": "Petshop Gross Market — Kedi, Köpek, Kuş Ürünleri",
+      "serviceType": "Evcil Hayvan Ürünleri Gross Market Satışı",
+      "description": "Kedi maması, köpek maması, kuş yemi, kedi kumu, aksesuar ve bakım ürünleri gross market fiyatlarıyla Samsun Atakum'da.",
+      "provider": { "@id": "https://www.enuygun.pet/#organization" },
+      "areaServed": { "@type": "City", "name": "Samsun" },
+      "availableChannel": {
+        "@type": "ServiceChannel",
+        "serviceUrl": "https://www.enuygun.pet/",
+        "servicePhone": "+905422114944",
+        "availableLanguage": "Turkish"
+      },
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Evcil Hayvan Ürünleri",
+        "itemListElement": [
+          { "@type": "Offer", "itemOffered": { "@type": "Product", "name": "Kedi Maması", "url": "https://www.enuygun.pet/kedi-mamasi" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Product", "name": "Köpek Maması", "url": "https://www.enuygun.pet/kopek-mamasi" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Product", "name": "Kuş Yemi", "url": "https://www.enuygun.pet/kus-yemi" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Product", "name": "Kedi Kumu", "url": "https://www.enuygun.pet/kedi-kumu" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Product", "name": "Evcil Hayvan Aksesuarı", "url": "https://www.enuygun.pet/petshop-samsun" } }
+        ]
+      }
     }
     </script>
 

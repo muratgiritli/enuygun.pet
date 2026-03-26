@@ -74,8 +74,49 @@ export default function BlogPage() {
     </div>
   );
 
+  const schema = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BlogPosting",
+        "@id": `https://www.enuygun.pet/blog/${post.slug}`,
+        "url": `https://www.enuygun.pet/blog/${post.slug}`,
+        "headline": post.title,
+        "name": post.title,
+        "description": post.desc,
+        "datePublished": "2025-01-01",
+        "dateModified": new Date().toISOString().split("T")[0],
+        "inLanguage": "tr-TR",
+        "author": {
+          "@type": "Organization",
+          "@id": "https://www.enuygun.pet/#organization",
+          "name": "EnuygunPet Gross Market"
+        },
+        "publisher": { "@id": "https://www.enuygun.pet/#organization" },
+        "mainEntityOfPage": {
+          "@type": "WebPage",
+          "@id": `https://www.enuygun.pet/blog/${post.slug}`
+        },
+        "isPartOf": {
+          "@type": "Blog",
+          "@id": "https://www.enuygun.pet/blog",
+          "name": "EnuygunPet — Evcil Hayvan Bakım Rehberi"
+        }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Ana Sayfa", "item": "https://www.enuygun.pet/" },
+          { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://www.enuygun.pet/blog" },
+          { "@type": "ListItem", "position": 3, "name": post.title, "item": `https://www.enuygun.pet/blog/${post.slug}` }
+        ]
+      }
+    ]
+  };
+
   return (
     <div className="min-h-screen bg-background flex flex-col">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       <header className="bg-primary text-primary-foreground px-4 pt-10 pb-6">
         <div className="max-w-2xl mx-auto">
           <Link href="/blog">
