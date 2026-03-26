@@ -11,7 +11,9 @@ export function serveStatic(app: Express) {
     );
   }
 
-  app.use(express.static(distPath));
+  // index: false prevents express.static from auto-serving index.html
+  // so our catch-all can inject meta tags for every page including "/"
+  app.use(express.static(distPath, { index: false }));
 
   const indexHtmlPath = path.resolve(distPath, "index.html");
   let indexHtml = "";
