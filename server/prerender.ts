@@ -170,13 +170,35 @@ const COMMON_SECTION = `<section>
 <p>Mağazamıza ulaşmak için Google Harita üzerinden "EnuygunPet" araması yapabilir veya doğrudan yol tarifi alabilirsiniz. Adresimiz: Atatürk Bulvarı No:113, Atakum / Samsun. WhatsApp hattımız (+90 542 211 49 44) üzerinden ürün stok sorgusu, fiyat bilgisi ve genel sorularınız için bize ulaşabilirsiniz. Haftanın her günü saat 09:00 ile 21:00 saatleri arasında sizlere hizmet veriyoruz; resmi tatillerde de mağazamız açıktır. Samsun Atakum'da güvenilir, uygun fiyatlı ve geniş stoklu bir evcil hayvan mağazası arıyorsanız EnuygunPet Gross Market'e bekliyoruz.</p>
 </section>`;
 
+// ── Store image URLs ────────────────────────────────────────────────────────────
+const STORE_IMAGES = {
+  general: "https://static.wixstatic.com/media/63853e_77a3ee3fa9d942a7af5b6f25a0520653~mv2.jpeg",
+  reyonlar: "https://static.wixstatic.com/media/63853e_f5ae600f104c4dfcae521fe694ba017b~mv2.jpeg",
+  kedi: "https://static.wixstatic.com/media/63853e_4c33bdb1dc274eab8358c2d598f7cfee~mv2.jpeg",
+  kopek: "https://static.wixstatic.com/media/63853e_ba5ea5e88a5a41409f4742caf8dced1c~mv2.jpeg",
+  kus: "https://static.wixstatic.com/media/63853e_346d0d0b96154639b0a27296b18d70f5~mv2.jpeg",
+};
+
+function pickImage(keyword: string): { url: string; alt: string } {
+  const k = keyword.toLowerCase();
+  if (k.includes("kuş") || k.includes("kus") || k.includes("papağan") || k.includes("kanarya") || k.includes("muhabbet"))
+    return { url: STORE_IMAGES.kus, alt: `${keyword} — EnuygunPet Gross Market Samsun Atakum kuş ürünleri` };
+  if (k.includes("köpek") || k.includes("kopek"))
+    return { url: STORE_IMAGES.kopek, alt: `${keyword} — EnuygunPet Gross Market Samsun Atakum köpek maması` };
+  if (k.includes("kedi"))
+    return { url: STORE_IMAGES.kedi, alt: `${keyword} — EnuygunPet Gross Market Samsun Atakum kedi maması` };
+  return { url: STORE_IMAGES.general, alt: `${keyword} — EnuygunPet Gross Market Samsun Atakum petshop` };
+}
+
 // ── Build body HTML from raw sections (blog/local pages) ───────────────────────
 function buildSectionsHtml(h1: string, intro: string, sections: Array<{ h: string; p: string }>): string {
   const introHtml = intro ? `<p>${escapeHtml(intro)}</p>` : "";
   const sectHtml = sections.map(s =>
     `<section><h2>${escapeHtml(s.h)}</h2><p>${escapeHtml(s.p)}</p></section>`
   ).join("");
-  return `<h1>${escapeHtml(h1)}</h1><article>${introHtml}${sectHtml}${COMMON_SECTION}<address>EnuygunPet Gross Market — Atatürk Bulvarı No:113, Atakum / Samsun — Tel: +90 542 211 49 44 — Haftanın her günü 09:00-21:00</address></article>`;
+  const img = pickImage(h1);
+  const imgHtml = `<img src="${img.url}" alt="${escapeHtml(img.alt)}" title="${escapeHtml(img.alt)}" width="800" height="450" loading="eager">`;
+  return `<h1>${escapeHtml(h1)}</h1><article>${imgHtml}${introHtml}${sectHtml}${COMMON_SECTION}<address>EnuygunPet Gross Market — Atatürk Bulvarı No:113, Atakum / Samsun — Tel: +90 542 211 49 44 — Haftanın her günü 09:00-21:00</address></article>`;
 }
 
 // ── Build visible SEO body HTML (injected outside #root so React never replaces it) ──
@@ -185,7 +207,9 @@ function buildBodyHtml(h1: string, article: string, faqs: Array<{ q: string; a: 
   const faqHtml = faqs.map(f =>
     `<div itemscope itemtype="https://schema.org/Question"><h3 itemprop="name">${escapeHtml(f.q)}</h3><div itemscope itemtype="https://schema.org/Answer" itemprop="acceptedAnswer"><p itemprop="text">${escapeHtml(f.a)}</p></div></div>`
   ).join("");
-  return `<h1>${escapeHtml(h1)}</h1><article>${paragraphs}<section><h2>Sık Sorulan Sorular</h2>${faqHtml}</section>${COMMON_SECTION}<address>EnuygunPet Gross Market — Atatürk Bulvarı No:113, Atakum / Samsun — Tel: +90 542 211 49 44 — Haftanın her günü 09:00-21:00</address></article>`;
+  const img = pickImage(h1);
+  const imgHtml = `<img src="${img.url}" alt="${escapeHtml(img.alt)}" title="${escapeHtml(img.alt)}" width="800" height="450" loading="eager">`;
+  return `<h1>${escapeHtml(h1)}</h1><article>${imgHtml}${paragraphs}<section><h2>Sık Sorulan Sorular</h2>${faqHtml}</section>${COMMON_SECTION}<address>EnuygunPet Gross Market — Atatürk Bulvarı No:113, Atakum / Samsun — Tel: +90 542 211 49 44 — Haftanın her günü 09:00-21:00</address></article>`;
 }
 
 // ── Public API ─────────────────────────────────────────────────────────────────
@@ -327,9 +351,11 @@ export function injectMeta(html: string, meta: PageMeta): string {
 
   // Inject SEO content before #root — React does NOT touch elements outside its root,
   // so this persists in DOM. A tiny inline script hides it once JS runs.
+  const fallbackImg = pickImage(meta.h1);
+  const fallbackImgHtml = `<img src="${fallbackImg.url}" alt="${escapeHtml(fallbackImg.alt)}" title="${escapeHtml(fallbackImg.alt)}" width="800" height="450" loading="eager">`;
   const seoContent = meta.bodyHtml
     ? meta.bodyHtml
-    : `<h1>${escapeHtml(meta.h1)}</h1><article><p>${escapeHtml(meta.description)}</p>${COMMON_SECTION}<address>EnuygunPet Gross Market — Atatürk Bulvarı No:113, Atakum / Samsun — Tel: +90 542 211 49 44 — Haftanın her günü 09:00-21:00</address></article>`;
+    : `<h1>${escapeHtml(meta.h1)}</h1><article>${fallbackImgHtml}<p>${escapeHtml(meta.description)}</p>${COMMON_SECTION}<address>EnuygunPet Gross Market — Atatürk Bulvarı No:113, Atakum / Samsun — Tel: +90 542 211 49 44 — Haftanın her günü 09:00-21:00</address></article>`;
 
   result = result.replace(
     '<div id="root"></div>',
