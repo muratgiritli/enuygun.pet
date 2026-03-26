@@ -33,9 +33,9 @@ for (const h of [
   }
 }
 
-const blogMap = new Map<string, { title: string; desc: string }>();
-for (const b of blogPosts as { slug: string; title: string; desc: string }[]) {
-  blogMap.set(b.slug, { title: b.title, desc: b.desc });
+const blogMap = new Map<string, { title: string; desc: string; sections: Array<{ h: string; p: string }> }>();
+for (const b of blogPosts as { slug: string; title: string; desc: string; sections?: Array<{ h: string; p: string }> }[]) {
+  blogMap.set(b.slug, { title: b.title, desc: b.desc, sections: b.sections || [] });
 }
 
 const categoryMap = new Map<string, { h1: string; desc: string }>();
@@ -43,10 +43,10 @@ for (const c of categories as { slug: string; h1: string; desc: string }[]) {
   categoryMap.set(c.slug, { h1: c.h1, desc: c.desc });
 }
 
-const localMap = new Map<string, { h1: string; desc: string }>();
-for (const l of localPages as { slug: string; h1: string; desc: string }[]) {
+const localMap = new Map<string, { h1: string; desc: string; intro?: string; sections?: Array<{ h: string; p: string }> }>();
+for (const l of localPages as { slug: string; h1: string; desc: string; intro?: string; sections?: Array<{ h: string; p: string }> }[]) {
   if (!localMap.has(l.slug)) {
-    localMap.set(l.slug, { h1: l.h1, desc: l.desc });
+    localMap.set(l.slug, { h1: l.h1, desc: l.desc, intro: l.intro, sections: l.sections || [] });
   }
 }
 
@@ -156,17 +156,36 @@ function generateContent(keyword: string): { article: string; faqs: Array<{ q: s
   return { article, faqs };
 }
 
-// ── Build hidden body HTML injected before React mounts ────────────────────────
-function buildBodyHtml(h1: string, article: string, faqs: Array<{ q: string; a: string }>, address = true): string {
-  const ST = `style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0"`;
+const COMMON_SECTION = `<section>
+<h2>EnuygunPet Gross Market Hakkında</h2>
+<p>EnuygunPet, Samsun Atakum'da Atatürk Bulvarı No:113 adresinde faaliyet gösteren Samsun'un en büyük petshop gross marketidir. Mağazamızda kedi maması, köpek maması, kuş yemi, kedi kumu, tasma, oyuncak, yatak, kafes, akvaryum malzemeleri ve daha pek çok kategoriyi kapsayan on binlerce ürün çeşidi bulunmaktadır.</p>
+<p>Gross market formatımız sayesinde müşterilerimize perakende mağazaların çok altında fiyatlar sunabiliyoruz. Özellikle büyük gramaj ve toplu alımlarda fiyat avantajımız belirgin biçimde hissedilmektedir. Royal Canin, Hills Science Plan, Pro Plan, Brit Care, Reflex, Enjoy, Acana, Orijen, Pedigree, Whiskas, Felix gibi dünyanın önde gelen markalarının tüm ürün gamlarını stokta bulunduruyoruz.</p>
+<h2>Ürün Kategorileri</h2>
+<p>Mağazamızda beş ana kategoride ürün sunmaktayız: Kedi ürünleri (mama, kum, oyuncak, tırmalama tahtası, taşıma çantası), Köpek ürünleri (mama, tasma, koşum, oyuncak, yatak, bakım ürünleri), Kuş ürünleri (yem, kafes, tünek, mineral taşı, vitamin), Balık ve akvaryum ürünleri (yem, filtre, ışık, süsleme), Küçük hayvan ürünleri (hamster, tavşan, guinea pig yemi ve kafesleri). Her kategoride geniş marka ve gramaj seçenekleri mevcuttur.</p>
+<h2>Neden EnuygunPet?</h2>
+<p>Samsun'da petshop arayışındaki evcil hayvan sahipleri EnuygunPet'i şu nedenlerle tercih etmektedir: Birincisi, gross market fiyat avantajı — perakende fiyatların yüzde otuz ila elli altında fiyatlar sunuyoruz. İkincisi, geniş stok — binlerce ürün çeşidi her zaman raflarımızda mevcuttur, stoksuz kalmak nadiren yaşanır. Üçüncüsü, uzman danışmanlık — mağazamızdaki personelimiz evcil hayvan beslenme ve bakımı konusunda deneyimlidir, size en doğru ürünü önerir. Dördüncüsü, kolay erişim — Atatürk Bulvarı üzerinde konumlanan mağazamıza ulaşmak oldukça kolaydır ve geniş otopark imkânı sunmaktadır.</p>
+<h2>Online Sipariş ve Teslimat</h2>
+<p>Mağazamıza gelmeden de sipariş verebilirsiniz. WhatsApp hattımız (+90 542 211 49 44) üzerinden ürün fotoğrafı ve fiyat listesi isteyebilir, sipariş oluşturabilirsiniz. Samsun içi teslimat seçeneğimizle ürünleri kapınıza kadar getiriyoruz. Büyük gramaj veya ağır ürünlerde özellikle bu hizmet tercih edilmektedir. Instagram sayfamız (@enuygun.pet) üzerinden ürün kataloğumuzu inceleyebilir, yeni gelen ürünleri takip edebilirsiniz.</p>
+<h2>İletişim ve Konum</h2>
+<p>Mağazamıza ulaşmak için Google Harita üzerinden "EnuygunPet" araması yapabilir veya doğrudan yol tarifi alabilirsiniz. Adresimiz: Atatürk Bulvarı No:113, Atakum / Samsun. WhatsApp hattımız (+90 542 211 49 44) üzerinden ürün stok sorgusu, fiyat bilgisi ve genel sorularınız için bize ulaşabilirsiniz. Haftanın her günü saat 09:00 ile 21:00 saatleri arasında sizlere hizmet veriyoruz; resmi tatillerde de mağazamız açıktır. Samsun Atakum'da güvenilir, uygun fiyatlı ve geniş stoklu bir evcil hayvan mağazası arıyorsanız EnuygunPet Gross Market'e bekliyoruz.</p>
+</section>`;
+
+// ── Build body HTML from raw sections (blog/local pages) ───────────────────────
+function buildSectionsHtml(h1: string, intro: string, sections: Array<{ h: string; p: string }>): string {
+  const introHtml = intro ? `<p>${escapeHtml(intro)}</p>` : "";
+  const sectHtml = sections.map(s =>
+    `<section><h2>${escapeHtml(s.h)}</h2><p>${escapeHtml(s.p)}</p></section>`
+  ).join("");
+  return `<h1>${escapeHtml(h1)}</h1><article>${introHtml}${sectHtml}${COMMON_SECTION}<address>EnuygunPet Gross Market — Atatürk Bulvarı No:113, Atakum / Samsun — Tel: +90 542 211 49 44 — Haftanın her günü 09:00-21:00</address></article>`;
+}
+
+// ── Build visible SEO body HTML (injected outside #root so React never replaces it) ──
+function buildBodyHtml(h1: string, article: string, faqs: Array<{ q: string; a: string }>): string {
   const paragraphs = article.split("\n\n").map(p => `<p>${escapeHtml(p)}</p>`).join("");
   const faqHtml = faqs.map(f =>
-    `<div><h3>${escapeHtml(f.q)}</h3><p>${escapeHtml(f.a)}</p></div>`
+    `<div itemscope itemtype="https://schema.org/Question"><h3 itemprop="name">${escapeHtml(f.q)}</h3><div itemscope itemtype="https://schema.org/Answer" itemprop="acceptedAnswer"><p itemprop="text">${escapeHtml(f.a)}</p></div></div>`
   ).join("");
-  const addrHtml = address
-    ? `<address>EnuygunPet Gross Market, Atatürk Bulvarı No:113, Atakum / Samsun — Tel: +90 542 211 49 44 — Çalışma saatleri: Haftanın her günü 09:00-21:00</address>`
-    : "";
-  return `<h1 ${ST}>${escapeHtml(h1)}</h1><article ${ST}>${paragraphs}<section><h2>Sık Sorulan Sorular</h2>${faqHtml}</section>${addrHtml}</article>`;
+  return `<h1>${escapeHtml(h1)}</h1><article>${paragraphs}<section><h2>Sık Sorulan Sorular</h2>${faqHtml}</section>${COMMON_SECTION}<address>EnuygunPet Gross Market — Atatürk Bulvarı No:113, Atakum / Samsun — Tel: +90 542 211 49 44 — Haftanın her günü 09:00-21:00</address></article>`;
 }
 
 // ── Public API ─────────────────────────────────────────────────────────────────
@@ -179,6 +198,14 @@ export function getPageMeta(urlPath: string): PageMeta {
       h1: "EnuygunPet Gross Market — Samsun Atakum Petshop",
       description:
         "Samsun Atakum'da kedi, köpek, kuş ve tüm evcil hayvan ürünleri. Royal Canin, Hills, Pro Plan en uygun fiyatla. WhatsApp: +90 542 211 49 44",
+      bodyHtml: buildSectionsHtml("EnuygunPet Gross Market — Samsun Atakum Petshop",
+        "Samsun Atakum'ın en büyük petshop gross marketi EnuygunPet'e hoş geldiniz. Kedi, köpek, kuş, balık ve tüm evcil hayvanlarınız için on binlerce ürün çeşidi.",
+        [
+          { h: "Gross Market Avantajı", p: "Perakende fiyatların çok altında ürünler sunuyoruz. Büyük gramaj seçenekleri ve toplu alım fırsatları ile bütçenizi koruyun. Royal Canin, Hills Science Plan, Pro Plan, Brit Care, Reflex, Enjoy, Acana ve daha pek çok dünya markası tek çatı altında. Toplu alımda ayrıca fiyat avantajı mevcuttur." },
+          { h: "Samsun Atakum'da Petshop Arayışı", p: "Atakum bölgesinde evcil hayvan sahipleri için Samsun'un en kapsamlı ürün yelpazesini sunuyoruz. Atatürk Bulvarı üzerindeki mağazamıza ulaşmak kolay, önünde geniş otopark imkânı mevcuttur. Haftanın her günü 09:00-21:00 arası kesintisiz açığız. Samsun merkez ve tüm ilçelerden müşterilerimiz mağazamızı tercih etmektedir." },
+          { h: "Uzman Danışmanlık ve Geniş Stok", p: "Hangi mamayı seçeceğiniz, kedi kumunun farkları, köpeğinizin besin ihtiyacı — tüm sorularınız için deneyimli personelimiz yanınızda. Veteriner önerileriyle uyumlu, kanıtlanmış ürünler öneriyoruz. Stokta on binlerce ürün çeşidi hazır; özel sipariş de alınmaktadır." },
+        ]
+      ),
     };
   }
 
@@ -188,6 +215,14 @@ export function getPageMeta(urlPath: string): PageMeta {
       h1: "Evcil Hayvan Bakım Rehberi",
       description:
         "Kedi, köpek, kuş ve balık bakımı hakkında uzman rehberleri. Mama seçimi, sağlık, beslenme ipuçları.",
+      bodyHtml: buildSectionsHtml("Evcil Hayvan Bakım Rehberi",
+        "Kedi, köpek, kuş ve balık bakımı hakkında uzman rehberleri. Mama seçimi, sağlık, beslenme ve bakım ipuçları EnuygunPet bloğunda.",
+        [
+          { h: "Kedi Bakımı Rehberleri", p: "Kısırlaştırılmış kedi maması seçimi, kedi tüy bakımı, kedi diş sağlığı ve daha fazlası. Kediler için en doğru mama tercihini nasıl yaparsınız? Hangi marka ve gramaj ideal? Royal Canin Sterilised ile diğer markaları karşılaştıran rehberlerimiz de dahil tüm yanıtlar blog yazılarımızda." },
+          { h: "Köpek Beslenme ve Sağlığı", p: "Irka özel mama seçimi, yavru köpek beslenmesi, yaşlı köpek diyeti, obez köpek beslenme planı ve köpek egzersiz önerileri. Pro Plan, Royal Canin ve Brit Care köpek mamalarını karşılaştıran kapsamlı rehberlerimizle doğru kararı kolayca verin." },
+          { h: "Kuş ve Balık Bakımı", p: "Muhabbet kuşu bakımı, papağan beslenmesi, Afrika gri papağanı için en iyi yem seçenekleri, akvaryum kurulumu ve balık sağlığı hakkında pratik bilgiler. EnuygunPet'in kuş ve balık kategorisindeki geniş ürün yelpazesiyle tüm hayvancılık ihtiyaçlarınıza destek oluyoruz." },
+        ]
+      ),
     };
   }
 
@@ -200,6 +235,7 @@ export function getPageMeta(urlPath: string): PageMeta {
         title: `${b.title} | ${BRAND}`,
         h1: b.title,
         description: b.desc,
+        bodyHtml: buildSectionsHtml(b.title, b.desc, b.sections),
       };
     }
   }
@@ -213,6 +249,7 @@ export function getPageMeta(urlPath: string): PageMeta {
         title: `${l.h1} | Petshop Samsun`,
         h1: l.h1,
         description: l.desc,
+        bodyHtml: buildSectionsHtml(l.h1, l.intro || l.desc, l.sections || []),
       };
     }
   }
@@ -222,10 +259,12 @@ export function getPageMeta(urlPath: string): PageMeta {
   if (CATEGORY_SLUGS.has(bare)) {
     const c = categoryMap.get(bare);
     if (c) {
+      const { article, faqs } = generateContent(c.h1);
       return {
         title: `${c.h1} | Gross Market`,
         h1: c.h1,
         description: c.desc,
+        bodyHtml: buildBodyHtml(c.h1, article, faqs),
       };
     }
   }
@@ -286,13 +325,15 @@ export function injectMeta(html: string, meta: PageMeta): string {
     );
   }
 
-  const bodyContent = meta.bodyHtml
+  // Inject SEO content before #root — React does NOT touch elements outside its root,
+  // so this persists in DOM. A tiny inline script hides it once JS runs.
+  const seoContent = meta.bodyHtml
     ? meta.bodyHtml
-    : `<h1 style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0">${escapeHtml(meta.h1)}</h1>`;
+    : `<h1>${escapeHtml(meta.h1)}</h1><article><p>${escapeHtml(meta.description)}</p>${COMMON_SECTION}<address>EnuygunPet Gross Market — Atatürk Bulvarı No:113, Atakum / Samsun — Tel: +90 542 211 49 44 — Haftanın her günü 09:00-21:00</address></article>`;
 
   result = result.replace(
     '<div id="root"></div>',
-    `<div id="root">${bodyContent}</div>`,
+    `<div id="seo-pre">${seoContent}</div><script>document.getElementById('seo-pre').style.display='none'</script><div id="root"></div>`,
   );
 
   return result;
