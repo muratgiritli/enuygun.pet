@@ -59,9 +59,36 @@ const CATEGORY_SLUGS = new Set([
   "kapida-teslim-petshop",
 ]);
 
-// ── Clean raw keyword text (remove trailing periods/spaces) ───────────────────
+// ── Clean raw keyword text (remove leading/trailing periods/spaces) ───────────
 function cleanKeyword(kw: string): string {
-  return kw.replace(/[\s.]+$/, "").replace(/\s+/g, " ").trim();
+  return kw.replace(/^[\s.]+/, "").replace(/[\s.]+$/, "").replace(/\s+/g, " ").trim();
+}
+
+// ── Title-case helper (Turkish-safe) ──────────────────────────────────────────
+function toTitleCase(str: string): string {
+  return str.replace(/\w\S*/g, (w) =>
+    w.charAt(0).toUpperCase() + w.slice(1)
+  );
+}
+
+// ── Type-specific meta description generator ──────────────────────────────────
+function buildKeywordDesc(kw: string): string {
+  const k = kw.toLowerCase();
+  if (k.includes("kedi") && k.includes("mama"))
+    return `${kw} — Royal Canin, Hills, Pro Plan, Reflex gross market fiyatıyla Samsun Atakum'da. Yavru, kısır ve yetişkin kedi maması stokta.`;
+  if ((k.includes("köpek") || k.includes("kopek")) && k.includes("mama"))
+    return `${kw} — Royal Canin, Pro Plan, Brit Care köpek mamaları Samsun Atakum'da gross market fiyatıyla. Irka özel, yavru ve yetişkin seçenekleri.`;
+  if (k.includes("kedi") && k.includes("kum"))
+    return `${kw} — Topaklanan, silika ve doğal kedi kumu çeşitleri Samsun Atakum'da. Büyük gramaj ve toplu alım avantajıyla EnuygunPet'te.`;
+  if (k.includes("kuş") || k.includes("kus") || k.includes("muhabbet") || k.includes("papağan"))
+    return `${kw} — Muhabbet kuşu, papağan, kanarya yemi ve aksesuar Samsun Atakum'da. EnuygunPet Gross Market'te geniş kuş ürünleri yelpazesi.`;
+  if (["royal canin","hills","pro plan","brit care","reflex","acana","orijen"].some(m => k.includes(m)))
+    return `${kw} — Orijinal ve garantili ürünler Samsun Atakum'da. EnuygunPet Gross Market'te gross market fiyatıyla tüm gramaj seçenekleri.`;
+  if (k.includes("petshop") || k.includes("pet shop") || k.includes("pet market"))
+    return `${kw} — Samsun Atakum'un en büyük petshop gross marketi. Kedi, köpek, kuş ürünleri haftanın 7 günü 09:00-21:00. WhatsApp: +90 542 211 49 44`;
+  if (k.includes("tasma") || k.includes("koşum") || k.includes("oyuncak"))
+    return `${kw} — Geniş aksesuar ve oyuncak yelpazesi Samsun Atakum'da. EnuygunPet Gross Market'te uygun fiyatlarla tüm evcil hayvan aksesuarları.`;
+  return `${kw} Samsun Atakum'da EnuygunPet Gross Market'te. Gross market fiyatı, geniş stok ve uzman danışmanlıkla hizmetinizde. Haftanın 7 günü açık.`;
 }
 
 // ── Content generator (mirrors keyword-page.tsx generateContent) ──────────────
@@ -333,7 +360,7 @@ export function getPageMeta(urlPath: string): PageMeta {
     if (c) {
       const { article, faqs } = generateContent(c.h1);
       return {
-        title: `${c.h1} | Gross Market`,
+        title: `${c.h1} | EnuygunPet Gross Market`,
         h1: c.h1,
         description: c.desc,
         bodyHtml: buildBodyHtml(c.h1, article, faqs),
@@ -341,16 +368,107 @@ export function getPageMeta(urlPath: string): PageMeta {
     }
   }
 
+  // ── Explicit meta for category pages not in CATEGORY_SLUGS ─────────────────
+  const extraCategoryMeta: Record<string, { title: string; h1: string; description: string }> = {
+    "balik-urunleri": {
+      title: "Balık ve Akvaryum Ürünleri Samsun | EnuygunPet Gross Market",
+      h1: "Balık ve Akvaryum Ürünleri — Samsun Atakum",
+      description: "Balık yemi, akvaryum filtresi, aydınlatma ve süsleme ürünleri Samsun Atakum'da. EnuygunPet Gross Market'te gross market fiyatıyla geniş balık ürünleri.",
+    },
+    "kucuk-hayvan-urunleri": {
+      title: "Küçük Hayvan Ürünleri Samsun | Hamster Tavşan | EnuygunPet",
+      h1: "Küçük Hayvan Ürünleri — Samsun Atakum",
+      description: "Hamster, tavşan ve guinea pig yemi, kafes ve aksesuarları Samsun Atakum'da. EnuygunPet Gross Market'te uygun fiyatlı küçük hayvan ürünleri.",
+    },
+    "surungen-urunleri": {
+      title: "Sürüngen ve Egzotik Hayvan Ürünleri Samsun | EnuygunPet",
+      h1: "Sürüngen ve Egzotik Hayvan Ürünleri — Samsun Atakum",
+      description: "Kaplumbağa, kertenkele ve egzotik hayvan yemi, teraryum ve aksesuar Samsun Atakum'da. EnuygunPet Gross Market'te uzman danışmanlık ve geniş stok.",
+    },
+    "kedi-urunleri": {
+      title: "Kedi Ürünleri Samsun Atakum | Mama, Kum, Oyuncak | EnuygunPet",
+      h1: "Kedi Ürünleri — Samsun Atakum",
+      description: "Kedi maması, kedi kumu, oyuncak ve tırmalama tahtası Samsun Atakum'da gross market fiyatıyla. Royal Canin, Hills, Pro Plan ve daha fazlası EnuygunPet'te.",
+    },
+    "kopek-urunleri": {
+      title: "Köpek Ürünleri Samsun Atakum | Mama, Tasma, Oyuncak | EnuygunPet",
+      h1: "Köpek Ürünleri — Samsun Atakum",
+      description: "Köpek maması, tasma, koşum, oyuncak ve yatak Samsun Atakum'da gross market fiyatıyla. Royal Canin, Pro Plan, Brit Care ve daha fazlası EnuygunPet'te.",
+    },
+    "kus-urunleri": {
+      title: "Kuş Ürünleri Samsun Atakum | Yem, Kafes, Vitamin | EnuygunPet",
+      h1: "Kuş Ürünleri — Samsun Atakum",
+      description: "Muhabbet kuşu, papağan, kanarya yemi, kafes ve vitamin takviyeleri Samsun Atakum'da. EnuygunPet Gross Market'te geniş kuş ürünleri yelpazesi.",
+    },
+    "kedi-mamasi-atakum": {
+      title: "Kedi Maması Atakum | Royal Canin, Hills, Pro Plan | EnuygunPet",
+      h1: "Kedi Maması Atakum — EnuygunPet Gross Market",
+      description: "Atakum'da kedi maması için EnuygunPet Gross Market. Royal Canin, Hills, Pro Plan, Reflex gross market fiyatıyla. Yavru, kısır ve yetişkin kedi maması stokta.",
+    },
+    "kopek-mamasi-atakum": {
+      title: "Köpek Maması Atakum | Royal Canin, Pro Plan | EnuygunPet",
+      h1: "Köpek Maması Atakum — EnuygunPet Gross Market",
+      description: "Atakum'da köpek maması için EnuygunPet Gross Market. Royal Canin, Pro Plan, Brit Care gross market fiyatıyla. Irka özel, yavru ve yetişkin köpek maması stokta.",
+    },
+    "hills-science-plan-samsun": {
+      title: "Hills Science Plan Samsun | Veteriner Önerisi | EnuygunPet",
+      h1: "Hills Science Plan Samsun — EnuygunPet Gross Market",
+      description: "Samsun Atakum'da Hills Science Plan kedi ve köpek mamaları gross market fiyatıyla. Veteriner önerileri, tıbbi diyetler dahil tüm Hills ürünleri EnuygunPet'te.",
+    },
+  };
+
+  if (extraCategoryMeta[bare]) {
+    const ec = extraCategoryMeta[bare];
+    const { article, faqs } = generateContent(ec.h1);
+    return {
+      ...ec,
+      bodyHtml: buildBodyHtml(ec.h1, article, faqs),
+    };
+  }
+
+  // ── Explicit meta for health category pages (/saglik/kedi etc.) ─────────────
+  const healthCategoryMeta: Record<string, { title: string; h1: string; description: string }> = {
+    "saglik/kedi": {
+      title: "Kedi Sağlığı ve Beslenme Rehberi | EnuygunPet Samsun Atakum",
+      h1: "Kedi Sağlığı ve Beslenme Rehberi",
+      description: "Kedi beslenmesi, kısırlaştırma sonrası diyet, tüy bakımı ve sağlık önerileri. Samsun Atakum'da uzman danışmanlık için EnuygunPet Gross Market'i ziyaret edin.",
+    },
+    "saglik/kopek": {
+      title: "Köpek Sağlığı ve Beslenme Rehberi | EnuygunPet Samsun Atakum",
+      h1: "Köpek Sağlığı ve Beslenme Rehberi",
+      description: "Köpek beslenmesi, irka özel diyet, yavru köpek büyütme ve egzersiz önerileri. Samsun Atakum'da uzman danışmanlık için EnuygunPet Gross Market'i ziyaret edin.",
+    },
+    "saglik/kus": {
+      title: "Kuş Sağlığı ve Beslenme Rehberi | EnuygunPet Samsun Atakum",
+      h1: "Kuş Sağlığı ve Beslenme Rehberi",
+      description: "Muhabbet kuşu, papağan ve kanarya bakımı, beslenme ve sağlık önerileri. Samsun Atakum'da geniş kuş ürünleri yelpazesi için EnuygunPet Gross Market.",
+    },
+    "saglik/balik": {
+      title: "Balık ve Akvaryum Bakım Rehberi | EnuygunPet Samsun Atakum",
+      h1: "Balık ve Akvaryum Bakım Rehberi",
+      description: "Akvaryum kurulumu, su kalitesi, balık beslenmesi ve sağlık önerileri. Samsun Atakum'da tüm akvaryum ürünleri için EnuygunPet Gross Market.",
+    },
+  };
+
+  if (healthCategoryMeta[bare]) {
+    const hc = healthCategoryMeta[bare];
+    const { article, faqs } = generateContent(hc.h1);
+    return {
+      ...hc,
+      bodyHtml: buildBodyHtml(hc.h1, article, faqs),
+    };
+  }
+
   const health = healthMap.get(bare);
   if (health) {
     const kw = cleanKeyword(health.keyword);
-    const h1 = `${kw} — Samsun Atakum`;
-    const desc = `${kw} hakkında bilgi ve ürünler. EnuygunPet Gross Market Samsun Atakum'da uzman tavsiyesi ve geniş ürün yelpazesi.`;
+    const kwTitle = toTitleCase(kw);
+    const h1 = `${kwTitle} — Samsun Atakum`;
     const { article, faqs } = generateContent(kw);
     return {
-      title: `${kw} — Samsun Atakum | ${BRAND}`,
+      title: `${kwTitle} — Samsun Atakum | ${BRAND}`,
       h1,
-      description: desc,
+      description: buildKeywordDesc(kw),
       bodyHtml: buildBodyHtml(h1, article, faqs),
     };
   }
@@ -358,13 +476,13 @@ export function getPageMeta(urlPath: string): PageMeta {
   const keyword = keywordMap.get(bare);
   if (keyword) {
     const kw = cleanKeyword(keyword);
-    const h1 = `${kw} — Samsun Atakum`;
-    const desc = `${kw} Samsun Atakum'da EnuygunPet Gross Market'te. Gross market fiyatıyla geniş ürün yelpazesi, uzman tavsiyesi.`;
+    const kwTitle = toTitleCase(kw);
+    const h1 = `${kwTitle} — Samsun Atakum`;
     const { article, faqs } = generateContent(kw);
     return {
-      title: `${kw} — Samsun Atakum | ${BRAND}`,
+      title: `${kwTitle} — Samsun Atakum | EnuygunPet`,
       h1,
-      description: desc,
+      description: buildKeywordDesc(kw),
       bodyHtml: buildBodyHtml(h1, article, faqs),
     };
   }
