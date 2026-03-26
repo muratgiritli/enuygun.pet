@@ -59,6 +59,11 @@ const CATEGORY_SLUGS = new Set([
   "kapida-teslim-petshop",
 ]);
 
+// ── Clean raw keyword text (remove trailing periods/spaces) ───────────────────
+function cleanKeyword(kw: string): string {
+  return kw.replace(/[\s.]+$/, "").replace(/\s+/g, " ").trim();
+}
+
 // ── Content generator (mirrors keyword-page.tsx generateContent) ──────────────
 function generateContent(keyword: string): { article: string; faqs: Array<{ q: string; a: string }> } {
   const kw = keyword.toLowerCase();
@@ -227,11 +232,12 @@ export function getPageMeta(urlPath: string): PageMeta {
 
   const health = healthMap.get(bare);
   if (health) {
-    const h1 = `${health.keyword} — Samsun Atakum`;
-    const desc = `${health.keyword} hakkında bilgi ve ürünler. EnuygunPet Gross Market Samsun Atakum'da uzman tavsiyesi ve geniş ürün yelpazesi.`;
-    const { article, faqs } = generateContent(health.keyword);
+    const kw = cleanKeyword(health.keyword);
+    const h1 = `${kw} — Samsun Atakum`;
+    const desc = `${kw} hakkında bilgi ve ürünler. EnuygunPet Gross Market Samsun Atakum'da uzman tavsiyesi ve geniş ürün yelpazesi.`;
+    const { article, faqs } = generateContent(kw);
     return {
-      title: `${health.keyword} — Samsun Atakum | ${BRAND}`,
+      title: `${kw} — Samsun Atakum | ${BRAND}`,
       h1,
       description: desc,
       bodyHtml: buildBodyHtml(h1, article, faqs),
@@ -240,11 +246,12 @@ export function getPageMeta(urlPath: string): PageMeta {
 
   const keyword = keywordMap.get(bare);
   if (keyword) {
-    const h1 = `${keyword} — Samsun Atakum`;
-    const desc = `${keyword} Samsun Atakum'da EnuygunPet Gross Market'te. Gross market fiyatıyla geniş ürün yelpazesi, uzman tavsiyesi.`;
-    const { article, faqs } = generateContent(keyword);
+    const kw = cleanKeyword(keyword);
+    const h1 = `${kw} — Samsun Atakum`;
+    const desc = `${kw} Samsun Atakum'da EnuygunPet Gross Market'te. Gross market fiyatıyla geniş ürün yelpazesi, uzman tavsiyesi.`;
+    const { article, faqs } = generateContent(kw);
     return {
-      title: `${keyword} — Samsun Atakum | ${BRAND}`,
+      title: `${kw} — Samsun Atakum | ${BRAND}`,
       h1,
       description: desc,
       bodyHtml: buildBodyHtml(h1, article, faqs),
