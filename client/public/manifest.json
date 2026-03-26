@@ -8,6 +8,7 @@
   "theme_color": "#0e7c5f",
   "orientation": "portrait",
   "lang": "tr",
+  "dir": "ltr",
   "categories": ["shopping", "lifestyle"],
   "icons": [
     {
@@ -23,6 +24,21 @@
       "purpose": "any maskable"
     }
   ],
-  "screenshots": [],
+  "screenshots": [
+    {
+      "src": "https://static.wixstatic.com/media/63853e_77a3ee3fa9d942a7af5b6f25a0520653~mv2.jpeg",
+      "sizes": "1200x630",
+      "type": "image/jpeg",
+      "form_factor": "wide",
+      "label": "EnuygunPet Gross Market - Samsun Atakum Petshop"
+    },
+    {
+      "src": "https://static.wixstatic.com/media/63853e_f5ae600f104c4dfcae521fe694ba017b~mv2.jpeg",
+      "sizes": "1200x630",
+      "type": "image/jpeg",
+      "form_factor": "narrow",
+      "label": "EnuygunPet Samsun Atakum - Ürün Reyonları"
+    }
+  ],
   "prefer_related_applications": false
 }

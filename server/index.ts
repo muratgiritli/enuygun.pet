@@ -7,6 +7,44 @@ import { createServer } from "http";
 const app = express();
 const httpServer = createServer(app);
 
+app.disable("x-powered-by");
+
+app.use((req, res, next) => {
+  res.setHeader("X-Content-Type-Options", "nosniff");
+  res.setHeader("X-Frame-Options", "SAMEORIGIN");
+  res.setHeader("X-XSS-Protection", "1; mode=block");
+  res.setHeader("Referrer-Policy", "strict-origin-when-cross-origin");
+  res.setHeader("Permissions-Policy", "camera=(), microphone=(), geolocation=()");
+
+  if (
+    req.method === "GET" &&
+    !req.path.startsWith("/api/") &&
+    !req.path.match(/\.(js|css|png|jpg|jpeg|webp|ico|svg|woff2?|ttf|eot|txt|xml|json)$/)
+  ) {
+    res.setHeader("Cache-Control", "public, max-age=300, must-revalidate");
+  }
+  next();
+});
+
+app.use((req, res, next) => {
+  if (
+    (req.method === "GET" || req.method === "HEAD") &&
+    req.path !== "/" &&
+    req.path.endsWith("/") &&
+    !req.path.startsWith("/api/")
+  ) {
+    const cleanPath = req.path.slice(0, -1);
+    const redirectUrl = req.originalUrl.replace(req.path, cleanPath);
+    return res.redirect(301, redirectUrl);
+  }
+  if ((req.method === "GET" || req.method === "HEAD") && /\/\//.test(req.path)) {
+    const cleanPath = req.path.replace(/\/+/g, "/");
+    const redirectUrl = req.originalUrl.replace(req.path, cleanPath);
+    return res.redirect(301, redirectUrl);
+  }
+  next();
+});
+
 app.use(compression({
   level: 6,
   threshold: 1024,
