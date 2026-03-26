@@ -3,7 +3,11 @@
     "title": "Köpek Aşı Takvimi: Hangi Aşılar Ne Zaman Yapılmalı? 2026 Rehberi",
     "cat": "kopek",
     "desc": "Yavru ve yetişkin köpekler için eksiksiz aşı takvimi. Kuduz, karma, karma booster aşılarını doğru zamanda yaptırın; köpeğinizi hastalıklardan koruyun.",
-    "products": ["15-kg-kopek-mamasi", "15-kg-kopek-mamasi-fiyat", "yavru-kopek-mamasi"],
+    "products": [
+      "15-kg-kopek-mamasi",
+      "15-kg-kopek-mamasi-fiyat",
+      "yavru-kopek-mamasi"
+    ],
     "sections": [
       {
         "h": "Köpek Aşıları Neden Bu Kadar Önemlidir?",
@@ -36,7 +40,11 @@
     "title": "Papağan Maması ve Beslenmesi: Kapsamlı Rehber 2026",
     "cat": "kus",
     "desc": "Papağanınızı doğru beslemek için eksiksiz rehber. Pelet mi tohum mu, taze besinler, zararlı yiyecekler ve Samsun'da papağan maması seçimi hakkında her şey.",
-    "products": ["papagan-yemi", "papagan-kafesi", "en-kaliteli-papagan-yemi"],
+    "products": [
+      "papagan-yemi",
+      "papagan-kafesi",
+      "en-kaliteli-papagan-yemi"
+    ],
     "sections": [
       {
         "h": "Papağanların Beslenme İhtiyaçları: Temel İlkeler",
@@ -143,7 +151,7 @@
     "desc": "0-12 ay arasi yavru kedilerin beslenme ihtiyaçlari ve mama seçimi.",
     "products": [
       "royal-canin-kitten",
-      "pro-plan-kitten"
+      "10-kg-proplan-kitten"
     ],
     "sections": [
       {
@@ -189,7 +197,7 @@
     "cat": "kedi",
     "desc": "Kedilerde aşiri tüy dökülmesinin nedenleri ve beslenme çözümleri.",
     "products": [
-      "omega-3-kedi"
+      "gimcat-nutri-pockets-salmon-omega-3-6"
     ],
     "sections": [
       {
@@ -260,7 +268,7 @@
     "desc": "Köpeklerde iştahsizligin yaygin nedenleri ve çözümleri.",
     "products": [
       "royal-canin-kopek-mamasi",
-      "pedigree-kopek"
+      "pedigree-15-kg-kopek-mamasi"
     ],
     "sections": [
       {
@@ -284,7 +292,7 @@
     "desc": "Köpek irkina, yaşina ve kilosuna göre dogru mama seçimi.",
     "products": [
       "royal-canin-kopek-mamasi",
-      "pro-plan-kopek"
+      "proplan-kopek-mamasi"
     ],
     "sections": [
       {
@@ -307,8 +315,8 @@
     "cat": "kopek",
     "desc": "Yeni sahiplendiginiz yavru köpeg için ilk haftalar rehberi.",
     "products": [
-      "royal-canin-puppy",
-      "pro-plan-puppy"
+      "acana-puppy-large-breed",
+      "proplan-kopek-mamasi-yavru"
     ],
     "sections": [
       {
@@ -516,7 +524,7 @@
     "cat": "kopek",
     "desc": "Köpeklerde pire ve kene koruması için etkili yöntemler.",
     "products": [
-      "antiparaziter"
+      "bit-pire-tasmasi-kopek"
     ],
     "sections": [
       {
@@ -539,7 +547,7 @@
     "cat": "kedi",
     "desc": "Kedilerde aşiri kilonun belirtileri ve diyet mama seçimi.",
     "products": [
-      "royal-canin-weight"
+      "royal-canin-satiety-weight-management"
     ],
     "sections": [
       {
@@ -562,7 +570,7 @@
     "cat": "genel",
     "desc": "Hamster sahiplenmeden önce kafes, beslenme ve saglik bilgileri.",
     "products": [
-      "hamster-yemi"
+      "gonzales-hamster"
     ],
     "sections": [
       {
@@ -585,7 +593,7 @@
     "cat": "kedi",
     "desc": "Kedi tirnaklarini kesmek için dogru teknik ve güvenli uygulama.",
     "products": [
-      "tirnak-makasi-kedi"
+      "kedi-tirnak-makasi"
     ],
     "sections": [
       {
@@ -631,7 +639,7 @@
     "cat": "kopek",
     "desc": "Köpek banyosu için dogru siklik, şampuan ve kurutma.",
     "products": [
-      "kopek-sampuan"
+      "beaphar-kopek-sampuani"
     ],
     "sections": [
       {
@@ -678,7 +686,7 @@
     "cat": "kopek",
     "desc": "Otur, bek ve gel komutlarini köpeginize öğretmek için pekiştirme teknikleri.",
     "products": [
-      "kopek-ödül"
+      "kopek-odul-mamasi"
     ],
     "sections": [
       {
@@ -725,7 +733,7 @@
     "cat": "kopek",
     "desc": "Köpek kulak sagligini korumak için temizlik yöntemi.",
     "products": [
-      "kulak-temizleyici-kopek"
+      "bioline-kedi-kulak-temizleme-damlasi"
     ],
     "sections": [
       {
@@ -771,7 +779,7 @@
     "cat": "kopek",
     "desc": "Kilolu köpekleri saglıklı şekilde zayiflatma yöntemleri.",
     "products": [
-      "royal-canin-weight-kopek"
+      "royal-canin-satiety-weight-management"
     ],
     "sections": [
       {
@@ -794,7 +802,7 @@
     "cat": "kedi",
     "desc": "Kedilerde diş sagligi ve evde agiz bakim yöntemleri.",
     "products": [
-      "kedi-dis-bakim"
+      "kedi-dis-fircasi"
     ],
     "sections": [
       {
@@ -840,7 +848,7 @@
     "cat": "genel",
     "desc": "Ilk akvaryumu kurmadan önce bilmeniz gereken temel bilgiler.",
     "products": [
-      "balik-yemi"
+      "balik-yemi-samsun"
     ],
     "sections": [
       {
