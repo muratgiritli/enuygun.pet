@@ -325,7 +325,7 @@ export default function Home() {
 
         <section className="px-4 mt-6" aria-label="Ürün kategorileri">
           <div className="flex items-center justify-between gap-2 mb-3">
-            <h2 className="text-lg font-bold text-foreground" data-testid="text-categories-title">Ürün Kategorileri</h2>
+            <h3 className="text-lg font-bold text-foreground" data-testid="text-categories-title">Ürün Kategorileri</h3>
             <Sparkles className="w-4 h-4 text-primary" />
           </div>
           <div className="grid grid-cols-2 gap-3">
@@ -366,7 +366,7 @@ export default function Home() {
 
         <section className="px-4 mt-8" aria-label="Kategori sayfaları">
           <div className="flex items-center justify-between gap-2 mb-3">
-            <h2 className="text-lg font-bold text-foreground">Popüler Kategoriler</h2>
+            <h3 className="text-lg font-bold text-foreground">Popüler Kategoriler</h3>
             <Tag className="w-4 h-4 text-primary" />
           </div>
           <div className="grid grid-cols-2 gap-2">
@@ -390,7 +390,7 @@ export default function Home() {
 
         <section className="px-4 mt-8" aria-label="Blog rehberleri">
           <div className="flex items-center justify-between gap-2 mb-3">
-            <h2 className="text-lg font-bold text-foreground">Bakım Rehberi</h2>
+            <h3 className="text-lg font-bold text-foreground">Bakım Rehberi</h3>
             <BookOpen className="w-4 h-4 text-primary" />
           </div>
           <div className="space-y-2">
@@ -512,7 +512,7 @@ export default function Home() {
         </section>
 
         <section className="px-4 mt-8" aria-label="Mağaza görselleri">
-          <h2 className="text-lg font-bold text-foreground mb-3" data-testid="text-gallery-title">Mağazamızdan Kareler</h2>
+          <h3 className="text-lg font-bold text-foreground mb-3" data-testid="text-gallery-title">Mağazamızdan Kareler</h3>
           <div className="relative rounded-md border border-card-border bg-card">
             <div className="relative h-52 rounded-t-md">
               <AnimatePresence mode="wait">
@@ -547,7 +547,7 @@ export default function Home() {
         </section>
 
         <section className="px-4 mt-8" aria-label="Popüler markalar">
-          <h2 className="text-lg font-bold text-foreground mb-3" data-testid="text-brands-title">Popüler Markalar</h2>
+          <h3 className="text-lg font-bold text-foreground mb-3" data-testid="text-brands-title">Popüler Markalar</h3>
           <div className="flex flex-wrap gap-2">
             {brandLinks.map((brand) => (
               <Link key={brand.slug} href={`/${brand.slug}`}>
@@ -562,7 +562,7 @@ export default function Home() {
         </section>
 
         <section className="px-4 mt-8" aria-label="Popüler aramalar">
-          <h2 className="text-lg font-bold text-foreground mb-3" data-testid="text-popular-title">Popüler Aramalar</h2>
+          <h3 className="text-lg font-bold text-foreground mb-3" data-testid="text-popular-title">Popüler Aramalar</h3>
           <div className="flex flex-wrap gap-2">
             {popularSearches.map((item) => (
               <Link key={item.slug} href={`/${item.slug}`}>
@@ -638,7 +638,7 @@ export default function Home() {
         </section>
 
         <section className="px-4 mt-8 mb-6" aria-label="Sosyal medya">
-          <h2 className="text-lg font-bold text-foreground mb-3" data-testid="text-social-title">Bizi Takip Edin</h2>
+          <h3 className="text-lg font-bold text-foreground mb-3" data-testid="text-social-title">Bizi Takip Edin</h3>
           <div className="grid grid-cols-2 gap-3">
             <a href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer" data-testid="link-instagram">
               <Card className="p-4 border border-card-border flex items-center gap-3">

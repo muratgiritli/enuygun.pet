@@ -378,7 +378,7 @@ export default function HealthPage() {
           <p className="text-sm text-muted-foreground leading-relaxed">
             Royal Canin, Hills Prescription Diet, Pro Plan Veterinary Diets ve Brit Care gibi veteriner onaylı markaların ürünleri mağazamızda bulunmaktadır. Ürün seçiminde kararsız kaldığınızda WhatsApp hattımız (+90 542 211 49 44) üzerinden uzman personelimizden yardım alabilirsiniz. Haftanın her günü saat 09:00 ile 21:00 arasında Atatürk Bulvarı Atakum adresimizde hizmetinizdeyiz.
           </p>
-          <h2 className="text-sm font-bold text-foreground">Neden EnuygunPet?</h2>
+          <h3 className="text-sm font-bold text-foreground">Neden EnuygunPet?</h3>
           <p className="text-sm text-muted-foreground leading-relaxed">
             Samsun'un en büyük petshop gross marketi olarak binlerce ürün çeşidi, uzman danışmanlık ve gross market fiyat avantajı sunuyoruz. Perakende fiyatlarının %30-50 altında alışveriş yapabilirsiniz. Evcil hayvanınızın sağlık durumuna uygun ürünü bulmak için mağazamızı ziyaret edin veya bize ulaşın.
           </p>
@@ -389,7 +389,7 @@ export default function HealthPage() {
           <div className="flex items-start gap-3">
             <ShoppingBag className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
             <div>
-              <h2 className="font-semibold text-foreground mb-1">Bu Sorun İçin Önerilen Ürünler</h2>
+              <h3 className="font-semibold text-foreground mb-1">Bu Sorun İçin Önerilen Ürünler</h3>
               <p className="text-sm text-muted-foreground mb-3">{productRec}</p>
               <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer"
                 data-testid="btn-product-whatsapp"
@@ -420,7 +420,7 @@ export default function HealthPage() {
         {/* Related */}
         {data.related.length > 0 && (
           <section className="mb-8">
-            <h2 className="text-base font-semibold text-foreground mb-3">İlgili Konular</h2>
+            <h3 className="text-base font-semibold text-foreground mb-3">İlgili Konular</h3>
             <div className="flex flex-wrap gap-2">
               {data.related.map(r => (
                 <Link
@@ -437,7 +437,7 @@ export default function HealthPage() {
 
         {/* CTA */}
         <Card className="p-5 bg-primary text-primary-foreground">
-          <h2 className="font-bold text-lg mb-1">EnuygunPet Gross Market</h2>
+          <h3 className="font-bold text-lg mb-1">EnuygunPet Gross Market</h3>
           <p className="text-primary-foreground/80 text-sm mb-4">{ADDRESS} • Her gün 09:00–21:00</p>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
             <a href={`tel:${PHONE}`} data-testid="btn-phone-cta"

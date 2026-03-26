@@ -107,7 +107,7 @@ export default function BlogPage() {
           <p className="text-sm text-muted-foreground leading-relaxed">
             Ürün stok sorgusu, fiyat bilgisi ve sipariş için WhatsApp hattımız (+90 542 211 49 44) üzerinden bize ulaşabilirsiniz. Uzman personelimiz evcil hayvanınızın ihtiyacına en uygun ürünü önerir. Kedi maması, köpek maması, kuş yemi, kedi kumu, vitamin takviyeleri ve bakım ürünlerinden oluşan geniş stok yapımızla tüm ihtiyaçlarınıza tek adreste hizmet veriyoruz.
           </p>
-          <h2 className="text-sm font-bold text-foreground">Neden EnuygunPet?</h2>
+          <h3 className="text-sm font-bold text-foreground">Neden EnuygunPet?</h3>
           <p className="text-sm text-muted-foreground leading-relaxed">
             Gross market fiyat avantajı, geniş stok ve uzman danışmanlıkla Samsun'un en büyük petshopuyuz. Perakende fiyatların %30-50 altında alışveriş imkânı, büyük gramaj seçenekleri ve toplu alım indirimleri sunuyoruz.
           </p>

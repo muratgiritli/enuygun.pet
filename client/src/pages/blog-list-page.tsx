@@ -2,23 +2,37 @@ import { useEffect } from "react";
 import { Link } from "wouter";
 import { useQuery } from "@tanstack/react-query";
 
-import { BookOpen, ChevronRight, ArrowLeft } from "lucide-react";
+import { BookOpen, ChevronRight, ArrowLeft, Cat, Dog, Bird, Sparkles } from "lucide-react";
 import { Skeleton } from "@/components/ui/skeleton";
-import { Badge } from "@/components/ui/badge";
 
-const CAT_LABELS: Record<string, string> = {
-  kedi: "Kedi",
-  kopek: "Köpek",
-  kus: "Kuş",
-  genel: "Genel",
+const CAT_META: Record<string, { label: string; icon: React.ReactNode; desc: string; color: string }> = {
+  kedi: {
+    label: "Kedi Bakımı",
+    icon: <Cat className="w-4 h-4" />,
+    desc: "Kedi beslenmesi, sağlığı ve bakımına dair uzman rehberler",
+    color: "bg-orange-50 dark:bg-orange-950/20 border-orange-200 dark:border-orange-800 text-orange-700 dark:text-orange-300",
+  },
+  kopek: {
+    label: "Köpek Bakımı",
+    icon: <Dog className="w-4 h-4" />,
+    desc: "Köpek eğitimi, beslenmesi ve sağlığı hakkında bilgiler",
+    color: "bg-blue-50 dark:bg-blue-950/20 border-blue-200 dark:border-blue-800 text-blue-700 dark:text-blue-300",
+  },
+  kus: {
+    label: "Kuş Bakımı",
+    icon: <Bird className="w-4 h-4" />,
+    desc: "Muhabbet kuşu, sultan papağanı ve diğer kuşlar için bakım rehberleri",
+    color: "bg-green-50 dark:bg-green-950/20 border-green-200 dark:border-green-800 text-green-700 dark:text-green-300",
+  },
+  genel: {
+    label: "Genel Evcil Hayvan Bakımı",
+    icon: <Sparkles className="w-4 h-4" />,
+    desc: "Tüm evcil hayvanlar için genel bakım ve beslenme ipuçları",
+    color: "bg-gray-50 dark:bg-gray-900/50 border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-300",
+  },
 };
 
-const CAT_COLORS: Record<string, string> = {
-  kedi: "bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-300",
-  kopek: "bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-300",
-  kus: "bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300",
-  genel: "bg-gray-100 text-gray-700 dark:bg-gray-800 dark:text-gray-300",
-};
+const CAT_ORDER = ["kedi", "kopek", "kus", "genel"];
 
 type BlogSummary = { slug: string; title: string; cat: string; desc: string };
 
@@ -33,6 +47,11 @@ export default function BlogListPage() {
     if (!el) { el = document.createElement("meta") as HTMLMetaElement; document.head.appendChild(el); }
     el.setAttribute("content", "Kedi, köpek, kuş ve evcil hayvan bakımı hakkında uzman ipuçları. Samsun Atakum EnuygunPet Gross Market.");
   }, []);
+
+  const grouped = CAT_ORDER.reduce<Record<string, BlogSummary[]>>((acc, cat) => {
+    acc[cat] = posts?.filter(p => p.cat === cat) ?? [];
+    return acc;
+  }, {});
 
   return (
     <div className="min-h-screen bg-background flex flex-col">
@@ -58,23 +77,36 @@ export default function BlogListPage() {
             {[1,2,3,4,5].map(i => <Skeleton key={i} className="h-24 w-full rounded-xl" />)}
           </div>
         ) : (
-          <div className="space-y-3">
-            {posts?.map(post => (
-              <Link key={post.slug} href={`/blog/${post.slug}`}>
-                <a className="flex items-center justify-between group p-4 rounded-xl bg-card border border-border hover:border-primary/40 hover:bg-primary/5 transition-all" data-testid={`blog-item-${post.slug}`}>
-                  <div className="flex-1 min-w-0 mr-3">
-                    <div className="mb-1">
-                      <span className={`text-[11px] font-medium px-2 py-0.5 rounded-full ${CAT_COLORS[post.cat] || CAT_COLORS.genel}`}>
-                        {CAT_LABELS[post.cat] || post.cat}
-                      </span>
+          <div className="space-y-10">
+            {CAT_ORDER.map(cat => {
+              const catPosts = grouped[cat];
+              if (!catPosts || catPosts.length === 0) return null;
+              const meta = CAT_META[cat] ?? CAT_META.genel;
+              return (
+                <section key={cat} aria-label={meta.label}>
+                  <div className={`flex items-center gap-2 px-3 py-2 rounded-lg border mb-3 ${meta.color}`}>
+                    {meta.icon}
+                    <div>
+                      <h2 className="text-sm font-bold leading-tight">{meta.label}</h2>
+                      <p className="text-[11px] opacity-80">{meta.desc}</p>
                     </div>
-                    <p className="font-medium text-sm text-foreground leading-tight">{post.title}</p>
-                    <p className="text-xs text-muted-foreground mt-1 line-clamp-2">{post.desc}</p>
                   </div>
-                  <ChevronRight className="w-5 h-5 text-muted-foreground group-hover:text-primary group-hover:translate-x-0.5 transition-all shrink-0" />
-                </a>
-              </Link>
-            ))}
+                  <div className="space-y-2">
+                    {catPosts.map(post => (
+                      <Link key={post.slug} href={`/blog/${post.slug}`}>
+                        <a className="flex items-center justify-between group p-4 rounded-xl bg-card border border-border hover:border-primary/40 hover:bg-primary/5 transition-all" data-testid={`blog-item-${post.slug}`}>
+                          <div className="flex-1 min-w-0 mr-3">
+                            <p className="font-medium text-sm text-foreground leading-tight">{post.title}</p>
+                            <p className="text-xs text-muted-foreground mt-1 line-clamp-2">{post.desc}</p>
+                          </div>
+                          <ChevronRight className="w-5 h-5 text-muted-foreground group-hover:text-primary group-hover:translate-x-0.5 transition-all shrink-0" />
+                        </a>
+                      </Link>
+                    ))}
+                  </div>
+                </section>
+              );
+            })}
           </div>
         )}
 

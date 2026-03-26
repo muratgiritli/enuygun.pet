@@ -469,21 +469,21 @@ export default function KeywordPage() {
             Gross market modelimiz sayesinde perakende fiyatlarının çok altında alışveriş yapabilirsiniz. Royal Canin, Hills Science Plan, Pro Plan, Brit Care, Reflex, Enjoy, Acana, Orijen, Pedigree, Whiskas ve Felix gibi Türkiye'nin önde gelen markalarının tüm ürün gamlarını stoğumuzda bulunduruyoruz. Büyük gramaj ve toplu alımlarda fiyat avantajı daha da belirginleşmektedir.
           </p>
 
-          <h2 className="text-sm font-bold text-foreground">Ürün Kategorilerimiz</h2>
+          <h3 className="text-sm font-bold text-foreground">Ürün Kategorilerimiz</h3>
           <p className="text-xs text-muted-foreground leading-relaxed">
             Mağazamızda beş ana kategoride ürün sunmaktayız: <strong>Kedi ürünleri</strong> (mama, kum, oyuncak, tırmalama tahtası, taşıma çantası), <strong>Köpek ürünleri</strong> (mama, tasma, koşum, oyuncak, yatak, bakım ürünleri), <strong>Kuş ürünleri</strong> (yem, kafes, tünek, mineral taşı, vitamin), <strong>Balık ve akvaryum ürünleri</strong> (yem, filtre, ışık, süsleme), <strong>Küçük hayvan ürünleri</strong> (hamster, tavşan, guinea pig yemi ve kafesleri). Her kategoride geniş marka ve gramaj seçenekleri mevcuttur.
           </p>
 
-          <h2 className="text-sm font-bold text-foreground">Neden EnuygunPet?</h2>
+          <h3 className="text-sm font-bold text-foreground">Neden EnuygunPet?</h3>
           <p className="text-xs text-muted-foreground leading-relaxed">
             Samsun'da petshop arayan evcil hayvan sahiplerinin EnuygunPet'i tercih etme nedenleri şunlardır: Gross market fiyat avantajı — perakende fiyatların %30–50 altında fiyatlar. Geniş stok — binlerce ürün çeşidi her zaman raflarda, stoksuz kalmak nadiren yaşanır. Uzman danışmanlık — personelimiz beslenme ve bakım konusunda deneyimlidir. Kolay erişim — Atatürk Bulvarı üzerinde, geniş otopark imkânı mevcut.
           </p>
 
           <div className="border border-border rounded-lg p-3 space-y-2">
-            <h2 className="text-sm font-bold text-foreground flex items-center gap-2">
+            <h3 className="text-sm font-bold text-foreground flex items-center gap-2">
               <MapPin className="w-3.5 h-3.5 text-primary" />
               Mağaza Bilgileri
-            </h2>
+            </h3>
             <div className="flex items-center gap-2 text-xs text-muted-foreground">
               <MapPin className="w-3 h-3 text-primary shrink-0" />
               <span>{ADDRESS}</span>
@@ -501,7 +501,7 @@ export default function KeywordPage() {
 
         {data.related.length > 0 && (
           <section className="mb-5" aria-label="Benzer ürünler">
-            <h2 className="text-base font-bold text-foreground mb-3">Benzer Ürünler</h2>
+            <h3 className="text-base font-bold text-foreground mb-3">Benzer Ürünler</h3>
             <div className="grid grid-cols-2 gap-2">
               {data.related.slice(0, 8).map(r => (
                 <Link key={r.slug} href={`/${r.slug}`}>
@@ -533,7 +533,7 @@ export default function KeywordPage() {
         )}
 
         <section className="mb-5" aria-label="Ana kategoriler">
-          <h2 className="text-base font-bold text-foreground mb-3">Ana Kategoriler</h2>
+          <h3 className="text-base font-bold text-foreground mb-3">Ana Kategoriler</h3>
           <div className="grid grid-cols-2 gap-2">
             {[
               { label: "Kedi Maması", slug: "kedi-mamasi" },
