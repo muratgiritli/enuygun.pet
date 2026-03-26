@@ -399,7 +399,7 @@ export default function Home() {
           <div className="space-y-2">
             {[
               { slug: "kopek-asi-takvimi-hangi-asilar-ne-zaman-yapilmali", title: "Köpek Aşı Takvimi: Hangi Aşılar Ne Zaman Yapılmalı?", isNew: true },
-              { slug: "papagan-mamasi-ve-beslenmesi-kapsamli-rehber-2025", title: "Papağan Maması ve Beslenmesi: Kapsamlı Rehber 2025", isNew: true },
+              { slug: "papagan-mamasi-ve-beslenmesi-kapsamli-rehber-2026", title: "Papağan Maması ve Beslenmesi: Kapsamlı Rehber 2026", isNew: true },
               { slug: "kisir-kedi-mamasi-hangisi", title: "Kısır Kedi Maması Hangisi", isNew: false },
               { slug: "kopek-neden-mama-yemez-7-neden-ve-cozumler", title: "Köpek Neden Mama Yemez? 7 Neden ve Çözümler", isNew: false },
               { slug: "en-iyi-kedi-mamasi-hangisi-2025-rehberi", title: "En İyi Kedi Maması Hangisi? 2025 Rehberi", isNew: false },
