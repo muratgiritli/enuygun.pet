@@ -207,6 +207,39 @@ ${urlEntries}
     res.send(buildHealthSitemap(muhabbetKeywords, IMG, "muhabbet-kusu-hastaliklari"));
   });
 
+  // Sitemap for blog (must be BEFORE /sitemap-:n.xml catch-all)
+  app.get("/sitemap-blog.xml", (_req, res) => {
+    const today = new Date().toISOString().split("T")[0];
+    const urls = blogPosts.map(b =>
+      `  <url>\n    <loc>https://www.enuygun.pet/blog/${b.slug}</loc>\n    <lastmod>${today}</lastmod>\n    <changefreq>weekly</changefreq>\n    <priority>0.8</priority>\n  </url>`
+    ).join("\n");
+    res.set("Content-Type", "application/xml");
+    res.set("Cache-Control", "public, max-age=86400");
+    res.send(`<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls}\n</urlset>`);
+  });
+
+  // Sitemap for categories (must be BEFORE /sitemap-:n.xml catch-all)
+  app.get("/sitemap-kategoriler.xml", (_req, res) => {
+    const today = new Date().toISOString().split("T")[0];
+    const urls = categoryPages.map(c =>
+      `  <url>\n    <loc>https://www.enuygun.pet/${c.slug}</loc>\n    <lastmod>${today}</lastmod>\n    <changefreq>weekly</changefreq>\n    <priority>0.9</priority>\n  </url>`
+    ).join("\n");
+    res.set("Content-Type", "application/xml");
+    res.set("Cache-Control", "public, max-age=86400");
+    res.send(`<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls}\n</urlset>`);
+  });
+
+  // Sitemap for local SEO (must be BEFORE /sitemap-:n.xml catch-all)
+  app.get("/sitemap-local.xml", (_req, res) => {
+    const today = new Date().toISOString().split("T")[0];
+    const urls = localPages.map(p =>
+      `  <url>\n    <loc>https://www.enuygun.pet/local/${p.slug}</loc>\n    <lastmod>${today}</lastmod>\n    <changefreq>monthly</changefreq>\n    <priority>0.7</priority>\n  </url>`
+    ).join("\n");
+    res.set("Content-Type", "application/xml");
+    res.set("Cache-Control", "public, max-age=86400");
+    res.send(`<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls}\n</urlset>`);
+  });
+
   app.get("/sitemap-:n.xml", (req, res) => {
     const n = parseInt(req.params.n);
     if (isNaN(n) || n < 1 || n > TOTAL_SITEMAPS) {
@@ -229,17 +262,21 @@ ${urlEntries}
   app.get("/robots.txt", (_req, res) => {
     const robots = `User-agent: *
 Allow: /
+Disallow: /api/
 
 Sitemap: https://www.enuygun.pet/sitemap.xml
 
 User-agent: Googlebot
 Allow: /
+Disallow: /api/
 
 User-agent: Bingbot
 Allow: /
+Disallow: /api/
 
 User-agent: Yandex
 Allow: /
+Disallow: /api/
 `;
     res.set("Content-Type", "text/plain");
     res.set("Cache-Control", "public, max-age=86400");
@@ -415,33 +452,6 @@ Allow: /
     const page = localBySlug.get(req.params.slug);
     if (!page) return res.status(404).json({ error: "Sayfa bulunamadı" });
     res.json(page);
-  });
-
-  // Sitemap for blog
-  app.get("/sitemap-blog.xml", (_req, res) => {
-    const urls = blogPosts.map(b =>
-      `  <url><loc>https://enuygunpet.com/blog/${b.slug}</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>`
-    ).join("\n");
-    res.set("Content-Type", "application/xml");
-    res.send(`<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls}\n</urlset>`);
-  });
-
-  // Sitemap for categories
-  app.get("/sitemap-kategoriler.xml", (_req, res) => {
-    const urls = categoryPages.map(c =>
-      `  <url><loc>https://enuygunpet.com/${c.slug}</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>`
-    ).join("\n");
-    res.set("Content-Type", "application/xml");
-    res.send(`<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls}\n</urlset>`);
-  });
-
-  // Sitemap for local SEO
-  app.get("/sitemap-local.xml", (_req, res) => {
-    const urls = localPages.map(p =>
-      `  <url><loc>https://enuygunpet.com/local/${p.slug}</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>`
-    ).join("\n");
-    res.set("Content-Type", "application/xml");
-    res.send(`<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls}\n</urlset>`);
   });
 
   app.get("/api/image-proxy", async (req, res) => {
