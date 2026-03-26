@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useRoute, Link } from "wouter";
 import { useQuery } from "@tanstack/react-query";
 import { Phone, MapPin, Clock, Navigation, ChevronRight, Home, ArrowLeft } from "lucide-react";
+import InternalLinksSection, { detectType } from "@/components/internal-links";
 import { SiWhatsapp } from "react-icons/si";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -532,29 +533,7 @@ export default function KeywordPage() {
           </section>
         )}
 
-        <section className="mb-5" aria-label="Ana kategoriler">
-          <h3 className="text-base font-bold text-foreground mb-3">Ana Kategoriler</h3>
-          <div className="grid grid-cols-2 gap-2">
-            {[
-              { label: "Kedi Maması", slug: "kedi-mamasi" },
-              { label: "Köpek Maması", slug: "kopek-mamasi" },
-              { label: "Kedi Kumu", slug: "kedi-kumu-samsun" },
-              { label: "Kuş Yemleri", slug: "gold-wings-muhabbet-yemi" },
-              { label: "Kedi Aksesuarları", slug: "kedi-tirmalama" },
-              { label: "Köpek Aksesuarları", slug: "kopek-tasmasi" },
-            ].map(cat => (
-              <Link key={cat.slug} href={`/${cat.slug}`}>
-                <a
-                  className="flex items-center gap-2 p-2.5 rounded-lg border border-border bg-primary/5 hover:border-primary hover:bg-primary/10 transition-colors group"
-                  data-testid={`link-category-${cat.slug}`}
-                >
-                  <div className="w-1.5 h-1.5 rounded-full bg-primary shrink-0" />
-                  <span className="text-xs font-medium text-foreground group-hover:text-primary">{cat.label}</span>
-                </a>
-              </Link>
-            ))}
-          </div>
-        </section>
+        <InternalLinksSection type={detectType(data.keyword)} currentSlug={data.slug} />
       </main>
 
       <footer className="border-t border-border px-4 py-5 mt-2" data-testid="keyword-footer">

@@ -3,6 +3,7 @@ import { useParams, Link } from "wouter";
 import { useQuery } from "@tanstack/react-query";
 
 import { Phone, MessageCircle, MapPin, ArrowLeft, BookOpen, Tag, ChevronRight } from "lucide-react";
+import InternalLinksSection, { detectType } from "@/components/internal-links";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Skeleton } from "@/components/ui/skeleton";
@@ -171,6 +172,8 @@ export default function BlogPage() {
             </div>
           </div>
         )}
+
+        <InternalLinksSection type={detectType(post.title)} currentSlug={post.slug} showBlog={false} />
 
         <div className="flex justify-center">
           <Link href="/">

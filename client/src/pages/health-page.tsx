@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useRoute, Link } from "wouter";
 import { useQuery } from "@tanstack/react-query";
 import { Phone, MapPin, Clock, ChevronRight, AlertTriangle, Stethoscope, ShoppingBag } from "lucide-react";
+import InternalLinksSection, { detectType } from "@/components/internal-links";
 import { SiWhatsapp } from "react-icons/si";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -457,6 +458,8 @@ export default function HealthPage() {
             </a>
           </div>
         </Card>
+
+        <InternalLinksSection type={detectType(data.keyword)} currentSlug={data.slug} showHealth={false} />
 
         <footer className="mt-8 pb-6 text-center space-y-1">
           <p className="text-[10px] text-muted-foreground/70">© {new Date().getFullYear()} EnuygunPet — Tüm hakları saklıdır.</p>

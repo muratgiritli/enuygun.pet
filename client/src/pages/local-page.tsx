@@ -3,6 +3,7 @@ import { useParams, Link } from "wouter";
 import { useQuery } from "@tanstack/react-query";
 
 import { Phone, MessageCircle, MapPin, ArrowLeft, ChevronRight, BookOpen, Store } from "lucide-react";
+import InternalLinksSection from "@/components/internal-links";
 import { Card } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
 
@@ -175,6 +176,8 @@ export default function LocalPage() {
             ))}
           </div>
         </div>
+
+        <InternalLinksSection type="genel" showLocal={false} />
 
         <div className="flex justify-center">
           <Link href="/">
