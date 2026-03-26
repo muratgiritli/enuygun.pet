@@ -50,7 +50,7 @@ function optimizedImg(url: string, width: number = 0) {
 
 const categories = [
   { icon: Cat, title: "Kedi Ürünleri", desc: "Mama, kum, oyuncak, yatak", image: STORE_PHOTOS[1], slug: "kedi-mamasi" },
-  { icon: Dog, title: "Köpek Ürünleri", desc: "Mama, tasma, oyuncak, aksesuar", image: STORE_PHOTOS[2], slug: "kopek-mamasi" },
+  { icon: Dog, title: "Köpek", desc: "Maması", image: STORE_PHOTOS[2], slug: "kopek-mamasi" },
   { icon: Bird, title: "Kuş Ürünleri", desc: "Yem, kafes, aksesuar", image: STORE_PHOTOS[3], slug: "gold-wings-muhabbet-yemi" },
   { icon: Fish, title: "Akvaryum", desc: "Balık yemi, filtre, aksesuar", image: STORE_PHOTOS[0], slug: "balik-yemi-samsun" },
 ];
