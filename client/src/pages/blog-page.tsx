@@ -99,6 +99,26 @@ export default function BlogPage() {
     </div>
   );
 
+  const BLOG_CAT_IMGS: Record<string, string> = {
+    kedi: "https://static.wixstatic.com/media/63853e_4c33bdb1dc274eab8358c2d598f7cfee~mv2.jpeg",
+    kopek: "https://static.wixstatic.com/media/63853e_ba5ea5e88a5a41409f4742caf8dced1c~mv2.jpeg",
+    kus: "https://static.wixstatic.com/media/63853e_346d0d0b96154639b0a27296b18d70f5~mv2.jpeg",
+  };
+  const postImg = BLOG_CAT_IMGS[post.cat] || "https://static.wixstatic.com/media/63853e_77a3ee3fa9d942a7af5b6f25a0520653~mv2.jpeg";
+  const postImgObj = {
+    "@type": "ImageObject",
+    "url": postImg,
+    "contentUrl": postImg,
+    "name": `${post.title} - EnuygunPet Evcil Hayvan Bakım Rehberi`,
+    "description": post.desc,
+    "caption": `${post.title} | EnuygunPet Samsun Atakum`,
+    "representativeOfPage": true,
+    "license": "https://www.enuygun.pet",
+    "acquireLicensePage": "https://www.enuygun.pet",
+    "creditText": "EnuygunPet Gross Market",
+    "creator": { "@type": "Organization", "name": "EnuygunPet Gross Market" },
+  };
+
   const schema = {
     "@context": "https://schema.org",
     "@graph": [
@@ -109,6 +129,8 @@ export default function BlogPage() {
         "headline": post.title,
         "name": post.title,
         "description": post.desc,
+        "image": postImgObj,
+        "thumbnailUrl": postImg,
         "datePublished": "2025-01-01",
         "dateModified": new Date().toISOString().split("T")[0],
         "inLanguage": "tr-TR",
@@ -128,6 +150,7 @@ export default function BlogPage() {
           "name": "EnuygunPet — Evcil Hayvan Bakım Rehberi"
         }
       },
+      postImgObj,
       {
         "@type": "BreadcrumbList",
         "itemListElement": [

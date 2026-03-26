@@ -258,6 +258,21 @@ export default function HealthPage() {
   const imgUrl = ANIMAL_IMAGES[animal] || ANIMAL_IMAGES.kedi;
   const paragraphs = article.split("\n\n").filter(Boolean);
 
+  const LOGO_IMG = "https://static.wixstatic.com/media/63853e_77a3ee3fa9d942a7af5b6f25a0520653~mv2.jpeg";
+  const articleImgObj = {
+    "@type": "ImageObject",
+    "url": imgUrl,
+    "contentUrl": imgUrl,
+    "name": `${data.keyword} - ${data.animalTr} Sağlığı | EnuygunPet Samsun Atakum`,
+    "description": `${data.keyword} hakkında bilgi: belirtiler, nedenler, öneriler ve EnuygunPet'te ${data.animalTr.toLowerCase()} sağlık ürünleri.`,
+    "caption": `${data.keyword} | EnuygunPet Samsun Atakum ${data.animalTr} Sağlığı`,
+    "representativeOfPage": true,
+    "license": "https://www.enuygun.pet",
+    "acquireLicensePage": "https://www.enuygun.pet",
+    "creditText": "EnuygunPet Gross Market",
+    "creator": { "@type": "Organization", "name": "EnuygunPet Gross Market" },
+  };
+
   const schema = {
     "@context": "https://schema.org",
     "@graph": [
@@ -266,17 +281,25 @@ export default function HealthPage() {
         "@id": `https://www.enuygun.pet/${data.urlPrefix}/${data.slug}#article`,
         "headline": `${data.keyword} - ${data.animalTr} Sağlığı`,
         "description": `${data.keyword} hakkında belirtiler, nedenler ve öneriler.`,
-        "image": imgUrl,
+        "image": articleImgObj,
+        "thumbnailUrl": imgUrl,
         "author": { "@type": "Organization", "name": "EnuygunPet Gross Market" },
         "publisher": {
           "@type": "Organization",
           "name": "EnuygunPet Gross Market",
-          "logo": { "@type": "ImageObject", "url": "https://www.enuygun.pet/og-image.jpg" }
+          "logo": {
+            "@type": "ImageObject",
+            "url": LOGO_IMG,
+            "width": 600,
+            "height": 315,
+            "caption": "EnuygunPet Gross Market - Samsun Atakum Petshop"
+          }
         },
         "datePublished": "2025-01-01",
         "dateModified": new Date().toISOString().split("T")[0],
         "mainEntityOfPage": `https://www.enuygun.pet/${data.urlPrefix}/${data.slug}`,
       },
+      articleImgObj,
       {
         "@type": "BreadcrumbList",
         "itemListElement": [

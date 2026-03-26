@@ -302,7 +302,14 @@ export default function KeywordPage() {
         "@type": "Product",
         "name": data.keyword,
         "description": `Samsun Atakum'da ${data.keyword} için EnuygunPet Gross Market. En uygun fiyat, geniş stok, hızlı hizmet.`,
-        "image": imgUrl,
+        "image": {
+          "@type": "ImageObject",
+          "url": imgUrl,
+          "contentUrl": imgUrl,
+          "name": imgAlt,
+          "description": `${data.keyword} - Samsun Atakum EnuygunPet Gross Market petshop'ta stokta.`,
+          "caption": imgAlt,
+        },
         "brand": {
           "@type": "Brand",
           "name": "EnuygunPet Gross Market"

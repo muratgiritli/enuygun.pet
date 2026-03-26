@@ -93,9 +93,31 @@ export default function LocalPage() {
     ? `${page.district} ${page.neighborhood}`
     : page.district;
 
+  const STORE_IMAGES = [
+    "https://static.wixstatic.com/media/63853e_77a3ee3fa9d942a7af5b6f25a0520653~mv2.jpeg",
+    "https://static.wixstatic.com/media/63853e_f5ae600f104c4dfcae521fe694ba017b~mv2.jpeg",
+    "https://static.wixstatic.com/media/63853e_4c33bdb1dc274eab8358c2d598f7cfee~mv2.jpeg",
+    "https://static.wixstatic.com/media/63853e_ba5ea5e88a5a41409f4742caf8dced1c~mv2.jpeg",
+    "https://static.wixstatic.com/media/63853e_346d0d0b96154639b0a27296b18d70f5~mv2.jpeg",
+  ];
+  const localImgObj = {
+    "@type": "ImageObject",
+    "url": STORE_IMAGES[0],
+    "contentUrl": STORE_IMAGES[0],
+    "name": `${page.h1} - EnuygunPet Samsun Petshop`,
+    "description": `EnuygunPet Gross Market ${page.district} bölgesine hizmet veren Samsun Atakum evcil hayvan mağazası.`,
+    "caption": `${page.h1} | EnuygunPet Gross Market Samsun Atakum`,
+    "representativeOfPage": true,
+    "license": "https://www.enuygun.pet",
+    "acquireLicensePage": "https://www.enuygun.pet",
+    "creditText": "EnuygunPet Gross Market",
+    "creator": { "@type": "Organization", "name": "EnuygunPet Gross Market" },
+  };
+
   const schema = {
     "@context": "https://schema.org",
     "@graph": [
+      localImgObj,
       {
         "@type": "LocalBusiness",
         "@id": `https://www.enuygun.pet/local/${page.slug}#localbusiness`,
@@ -103,7 +125,7 @@ export default function LocalPage() {
         "description": page.desc,
         "url": `https://www.enuygun.pet/local/${page.slug}`,
         "telephone": "+905422114944",
-        "image": "https://static.wixstatic.com/media/63853e_77a3ee3fa9d942a7af5b6f25a0520653~mv2.jpeg",
+        "image": STORE_IMAGES,
         "address": {
           "@type": "PostalAddress",
           "streetAddress": "Yeni Mahalle Atatürk 3. Kısım Bulvarı No:113",

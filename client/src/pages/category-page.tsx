@@ -77,6 +77,26 @@ export default function CategoryPage() {
     </div>
   );
 
+  const CAT_SLUG_IMAGES: Record<string, string> = {
+    "kedi-urunleri": "https://static.wixstatic.com/media/63853e_4c33bdb1dc274eab8358c2d598f7cfee~mv2.jpeg",
+    "kopek-urunleri": "https://static.wixstatic.com/media/63853e_ba5ea5e88a5a41409f4742caf8dced1c~mv2.jpeg",
+    "kus-urunleri": "https://static.wixstatic.com/media/63853e_346d0d0b96154639b0a27296b18d70f5~mv2.jpeg",
+  };
+  const catImg = CAT_SLUG_IMAGES[cat.slug] || "https://static.wixstatic.com/media/63853e_77a3ee3fa9d942a7af5b6f25a0520653~mv2.jpeg";
+  const catImgObj = {
+    "@type": "ImageObject",
+    "url": catImg,
+    "contentUrl": catImg,
+    "name": `${cat.h1} - EnuygunPet Samsun Atakum`,
+    "description": cat.desc,
+    "caption": `${cat.h1} | EnuygunPet Gross Market Samsun Atakum`,
+    "representativeOfPage": true,
+    "license": "https://www.enuygun.pet",
+    "acquireLicensePage": "https://www.enuygun.pet",
+    "creditText": "EnuygunPet Gross Market",
+    "creator": { "@type": "Organization", "name": "EnuygunPet Gross Market" },
+  };
+
   const schema = {
     "@context": "https://schema.org",
     "@graph": [
@@ -87,8 +107,10 @@ export default function CategoryPage() {
         "name": cat.title,
         "description": cat.desc,
         "inLanguage": "tr-TR",
-        "isPartOf": { "@id": "https://www.enuygun.pet/#website" }
+        "isPartOf": { "@id": "https://www.enuygun.pet/#website" },
+        "primaryImageOfPage": catImgObj
       },
+      catImgObj,
       {
         "@type": "BreadcrumbList",
         "itemListElement": [
@@ -103,12 +125,21 @@ export default function CategoryPage() {
         "serviceType": "Evcil Hayvan Ürünleri Satışı",
         "provider": { "@id": "https://www.enuygun.pet/#organization" },
         "areaServed": { "@type": "City", "name": "Samsun" },
+        "image": catImg,
         "offers": (cat.brands || []).map((brand: string) => ({
           "@type": "Offer",
           "itemOffered": {
             "@type": "Product",
             "name": `${cat.h1} - ${brand}`,
-            "brand": { "@type": "Brand", "name": brand }
+            "description": `${brand} marka ${cat.h1.toLowerCase()} EnuygunPet Gross Market'te. Samsun Atakum'da geniş stok ve uygun fiyat.`,
+            "image": catImg,
+            "brand": { "@type": "Brand", "name": brand },
+            "offers": {
+              "@type": "Offer",
+              "priceCurrency": "TRY",
+              "availability": "https://schema.org/InStock",
+              "seller": { "@id": "https://www.enuygun.pet/#organization" }
+            }
           },
           "priceCurrency": "TRY",
           "availability": "https://schema.org/InStock"

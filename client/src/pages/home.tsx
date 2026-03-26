@@ -107,11 +107,11 @@ const features = [
 ];
 
 const galleryImages = [
-  { src: STORE_HERO, alt: "EnuygunPet mağaza ön görünüm - Samsun Atakum" },
-  { src: STORE_PHOTOS[0], alt: "Atakum petshop ürün reyonları" },
-  { src: STORE_PHOTOS[1], alt: "Samsun pet shop kedi ürünleri" },
-  { src: STORE_PHOTOS[2], alt: "Köpek aksesuarları Atakum" },
-  { src: STORE_PHOTOS[3], alt: "Kuş yemleri ve kafesleri" },
+  { src: STORE_HERO, alt: "EnuygunPet Gross Market mağaza girişi - Samsun Atakum Petshop" },
+  { src: STORE_PHOTOS[0], alt: "EnuygunPet Samsun Atakum petshop gross market iç mekan ürün reyonları" },
+  { src: STORE_PHOTOS[1], alt: "Samsun Atakum kedi maması ve kedi ürünleri - EnuygunPet petshop" },
+  { src: STORE_PHOTOS[2], alt: "Samsun Atakum köpek maması ve köpek aksesuarları - EnuygunPet gross market" },
+  { src: STORE_PHOTOS[3], alt: "Samsun Atakum kuş yemleri, muhabbet kuşu ve papağan ürünleri - EnuygunPet" },
 ];
 
 interface BeforeInstallPromptEvent extends Event {
