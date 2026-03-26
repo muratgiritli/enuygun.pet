@@ -158,6 +158,41 @@ export default function BlogPage() {
           { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://www.enuygun.pet/blog" },
           { "@type": "ListItem", "position": 3, "name": post.title, "item": `https://www.enuygun.pet/blog/${post.slug}` }
         ]
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          ...post.sections.slice(0, 4).map((sec: { h: string; p: string }) => ({
+            "@type": "Question",
+            "name": sec.h,
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": sec.p
+            }
+          })),
+          {
+            "@type": "Question",
+            "name": "Bu ürünler Samsun'da nerede satın alınır?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Samsun Atakum'daki EnuygunPet Gross Market'te (Atatürk Bulvarı No:113) tüm evcil hayvan ürünleri gross market fiyatıyla satılmaktadır. Haftanın her günü 09:00-21:00 açıktır. WhatsApp: +90 542 211 49 44"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "EnuygunPet Samsun'da hangi markaları satıyor?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Royal Canin, Hills Science Plan, Pro Plan, Reflex, Brit Care, Acana, Taste of the Wild başta olmak üzere 50'den fazla marka bulunmaktadır. Tüm markalar perakende fiyatlarının altında gross market fiyatıyla satılmaktadır."
+            }
+          }
+        ]
+      },
+      {
+        "@type": "Organization",
+        "@id": "https://www.enuygun.pet/#organization",
+        "name": "EnuygunPet Gross Market",
+        "url": "https://www.enuygun.pet/"
       }
     ]
   };

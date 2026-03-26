@@ -95,6 +95,49 @@ export default function BlogListPage() {
           { "@type": "ListItem", "position": 1, "name": "Ana Sayfa", "item": "https://www.enuygun.pet/" },
           { "@type": "ListItem", "position": 2, "name": "Bakım Rehberi", "item": "https://www.enuygun.pet/blog" }
         ]
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Evcil hayvan bakım rehberi nedir?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "EnuygunPet Bakım Rehberi, kedi, köpek ve kuş sahiplerine beslenme, sağlık, bakım ve ürün seçimi konularında uzman rehberleri sunar. Tüm yazılar Samsun Atakum'daki EnuygunPet Gross Market uzmanları tarafından hazırlanmıştır."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Kedi ve köpek için doğru mama nasıl seçilir?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Doğru mama seçimi için evcil hayvanın yaşı, kilosu, ırkı ve sağlık durumu dikkate alınmalıdır. Yavru, yetişkin, kısır ve yaşlı hayvanlar için farklı formüller mevcuttur. EnuygunPet mağazasında uzman personelimizden ücretsiz tavsiye alabilirsiniz."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "EnuygunPet'in blog yazıları kimler için?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Tüm evcil hayvan sahipleri için hazırlanmıştır. Kedi, köpek, muhabbet kuşu, papağan ve balık sahibi olup beslenme, sağlık ve bakım konularında bilgi edinmek isteyenler için pratik rehberler sunulmaktadır."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Bu rehberlerdeki ürünler Samsun'da nereden alınır?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Rehberlerde bahsedilen tüm ürünler Samsun Atakum, Atatürk Bulvarı No:113'teki EnuygunPet Gross Market'te satılmaktadır. Haftanın her günü 09:00-21:00 hizmetinizdeyiz. Bilgi için WhatsApp: +90 542 211 49 44"
+            }
+          }
+        ]
+      },
+      {
+        "@type": "Organization",
+        "@id": "https://www.enuygun.pet/#organization",
+        "name": "EnuygunPet Gross Market",
+        "url": "https://www.enuygun.pet/"
       }
     ]
   };

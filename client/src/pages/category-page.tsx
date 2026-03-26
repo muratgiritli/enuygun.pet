@@ -119,6 +119,35 @@ export default function CategoryPage() {
         ]
       },
       {
+        "@type": "FAQPage",
+        "mainEntity": [
+          ...cat.sections.slice(0, 3).map((sec: { h: string; p: string }) => ({
+            "@type": "Question",
+            "name": sec.h,
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": sec.p
+            }
+          })),
+          {
+            "@type": "Question",
+            "name": `Samsun'da ${cat.h1.toLowerCase()} nerede bulunur?`,
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": `Samsun Atakum'da ${cat.h1.toLowerCase()} için EnuygunPet Gross Market'i ziyaret edebilirsiniz. Atatürk Bulvarı No:113 adresinde haftanın her günü 09:00-21:00 açıktır. ${cat.brands?.slice(0,3).join(", ")} başta olmak üzere pek çok marka bulunmaktadır.`
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Gross market petshop ile normal petshop arasındaki fark nedir?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Gross market petshop, perakende mağazalara kıyasla çok daha büyük gramajlı ürünleri ve toplu alım avantajlarını doğrudan son tüketiciye sunar. EnuygunPet'te büyük gramaj ürünlerde %20-40 daha uygun fiyatlar mevcuttur."
+            }
+          }
+        ]
+      },
+      {
         "@type": "Service",
         "name": cat.h1,
         "description": cat.desc,
@@ -144,6 +173,12 @@ export default function CategoryPage() {
           "priceCurrency": "TRY",
           "availability": "https://schema.org/InStock"
         }))
+      },
+      {
+        "@type": "Organization",
+        "@id": "https://www.enuygun.pet/#organization",
+        "name": "EnuygunPet Gross Market",
+        "url": "https://www.enuygun.pet/"
       }
     ]
   };

@@ -158,6 +158,41 @@ export default function LocalPage() {
         "serviceType": "Evcil Hayvan Ürünleri Satışı",
         "provider": { "@id": "https://www.enuygun.pet/#organization" },
         "areaServed": { "@type": "Place", "name": locationLabel }
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          ...page.sections.slice(0, 3).map((sec: { h: string; p: string }) => ({
+            "@type": "Question",
+            "name": sec.h,
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": sec.p
+            }
+          })),
+          {
+            "@type": "Question",
+            "name": `${locationLabel} bölgesine en yakın petshop nerede?`,
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": `${locationLabel} bölgesine en yakın petshop EnuygunPet Gross Market'tir. Samsun Atakum, Atatürk Bulvarı No:113 adresinde hizmet vermektedir. Haftanın 7 günü 09:00-21:00 açık olup WhatsApp: +90 542 211 49 44 numarasından bilgi alabilirsiniz.`
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "EnuygunPet'te hangi evcil hayvan ürünleri bulunur?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Kedi maması, köpek maması, kuş yemi, kedi kumu, tasma, oyuncak, kafes, akvaryum malzemeleri ve binlerce aksesuar çeşidi gross market fiyatıyla bulunmaktadır. Royal Canin, Hills, Pro Plan, Reflex başta olmak üzere 50'den fazla marka mevcuttur."
+            }
+          }
+        ]
+      },
+      {
+        "@type": "Organization",
+        "@id": "https://www.enuygun.pet/#organization",
+        "name": "EnuygunPet Gross Market",
+        "url": "https://www.enuygun.pet/"
       }
     ]
   };
