@@ -457,7 +457,8 @@ Disallow: /api/
   app.get("/api/image-proxy", async (req, res) => {
     const imageUrl = req.query.url as string;
     const width = parseInt(req.query.w as string) || 0;
-    const quality = parseInt(req.query.q as string) || 80;
+    const height = parseInt(req.query.h as string) || (width > 0 ? Math.round(width * 0.625) : 0);
+    const quality = parseInt(req.query.q as string) || 82;
 
     if (!imageUrl) {
       return res.status(400).json({ message: "Missing url parameter" });
@@ -474,9 +475,15 @@ Disallow: /api/
     }
 
     try {
+      const acceptsWebP = (req.headers.accept || "").includes("image/webp");
+      const mimeType = acceptsWebP ? "image/webp" : "image/jpeg";
+
       let fetchUrl = imageUrl;
-      if (width > 0) {
-        fetchUrl = `${imageUrl}/v1/fill/w_${width},q_${quality}/image.jpg`;
+      if (width > 0 && height > 0) {
+        const baseName = imageUrl.split("/").pop() || "image.jpeg";
+        const ext = acceptsWebP ? "webp" : baseName.split(".").pop() || "jpeg";
+        const fileName = baseName.replace(/\.[^.]+$/, `.${ext}`);
+        fetchUrl = `${imageUrl}/v1/fill/w_${width},h_${height},al_c,q_${quality},usm_0.50_1.00_0.00/${fileName}`;
       }
 
       const response = await fetch(fetchUrl);
@@ -487,7 +494,7 @@ Disallow: /api/
         }
         res.set({
           "Content-Type": fallbackResponse.headers.get("content-type") || "image/jpeg",
-          "Cache-Control": "public, max-age=31536000, immutable",
+          "Cache-Control": "public, max-age=604800, stale-while-revalidate=86400",
           "Vary": "Accept",
         });
         const buffer = Buffer.from(await fallbackResponse.arrayBuffer());
@@ -495,8 +502,8 @@ Disallow: /api/
       }
 
       res.set({
-        "Content-Type": response.headers.get("content-type") || "image/jpeg",
-        "Cache-Control": "public, max-age=31536000, immutable",
+        "Content-Type": response.headers.get("content-type") || mimeType,
+        "Cache-Control": "public, max-age=604800, stale-while-revalidate=86400",
         "Vary": "Accept",
       });
 

@@ -360,7 +360,11 @@ export default function HealthPage() {
             src={imgUrl}
             alt={`${data.keyword} - ${data.animalTr} sağlığı EnuygunPet Samsun Atakum`}
             className="w-full h-full object-cover"
-            loading="lazy"
+            loading="eager"
+            fetchPriority="high"
+            decoding="async"
+            width={800}
+            height={450}
             data-testid="health-page-image"
           />
         </div>

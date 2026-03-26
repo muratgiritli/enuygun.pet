@@ -1,10 +1,20 @@
 import express, { type Request, Response, NextFunction } from "express";
+import compression from "compression";
 import { registerRoutes } from "./routes";
 import { serveStatic } from "./static";
 import { createServer } from "http";
 
 const app = express();
 const httpServer = createServer(app);
+
+app.use(compression({
+  level: 6,
+  threshold: 1024,
+  filter: (req, res) => {
+    if (req.path.startsWith("/api/image-proxy")) return false;
+    return compression.filter(req, res);
+  },
+}));
 
 declare module "http" {
   interface IncomingMessage {
