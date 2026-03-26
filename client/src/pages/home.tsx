@@ -445,6 +445,72 @@ export default function Home() {
           </div>
         </section>
 
+        {/* ── Rich content section (500+ words, H2 sections) ── */}
+        <section className="px-4 mt-10 space-y-7" aria-label="EnuygunPet hakkında" data-testid="section-rich-content">
+          <div>
+            <h2 className="text-lg font-bold text-foreground mb-2" data-testid="text-rich-h2-1">
+              Samsun Atakum'un En Büyük Petshop Gross Marketi
+            </h2>
+            <p className="text-sm text-muted-foreground leading-relaxed" data-testid="text-rich-p1">
+              EnuygunPet, Samsun'un Atakum ilçesinde Atatürk Bulvarı No:113 adresinde hizmet veren petshop gross marketidir. Gross market formatıyla faaliyet gösteren mağazamız, perakende petshopların çok altında fiyatlarla kedi maması, köpek maması, kuş yemi ve tüm evcil hayvan ürünlerini müşterilerimize sunmaktadır. Büyük gramajlı ürünleri toplu temin ettiğimiz için birim maliyetlerimiz düşük tutulabilmektedir; bu avantajı doğrudan müşterilerimize yansıtıyoruz. Haftanın her günü 09:00-21:00 arası kesintisiz açığız, Pazar ve resmi tatillerde de kapılarımızı kapatmıyoruz.
+            </p>
+          </div>
+
+          <div>
+            <h2 className="text-lg font-bold text-foreground mb-2" data-testid="text-rich-h2-2">
+              Kedi Sahiplerine Özel Geniş Ürün Seçeneği
+            </h2>
+            <p className="text-sm text-muted-foreground leading-relaxed" data-testid="text-rich-p2">
+              Kedi maması seçimi; yaş, kısırlaştırma durumu ve sağlık geçmişine göre farklılık göstermektedir. Mağazamızda Royal Canin, Hills Science Plan, Pro Plan, Brit Care, Reflex, Acana, Orijen, Felicia ve N&D başta olmak üzere 20'yi aşkın markanın kedi mamasını bulabilirsiniz. Yavru kedi, yetişkin kedi, kısırlaştırılmış kedi ve özel diyet mamaları (böbrek, üriner, idrar yolu) ayrı ayrı stoklanmaktadır. Kedi kumu konusunda ise topaklanan bentonit kum, silika kristal kum, doğal odun talaşı ve tozsuz pelet seçenekleri mevcuttur. Bunların yanı sıra kedi tırmalama tahtaları, yataklar, taşıma çantaları ve oyuncaklar da raflarımızda hazır bulunmaktadır.
+            </p>
+          </div>
+
+          <div>
+            <h2 className="text-lg font-bold text-foreground mb-2" data-testid="text-rich-h2-3">
+              Köpek Sahipleri İçin Her Şey Tek Çatı Altında
+            </h2>
+            <p className="text-sm text-muted-foreground leading-relaxed" data-testid="text-rich-p3">
+              Köpek maması seçiminde ırkın büyüklüğü, yaşı ve aktivite düzeyi belirleyici rol oynar. Mağazamızda Royal Canin Breed Specific serisi, Pro Plan Performance, Hills Science Plan, Brit Care Grain Free, Acana ve Orijen gibi premium markaların yanı sıra uygun bütçeli seçenekler de yer almaktadır. Küçük ırk, orta ırk ve büyük ırk mamaları ayrı olarak stoklanmaktadır. Tasma, koşum, gezdirme ipi, kafes, oyuncak, yatak, şampuan, tarak ve diş bakım ürünleri gibi köpek aksesuarlarına da tek adresten ulaşabilirsiniz. Özellikle büyük gramajlı köpek mamalarında (15 kg ve üzeri) gross market fiyat avantajımız belirgin biçimde hissedilmektedir.
+            </p>
+          </div>
+
+          <div>
+            <h2 className="text-lg font-bold text-foreground mb-2" data-testid="text-rich-h2-4">
+              Kuş, Akvaryum ve Küçük Hayvan Ürünleri
+            </h2>
+            <p className="text-sm text-muted-foreground leading-relaxed" data-testid="text-rich-p4">
+              Muhabbet kuşu, kanarya, sultan papağanı ve Afrika gri papağanı gibi farklı kuş türleri için özel formüle edilmiş yemler, kafesler, tünekler, mineral taşları ve vitamin takviyeleri sunmaktayız. Akvaryum tutkunları için tatlı su ve tuzlu su balıkları yemleri, filtre sistemleri, hava motorları, termometreler ve dekor ürünleri geniş seçeneklerle mevcuttur. Hamster, tavşan, guinea pig ve diğer küçük hayvanlar için mama, altlık malzemeleri ve kafesler de mağazamızda bulunmaktadır.
+            </p>
+          </div>
+
+          <div>
+            <h2 className="text-lg font-bold text-foreground mb-2" data-testid="text-rich-h2-5">
+              Gross Market Fiyat Avantajı Nasıl İşliyor?
+            </h2>
+            <p className="text-sm text-muted-foreground leading-relaxed" data-testid="text-rich-p5">
+              Gross market modeli, ürünleri büyük miktarda temin ederek birim maliyetleri düşüren bir ticaret biçimidir. Perakende petshoplar küçük miktarlarda stok tutarken biz aynı ürünü palet ve koli olarak satın alırız; bu da birim fiyatı önemli ölçüde aşağı çeker. Mağazamızda perakende fiyatlara kıyasla yüzde otuz ila elli arasında tasarruf etmek mümkündür. Özellikle büyük gramaj tercihi yapan çok kedili ya da köpekli haneler, yılda yüzlerce lira tasarruf sağlamaktadır. Toplu alım yapan müşterilerimize ek indirim uygulaması da mevcuttur.
+            </p>
+          </div>
+
+          <div>
+            <h2 className="text-lg font-bold text-foreground mb-2" data-testid="text-rich-h2-6">
+              Uzman Danışmanlık ve Kişisel Hizmet
+            </h2>
+            <p className="text-sm text-muted-foreground leading-relaxed" data-testid="text-rich-p6">
+              Hangi mamayı seçeceğinizi bilmiyorsanız, kedi kumunun farkları konusunda kafanız karışıksa ya da köpeğiniz için ideal gramaj ve beden arıyorsanız mağazamızdaki deneyimli personelimiz size ücretsiz danışmanlık sunar. Veteriner tavsiyeleriyle örtüşen, kanıtlanmış ürün önerileri yapıyoruz. WhatsApp hattımız (+90 542 211 49 44) üzerinden görüntülü ya da yazılı danışma da yapabilirsiniz; ürün fotoğrafı göndererek stok ve fiyat sorabilirsiniz.
+            </p>
+          </div>
+
+          <div>
+            <h2 className="text-lg font-bold text-foreground mb-2" data-testid="text-rich-h2-7">
+              Samsun'un Her Noktasından Bize Ulaşın
+            </h2>
+            <p className="text-sm text-muted-foreground leading-relaxed" data-testid="text-rich-p7">
+              Mağazamız Samsun Atakum'da Atatürk Bulvarı üzerinde, ana arterde konumlanan tek katlı bir gross market yapısındadır. Önünde ücretsiz otopark imkânı bulunmaktadır. Minibüs ve dolmuş güzergahlarıyla ulaşımı kolaydır. İlkadım, Canik, Tekkeköy ve Samsun merkezden 15-30 dakika içinde ulaşılabilecek mesafededir. Google Harita üzerinden "EnuygunPet" aratarak doğrudan yol tarifi alabilirsiniz. Ayrıca Samsun içi WhatsApp üzerinden sipariş verip kapınıza teslim seçeneğimizden de yararlanabilirsiniz.
+            </p>
+          </div>
+        </section>
+
         <section className="px-4 mt-8" aria-label="Mağaza görselleri">
           <h2 className="text-lg font-bold text-foreground mb-3" data-testid="text-gallery-title">Mağazamızdan Kareler</h2>
           <div className="relative rounded-md border border-card-border bg-card">
