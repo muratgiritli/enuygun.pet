@@ -46,15 +46,32 @@ export default function LocalPage() {
 
   useEffect(() => {
     if (!page || (page as any).error) return;
+    const canonicalUrl = `https://www.enuygun.pet/local/${page.slug}`;
+    const img = "https://static.wixstatic.com/media/63853e_77a3ee3fa9d942a7af5b6f25a0520653~mv2.jpeg";
     document.title = page.title;
-    const setMeta = (sel: string, val: string) => {
+    const setMeta = (sel: string, attr: string, val: string) => {
       let el = document.querySelector(sel) as HTMLMetaElement | null;
       if (!el) { el = document.createElement("meta") as HTMLMetaElement; document.head.appendChild(el); }
-      el.setAttribute("content", val);
+      el.setAttribute(attr, val);
     };
-    setMeta('meta[name="description"]', page.desc);
-    setMeta('meta[property="og:title"]', page.title);
-    setMeta('meta[property="og:description"]', page.desc);
+    const setLink = (rel: string, href: string) => {
+      let el = document.querySelector(`link[rel="${rel}"]`) as HTMLLinkElement | null;
+      if (!el) { el = document.createElement("link") as HTMLLinkElement; el.setAttribute("rel", rel); document.head.appendChild(el); }
+      el.setAttribute("href", href);
+    };
+    setLink("canonical", canonicalUrl);
+    setMeta('meta[name="description"]', "content", page.desc);
+    setMeta('meta[property="og:title"]', "content", page.title);
+    setMeta('meta[property="og:description"]', "content", page.desc);
+    setMeta('meta[property="og:url"]', "content", canonicalUrl);
+    setMeta('meta[property="og:image"]', "content", img);
+    setMeta('meta[property="og:image:alt"]', "content", `${page.h1} - EnuygunPet Samsun Atakum`);
+    setMeta('meta[property="og:type"]', "content", "website");
+    setMeta('meta[property="og:site_name"]', "content", "EnuygunPet");
+    setMeta('meta[name="twitter:card"]', "content", "summary_large_image");
+    setMeta('meta[name="twitter:title"]', "content", page.title);
+    setMeta('meta[name="twitter:description"]', "content", page.desc);
+    setMeta('meta[name="twitter:image"]', "content", img);
   }, [page]);
 
   if (isLoading) return (

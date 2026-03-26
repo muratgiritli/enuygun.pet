@@ -212,7 +212,13 @@ export default function KeywordPage() {
         if (!el) { el = document.createElement("meta"); document.head.appendChild(el); }
         el.setAttribute(attr, val);
       };
+      const setLink = (rel: string, href: string) => {
+        let el = document.querySelector(`link[rel="${rel}"]`) as HTMLLinkElement | null;
+        if (!el) { el = document.createElement("link") as HTMLLinkElement; el.setAttribute("rel", rel); document.head.appendChild(el); }
+        el.setAttribute("href", href);
+      };
 
+      setLink("canonical", `https://www.enuygun.pet/${data.slug}`);
       setMeta('meta[name="description"]', "content", desc);
       setMeta('meta[property="og:title"]', "content", title);
       setMeta('meta[property="og:description"]', "content", desc);
@@ -220,9 +226,11 @@ export default function KeywordPage() {
       setMeta('meta[property="og:image:alt"]', "content", `${data.keyword} - Samsun Atakum EnuygunPet Petshop Gross Market`);
       setMeta('meta[property="og:url"]', "content", `https://www.enuygun.pet/${data.slug}`);
       setMeta('meta[property="og:type"]', "content", "website");
+      setMeta('meta[property="og:site_name"]', "content", "EnuygunPet");
       setMeta('meta[name="twitter:card"]', "content", "summary_large_image");
-      setMeta('meta[name="twitter:image"]', "content", imgUrl);
       setMeta('meta[name="twitter:title"]', "content", title);
+      setMeta('meta[name="twitter:description"]', "content", desc);
+      setMeta('meta[name="twitter:image"]', "content", imgUrl);
     }
   }, [data]);
 

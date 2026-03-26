@@ -41,16 +41,41 @@ export default function BlogPage() {
 
   useEffect(() => {
     if (!post || (post as any).error) return;
-    const title = `${post.title} | EnuygunPet Blog`;
+    const title = `${post.title} | EnuygunPet Evcil Hayvan Bakım Rehberi`;
+    const canonicalUrl = `https://www.enuygun.pet/blog/${post.slug}`;
+    const CAT_IMGS: Record<string, string> = {
+      kedi: "https://static.wixstatic.com/media/63853e_4c33bdb1dc274eab8358c2d598f7cfee~mv2.jpeg",
+      kopek: "https://static.wixstatic.com/media/63853e_ba5ea5e88a5a41409f4742caf8dced1c~mv2.jpeg",
+      kus: "https://static.wixstatic.com/media/63853e_346d0d0b96154639b0a27296b18d70f5~mv2.jpeg",
+    };
+    const img = CAT_IMGS[post.cat] || "https://static.wixstatic.com/media/63853e_77a3ee3fa9d942a7af5b6f25a0520653~mv2.jpeg";
+    const desc = post.desc.length < 100
+      ? `${post.desc} Samsun Atakum EnuygunPet Gross Market'te uzman tavsiye ve ürün desteği.`
+      : post.desc;
     document.title = title;
     const setMeta = (sel: string, attr: string, val: string) => {
       let el = document.querySelector(sel) as HTMLMetaElement | null;
       if (!el) { el = document.createElement("meta") as HTMLMetaElement; document.head.appendChild(el); }
       el.setAttribute(attr, val);
     };
-    setMeta('meta[name="description"]', "content", post.desc);
+    const setLink = (rel: string, href: string) => {
+      let el = document.querySelector(`link[rel="${rel}"]`) as HTMLLinkElement | null;
+      if (!el) { el = document.createElement("link") as HTMLLinkElement; el.setAttribute("rel", rel); document.head.appendChild(el); }
+      el.setAttribute("href", href);
+    };
+    setLink("canonical", canonicalUrl);
+    setMeta('meta[name="description"]', "content", desc);
     setMeta('meta[property="og:title"]', "content", title);
-    setMeta('meta[property="og:description"]', "content", post.desc);
+    setMeta('meta[property="og:description"]', "content", desc);
+    setMeta('meta[property="og:url"]', "content", canonicalUrl);
+    setMeta('meta[property="og:image"]', "content", img);
+    setMeta('meta[property="og:image:alt"]', "content", `${post.title} - EnuygunPet Evcil Hayvan Bakım Rehberi`);
+    setMeta('meta[property="og:type"]', "content", "article");
+    setMeta('meta[property="og:site_name"]', "content", "EnuygunPet");
+    setMeta('meta[name="twitter:card"]', "content", "summary_large_image");
+    setMeta('meta[name="twitter:title"]', "content", title);
+    setMeta('meta[name="twitter:description"]', "content", desc);
+    setMeta('meta[name="twitter:image"]', "content", img);
   }, [post]);
 
   if (isLoading) return (
