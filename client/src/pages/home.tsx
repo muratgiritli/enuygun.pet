@@ -398,22 +398,22 @@ export default function Home() {
           </div>
           <div className="space-y-2">
             {[
-              "Kısır Kedi Maması Hangisi",
-              "Kedi Neden Kusar Nedenleri ve Çözümler",
-              "Köpek Neden Mama Yemez 7 Neden ve Çözümler",
-              "En İyi Kedi Maması Hangisi 2025 Rehberi",
-              "Yavru Kedi Nasıl Beslenir Kapsamlı Rehber",
-            ].map((title, i) => {
-              const blogSlug = ["kisir-kedi-mamasi-hangisi","kedi-neden-kusar-nedenleri-ve-cozumler","kopek-neden-mama-yemez-7-neden-ve-cozumler","en-iyi-kedi-mamasi-hangisi-2025-rehberi","yavru-kedi-nasil-beslenir-kapsamli-rehber"][i];
-              return (
-                <Link key={blogSlug} href={`/blog/${blogSlug}`}>
-                  <a className="flex items-center justify-between group p-3 rounded-xl bg-card border border-border hover:border-primary/40 hover:bg-primary/5 transition-all" data-testid={`link-blog-home-${i}`}>
-                    <span className="text-sm text-foreground">{title}</span>
-                    <ChevronRight className="w-4 h-4 text-muted-foreground group-hover:text-primary group-hover:translate-x-0.5 transition-all shrink-0" />
-                  </a>
-                </Link>
-              );
-            })}
+              { slug: "kopek-asi-takvimi-hangi-asilar-ne-zaman-yapilmali", title: "Köpek Aşı Takvimi: Hangi Aşılar Ne Zaman Yapılmalı?", isNew: true },
+              { slug: "papagan-mamasi-ve-beslenmesi-kapsamli-rehber-2025", title: "Papağan Maması ve Beslenmesi: Kapsamlı Rehber 2025", isNew: true },
+              { slug: "kisir-kedi-mamasi-hangisi", title: "Kısır Kedi Maması Hangisi", isNew: false },
+              { slug: "kopek-neden-mama-yemez-7-neden-ve-cozumler", title: "Köpek Neden Mama Yemez? 7 Neden ve Çözümler", isNew: false },
+              { slug: "en-iyi-kedi-mamasi-hangisi-2025-rehberi", title: "En İyi Kedi Maması Hangisi? 2025 Rehberi", isNew: false },
+            ].map(({ slug, title, isNew }, i) => (
+              <Link key={slug} href={`/blog/${slug}`}>
+                <a className="flex items-center justify-between group p-3 rounded-xl bg-card border border-border hover:border-primary/40 hover:bg-primary/5 transition-all" data-testid={`link-blog-home-${i}`}>
+                  <span className="text-sm text-foreground flex items-center gap-2">
+                    {isNew && <span className="text-[10px] font-semibold px-1.5 py-0.5 rounded bg-amber-100 text-amber-700 shrink-0">YENİ</span>}
+                    {title}
+                  </span>
+                  <ChevronRight className="w-4 h-4 text-muted-foreground group-hover:text-primary group-hover:translate-x-0.5 transition-all shrink-0" />
+                </a>
+              </Link>
+            ))}
             <Link href="/blog">
               <a className="flex items-center justify-center gap-1.5 mt-1 text-sm text-primary hover:underline" data-testid="link-all-blogs">
                 Tüm Blog Yazıları
