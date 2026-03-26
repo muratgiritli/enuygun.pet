@@ -220,9 +220,9 @@ export default function Home() {
               <Heart className="w-5 h-5 text-primary-foreground" />
             </div>
             <div>
-              <h1 className="text-base font-bold leading-tight text-foreground" data-testid="text-brand-name">
+              <span className="text-base font-bold leading-tight text-foreground block" data-testid="text-brand-name">
                 ENUYGUN<span className="text-primary">.PET</span>
-              </h1>
+              </span>
               <p className="text-[10px] text-muted-foreground leading-tight">Petshop Gross Market</p>
             </div>
           </div>
@@ -262,9 +262,9 @@ export default function Home() {
                   <MapPin className="w-3 h-3 mr-1" />
                   Samsun / Atakum
                 </Badge>
-                <h2 className="text-2xl font-extrabold text-white leading-tight mb-1.5" data-testid="text-hero-title">
-                  Petshop Gross Market
-                </h2>
+                <h1 className="text-2xl font-extrabold text-white leading-tight mb-1.5" data-testid="text-hero-title">
+                  Samsun Atakum Petshop Gross Market
+                </h1>
                 <p className="text-sm text-white/80 leading-snug mb-4 max-w-[280px]">
                   En uygun fiyatlarla binlerce evcil hayvan ürünü tek çatı altında
                 </p>
