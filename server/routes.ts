@@ -210,12 +210,13 @@ ${urlEntries}
   // Sitemap for blog (must be BEFORE /sitemap-:n.xml catch-all)
   app.get("/sitemap-blog.xml", (_req, res) => {
     const today = new Date().toISOString().split("T")[0];
-    const urls = blogPosts.map(b =>
-      `  <url>\n    <loc>https://www.enuygun.pet/blog/${b.slug}</loc>\n    <lastmod>${today}</lastmod>\n    <changefreq>weekly</changefreq>\n    <priority>0.8</priority>\n  </url>`
+    const blogIndexUrl = `  <url>\n    <loc>https://www.enuygun.pet/blog</loc>\n    <lastmod>${today}</lastmod>\n    <changefreq>weekly</changefreq>\n    <priority>0.8</priority>\n  </url>`;
+    const postUrls = blogPosts.map(b =>
+      `  <url>\n    <loc>https://www.enuygun.pet/blog/${b.slug}</loc>\n    <lastmod>${today}</lastmod>\n    <changefreq>monthly</changefreq>\n    <priority>0.7</priority>\n  </url>`
     ).join("\n");
     res.set("Content-Type", "application/xml");
     res.set("Cache-Control", "public, max-age=86400");
-    res.send(`<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls}\n</urlset>`);
+    res.send(`<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${blogIndexUrl}\n${postUrls}\n</urlset>`);
   });
 
   // Sitemap for categories (must be BEFORE /sitemap-:n.xml catch-all)
