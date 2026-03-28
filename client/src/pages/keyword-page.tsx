@@ -346,28 +346,55 @@ export default function KeywordPage() {
         }
       },
       {
-        "@type": "LocalBusiness",
+        "@type": ["LocalBusiness", "PetStore"],
         "@id": "https://www.enuygun.pet/#localbusiness",
         "name": "EnuygunPet Gross Market",
+        "alternateName": "Enuygun Pet",
+        "description": "Samsun Atakum'da evcil hayvan ürünleri gross market. Kedi maması, köpek maması, kuş yemi ve aksesuar toptan fiyatıyla.",
+        "url": "https://www.enuygun.pet/",
         "telephone": PHONE,
         "image": [
           "https://static.wixstatic.com/media/63853e_77a3ee3fa9d942a7af5b6f25a0520653~mv2.jpeg",
           "https://static.wixstatic.com/media/63853e_f5ae600f104c4dfcae521fe694ba017b~mv2.jpeg",
           "https://static.wixstatic.com/media/63853e_4c33bdb1dc274eab8358c2d598f7cfee~mv2.jpeg",
           "https://static.wixstatic.com/media/63853e_ba5ea5e88a5a41409f4742caf8dced1c~mv2.jpeg",
-          "https://static.wixstatic.com/media/63853e_346d0d0b96154639b0a27296b18d70f5~mv2.jpeg",
+          "https://static.wixstatic.com/media/63853e_346d0d0b96154639b0a27296b18d70f5~mv2.jpeg"
         ],
         "address": {
           "@type": "PostalAddress",
-          "streetAddress": "Atatürk Bulvarı",
+          "streetAddress": "Yeni Mahalle Atatürk 3. Kısım Bulvarı No:113",
           "addressLocality": "Atakum",
           "addressRegion": "Samsun",
           "postalCode": "55200",
-          "addressCountry": "TR",
+          "addressCountry": "TR"
         },
-        "openingHours": "Mo-Su 09:00-21:00",
-        "url": "https://www.enuygun.pet",
-      },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 41.3286,
+          "longitude": 36.2917
+        },
+        "hasMap": "https://maps.google.com/?cid=1443692801456575727",
+        "openingHoursSpecification": [{
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+          "opens": "09:00",
+          "closes": "21:00"
+        }],
+        "priceRange": "₺₺",
+        "currenciesAccepted": "TRY",
+        "paymentAccepted": "Nakit, Kredi Kartı",
+        "areaServed": [
+          { "@type": "City", "name": "Samsun" },
+          { "@type": "AdministrativeArea", "name": "Atakum" }
+        ],
+        "sameAs": [
+          "https://www.facebook.com/enuygun.pet",
+          "https://www.instagram.com/enuygun.pet",
+          "https://x.com/enuygunpet",
+          "https://www.youtube.com/@samsunenuygunpet"
+        ],
+        "parentOrganization": { "@id": "https://www.enuygun.pet/#organization" }
+      }
     ],
   };
 
