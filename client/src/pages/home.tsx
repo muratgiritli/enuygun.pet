@@ -683,7 +683,10 @@ export default function Home() {
         </section>
 
         <section className="px-4 mt-8" aria-label="Konum ve iletişim">
-          <h2 className="text-lg font-bold text-foreground mb-3" data-testid="text-contact-title">Konum & İletişim</h2>
+          <div className="flex items-center justify-between mb-3">
+            <h2 className="text-lg font-bold text-foreground" data-testid="text-contact-title">Konum & İletişim</h2>
+            <Link href="/iletisim" className="text-xs text-primary font-medium" data-testid="link-iletisim">Tümü →</Link>
+          </div>
           <Card className="border border-card-border">
             <div className="p-4">
               <div className="flex items-start gap-3 mb-4">
