@@ -307,7 +307,10 @@ export default function KeywordPage() {
     if (data) {
       const title = `${data.keyword} Samsun Atakum | EnuygunPet Gross Market`;
       document.title = title;
-      const desc = `Samsun Atakum'da ${data.keyword} için EnuygunPet Gross Market. En uygun fiyat, geniş stok. Haftanın her günü 09:00-21:00 açık. WhatsApp ile hemen bilgi alın.`;
+      const isBreedPage = detectBreed(data.keyword);
+      const desc = isBreedPage
+        ? `${data.keyword} bakım rehberi: beslenme, sağlık ve ihtiyaçları. EnuygunPet Gross Market Samsun Atakum'da ırka özel mama ve aksesuar. Haftanın her günü 09:00-21:00.`
+        : `Samsun Atakum'da ${data.keyword} için EnuygunPet Gross Market. En uygun fiyat, geniş stok. Haftanın her günü 09:00-21:00 açık. WhatsApp ile hemen bilgi alın.`;
       const imgUrl = pickImage(data.keyword);
 
       const setMeta = (sel: string, attr: string, val: string) => {
@@ -353,6 +356,7 @@ export default function KeywordPage() {
   const imgUrl = pickImage(data.keyword);
   const imgAlt = `${data.keyword} - Samsun Atakum EnuygunPet Petshop Gross Market`;
   const priceData = generateProductPrice(data.keyword);
+  const isBreedPage = detectBreed(data.keyword);
 
   const schema = {
     "@context": "https://schema.org",
