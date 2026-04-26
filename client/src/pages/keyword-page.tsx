@@ -305,9 +305,11 @@ export default function KeywordPage() {
 
   useEffect(() => {
     if (data) {
-      const title = `${data.keyword} Samsun Atakum | EnuygunPet Gross Market`;
-      document.title = title;
       const isBreedPage = detectBreed(data.keyword);
+      const title = isBreedPage
+        ? `Konu: ${data.keyword} satın almak istiyorum | EnuygunPet Gross Market`
+        : `${data.keyword} Samsun Atakum | EnuygunPet Gross Market`;
+      document.title = title;
       const desc = isBreedPage
         ? `${data.keyword} bakım rehberi: beslenme, sağlık ve ihtiyaçları. EnuygunPet Gross Market Samsun Atakum'da ırka özel mama ve aksesuar. Haftanın her günü 09:00-21:00.`
         : `Samsun Atakum'da ${data.keyword} için EnuygunPet Gross Market. En uygun fiyat, geniş stok. Haftanın her günü 09:00-21:00 açık. WhatsApp ile hemen bilgi alın.`;
@@ -544,6 +546,22 @@ export default function KeywordPage() {
         <h1 className="text-xl font-bold text-foreground mb-4 leading-tight" data-testid="text-keyword-title">
           {data.keyword} — Samsun Atakum
         </h1>
+
+        {isBreedPage && (
+          <div
+            className="flex items-center gap-3 mb-5 rounded-xl border-2 border-red-500 bg-red-50 dark:bg-red-950/40 px-4 py-3"
+            data-testid="notice-no-live-animal"
+            role="alert"
+          >
+            <span className="relative flex h-3 w-3 shrink-0">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-500 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-3 w-3 bg-red-600"></span>
+            </span>
+            <p className="text-xs font-bold text-red-700 dark:text-red-400 leading-snug uppercase tracking-wide">
+              Mağazamızda canlı hayvan cinsi satılmamaktadır — bu konu için aramayınız.
+            </p>
+          </div>
+        )}
 
         <div className="mb-5 rounded-xl overflow-hidden border border-border">
           <img
