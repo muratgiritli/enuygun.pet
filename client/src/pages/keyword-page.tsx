@@ -35,6 +35,44 @@ interface KeywordData {
   related: Array<{ keyword: string; slug: string }>;
 }
 
+const BREED_TERMS = [
+  "golden retriever","labrador","labrador retriever","husky","sibirya kurdu",
+  "yorkshire","yorkshire terrier","yorkie","chihuahua","pomeranian","pom",
+  "maltese","maltez","beagle","rottweiler","doberman","dobermann",
+  "alman çoban","alman coban","german shepherd","border collie","border koli",
+  "shih tzu","poodle","pudel","jack russell","jack russel","cocker spaniel","cocker",
+  "boxer köpek","boxer kopek","bulldog","ingiliz bulldog","fransız bulldog","fransiz bulldog",
+  "dachshund","daksund","dalmaçyalı","dalmacyali","dalmatian",
+  "chow chow","akita","samoyed","bernese","berner","bernese mountain",
+  "golden","labrador retriever","belgian malinois","malinois","kangal",
+  "british shorthair","british short hair","scottish fold","scottish straight",
+  "iran kedisi","pers kedisi","persian","siamese","siyam kedisi",
+  "maine coon","maine kun","bengal kedisi","ragdoll","russian blue","rus mavisi",
+  "sphynx","sfenks","ankara kedisi","türk angora","turk angora","turkish angora",
+  "türk van","turk van","turkish van","van kedisi","tekir kedi",
+  "norveç orman kedisi","norvec orman","norveç orman",
+  "hollanda tavşanı","hollanda tavsan","rex tavşanı","rex tavsan",
+  "angora tavşanı","angora tavsan","lop tavşanı","lop tavsan","dwarf tavşan",
+  "hamster","altın hamster","altin hamster","cüce hamster","cuce hamster",
+  "roborovski","campbell hamster","chinchilla","şinşilla","sinşilla","kobay",
+  "gine domuzu","guinea pig","degu","agouti",
+  "agapornis","forpus","cennet papağanı","cennet papagani",
+  "sultan papağanı","sultan papagani","jako papağanı","jako papagani",
+  "amazon papağanı","amazon papagani","kakadu","macaw","ara papağanı",
+  "conure","kakariki","lori","rosella","nymphicus","nim",
+  "iguana","leopar gecko","leopar kertenkele","kral yılanı","kral yilani",
+  "sakallı ejder","sakalı ejder","ball python","kral piton","boa","corn snake",
+  "kaplumbağa","kaplumbaga","su kaplumbağası","box kaplumbağa",
+  "betta balığı","betta baligi","oscar balığı","oscar baligi","koi","japon balığı",
+  "altın balık","altin balik","goldfish","discus","akvaryum balık",
+  "tavşan ırkı","tavsan irki","kedi ırkı","kedi irki","köpek ırkı","kopek irki",
+];
+
+function detectBreed(keyword: string): boolean {
+  const kw = keyword.toLowerCase();
+  return BREED_TERMS.some(t => kw.includes(t));
+}
+
 function generateContent(keyword: string) {
   const kw = keyword.toLowerCase();
   const isKediMama = kw.includes("kedi") && kw.includes("mama");
@@ -47,6 +85,7 @@ function generateContent(keyword: string) {
   const isOyuncak = kw.includes("oyuncak");
   const isTuvalet = kw.includes("tuvalet");
   const isYatak = kw.includes("yatak");
+  const isBreed = detectBreed(keyword);
 
   let article = "";
   let faqs: Array<{ q: string; a: string }> = [];
@@ -146,6 +185,70 @@ Haftanın her günü 09:00-21:00 saatleri arasında Atakum'da hizmetinizdeyiz.`;
       { q: `${keyword} ne sıklıkla değiştirilmeli?`, a: `Oyuncaklar yıprandığında veya hasar gördüğünde değiştirilmelidir. Hasarlı oyuncaklar hayvan güvenliğini tehdit edebilir.` },
       { q: `Hangi oyuncak türü daha uzun ömürlüdür?`, a: `Kauçuk ve dayanıklı plastik malzemeden üretilen oyuncaklar daha uzun ömürlüdür. Mağazamızda farklı dayanıklılık seviyelerinde seçenekler sunuyoruz.` },
       { q: `${keyword} fiyatı nedir?`, a: `Ürün fiyatları için mağazamızı arayabilir veya WhatsApp'tan bilgi alabilirsiniz.` },
+    ];
+  } else if (isBreed) {
+    const isKopekBreed = kw.includes("köpek") || kw.includes("kopek") ||
+      ["golden","labrador","husky","yorkshire","yorkie","chihuahua","pomeranian","maltese","maltez","beagle",
+       "rottweiler","doberman","alman çoban","alman coban","border collie","border koli","shih tzu","poodle",
+       "pudel","jack russell","jack russel","cocker","boxer","bulldog","dachshund","daksund","dalmaçyalı",
+       "dalmacyali","dalmatian","chow chow","akita","samoyed","bernese","berner","malinois","kangal",
+       "sibirya kurdu"].some(t => kw.includes(t));
+    const isKediBreed = kw.includes("kedi") || kw.includes("cat") ||
+      ["british shorthair","scottish fold","scottish straight","iran kedisi","pers kedisi","persian",
+       "siamese","siyam","maine coon","maine kun","bengal","ragdoll","russian blue","rus mavisi","sphynx",
+       "sfenks","ankara kedisi","türk angora","turk angora","türk van","turk van","van kedisi",
+       "norveç orman"].some(t => kw.includes(t));
+    const isTavsanBreed = kw.includes("tavşan") || kw.includes("tavsan") ||
+      ["hollanda","rex tavş","lop tavş","angora tavş","dwarf tavş"].some(t => kw.includes(t));
+
+    let careType = "evcil hayvan";
+    let feedingNote = "Irkına ve yaşına uygun, kaliteli mamalar tercih edilmeli; besin değeri yüksek, koruyucu katkı maddelerinden arındırılmış ürünler önceliklendirilmelidir.";
+    let vetNote = "İlk hafta içinde veteriner kontrolü yapılması, parazit ve aşı takviminin oluşturulması önerilir.";
+    let careNote = "Tüy yapısı ve aktivite düzeyine uygun düzenli bakım rutini oluşturulmalıdır.";
+
+    if (isKopekBreed) {
+      careType = "köpek";
+      feedingNote = "Irkınıza özel köpek maması seçimi büyük önem taşır. Büyük ırklar için büyük taneli, küçük ırklar için küçük taneli formüller mevcuttur. Yavru dönemde yüksek protein içerikli mamalar önerilir.";
+      vetNote = "İlk aylarda karma aşılar, kuduz ve iç-dış parazit tedavisi düzenli olarak yapılmalıdır. Kısırlaştırma uygun yaşta planlanmalıdır.";
+      careNote = "Tüy yapısına göre günlük ya da haftalık fırçalama, düzenli tırnak kesimi ve kulak temizliği bakım rutinini tamamlar.";
+    } else if (isKediBreed) {
+      careType = "kedi";
+      feedingNote = "Kedi maması seçiminde yaş, aktivite düzeyi ve ırk özellikleri belirleyicidir. Uzun tüylü ırklar için tüy yumağı önleyici formüller tercih edilebilir. Taze su erişimi her zaman sağlanmalıdır.";
+      vetNote = "Yılda en az bir kez veteriner kontrolü, düzenli iç-dış parazit tedavisi ve aşı takibini ihmal etmemek önemlidir.";
+      careNote = "Uzun tüylü ırklar günlük taranmalı, tırnak kontrolü ve diş sağlığı da rutin bakımın parçası olmalıdır.";
+    } else if (isTavsanBreed) {
+      careType = "tavşan";
+      feedingNote = "Temel besin kaynağı kaliteli kuru ot (hay) olmalıdır. Buna ek olarak pelet mama ve taze sebzeler (marul, maydanoz, roka) verilebilir. Tohum ve meyve miktarı sınırlı tutulmalıdır.";
+      vetNote = "Miksomatoz ve viral hemorajik hastalık aşıları düzenli yapılmalıdır. Dişlerin aşınması takip edilmeli, gerekirse veteriner kontrolü sağlanmalıdır.";
+      careNote = "Geniş bir yaşam alanı ve günlük en az birkaç saatlik serbest dolaşım süresi sağlanmalıdır.";
+    }
+
+    article = `${keyword}, doğru bakım ve beslenmeyle uzun yıllar sağlıklı bir yaşam sürebilen bir ${careType} ırkıdır. Yeni ev arkadaşınızı aldıktan sonra öncelikle ona sakin, güvenli bir alan oluşturmanız uyum sürecini kolaylaştırır.
+
+Beslenme: ${feedingNote}
+
+Sağlık: ${vetNote}
+
+Bakım: ${careNote}
+
+EnuygunPet Gross Market olarak Samsun Atakum'da ${keyword} sahiplerine özel mama, aksesuar ve bakım ürünleri konusunda ücretsiz danışmanlık sunuyoruz. Personelimiz ırka özel ürün seçiminde size rehberlik eder. Haftanın her günü 09:00-21:00 saatleri arasında Atatürk Bulvarı No:113 Atakum adresimizde sizi bekliyoruz.`;
+    faqs = [
+      {
+        q: `${keyword} nasıl beslenmeli?`,
+        a: feedingNote + " EnuygunPet Gross Market'te ırka uygun pek çok mama seçeneği bulunmaktadır; uzman personelimizden öneri alabilirsiniz."
+      },
+      {
+        q: `${keyword} için hangi bakım rutini önerilir?`,
+        a: careNote + " Mağazamızda tıraş, fırça, tırnak kesici ve diş bakım ürünleri gibi tüm bakım ekipmanlarını bulabilirsiniz."
+      },
+      {
+        q: `${keyword} ilk veteriner kontrolü ne zaman yapılmalı?`,
+        a: vetNote + " Samsun'da veteriner önerisi için mağazamızı ziyaret edebilirsiniz."
+      },
+      {
+        q: `${keyword} için hangi aksesuar ve malzemeler gereklidir?`,
+        a: `${careType === "köpek" ? "Tasma, göğüs koşumu, mama kabı, su kabı, yatak ve oyuncak" : careType === "kedi" ? "Kedi kumu, kum kabı, tırmalama tahtası, mama kabı, su kabı ve oyuncak" : careType === "tavşan" ? "Kafes ya da kapalı oyun alanı, ot tutucu, mama kabı, su şişesi ve oyuncak" : "Uygun kafes ya da yaşam alanı, mama kabı, su kabı ve oyuncak"} başlangıç için temel ekipmanlardır. EnuygunPet Gross Market'te tüm bu ürünleri bulabilirsiniz.`
+      },
     ];
   } else {
     article = `Samsun Atakum'da ${keyword} arıyorsanız EnuygunPet Gross Market doğru adresinizdir. Samsun'un en büyük petshop gross marketi olarak binlerce evcil hayvan ürününü tek çatı altında sunuyoruz.
