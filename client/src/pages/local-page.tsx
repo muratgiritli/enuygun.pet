@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useParams, Link } from "wouter";
 import { useQuery } from "@tanstack/react-query";
+import { useTrack } from "@/hooks/use-track";
 
 import { Phone, MessageCircle, MapPin, ArrowLeft, ChevronRight, BookOpen, Store } from "lucide-react";
 import InternalLinksSection from "@/components/internal-links";
@@ -37,6 +38,7 @@ type LocalData = {
 
 export default function LocalPage() {
   const { slug } = useParams<{ slug: string }>();
+  useTrack(`local/${slug || ""}`, slug || "");
 
   const { data: page, isLoading, isError } = useQuery<LocalData>({
     queryKey: ["/api/local", slug],

@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useRoute, Link } from "wouter";
 import { useQuery } from "@tanstack/react-query";
+import { useTrack } from "@/hooks/use-track";
 import { Phone, MapPin, Clock, ChevronRight, AlertTriangle, Stethoscope, ShoppingBag } from "lucide-react";
 import InternalLinksSection, { detectType } from "@/components/internal-links";
 import { SiWhatsapp } from "react-icons/si";
@@ -182,6 +183,8 @@ function generateHealthContent(kw: string, animalTr: string, category: string) {
 }
 
 export default function HealthPage() {
+  const [, params] = useRoute("/:prefix/:slug");
+  useTrack(params?.slug || "", params?.slug || "");
   const routePatterns: Array<[string, string]> = [
     ["kedi", "/:prefix/:slug"],
     ["kopek", "/:prefix/:slug"],

@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useParams, Link } from "wouter";
 import { useQuery } from "@tanstack/react-query";
+import { useTrack } from "@/hooks/use-track";
 
 import { Phone, MessageCircle, MapPin, ArrowLeft, BookOpen, Tag, ChevronRight, Star } from "lucide-react";
 import InternalLinksSection, { detectType } from "@/components/internal-links";
@@ -25,6 +26,7 @@ type CategoryData = {
 
 export default function CategoryPage() {
   const { slug } = useParams<{ slug: string }>();
+  useTrack(slug || "", slug || "");
 
   const { data: cat, isLoading, isError } = useQuery<CategoryData>({
     queryKey: ["/api/category", slug],

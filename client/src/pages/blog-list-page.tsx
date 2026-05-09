@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { Link } from "wouter";
 import { useQuery } from "@tanstack/react-query";
+import { useTrack } from "@/hooks/use-track";
 
 import { BookOpen, ChevronRight, ArrowLeft, Cat, Dog, Bird, Sparkles } from "lucide-react";
 import { Skeleton } from "@/components/ui/skeleton";
@@ -37,6 +38,7 @@ const CAT_ORDER = ["kedi", "kopek", "kus", "genel"];
 type BlogSummary = { slug: string; title: string; cat: string; desc: string };
 
 export default function BlogListPage() {
+  useTrack("blog", "Blog Listesi");
   const { data: posts, isLoading } = useQuery<BlogSummary[]>({
     queryKey: ["/api/blog"],
   });

@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useParams, Link } from "wouter";
 import { useQuery } from "@tanstack/react-query";
+import { useTrack } from "@/hooks/use-track";
 
 import { Phone, MessageCircle, MapPin, ArrowLeft, BookOpen, Tag, ChevronRight } from "lucide-react";
 import InternalLinksSection, { detectType } from "@/components/internal-links";
@@ -32,6 +33,7 @@ type BlogPost = {
 
 export default function BlogPage() {
   const { slug } = useParams<{ slug: string }>();
+  useTrack(`blog/${slug || ""}`, `Blog: ${slug || ""}`);
 
   const { data: post, isLoading, isError } = useQuery<BlogPost>({
     queryKey: ["/api/blog", slug],

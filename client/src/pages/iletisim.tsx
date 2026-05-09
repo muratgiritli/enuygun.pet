@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { Link } from "wouter";
+import { useTrack } from "@/hooks/use-track";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import {
@@ -100,6 +101,7 @@ const schema = {
 };
 
 export default function IletisimPage() {
+  useTrack("iletisim", "İletişim Sayfası");
   useEffect(() => {
     document.title = "İletişim | EnuygunPet – Samsun Atakum Petshop Gross Market";
     setMeta("description", "EnuygunPet Gross Market iletişim bilgileri. Adres: Atatürk 3. Kısım Bulvarı No:113 Atakum/Samsun. Tel: 0542 211 49 44. Haftanın 7 günü 09:00-21:00 açık.");
