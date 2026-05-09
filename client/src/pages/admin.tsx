@@ -1,359 +1,434 @@
 import { useState, useEffect } from "react";
-import { Card } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { BarChart2, Users, MapPin, Smartphone, Globe, Clock, LogOut, RefreshCw } from "lucide-react";
+import { useQuery } from "@tanstack/react-query";
+import { queryClient } from "@/lib/queryClient";
 
 const TOKEN_KEY = "ep_admin_token";
 
-interface AnalyticsData {
-  total: number;
-  topKeywords: { name: string; count: number }[];
-  topCities: { name: string; count: number }[];
-  devices: { name: string; count: number }[];
-  referrers: { name: string; count: number }[];
-  daily: { date: string; count: number }[];
-  recent: { ts: number; keyword: string; city: string; device: string; referrer: string }[];
+function setMeta(name: string, content: string) {
+  let el = document.querySelector(`meta[name="${name}"]`) as HTMLMetaElement;
+  if (!el) { el = document.createElement("meta"); el.name = name; document.head.appendChild(el); }
+  el.content = content;
 }
 
-function LoginScreen({ onLogin }: { onLogin: (token: string) => void }) {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
-  const [loading, setLoading] = useState(false);
+function fmtDuration(sec: number): string {
+  if (!sec) return "—";
+  if (sec < 60) return `${sec}sn`;
+  return `${Math.floor(sec / 60)}dk ${sec % 60}sn`;
+}
 
-  const submit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setLoading(true);
-    setError("");
-    try {
-      const res = await fetch("/api/analytics/login", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ username, password }),
-      });
-      if (res.ok) {
-        const { token } = await res.json();
-        localStorage.setItem(TOKEN_KEY, token);
-        onLogin(token);
-      } else {
-        setError("Kullanıcı adı veya şifre hatalı.");
-      }
-    } catch {
-      setError("Sunucuya bağlanılamadı.");
-    }
-    setLoading(false);
-  };
+function fmtTime(ts: number): string {
+  return new Date(ts).toLocaleString("tr-TR", { day: "2-digit", month: "2-digit", hour: "2-digit", minute: "2-digit" });
+}
 
+function typeInfo(t: string) {
+  if (t === "whatsapp") return { label: "WhatsApp", color: "bg-green-100 text-green-700", icon: "💬" };
+  if (t === "phone") return { label: "Telefon", color: "bg-blue-100 text-blue-700", icon: "📞" };
+  return { label: "Yol Tarifi", color: "bg-amber-100 text-amber-700", icon: "📍" };
+}
+
+function deviceIcon(d: string) {
+  if (d === "Mobil") return "📱";
+  if (d === "Tablet") return "📲";
+  return "💻";
+}
+
+function referrerIcon(r: string) {
+  if (r === "Google") return "🔍";
+  if (r === "Instagram") return "📸";
+  if (r === "Facebook") return "👥";
+  if (r === "Twitter/X") return "𝕏";
+  if (r === "YouTube") return "▶";
+  if (r === "Direkt") return "🔗";
+  return "🌐";
+}
+
+function StatCard({ label, value, color }: { label: string; value: string | number; color?: string }) {
   return (
-    <div className="min-h-screen bg-background flex items-center justify-center px-4">
-      <Card className="w-full max-w-sm p-6 border border-border">
-        <div className="flex items-center gap-2 mb-6">
-          <div className="w-8 h-8 rounded-full bg-primary flex items-center justify-center">
-            <span className="text-white font-bold text-sm">e</span>
-          </div>
-          <div>
-            <p className="text-sm font-bold text-primary">EnuygunPet</p>
-            <p className="text-[10px] text-muted-foreground">Admin Paneli</p>
-          </div>
-        </div>
-        <form onSubmit={submit} className="space-y-3">
-          <div>
-            <label className="text-xs font-semibold text-foreground block mb-1">Kullanıcı Adı</label>
-            <input
-              type="text"
-              value={username}
-              onChange={e => setUsername(e.target.value)}
-              className="w-full border border-border rounded-lg px-3 py-2 text-sm bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary/40"
-              data-testid="input-username"
-              autoComplete="username"
-            />
-          </div>
-          <div>
-            <label className="text-xs font-semibold text-foreground block mb-1">Şifre</label>
-            <input
-              type="password"
-              value={password}
-              onChange={e => setPassword(e.target.value)}
-              className="w-full border border-border rounded-lg px-3 py-2 text-sm bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary/40"
-              data-testid="input-password"
-              autoComplete="current-password"
-            />
-          </div>
-          {error && <p className="text-xs text-red-600">{error}</p>}
-          <Button type="submit" className="w-full" disabled={loading} data-testid="button-login">
-            {loading ? "Giriş yapılıyor..." : "Giriş Yap"}
-          </Button>
-        </form>
-      </Card>
+    <div className={`rounded-2xl p-4 shadow-sm border ${color || "bg-white border-gray-100"}`}>
+      <p className="text-xs text-gray-500 font-medium uppercase tracking-wide">{label}</p>
+      <p className="text-3xl font-bold text-gray-800 mt-1">{value}</p>
     </div>
   );
 }
 
-function StatCard({ icon, label, value, sub }: { icon: React.ReactNode; label: string; value: string | number; sub?: string }) {
-  return (
-    <Card className="p-4 border border-border">
-      <div className="flex items-center gap-2 mb-1">
-        <span className="text-primary">{icon}</span>
-        <span className="text-xs text-muted-foreground">{label}</span>
-      </div>
-      <p className="text-2xl font-bold text-foreground">{value}</p>
-      {sub && <p className="text-[10px] text-muted-foreground mt-0.5">{sub}</p>}
-    </Card>
-  );
-}
-
-function TopList({ items, color = "bg-primary" }: { items: { name: string; count: number }[]; color?: string }) {
-  if (!items.length) return <p className="text-xs text-muted-foreground">Veri yok</p>;
-  const max = items[0].count;
+function BarChart({ data, color = "bg-green-500" }: { data: { name: string; count: number }[]; color?: string }) {
+  if (!data || !data.length) return <p className="text-gray-400 text-sm py-4 text-center">Veri yok</p>;
+  const max = Math.max(...data.map(d => d.count));
   return (
     <div className="space-y-2">
-      {items.map((item, i) => (
-        <div key={i}>
-          <div className="flex justify-between text-xs mb-0.5">
-            <span className="text-foreground font-medium truncate max-w-[70%]">{item.name}</span>
-            <span className="text-muted-foreground font-semibold">{item.count}</span>
+      {data.map(d => (
+        <div key={d.name} className="flex items-center gap-2">
+          <span className="text-xs text-gray-600 w-28 truncate shrink-0">{d.name}</span>
+          <div className="flex-1 bg-gray-100 rounded-full h-5 overflow-hidden">
+            <div className={`h-5 rounded-full ${color} transition-all`} style={{ width: `${(d.count / max) * 100}%` }} />
           </div>
-          <div className="h-1.5 bg-muted rounded-full overflow-hidden">
-            <div className={`h-full ${color} rounded-full`} style={{ width: `${(item.count / max) * 100}%` }} />
-          </div>
+          <span className="text-xs font-semibold text-gray-700 w-8 text-right">{d.count}</span>
         </div>
       ))}
     </div>
   );
 }
 
-function Dashboard({ token, onLogout }: { token: string; onLogout: () => void }) {
-  const [data, setData] = useState<AnalyticsData | null>(null);
-  const [period, setPeriod] = useState("week");
-  const [loading, setLoading] = useState(true);
-  const [lastUpdated, setLastUpdated] = useState<Date | null>(null);
-
-  const load = async () => {
-    setLoading(true);
-    try {
-      const res = await fetch(`/api/analytics/data?period=${period}`, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
-      if (res.status === 401) { onLogout(); return; }
-      setData(await res.json());
-      setLastUpdated(new Date());
-    } catch {}
-    setLoading(false);
-  };
-
-  useEffect(() => { load(); }, [period]);
-
-  const deviceTotal = data?.devices.reduce((a, b) => a + b.count, 0) || 1;
-
+function DailyChart({ data }: { data: { date: string; count: number }[] }) {
+  if (!data || !data.length) return null;
+  const max = Math.max(...data.map(d => d.count), 1);
   return (
-    <div className="min-h-screen bg-background text-foreground">
-      <header className="sticky top-0 z-40 bg-background/95 backdrop-blur border-b border-border">
-        <div className="max-w-5xl mx-auto px-4 h-14 flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <div className="w-7 h-7 rounded-full bg-primary flex items-center justify-center">
-              <span className="text-white font-bold text-xs">e</span>
-            </div>
-            <div>
-              <p className="text-sm font-bold text-primary">EnuygunPet</p>
-              <p className="text-[10px] text-muted-foreground leading-none">Trafik Analitik</p>
-            </div>
-          </div>
-          <div className="flex items-center gap-2">
-            {lastUpdated && (
-              <span className="text-[10px] text-muted-foreground hidden sm:block">
-                {lastUpdated.toLocaleTimeString("tr-TR")}
-              </span>
-            )}
-            <Button variant="outline" size="sm" onClick={load} disabled={loading} className="h-8 gap-1 text-xs">
-              <RefreshCw className={`w-3 h-3 ${loading ? "animate-spin" : ""}`} />
-              Yenile
-            </Button>
-            <Button variant="outline" size="sm" onClick={onLogout} className="h-8 gap-1 text-xs text-red-600 border-red-200 hover:bg-red-50">
-              <LogOut className="w-3 h-3" />
-              Çıkış
-            </Button>
-          </div>
+    <div className="flex items-end gap-1 h-28 pt-2">
+      {data.map(d => (
+        <div key={d.date} className="flex flex-col items-center flex-1 gap-1">
+          <div
+            className="w-full bg-green-500 rounded-t"
+            style={{ height: `${Math.max((d.count / max) * 80, 2)}px` }}
+            title={`${d.date}: ${d.count} ziyaret`}
+          />
+          <span className="text-[9px] text-gray-400 whitespace-nowrap">{d.date}</span>
         </div>
-      </header>
+      ))}
+    </div>
+  );
+}
 
-      <main className="max-w-5xl mx-auto px-4 py-5 space-y-5">
-        <div className="flex items-center gap-2 flex-wrap">
-          {[
-            { key: "today", label: "Bugün" },
-            { key: "week", label: "Bu Hafta" },
-            { key: "month", label: "Bu Ay" },
-            { key: "all", label: "Tümü" },
-          ].map(p => (
-            <button
-              key={p.key}
-              onClick={() => setPeriod(p.key)}
-              className={`px-3 py-1.5 rounded-lg text-xs font-semibold border transition-colors ${
-                period === p.key
-                  ? "bg-primary text-white border-primary"
-                  : "bg-background text-muted-foreground border-border hover:border-primary hover:text-primary"
-              }`}
-              data-testid={`button-period-${p.key}`}
-            >
-              {p.label}
-            </button>
-          ))}
-        </div>
-
-        {loading && !data && (
-          <div className="text-center text-sm text-muted-foreground py-12">Yükleniyor...</div>
-        )}
-
-        {data && (
-          <>
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-              <StatCard icon={<Users className="w-4 h-4" />} label="Toplam Ziyaret" value={data.total.toLocaleString("tr-TR")} />
-              <StatCard icon={<Smartphone className="w-4 h-4" />} label="Mobil Oran"
-                value={`%${Math.round(((data.devices.find(d => d.name === "Mobil")?.count || 0) / deviceTotal) * 100)}`}
-                sub="ziyaretçi oranı"
-              />
-              <StatCard icon={<MapPin className="w-4 h-4" />} label="1. Şehir"
-                value={data.topCities[0]?.name || "—"}
-                sub={`${data.topCities[0]?.count || 0} ziyaret`}
-              />
-              <StatCard icon={<Globe className="w-4 h-4" />} label="1. Kaynak"
-                value={data.referrers[0]?.name || "—"}
-                sub={`${data.referrers[0]?.count || 0} ziyaret`}
-              />
-            </div>
-
-            {data.daily.length > 0 && (
-              <Card className="p-4 border border-border">
-                <h3 className="text-sm font-bold text-foreground mb-3 flex items-center gap-2">
-                  <BarChart2 className="w-4 h-4 text-primary" />
-                  Günlük Ziyaret
-                </h3>
-                <div className="flex items-end gap-1 h-24">
-                  {data.daily.map((d, i) => {
-                    const maxVal = Math.max(...data.daily.map(x => x.count));
-                    return (
-                      <div key={i} className="flex-1 flex flex-col items-center gap-1">
-                        <div
-                          className="w-full bg-primary/80 rounded-t"
-                          style={{ height: `${Math.max(4, (d.count / maxVal) * 88)}px` }}
-                          title={`${d.date}: ${d.count} ziyaret`}
-                        />
-                        <span className="text-[8px] text-muted-foreground" style={{ writingMode: "vertical-rl", transform: "rotate(180deg)" }}>
-                          {d.date}
-                        </span>
-                      </div>
-                    );
-                  })}
-                </div>
-              </Card>
-            )}
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <Card className="p-4 border border-border">
-                <h3 className="text-sm font-bold text-foreground mb-3">En Çok Ziyaret Edilen Kelimeler</h3>
-                <TopList items={data.topKeywords} color="bg-primary" />
-              </Card>
-              <Card className="p-4 border border-border">
-                <h3 className="text-sm font-bold text-foreground mb-3 flex items-center gap-2">
-                  <MapPin className="w-3.5 h-3.5 text-primary" /> Şehirler
-                </h3>
-                <TopList items={data.topCities} color="bg-amber-500" />
-              </Card>
-            </div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <Card className="p-4 border border-border">
-                <h3 className="text-sm font-bold text-foreground mb-3 flex items-center gap-2">
-                  <Smartphone className="w-3.5 h-3.5 text-primary" /> Cihaz Türü
-                </h3>
-                <div className="space-y-2">
-                  {data.devices.map((d, i) => (
-                    <div key={i} className="flex items-center justify-between">
-                      <div className="flex items-center gap-2">
-                        <span className="text-lg">
-                          {d.name === "Mobil" ? "📱" : d.name === "Tablet" ? "📲" : "💻"}
-                        </span>
-                        <span className="text-sm font-medium text-foreground">{d.name}</span>
-                      </div>
-                      <div className="text-right">
-                        <span className="text-sm font-bold text-foreground">{d.count}</span>
-                        <span className="text-xs text-muted-foreground ml-1">
-                          (%{Math.round((d.count / deviceTotal) * 100)})
-                        </span>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </Card>
-              <Card className="p-4 border border-border">
-                <h3 className="text-sm font-bold text-foreground mb-3 flex items-center gap-2">
-                  <Globe className="w-3.5 h-3.5 text-primary" /> Trafik Kaynakları
-                </h3>
-                <TopList items={data.referrers} color="bg-blue-500" />
-              </Card>
-            </div>
-
-            <Card className="p-4 border border-border">
-              <h3 className="text-sm font-bold text-foreground mb-3 flex items-center gap-2">
-                <Clock className="w-3.5 h-3.5 text-primary" /> Son Ziyaretler
-              </h3>
-              <div className="overflow-x-auto">
-                <table className="w-full text-xs">
-                  <thead>
-                    <tr className="border-b border-border">
-                      <th className="text-left py-2 pr-3 text-muted-foreground font-semibold">Saat</th>
-                      <th className="text-left py-2 pr-3 text-muted-foreground font-semibold">Anahtar Kelime</th>
-                      <th className="text-left py-2 pr-3 text-muted-foreground font-semibold">Şehir</th>
-                      <th className="text-left py-2 pr-3 text-muted-foreground font-semibold">Cihaz</th>
-                      <th className="text-left py-2 text-muted-foreground font-semibold">Kaynak</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {data.recent.map((h, i) => (
-                      <tr key={i} className="border-b border-border/50 hover:bg-muted/30">
-                        <td className="py-1.5 pr-3 text-muted-foreground whitespace-nowrap">
-                          {new Date(h.ts).toLocaleTimeString("tr-TR", { hour: "2-digit", minute: "2-digit" })}
-                          <br />
-                          <span className="text-[10px]">{new Date(h.ts).toLocaleDateString("tr-TR", { day: "2-digit", month: "2-digit" })}</span>
-                        </td>
-                        <td className="py-1.5 pr-3 text-foreground max-w-[180px] truncate font-medium">{h.keyword}</td>
-                        <td className="py-1.5 pr-3 text-muted-foreground">{h.city}</td>
-                        <td className="py-1.5 pr-3">
-                          <span className="px-1.5 py-0.5 rounded text-[10px] font-semibold bg-muted text-muted-foreground">
-                            {h.device === "Mobil" ? "📱" : h.device === "Tablet" ? "📲" : "💻"} {h.device}
-                          </span>
-                        </td>
-                        <td className="py-1.5">
-                          <span className={`px-1.5 py-0.5 rounded text-[10px] font-semibold ${
-                            h.referrer === "Google" ? "bg-blue-100 text-blue-700" :
-                            h.referrer === "Instagram" ? "bg-pink-100 text-pink-700" :
-                            h.referrer === "Direkt" ? "bg-green-100 text-green-700" :
-                            "bg-muted text-muted-foreground"
-                          }`}>
-                            {h.referrer}
-                          </span>
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-            </Card>
-          </>
-        )}
-      </main>
+function Section({ title, children }: { title: string; children: React.ReactNode }) {
+  return (
+    <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-4">
+      <h2 className="font-bold text-gray-700 mb-3 text-sm uppercase tracking-wide">{title}</h2>
+      {children}
     </div>
   );
 }
 
 export default function AdminPage() {
-  const [token, setToken] = useState<string | null>(() => localStorage.getItem(TOKEN_KEY));
+  const [token, setToken] = useState<string>(() => localStorage.getItem(TOKEN_KEY) || "");
+  const [loginUser, setLoginUser] = useState("");
+  const [loginPass, setLoginPass] = useState("");
+  const [loginError, setLoginError] = useState("");
+  const [period, setPeriod] = useState("week");
+  const [activeTab, setActiveTab] = useState<"overview" | "traffic" | "buttons" | "visitors">("overview");
 
-  const handleLogin = (t: string) => setToken(t);
-  const handleLogout = () => {
-    localStorage.removeItem(TOKEN_KEY);
-    setToken(null);
-  };
+  useEffect(() => {
+    document.title = "Admin | EnuygunPet Analytics";
+    setMeta("robots", "noindex, nofollow");
+  }, []);
 
-  if (!token) return <LoginScreen onLogin={handleLogin} />;
-  return <Dashboard token={token} onLogout={handleLogout} />;
+  async function handleLogin(e: React.FormEvent) {
+    e.preventDefault();
+    setLoginError("");
+    const r = await fetch("/api/analytics/login", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ username: loginUser, password: loginPass }),
+    });
+    if (r.ok) {
+      const { token: t } = await r.json();
+      localStorage.setItem(TOKEN_KEY, t);
+      setToken(t);
+    } else {
+      setLoginError("Kullanıcı adı veya şifre hatalı.");
+    }
+  }
+
+  const { data, isLoading } = useQuery<any>({
+    queryKey: ["/api/analytics/data", period],
+    queryFn: () =>
+      fetch(`/api/analytics/data?period=${period}`, {
+        headers: { Authorization: `Bearer ${token}` },
+      }).then(r => {
+        if (r.status === 401) { localStorage.removeItem(TOKEN_KEY); setToken(""); }
+        return r.json();
+      }),
+    enabled: !!token,
+    refetchInterval: 30000,
+  });
+
+  if (!token) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-green-50 to-amber-50 flex items-center justify-center p-4">
+        <form onSubmit={handleLogin} className="bg-white rounded-3xl shadow-lg p-8 w-full max-w-sm">
+          <div className="text-center mb-6">
+            <div className="text-4xl mb-2">🐾</div>
+            <h1 className="text-xl font-bold text-green-700">EnuygunPet Admin</h1>
+            <p className="text-sm text-gray-500">Analitik Paneli</p>
+          </div>
+          <input
+            data-testid="input-username"
+            type="text"
+            placeholder="Kullanıcı adı"
+            value={loginUser}
+            onChange={e => setLoginUser(e.target.value)}
+            className="w-full border rounded-xl px-4 py-3 mb-3 text-sm focus:outline-none focus:ring-2 focus:ring-green-400"
+          />
+          <input
+            data-testid="input-password"
+            type="password"
+            placeholder="Şifre"
+            value={loginPass}
+            onChange={e => setLoginPass(e.target.value)}
+            className="w-full border rounded-xl px-4 py-3 mb-3 text-sm focus:outline-none focus:ring-2 focus:ring-green-400"
+          />
+          {loginError && <p className="text-red-500 text-sm mb-3 text-center">{loginError}</p>}
+          <button
+            data-testid="button-login"
+            type="submit"
+            className="w-full bg-green-600 text-white rounded-xl py-3 font-semibold hover:bg-green-700 transition"
+          >
+            Giriş Yap
+          </button>
+        </form>
+      </div>
+    );
+  }
+
+  return (
+    <div className="min-h-screen bg-gray-50 pb-20">
+      {/* Header */}
+      <div className="bg-green-700 text-white px-4 py-4 sticky top-0 z-50 shadow">
+        <div className="max-w-6xl mx-auto flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <span className="text-xl">🐾</span>
+            <span className="font-bold text-sm">EnuygunPet Analytics</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <select
+              data-testid="select-period"
+              value={period}
+              onChange={e => {
+                setPeriod(e.target.value);
+                queryClient.invalidateQueries({ queryKey: ["/api/analytics/data"] });
+              }}
+              className="bg-green-600 text-white text-xs rounded-lg px-2 py-1 border border-green-500"
+            >
+              <option value="today">Bugün</option>
+              <option value="week">Son 7 gün</option>
+              <option value="month">Son 30 gün</option>
+              <option value="all">Tümü</option>
+            </select>
+            <button
+              data-testid="button-refresh"
+              onClick={() => queryClient.invalidateQueries({ queryKey: ["/api/analytics/data"] })}
+              className="text-xs bg-green-800 px-3 py-1 rounded-lg hover:bg-green-900"
+            >
+              🔄
+            </button>
+            <button
+              data-testid="button-logout"
+              onClick={() => { localStorage.removeItem(TOKEN_KEY); setToken(""); }}
+              className="text-xs bg-green-800 px-3 py-1 rounded-lg hover:bg-green-900"
+            >
+              Çıkış
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* Tabs */}
+      <div className="bg-white border-b sticky top-[60px] z-40 shadow-sm">
+        <div className="max-w-6xl mx-auto flex overflow-x-auto">
+          {(["overview", "traffic", "buttons", "visitors"] as const).map(tab => (
+            <button
+              key={tab}
+              data-testid={`tab-${tab}`}
+              onClick={() => setActiveTab(tab)}
+              className={`px-4 py-3 text-xs font-semibold whitespace-nowrap border-b-2 transition ${
+                activeTab === tab ? "border-green-600 text-green-700" : "border-transparent text-gray-500 hover:text-gray-700"
+              }`}
+            >
+              {tab === "overview" && "📊 Genel Bakış"}
+              {tab === "traffic" && "🔍 Trafik & Kaynak"}
+              {tab === "buttons" && "👆 Buton Tıklamaları"}
+              {tab === "visitors" && "👤 Ziyaretçiler"}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      <div className="max-w-6xl mx-auto px-4 pt-4 space-y-4">
+        {isLoading && (
+          <div className="text-center py-16 text-gray-400">
+            <div className="text-4xl animate-pulse mb-2">📊</div>
+            <p>Veriler yükleniyor...</p>
+          </div>
+        )}
+
+        {/* ── GENEL BAKIŞ ── */}
+        {data && activeTab === "overview" && (
+          <>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+              <StatCard label="Toplam Ziyaret" value={(data.total || 0).toLocaleString("tr-TR")} color="bg-green-50 border-green-200" />
+              <StatCard label="Tekil Ziyaretçi" value={(data.uniqueVisitors || 0).toLocaleString("tr-TR")} color="bg-blue-50 border-blue-200" />
+              <StatCard label="Ort. Sayfa Süresi" value={fmtDuration(data.avgDuration || 0)} color="bg-amber-50 border-amber-200" />
+              <StatCard label="Buton Tıklama" value={(data.buttons?.total || 0).toLocaleString("tr-TR")} color="bg-purple-50 border-purple-200" />
+            </div>
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+              <StatCard label="Oturum Sayısı" value={(data.uniqueSessions || 0).toLocaleString("tr-TR")} />
+              <StatCard label="Ort. Sayfa/Oturum" value={data.avgPagesPerSession || 0} />
+              <StatCard label="WhatsApp Tıklama" value={data.buttons?.breakdown?.find((b: any) => b.name === "WhatsApp")?.count || 0} />
+            </div>
+
+            <Section title="📈 Günlük Ziyaretçi">
+              <DailyChart data={data.daily || []} />
+            </Section>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <Section title="📱 Cihaz Tipi">
+                <BarChart data={data.devices || []} color="bg-green-500" />
+              </Section>
+              <Section title="🖥 İşletim Sistemi (Android / iPhone / Windows)">
+                <BarChart data={data.os || []} color="bg-blue-500" />
+              </Section>
+            </div>
+
+            <Section title="🌐 Tarayıcı (Chrome / Safari / Firefox)">
+              <BarChart data={data.browsers || []} color="bg-amber-500" />
+            </Section>
+
+            <Section title="📄 En Çok Ziyaret Edilen Sayfalar">
+              <BarChart data={(data.topKeywords || []).slice(0, 15)} color="bg-green-600" />
+            </Section>
+          </>
+        )}
+
+        {/* ── TRAFİK & KAYNAK ── */}
+        {data && activeTab === "traffic" && (
+          <>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <Section title="🔍 Trafik Kaynağı (Google / Instagram / Facebook / Direkt)">
+                <BarChart data={data.referrers || []} color="bg-blue-500" />
+              </Section>
+              <Section title="🏙 Şehir Dağılımı">
+                <BarChart data={data.topCities || []} color="bg-green-500" />
+              </Section>
+            </div>
+
+            {data.utmSources?.length > 0 && (
+              <Section title="📌 UTM Kaynak (Kampanya Linkleri)">
+                <BarChart data={data.utmSources} color="bg-purple-500" />
+              </Section>
+            )}
+            {data.utmCampaigns?.length > 0 && (
+              <Section title="🎯 UTM Kampanya">
+                <BarChart data={data.utmCampaigns} color="bg-amber-500" />
+              </Section>
+            )}
+
+            {(!data.utmSources?.length && !data.utmCampaigns?.length) && (
+              <div className="bg-amber-50 border border-amber-200 rounded-2xl p-6 text-center text-sm text-amber-700">
+                <p className="font-semibold mb-1">Henüz UTM verisi yok</p>
+                <p className="text-xs">Instagram/Facebook linklerinize <code className="bg-amber-100 px-1 rounded">?utm_source=instagram&utm_campaign=kampanya_adi</code> ekleyin.</p>
+              </div>
+            )}
+          </>
+        )}
+
+        {/* ── BUTON TIKLAMA ── */}
+        {data && activeTab === "buttons" && (
+          <>
+            <div className="grid grid-cols-3 gap-3">
+              {[
+                { name: "WhatsApp", icon: "💬", color: "bg-green-50 border-green-200" },
+                { name: "Telefon", icon: "📞", color: "bg-blue-50 border-blue-200" },
+                { name: "Yol Tarifi", icon: "📍", color: "bg-amber-50 border-amber-200" },
+              ].map(b => {
+                const found = data.buttons?.breakdown?.find((x: any) => x.name === b.name);
+                return (
+                  <div key={b.name} className={`rounded-2xl p-4 shadow-sm border text-center ${b.color}`}>
+                    <div className="text-3xl mb-1">{b.icon}</div>
+                    <div className="text-2xl font-bold text-gray-800">{found?.count || 0}</div>
+                    <div className="text-xs text-gray-500">{b.name}</div>
+                  </div>
+                );
+              })}
+            </div>
+
+            <Section title="📋 Son Buton Tıklamaları">
+              <div className="overflow-x-auto">
+                <table className="w-full text-xs">
+                  <thead>
+                    <tr className="border-b text-gray-500">
+                      <th className="text-left py-2 pr-3">Zaman</th>
+                      <th className="text-left py-2 pr-3">Tip</th>
+                      <th className="text-left py-2 pr-3">Sayfa</th>
+                      <th className="text-left py-2 pr-3">Şehir</th>
+                      <th className="text-left py-2">Cihaz</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {(data.buttons?.recent || []).map((b: any, i: number) => {
+                      const ti = typeInfo(b.type);
+                      return (
+                        <tr key={i} className="border-b hover:bg-gray-50">
+                          <td className="py-2 pr-3 text-gray-400 whitespace-nowrap">{fmtTime(b.ts)}</td>
+                          <td className="py-2 pr-3">
+                            <span className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-medium ${ti.color}`}>
+                              {ti.icon} {ti.label}
+                            </span>
+                          </td>
+                          <td className="py-2 pr-3 text-gray-600 max-w-[120px] truncate">{b.slug || "—"}</td>
+                          <td className="py-2 pr-3 text-gray-600">{b.city || "—"}</td>
+                          <td className="py-2 text-gray-500">{deviceIcon(b.device)} {b.device}</td>
+                        </tr>
+                      );
+                    })}
+                    {(!data.buttons?.recent?.length) && (
+                      <tr><td colSpan={5} className="py-6 text-center text-gray-400">Henüz tıklama kaydı yok</td></tr>
+                    )}
+                  </tbody>
+                </table>
+              </div>
+            </Section>
+          </>
+        )}
+
+        {/* ── ZİYARETÇİLER ── */}
+        {data && activeTab === "visitors" && (
+          <Section title="👤 Son Ziyaretçiler (IP · OS · Tarayıcı · Süre · Kaynak)">
+            <div className="overflow-x-auto -mx-4 px-4">
+              <table className="w-full text-xs min-w-[750px]">
+                <thead>
+                  <tr className="border-b text-gray-500">
+                    <th className="text-left py-2 pr-3 font-medium">Zaman</th>
+                    <th className="text-left py-2 pr-3 font-medium">Sayfa</th>
+                    <th className="text-left py-2 pr-3 font-medium">Kaynak</th>
+                    <th className="text-left py-2 pr-3 font-medium">Şehir</th>
+                    <th className="text-left py-2 pr-3 font-medium">OS / Tarayıcı</th>
+                    <th className="text-left py-2 pr-3 font-medium">Süre</th>
+                    <th className="text-left py-2 pr-3 font-medium">IP</th>
+                    <th className="text-left py-2 font-medium">UTM</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {(data.recent || []).map((h: any, i: number) => (
+                    <tr key={i} className="border-b hover:bg-gray-50">
+                      <td className="py-2 pr-3 text-gray-400 whitespace-nowrap">{fmtTime(h.ts)}</td>
+                      <td className="py-2 pr-3 text-gray-700 max-w-[140px] truncate" title={h.keyword}>{h.keyword}</td>
+                      <td className="py-2 pr-3 font-medium text-gray-700 whitespace-nowrap">
+                        {referrerIcon(h.referrer)} {h.referrer}
+                      </td>
+                      <td className="py-2 pr-3 text-gray-600 whitespace-nowrap">{h.city || "—"}</td>
+                      <td className="py-2 pr-3 text-gray-600">
+                        <div className="font-medium">{h.os}</div>
+                        <div className="text-gray-400">{h.browser}</div>
+                      </td>
+                      <td className="py-2 pr-3 text-gray-600 whitespace-nowrap">{fmtDuration(h.duration)}</td>
+                      <td className="py-2 pr-3 text-gray-400 font-mono">{h.ip || "—"}</td>
+                      <td className="py-2 text-gray-400">
+                        {h.utmSource ? (
+                          <div className="flex flex-wrap gap-1">
+                            <span className="bg-purple-50 text-purple-600 px-1 py-0.5 rounded text-[10px]">{h.utmSource}</span>
+                            {h.utmCampaign && <span className="bg-amber-50 text-amber-600 px-1 py-0.5 rounded text-[10px]">{h.utmCampaign}</span>}
+                          </div>
+                        ) : "—"}
+                      </td>
+                    </tr>
+                  ))}
+                  {!data.recent?.length && (
+                    <tr><td colSpan={8} className="py-8 text-center text-gray-400">Henüz ziyaret verisi yok</td></tr>
+                  )}
+                </tbody>
+              </table>
+            </div>
+          </Section>
+        )}
+      </div>
+    </div>
+  );
 }

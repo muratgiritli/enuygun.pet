@@ -13,6 +13,7 @@ import CategoryPage from "@/pages/category-page";
 import LocalPage from "@/pages/local-page";
 import IletisimPage from "@/pages/iletisim";
 import AdminPage from "@/pages/admin";
+import { AnalyticsProvider } from "@/components/analytics-provider";
 
 function Router() {
   return (
@@ -43,8 +44,10 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
-        <Toaster />
-        <Router />
+        <AnalyticsProvider>
+          <Toaster />
+          <Router />
+        </AnalyticsProvider>
       </TooltipProvider>
     </QueryClientProvider>
   );

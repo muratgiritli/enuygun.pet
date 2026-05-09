@@ -1,7 +1,7 @@
 import type { Express } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
-import { recordHit, getAnalyticsData, createSession, validateSession } from "./analytics";
+import { recordHit, updateDuration, recordButton, getAnalyticsData, createSession, validateSession } from "./analytics";
 import keywordsData from "./keywords.json";
 import healthKeywordsData from "./health-keywords.json";
 import kopekHealthData from "./kopek-health-keywords.json";
@@ -521,11 +521,34 @@ Disallow: /api/
 
   app.post("/api/analytics/hit", async (req, res) => {
     try {
-      const { slug, keyword, referrer } = req.body;
+      const { slug, keyword, referrer, sessionId, utmSource, utmMedium, utmCampaign } = req.body;
       if (!slug) return res.status(400).json({ ok: false });
       const ip = (req.headers["x-forwarded-for"] as string) || req.socket.remoteAddress || "";
       const ua = req.headers["user-agent"] || "";
-      await recordHit({ ip, ua, slug, keyword: keyword || slug, referrer: referrer || "" });
+      await recordHit({ ip, ua, slug, keyword: keyword || slug, referrer: referrer || "", sessionId, utmSource, utmMedium, utmCampaign });
+      return res.json({ ok: true });
+    } catch {
+      return res.status(500).json({ ok: false });
+    }
+  });
+
+  app.post("/api/analytics/duration", async (req, res) => {
+    try {
+      const { sessionId, slug, duration } = req.body;
+      if (sessionId && slug && duration > 0) await updateDuration(sessionId, slug, duration);
+      return res.json({ ok: true });
+    } catch {
+      return res.status(500).json({ ok: false });
+    }
+  });
+
+  app.post("/api/analytics/button", async (req, res) => {
+    try {
+      const { type, slug, sessionId } = req.body;
+      if (!type) return res.status(400).json({ ok: false });
+      const ip = (req.headers["x-forwarded-for"] as string) || req.socket.remoteAddress || "";
+      const ua = req.headers["user-agent"] || "";
+      await recordButton({ ip, ua, type, slug: slug || "", sessionId });
       return res.json({ ok: true });
     } catch {
       return res.status(500).json({ ok: false });
