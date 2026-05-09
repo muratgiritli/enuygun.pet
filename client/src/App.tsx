@@ -12,11 +12,13 @@ import BlogPage from "@/pages/blog-page";
 import CategoryPage from "@/pages/category-page";
 import LocalPage from "@/pages/local-page";
 import IletisimPage from "@/pages/iletisim";
+import AdminPage from "@/pages/admin";
 
 function Router() {
   return (
     <Switch>
       <Route path="/" component={Home} />
+      <Route path="/admin" component={AdminPage} />
       <Route path="/iletisim" component={IletisimPage} />
       <Route path="/blog" component={BlogListPage} />
       <Route path="/blog/:slug" component={BlogPage} />

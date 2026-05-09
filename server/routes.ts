@@ -1,6 +1,7 @@
 import type { Express } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
+import { recordHit, getAnalyticsData, createSession, validateSession } from "./analytics";
 import keywordsData from "./keywords.json";
 import healthKeywordsData from "./health-keywords.json";
 import kopekHealthData from "./kopek-health-keywords.json";
@@ -513,6 +514,39 @@ Disallow: /api/
     } catch (err) {
       return res.status(500).json({ message: "Image proxy error" });
     }
+  });
+
+  const ADMIN_USER = "enuygun";
+  const ADMIN_PASS = "samsun3455";
+
+  app.post("/api/analytics/hit", async (req, res) => {
+    try {
+      const { slug, keyword, referrer } = req.body;
+      if (!slug) return res.status(400).json({ ok: false });
+      const ip = (req.headers["x-forwarded-for"] as string) || req.socket.remoteAddress || "";
+      const ua = req.headers["user-agent"] || "";
+      await recordHit({ ip, ua, slug, keyword: keyword || slug, referrer: referrer || "" });
+      return res.json({ ok: true });
+    } catch {
+      return res.status(500).json({ ok: false });
+    }
+  });
+
+  app.post("/api/analytics/login", (req, res) => {
+    const { username, password } = req.body;
+    if (username === ADMIN_USER && password === ADMIN_PASS) {
+      const token = createSession();
+      return res.json({ token });
+    }
+    return res.status(401).json({ error: "Hatalı giriş" });
+  });
+
+  app.get("/api/analytics/data", (req, res) => {
+    const auth = req.headers.authorization || "";
+    const token = auth.replace("Bearer ", "");
+    if (!validateSession(token)) return res.status(401).json({ error: "Yetkisiz" });
+    const period = (req.query.period as string) || "week";
+    return res.json(getAnalyticsData(period));
   });
 
   return httpServer;

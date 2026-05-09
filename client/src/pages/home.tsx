@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback } from "react";
+import { useTrack } from "@/hooks/use-track";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "wouter";
 import { Card } from "@/components/ui/card";
@@ -120,6 +121,7 @@ interface BeforeInstallPromptEvent extends Event {
 }
 
 export default function Home() {
+  useTrack("anasayfa", "EnuygunPet Petshop Samsun Atakum");
   const [showNotice, setShowNotice] = useState(true);
   const [activeGallery, setActiveGallery] = useState(0);
   const [installPrompt, setInstallPrompt] = useState<BeforeInstallPromptEvent | null>(null);

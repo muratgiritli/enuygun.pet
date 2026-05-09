@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useRoute, Link } from "wouter";
 import { useQuery } from "@tanstack/react-query";
+import { useTrack } from "@/hooks/use-track";
 import { Phone, MapPin, Clock, Navigation, ChevronRight, Home, ArrowLeft } from "lucide-react";
 import InternalLinksSection, { detectType } from "@/components/internal-links";
 import { SiWhatsapp } from "react-icons/si";
@@ -293,6 +294,8 @@ function generateProductPrice(keyword: string): { min: number; max: number; revi
 export default function KeywordPage() {
   const [, params] = useRoute("/:slug");
   const slug = params?.slug || "";
+
+  useTrack(slug, slug);
 
   const { data, isLoading, isError } = useQuery<KeywordData>({
     queryKey: ["/api/keyword", slug],
