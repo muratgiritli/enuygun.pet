@@ -345,6 +345,10 @@ export default function Home() {
         </div>
       </header>
 
+      <a href="https://www.atakumpetshop.com" target="_blank" rel="noopener noreferrer" className="block w-full" data-testid="link-atakum-banner">
+        <img src="/images/atakum-banner.avif" alt="Atakum Petshop" className="w-full object-cover" loading="eager" />
+      </a>
+
       <main>
         <section className="relative" aria-label="Hero bölümü">
           <div className="relative h-[55vh] min-h-[340px] max-h-[480px]">
