@@ -1,7 +1,8 @@
 import { useEffect } from "react";
-import { useParams, Link } from "wouter";
+import { useLocation, Link } from "wouter";
 import { useQuery } from "@tanstack/react-query";
 import { useTrack } from "@/hooks/use-track";
+import SiteHeader from "@/components/site-header";
 
 import { Phone, MessageCircle, MapPin, ArrowLeft, BookOpen, Tag, ChevronRight, Star } from "lucide-react";
 import InternalLinksSection, { detectType } from "@/components/internal-links";
@@ -25,7 +26,8 @@ type CategoryData = {
 };
 
 export default function CategoryPage() {
-  const { slug } = useParams<{ slug: string }>();
+  const [location] = useLocation();
+  const slug = location.split("?")[0].replace(/^\//, "").replace(/\/$/, "");
   useTrack(slug || "", slug || "");
 
   const { data: cat, isLoading, isError } = useQuery<CategoryData>({
@@ -238,14 +240,9 @@ export default function CategoryPage() {
   return (
     <div className="min-h-screen bg-background flex flex-col">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
-      <header className="bg-primary text-primary-foreground px-4 pt-10 pb-6">
+      <SiteHeader />
+      <header className="bg-primary text-primary-foreground px-4 pt-6 pb-6">
         <div className="max-w-2xl mx-auto">
-          <Link href="/">
-            <a className="inline-flex items-center gap-1.5 text-primary-foreground/80 hover:text-primary-foreground text-sm mb-4 transition-colors" data-testid="link-back">
-              <ArrowLeft className="w-4 h-4" />
-              Ana Sayfa
-            </a>
-          </Link>
           <h1 className="text-2xl font-bold leading-tight" data-testid="category-h1">{cat.h1}</h1>
           <p className="mt-2 text-primary-foreground/80 text-sm leading-relaxed">{cat.intro}</p>
         </div>

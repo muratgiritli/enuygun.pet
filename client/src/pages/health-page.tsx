@@ -2,10 +2,10 @@ import { useEffect } from "react";
 import { useRoute, Link } from "wouter";
 import { useQuery } from "@tanstack/react-query";
 import { useTrack } from "@/hooks/use-track";
+import SiteHeader from "@/components/site-header";
 import { Phone, MapPin, Clock, ChevronRight, AlertTriangle, Stethoscope, ShoppingBag } from "lucide-react";
 import InternalLinksSection, { detectType } from "@/components/internal-links";
 import { SiWhatsapp } from "react-icons/si";
-import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import NotFound from "@/pages/not-found";
 
@@ -185,12 +185,6 @@ function generateHealthContent(kw: string, animalTr: string, category: string) {
 export default function HealthPage() {
   const [, params] = useRoute("/:prefix/:slug");
   useTrack(params?.slug || "", params?.slug || "");
-  const routePatterns: Array<[string, string]> = [
-    ["kedi", "/:prefix/:slug"],
-    ["kopek", "/:prefix/:slug"],
-    ["papagan", "/:prefix/:slug"],
-    ["muhabbet", "/:prefix/:slug"],
-  ];
 
   const [matchedKedi, paramsKedi]     = useRoute("/kedi-hastaliklari/:slug");
   const [matchedKopek, paramsKopek]   = useRoute("/kopek-hastaliklari/:slug");
@@ -379,21 +373,7 @@ export default function HealthPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
       />
 
-      {/* Header */}
-      <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-sm border-b border-border shadow-sm">
-        <div className="max-w-3xl mx-auto px-4 py-3 flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-2 text-primary font-bold text-lg">
-            <span>🐾</span>
-            <span>EnuygunPet</span>
-          </Link>
-          <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer"
-            data-testid="btn-whatsapp-header"
-            className="flex items-center gap-1.5 bg-green-500 hover:bg-green-600 text-white text-xs font-semibold px-3 py-2 rounded-full transition-colors">
-            <SiWhatsapp className="w-3.5 h-3.5" />
-            <span>WhatsApp</span>
-          </a>
-        </div>
-      </header>
+      <SiteHeader />
 
       <main className="max-w-3xl mx-auto px-4 py-6">
         {/* Breadcrumb */}

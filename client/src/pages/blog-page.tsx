@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useParams, Link } from "wouter";
 import { useQuery } from "@tanstack/react-query";
 import { useTrack } from "@/hooks/use-track";
+import SiteHeader from "@/components/site-header";
 
 import { Phone, MessageCircle, MapPin, ArrowLeft, BookOpen, Tag, ChevronRight } from "lucide-react";
 import InternalLinksSection, { detectType } from "@/components/internal-links";
@@ -252,7 +253,8 @@ export default function BlogPage() {
   return (
     <div className="min-h-screen bg-background flex flex-col">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
-      <header className="bg-primary text-primary-foreground px-4 pt-10 pb-6">
+      <SiteHeader />
+      <header className="bg-primary text-primary-foreground px-4 pt-6 pb-6">
         <div className="max-w-2xl mx-auto">
           <Link href="/blog">
             <a className="inline-flex items-center gap-1.5 text-primary-foreground/80 hover:text-primary-foreground text-sm mb-4 transition-colors" data-testid="link-back-blog">

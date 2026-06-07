@@ -2,10 +2,10 @@ import { useEffect } from "react";
 import { useRoute, Link } from "wouter";
 import { useQuery } from "@tanstack/react-query";
 import { useTrack } from "@/hooks/use-track";
+import SiteHeader from "@/components/site-header";
 import { Phone, MapPin, Clock, Navigation, ChevronRight, Home, ArrowLeft } from "lucide-react";
 import InternalLinksSection, { detectType } from "@/components/internal-links";
 import { SiWhatsapp } from "react-icons/si";
-import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import NotFound from "@/pages/not-found";
 
@@ -517,27 +517,7 @@ export default function KeywordPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
       />
 
-      <header className="sticky top-0 z-40 bg-background/95 backdrop-blur-xl border-b border-border" data-testid="keyword-header">
-        <div className="max-w-lg mx-auto px-4 h-14 flex items-center justify-between gap-3">
-          <Link href="/">
-            <a className="flex items-center gap-2" data-testid="link-logo">
-              <div className="w-8 h-8 rounded-full bg-primary flex items-center justify-center shrink-0">
-                <span className="text-white font-bold text-sm">e</span>
-              </div>
-              <div className="leading-tight">
-                <p className="text-sm font-bold text-primary">EnuygunPet</p>
-                <p className="text-[10px] text-muted-foreground leading-none">Samsun Atakum</p>
-              </div>
-            </a>
-          </Link>
-          <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" data-testid="link-header-whatsapp">
-            <Button size="sm" className="h-8 text-xs bg-[#25D366] text-white border-[#20BD5A] gap-1.5">
-              <SiWhatsapp className="w-3.5 h-3.5" />
-              WhatsApp
-            </Button>
-          </a>
-        </div>
-      </header>
+      <SiteHeader />
 
       <main className="flex-1 max-w-lg mx-auto w-full px-4 py-5">
         <nav className="flex items-center gap-1.5 text-xs text-muted-foreground mb-4" aria-label="Breadcrumb">

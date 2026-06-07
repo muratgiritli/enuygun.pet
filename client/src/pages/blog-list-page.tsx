@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { Link } from "wouter";
 import { useQuery } from "@tanstack/react-query";
 import { useTrack } from "@/hooks/use-track";
+import SiteHeader from "@/components/site-header";
 
 import { BookOpen, ChevronRight, ArrowLeft, Cat, Dog, Bird, Sparkles } from "lucide-react";
 import { Skeleton } from "@/components/ui/skeleton";
@@ -147,14 +148,9 @@ export default function BlogListPage() {
   return (
     <div className="min-h-screen bg-background flex flex-col">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
-      <header className="bg-primary text-primary-foreground px-4 pt-10 pb-6">
+      <SiteHeader />
+      <header className="bg-primary text-primary-foreground px-4 pt-6 pb-6">
         <div className="max-w-2xl mx-auto">
-          <Link href="/">
-            <a className="inline-flex items-center gap-1.5 text-primary-foreground/80 hover:text-primary-foreground text-sm mb-4 transition-colors">
-              <ArrowLeft className="w-4 h-4" />
-              Ana Sayfa
-            </a>
-          </Link>
           <div className="flex items-center gap-2 mb-2">
             <BookOpen className="w-6 h-6" />
             <h1 className="text-2xl font-bold">Evcil Hayvan Bakım Rehberi</h1>
