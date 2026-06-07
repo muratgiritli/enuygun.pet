@@ -11,23 +11,18 @@ import {
   Clock,
   ChevronDown,
   Star,
-  ShieldCheck,
-  Truck,
-  Tag,
-  Store,
-  Heart,
   Navigation,
   Cat,
   Dog,
   Bird,
   Fish,
-  Sparkles,
-  CheckCircle2,
   X,
   BookOpen,
   ChevronRight,
+  Search,
+  MessageCircle,
 } from "lucide-react";
-import { SiWhatsapp, SiInstagram, SiGoogle } from "react-icons/si";
+import { SiWhatsapp, SiInstagram } from "react-icons/si";
 
 const PHONE = "+905422114944";
 const WHATSAPP_URL = `https://wa.me/905422114944?text=Merhaba,%20Enuygun.pet%20mağazanızdaki%20ürünler%20hakkında%20bilgi%20almak%20istiyorum.`;
@@ -48,10 +43,12 @@ function optimizedImg(url: string, width: number = 0) {
 }
 
 const categories = [
-  { icon: Cat, title: "Kedi", desc: "Maması", image: STORE_PHOTOS[1], slug: "kedi-mamasi" },
-  { icon: Dog, title: "Köpek", desc: "Maması", image: STORE_PHOTOS[2], slug: "kopek-mamasi" },
-  { icon: Bird, title: "Kuş", desc: "Ürünleri", image: STORE_PHOTOS[3], slug: "gold-wings-muhabbet-yemi" },
-  { icon: Fish, title: "Akvaryum", desc: "Ürünleri", image: STORE_PHOTOS[0], slug: "balik-yemi-samsun" },
+  { icon: Cat, label: "Kedi Maması", emoji: "🐱", slug: "kedi-mamasi", color: "from-orange-400 to-amber-500" },
+  { icon: Dog, label: "Köpek Maması", emoji: "🐶", slug: "kopek-mamasi", color: "from-blue-400 to-blue-600" },
+  { icon: Bird, label: "Kuş Ürünleri", emoji: "🦜", slug: "gold-wings-muhabbet-yemi", color: "from-green-400 to-emerald-600" },
+  { icon: Fish, label: "Akvaryum", emoji: "🐠", slug: "balik-yemi-samsun", color: "from-cyan-400 to-blue-500" },
+  { icon: Cat, label: "Kedi Kumu", emoji: "🪣", slug: "kedi-kumu", color: "from-slate-400 to-slate-600" },
+  { icon: Dog, label: "Atakum Petshop", emoji: "📍", slug: "atakum-petshop", color: "from-red-400 to-rose-600" },
 ];
 
 const popularSearches = [
@@ -75,8 +72,6 @@ const popularSearches = [
   { label: "N&D Kedi Maması", slug: "nd-kedi-mamasi" },
   { label: "Proline Kedi Kumu", slug: "proline-kedi-kumu" },
   { label: "Pelet Kedi Kumu", slug: "pelet-kedi-kumu" },
-  { label: "Köpek Kulübesi", slug: "kopek-kulubesi" },
-  { label: "Kedi Yatağı", slug: "kedi-yatagi" },
   { label: "GimCat Ödül", slug: "gimcat" },
   { label: "Wanpy Kedi Ödülü", slug: "wanpy-kedi-odulu" },
 ];
@@ -98,20 +93,48 @@ const brandLinks = [
   { name: "Hill's", slug: "hills-kedi-mamasi" },
 ];
 
-const features = [
-  { icon: Tag, title: "En Uygun Fiyat", desc: "Gross market fiyatlarıyla tasarruf edin" },
-  { icon: ShieldCheck, title: "Orijinal Ürün", desc: "Tüm markalardan orijinal ürünler" },
-  { icon: Store, title: "Geniş Ürün Yelpazesi", desc: "Binlerce çeşit tek çatı altında" },
-  { icon: Truck, title: "Taze & Güncel Stok", desc: "Her zaman taze ürünler" },
+const galleryImages = [
+  { src: STORE_HERO, alt: "EnuygunPet Gross Market mağaza girişi" },
+  { src: STORE_PHOTOS[0], alt: "Mağaza iç mekan ürün reyonları" },
+  { src: STORE_PHOTOS[1], alt: "Kedi maması ve ürünleri" },
+  { src: STORE_PHOTOS[2], alt: "Köpek maması ve aksesuarları" },
+  { src: STORE_PHOTOS[3], alt: "Kuş yemleri ve ürünleri" },
 ];
 
-const galleryImages = [
-  { src: STORE_HERO, alt: "EnuygunPet Gross Market mağaza girişi - Samsun Atakum Petshop" },
-  { src: STORE_PHOTOS[0], alt: "EnuygunPet Samsun Atakum petshop gross market iç mekan ürün reyonları" },
-  { src: STORE_PHOTOS[1], alt: "Samsun Atakum kedi maması ve kedi ürünleri - EnuygunPet petshop" },
-  { src: STORE_PHOTOS[2], alt: "Samsun Atakum köpek maması ve köpek aksesuarları - EnuygunPet gross market" },
-  { src: STORE_PHOTOS[3], alt: "Samsun Atakum kuş yemleri, muhabbet kuşu ve papağan ürünleri - EnuygunPet" },
-];
+const homeSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://www.enuygun.pet/#website",
+      "url": "https://www.enuygun.pet/",
+      "name": "EnuygunPet Gross Market",
+      "inLanguage": "tr-TR",
+    },
+    {
+      "@type": ["LocalBusiness", "PetStore"],
+      "@id": "https://www.enuygun.pet/#localbusiness",
+      "name": "EnuygunPet Gross Market",
+      "url": "https://www.enuygun.pet/",
+      "telephone": "+905422114944",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Yeni Mahalle Atatürk 3. Kısım Bulvarı No:113",
+        "addressLocality": "Atakum",
+        "addressRegion": "Samsun",
+        "postalCode": "55200",
+        "addressCountry": "TR"
+      },
+      "openingHoursSpecification": [{
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+        "opens": "09:00",
+        "closes": "21:00"
+      }],
+      "hasMap": "https://www.google.com/maps/place/Samsun+Petshop+Enuygunpet/@41.3494032,36.2410372,17z/data=!4m10!1m2!2m1!1senuygunpet!3m6!1s0x408879a38cad8b89:0x2f8d7996011cec2d!8m2!3d41.349366!4d36.243738!15sCgplbnV5Z3VucGV0WgwiCmVudXlndW5wZXSSAQlwZXRfc3RvcmXgAQA!16s%2Fg%2F11x2x7jtwk?entry=ttu",
+    }
+  ]
+};
 
 export default function Home() {
   useTrack("anasayfa", "EnuygunPet Petshop Samsun Atakum");
@@ -120,7 +143,7 @@ export default function Home() {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setActiveGallery((prev) => (prev + 1) % galleryImages.length);
+      setActiveGallery(p => (p + 1) % galleryImages.length);
     }, 4000);
     return () => clearInterval(interval);
   }, []);
@@ -131,127 +154,24 @@ export default function Home() {
     }
   }, []);
 
-  const homeSchema = {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "WebSite",
-        "@id": "https://www.enuygun.pet/#website",
-        "url": "https://www.enuygun.pet/",
-        "name": "EnuygunPet Gross Market",
-        "description": "Samsun Atakum'da evcil hayvan ürünleri gross market. Kedi maması, köpek maması, kuş yemi ve aksesuar.",
-        "inLanguage": "tr-TR",
-        "publisher": { "@id": "https://www.enuygun.pet/#organization" }
-      },
-      {
-        "@type": "WebPage",
-        "@id": "https://www.enuygun.pet/#webpage",
-        "url": "https://www.enuygun.pet/",
-        "name": "EnuygunPet Gross Market | Samsun Atakum Evcil Hayvan Ürünleri",
-        "description": "Samsun Atakum'da kedi maması, köpek maması, kuş yemi ve tüm evcil hayvan ürünleri gross market fiyatıyla. Haftanın 7 günü 09:00-21:00 açık.",
-        "inLanguage": "tr-TR",
-        "isPartOf": { "@id": "https://www.enuygun.pet/#website" },
-        "about": { "@id": "https://www.enuygun.pet/#localbusiness" },
-        "primaryImageOfPage": {
-          "@type": "ImageObject",
-          "url": "https://static.wixstatic.com/media/63853e_77a3ee3fa9d942a7af5b6f25a0520653~mv2.jpeg"
-        }
-      },
-      {
-        "@type": "Organization",
-        "@id": "https://www.enuygun.pet/#organization",
-        "name": "EnuygunPet Gross Market",
-        "url": "https://www.enuygun.pet/",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://static.wixstatic.com/media/63853e_77a3ee3fa9d942a7af5b6f25a0520653~mv2.jpeg"
-        },
-        "sameAs": [
-          "https://www.facebook.com/enuygun.pet",
-          "https://www.instagram.com/enuygun.pet",
-          "https://x.com/enuygunpet",
-          "https://www.youtube.com/@samsunenuygunpet"
-        ]
-      },
-      {
-        "@type": ["LocalBusiness", "PetStore"],
-        "@id": "https://www.enuygun.pet/#localbusiness",
-        "name": "EnuygunPet Gross Market",
-        "alternateName": "Enuygun Pet",
-        "description": "Samsun Atakum'da evcil hayvan ürünleri gross market. Kedi maması, köpek maması, kuş yemi ve aksesuar toptan fiyatıyla.",
-        "url": "https://www.enuygun.pet/",
-        "telephone": "+905422114944",
-        "image": [
-          "https://static.wixstatic.com/media/63853e_77a3ee3fa9d942a7af5b6f25a0520653~mv2.jpeg",
-          "https://static.wixstatic.com/media/63853e_f5ae600f104c4dfcae521fe694ba017b~mv2.jpeg",
-          "https://static.wixstatic.com/media/63853e_4c33bdb1dc274eab8358c2d598f7cfee~mv2.jpeg",
-          "https://static.wixstatic.com/media/63853e_ba5ea5e88a5a41409f4742caf8dced1c~mv2.jpeg",
-          "https://static.wixstatic.com/media/63853e_346d0d0b96154639b0a27296b18d70f5~mv2.jpeg"
-        ],
-        "address": {
-          "@type": "PostalAddress",
-          "streetAddress": "Yeni Mahalle Atatürk 3. Kısım Bulvarı No:113",
-          "addressLocality": "Atakum",
-          "addressRegion": "Samsun",
-          "postalCode": "55200",
-          "addressCountry": "TR"
-        },
-        "geo": {
-          "@type": "GeoCoordinates",
-          "latitude": 41.3286,
-          "longitude": 36.2917
-        },
-        "hasMap": "https://www.google.com/maps/place/Samsun+Petshop+Enuygunpet/@41.3494032,36.2410372,17z/data=!4m10!1m2!2m1!1senuygunpet!3m6!1s0x408879a38cad8b89:0x2f8d7996011cec2d!8m2!3d41.349366!4d36.243738!15sCgplbnV5Z3VucGV0WgwiCmVudXlndW5wZXSSAQlwZXRfc3RvcmXgAQA!16s%2Fg%2F11x2x7jtwk?entry=ttu",
-        "openingHoursSpecification": [{
-          "@type": "OpeningHoursSpecification",
-          "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
-          "opens": "09:00",
-          "closes": "21:00"
-        }],
-        "priceRange": "₺₺",
-        "currenciesAccepted": "TRY",
-        "paymentAccepted": "Nakit, Kredi Kartı",
-        "areaServed": [
-          { "@type": "City", "name": "Samsun" },
-          { "@type": "AdministrativeArea", "name": "Atakum" }
-        ],
-        "sameAs": [
-          "https://www.facebook.com/enuygun.pet",
-          "https://www.instagram.com/enuygun.pet",
-          "https://x.com/enuygunpet",
-          "https://www.youtube.com/@samsunenuygunpet"
-        ],
-        "parentOrganization": { "@id": "https://www.enuygun.pet/#organization" }
-      },
-      {
-        "@type": "BreadcrumbList",
-        "itemListElement": [
-          { "@type": "ListItem", "position": 1, "name": "Ana Sayfa", "item": "https://www.enuygun.pet/" }
-        ]
-      }
-    ]
-  };
-
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-gray-50">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(homeSchema) }} />
+
+      {/* ── NOTICE ── */}
       <AnimatePresence>
         {showNotice && (
           <motion.div
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
-            className="bg-amber-50 dark:bg-amber-950/30 border-b border-amber-200 dark:border-amber-800"
+            className="bg-amber-50 border-b border-amber-200"
           >
-            <div className="flex items-center justify-between gap-2 px-4 py-2.5">
-              <p className="text-xs text-amber-800 dark:text-amber-200 leading-snug flex-1" data-testid="text-notice">
+            <div className="flex items-center justify-between gap-2 px-4 py-2">
+              <p className="text-xs text-amber-800 leading-snug flex-1" data-testid="text-notice">
                 <span className="font-semibold">Bilgi:</span> Mağazamızda canlı hayvan satışı yapılmamaktadır.
               </p>
-              <button
-                onClick={() => setShowNotice(false)}
-                className="text-amber-600 dark:text-amber-400 shrink-0"
-                data-testid="button-close-notice"
-              >
+              <button onClick={() => setShowNotice(false)} className="text-amber-600 shrink-0" data-testid="button-close-notice">
                 <X className="w-4 h-4" />
               </button>
             </div>
@@ -259,353 +179,143 @@ export default function Home() {
         )}
       </AnimatePresence>
 
-      <header className="sticky top-0 z-50 bg-background/80 backdrop-blur-xl border-b border-border/50">
-        <div className="flex items-center justify-between gap-2 px-4 py-3">
-          <div className="flex items-center gap-2">
-            <div className="w-9 h-9 rounded-full bg-primary flex items-center justify-center">
-              <Heart className="w-5 h-5 text-primary-foreground" />
+      {/* ── HEADER ── */}
+      <header className="sticky top-0 z-50 bg-white border-b border-gray-200 shadow-sm">
+        <div className="flex items-center justify-between px-4 py-3">
+          <div className="flex items-center gap-2.5">
+            <div className="w-9 h-9 rounded-xl bg-green-600 flex items-center justify-center shadow">
+              <span className="text-lg">🐾</span>
             </div>
             <div>
-              <span className="text-base font-bold leading-tight text-foreground block" data-testid="text-brand-name">
-                ENUYGUN<span className="text-primary">.PET</span>
+              <span className="text-base font-extrabold text-gray-900 tracking-tight block" data-testid="text-brand-name">
+                ENUYGUN<span className="text-green-600">.PET</span>
               </span>
-              <p className="text-[10px] text-muted-foreground leading-tight">Petshop Gross Market</p>
+              <p className="text-[10px] text-gray-500 leading-tight">Petshop Gross Market · Samsun Atakum</p>
             </div>
           </div>
-          <div className="flex items-center gap-1.5">
+          <div className="flex items-center gap-2">
             <a href={`tel:${PHONE}`} data-testid="link-header-phone">
-              <Button size="icon" variant="ghost">
-                <Phone className="w-4 h-4" />
-              </Button>
+              <button className="w-9 h-9 rounded-xl border border-gray-200 flex items-center justify-center bg-white shadow-sm">
+                <Phone className="w-4 h-4 text-gray-600" />
+              </button>
             </a>
             <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" data-testid="link-header-whatsapp">
-              <Button size="icon" className="bg-[#25D366] text-white border-[#20BD5A]">
-                <SiWhatsapp className="w-4 h-4" />
-              </Button>
+              <button className="w-9 h-9 rounded-xl bg-[#25D366] flex items-center justify-center shadow-sm">
+                <SiWhatsapp className="w-4 h-4 text-white" />
+              </button>
             </a>
           </div>
         </div>
       </header>
 
+      {/* ── BANNER ── */}
       <a href="https://www.atakumpetshop.com" target="_blank" rel="noopener noreferrer" className="block w-full" data-testid="link-atakum-banner">
-        <img src="/images/atakum-banner.avif" alt="Atakum Petshop" className="w-full object-cover" loading="eager" />
+        <img src="/images/atakum-banner.avif" alt="Atakum Petshop - E-Ticaret Sitesi" className="w-full object-cover" loading="eager" />
       </a>
 
-      <main>
-        <section className="relative" aria-label="Hero bölümü">
-          <div className="relative h-[55vh] min-h-[340px] max-h-[480px]">
-            <img
-              src={optimizedImg(STORE_HERO, 800)}
-              alt="EnuygunPet Samsun Atakum Petshop Gross Market mağaza görünümü"
-              className="w-full h-full object-cover"
-              loading="eager"
-              fetchPriority="high"
-              decoding="async"
-              width={800}
-              height={480}
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-black/10" />
-            <div className="absolute bottom-0 left-0 right-0 p-5 pb-6">
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.2 }}
-              >
-                <Badge className="bg-primary/90 text-primary-foreground border-0 mb-3 text-[11px]" data-testid="badge-location">
-                  <MapPin className="w-3 h-3 mr-1" />
-                  Samsun / Atakum
-                </Badge>
-                <h1 className="text-2xl font-extrabold text-white leading-tight mb-1.5" data-testid="text-hero-title">
-                  Samsun Atakum Petshop Gross Market
-                </h1>
-                <p className="text-sm text-white/80 leading-snug mb-4 max-w-[280px]">
-                  En uygun fiyatlarla binlerce evcil hayvan ürünü tek çatı altında
-                </p>
-                <div className="flex items-center gap-2 flex-wrap">
-                  <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" data-testid="link-hero-whatsapp">
-                    <Button className="bg-[#25D366] text-white border-[#20BD5A] gap-1.5 text-sm">
-                      <SiWhatsapp className="w-4 h-4" />
-                      WhatsApp
-                    </Button>
-                  </a>
-                  <a href={`tel:${PHONE}`} data-testid="link-hero-call">
-                    <Button variant="outline" className="backdrop-blur-sm bg-white/10 text-white border-white/30 gap-1.5 text-sm">
-                      <Phone className="w-4 h-4" />
-                      Ara
-                    </Button>
-                  </a>
-                  <a href={MAPS_URL} target="_blank" rel="noopener noreferrer" data-testid="link-hero-map">
-                    <Button variant="outline" className="backdrop-blur-sm bg-white/10 text-white border-white/30 gap-1.5 text-sm">
-                      <Navigation className="w-4 h-4" />
-                      Yol Tarifi
-                    </Button>
-                  </a>
-                </div>
-              </motion.div>
-            </div>
-          </div>
-        </section>
+      {/* ── QUICK INFO BAR ── */}
+      <div className="bg-green-600 text-white px-4 py-2.5 flex items-center justify-between">
+        <div className="flex items-center gap-1.5">
+          <Clock className="w-3.5 h-3.5 opacity-80" />
+          <span className="text-xs font-medium">Her Gün 09:00–21:00</span>
+        </div>
+        <div className="flex items-center gap-1">
+          <Star className="w-3.5 h-3.5 text-amber-300 fill-amber-300" />
+          <span className="text-xs font-medium">4.8 · 120+ Yorum</span>
+        </div>
+        <a href={MAPS_URL} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1" data-testid="link-maps-bar">
+          <MapPin className="w-3.5 h-3.5 opacity-80" />
+          <span className="text-xs font-medium">Haritada Gör</span>
+        </a>
+      </div>
 
-        <section className="px-4 -mt-4 relative z-10" aria-label="Hızlı bilgiler">
-          <Card className="p-4 border border-card-border shadow-lg">
-            <div className="flex items-center justify-between gap-3">
-              <div className="flex items-center gap-2">
-                <Clock className="w-4 h-4 text-primary shrink-0" />
-                <div>
-                  <p className="text-xs font-semibold text-foreground" data-testid="text-hours">Her Gün Açık</p>
-                  <p className="text-[11px] text-muted-foreground">09:00 - 21:00</p>
-                </div>
-              </div>
-              <div className="h-8 w-px bg-border" />
-              <div className="flex items-center gap-2">
-                <Star className="w-4 h-4 text-amber-500 shrink-0" />
-                <div>
-                  <p className="text-xs font-semibold text-foreground" data-testid="text-rating">4.8 / 5</p>
-                  <p className="text-[11px] text-muted-foreground">120+ Yorum</p>
-                </div>
-              </div>
-              <div className="h-8 w-px bg-border" />
-              <div className="flex items-center gap-2">
-                <Store className="w-4 h-4 text-primary shrink-0" />
-                <div>
-                  <p className="text-xs font-semibold text-foreground" data-testid="text-products">1000+</p>
-                  <p className="text-[11px] text-muted-foreground">Ürün</p>
-                </div>
-              </div>
-            </div>
-          </Card>
-        </section>
+      <main className="pb-36">
 
-        <section className="px-4 mt-6" aria-label="Ürün kategorileri">
-          <div className="flex items-center justify-between gap-2 mb-3">
-            <h3 className="text-lg font-bold text-foreground" data-testid="text-categories-title">Ürün Kategorileri</h3>
-            <Sparkles className="w-4 h-4 text-primary" />
-          </div>
-          <div className="grid grid-cols-2 gap-3">
+        {/* ── KATEGORİLER ── */}
+        <section className="px-4 pt-5 pb-2" aria-label="Ürün kategorileri">
+          <h2 className="text-base font-bold text-gray-800 mb-3" data-testid="text-categories-title">🛒 Ürün Kategorileri</h2>
+          <div className="grid grid-cols-3 gap-2.5">
             {categories.map((cat, i) => (
-              <motion.div
-                key={cat.title}
-                initial={{ opacity: 0, y: 15 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.1 * i + 0.3 }}
-              >
-                <Link href={`/${cat.slug}`}>
+              <Link key={cat.slug} href={`/${cat.slug}`}>
                 <a data-testid={`link-category-${i}`}>
-                <Card className="group relative border border-card-border" data-testid={`card-category-${i}`}>
-                  <div className="relative h-28 rounded-t-md">
-                    <img
-                      src={optimizedImg(cat.image, 400)}
-                      alt={`${cat.title} - EnuygunPet Samsun`}
-                      className="w-full h-full object-cover rounded-t-md"
-                      loading="lazy"
-                      decoding="async"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent rounded-t-md" />
-                    <div className="absolute top-2 left-2 w-7 h-7 rounded-full bg-white/90 dark:bg-black/60 flex items-center justify-center">
-                      <cat.icon className="w-3.5 h-3.5 text-primary" />
-                    </div>
-                  </div>
-                  <div className="p-3">
-                    <h3 className="text-sm font-semibold text-foreground leading-tight">{cat.title}</h3>
-                    <p className="text-[11px] text-muted-foreground mt-0.5 leading-snug">{cat.desc}</p>
-                  </div>
-                </Card>
-                </a>
-                </Link>
-              </motion.div>
-            ))}
-          </div>
-        </section>
-
-        <section className="px-4 mt-8" aria-label="Kategori sayfaları">
-          <div className="flex items-center justify-between gap-2 mb-3">
-            <h3 className="text-lg font-bold text-foreground">Popüler Kategoriler</h3>
-            <Tag className="w-4 h-4 text-primary" />
-          </div>
-          <div className="grid grid-cols-2 gap-2">
-            {[
-              { slug: "kedi-mamasi", label: "Kedi Maması" },
-              { slug: "kopek-mamasi", label: "Köpek Maması" },
-              { slug: "kedi-kumu", label: "Kedi Kumu" },
-              { slug: "atakum-petshop", label: "Atakum Petshop" },
-              { slug: "petshop-samsun", label: "Samsun Petshop" },
-              { slug: "kapida-teslim-petshop", label: "Kapıda Teslim" },
-            ].map(c => (
-              <Link key={c.slug} href={`/${c.slug}`}>
-                <a className="flex items-center justify-between group p-3 rounded-xl bg-card border border-border hover:border-primary/40 hover:bg-primary/5 transition-all" data-testid={`link-hub-${c.slug}`}>
-                  <span className="text-sm font-medium text-foreground">{c.label}</span>
-                  <ChevronRight className="w-4 h-4 text-muted-foreground group-hover:text-primary group-hover:translate-x-0.5 transition-all shrink-0" />
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: 0.05 * i }}
+                    className={`rounded-2xl bg-gradient-to-br ${cat.color} p-3 flex flex-col items-center justify-center gap-1.5 shadow-sm aspect-square`}
+                  >
+                    <span className="text-2xl">{cat.emoji}</span>
+                    <span className="text-white text-[11px] font-bold text-center leading-tight">{cat.label}</span>
+                  </motion.div>
                 </a>
               </Link>
             ))}
           </div>
         </section>
 
-        <section className="px-4 mt-8" aria-label="Blog rehberleri">
-          <div className="flex items-center justify-between gap-2 mb-3">
-            <h3 className="text-lg font-bold text-foreground">Bakım Rehberi</h3>
-            <BookOpen className="w-4 h-4 text-primary" />
-          </div>
-          <div className="space-y-2">
-            {[
-              { slug: "kopek-asi-takvimi-hangi-asilar-ne-zaman-yapilmali", title: "Köpek Aşı Takvimi: Hangi Aşılar Ne Zaman Yapılmalı?", isNew: true },
-              { slug: "papagan-mamasi-ve-beslenmesi-kapsamli-rehber-2026", title: "Papağan Maması ve Beslenmesi: Kapsamlı Rehber 2026", isNew: true },
-              { slug: "kisir-kedi-mamasi-hangisi", title: "Kısır Kedi Maması Hangisi", isNew: false },
-              { slug: "kopek-neden-mama-yemez-7-neden-ve-cozumler", title: "Köpek Neden Mama Yemez? 7 Neden ve Çözümler", isNew: false },
-              { slug: "en-iyi-kedi-mamasi-hangisi-2025-rehberi", title: "En İyi Kedi Maması Hangisi? 2025 Rehberi", isNew: false },
-            ].map(({ slug, title, isNew }, i) => (
-              <Link key={slug} href={`/blog/${slug}`}>
-                <a className="flex items-center justify-between group p-3 rounded-xl bg-card border border-border hover:border-primary/40 hover:bg-primary/5 transition-all" data-testid={`link-blog-home-${i}`}>
-                  <span className="text-sm text-foreground flex items-center gap-2">
-                    {isNew && <span className="text-[10px] font-semibold px-1.5 py-0.5 rounded bg-amber-100 text-amber-700 shrink-0">YENİ</span>}
-                    {title}
-                  </span>
-                  <ChevronRight className="w-4 h-4 text-muted-foreground group-hover:text-primary group-hover:translate-x-0.5 transition-all shrink-0" />
-                </a>
-              </Link>
-            ))}
-            <Link href="/blog">
-              <a className="flex items-center justify-center gap-1.5 mt-1 text-sm text-primary hover:underline" data-testid="link-all-blogs">
-                Tüm Blog Yazıları
-                <ChevronRight className="w-4 h-4" />
-              </a>
-            </Link>
-          </div>
-        </section>
-
-        <section className="px-4 mt-8" aria-label="Neden bizi tercih etmelisiniz">
-          <h2 className="text-lg font-bold text-foreground mb-3" data-testid="text-features-title">Neden EnuygunPet?</h2>
-          <div className="space-y-2.5">
-            {features.map((f, i) => (
-              <motion.div
-                key={f.title}
-                initial={{ opacity: 0, x: -15 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.1 * i + 0.5 }}
-              >
-                <div className="flex items-center gap-3 p-3 rounded-md bg-card border border-card-border" data-testid={`feature-${i}`}>
-                  <div className="w-10 h-10 rounded-full bg-primary/10 dark:bg-primary/20 flex items-center justify-center shrink-0">
-                    <f.icon className="w-5 h-5 text-primary" />
-                  </div>
-                  <div className="flex-1 min-w-0">
-                    <h3 className="text-sm font-semibold text-foreground">{f.title}</h3>
-                    <p className="text-xs text-muted-foreground mt-0.5">{f.desc}</p>
-                  </div>
-                  <CheckCircle2 className="w-4 h-4 text-primary shrink-0" />
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </section>
-
-        {/* ── Rich content section (500+ words, H2 sections) ── */}
-        <section className="px-4 mt-10 space-y-7" aria-label="EnuygunPet hakkında" data-testid="section-rich-content">
-          <div>
-            <h2 className="text-lg font-bold text-foreground mb-2" data-testid="text-rich-h2-1">
-              Samsun Atakum'un En Büyük Petshop Gross Marketi
-            </h2>
-            <p className="text-sm text-muted-foreground leading-relaxed" data-testid="text-rich-p1">
-              EnuygunPet, Samsun'un Atakum ilçesinde Atatürk Bulvarı No:113 adresinde hizmet veren petshop gross marketidir. Gross market formatıyla faaliyet gösteren mağazamız, perakende petshopların çok altında fiyatlarla kedi maması, köpek maması, kuş yemi ve tüm evcil hayvan ürünlerini müşterilerimize sunmaktadır. Büyük gramajlı ürünleri toplu temin ettiğimiz için birim maliyetlerimiz düşük tutulabilmektedir; bu avantajı doğrudan müşterilerimize yansıtıyoruz. Haftanın her günü 09:00-21:00 arası kesintisiz açığız, Pazar ve resmi tatillerde de kapılarımızı kapatmıyoruz.
-            </p>
-          </div>
-
-          <div>
-            <h2 className="text-lg font-bold text-foreground mb-2" data-testid="text-rich-h2-2">
-              Kedi Sahiplerine Özel Geniş Ürün Seçeneği
-            </h2>
-            <p className="text-sm text-muted-foreground leading-relaxed" data-testid="text-rich-p2">
-              Kedi maması seçimi; yaş, kısırlaştırma durumu ve sağlık geçmişine göre farklılık göstermektedir. Mağazamızda Royal Canin, Hills Science Plan, Pro Plan, Brit Care, Reflex, Acana, Orijen, Felicia ve N&D başta olmak üzere 20'yi aşkın markanın kedi mamasını bulabilirsiniz. Yavru kedi, yetişkin kedi, kısırlaştırılmış kedi ve özel diyet mamaları (böbrek, üriner, idrar yolu) ayrı ayrı stoklanmaktadır. Kedi kumu konusunda ise topaklanan bentonit kum, silika kristal kum, doğal odun talaşı ve tozsuz pelet seçenekleri mevcuttur. Bunların yanı sıra kedi tırmalama tahtaları, yataklar, taşıma çantaları ve oyuncaklar da raflarımızda hazır bulunmaktadır.
-            </p>
-          </div>
-
-          <div>
-            <h2 className="text-lg font-bold text-foreground mb-2" data-testid="text-rich-h2-3">
-              Köpek Sahipleri İçin Her Şey Tek Çatı Altında
-            </h2>
-            <p className="text-sm text-muted-foreground leading-relaxed" data-testid="text-rich-p3">
-              Köpek maması seçiminde ırkın büyüklüğü, yaşı ve aktivite düzeyi belirleyici rol oynar. Mağazamızda Royal Canin Breed Specific serisi, Pro Plan Performance, Hills Science Plan, Brit Care Grain Free, Acana ve Orijen gibi premium markaların yanı sıra uygun bütçeli seçenekler de yer almaktadır. Küçük ırk, orta ırk ve büyük ırk mamaları ayrı olarak stoklanmaktadır. Tasma, koşum, gezdirme ipi, kafes, oyuncak, yatak, şampuan, tarak ve diş bakım ürünleri gibi köpek aksesuarlarına da tek adresten ulaşabilirsiniz. Özellikle büyük gramajlı köpek mamalarında (15 kg ve üzeri) gross market fiyat avantajımız belirgin biçimde hissedilmektedir.
-            </p>
-          </div>
-
-          <div>
-            <h2 className="text-lg font-bold text-foreground mb-2" data-testid="text-rich-h2-4">
-              Kuş, Akvaryum ve Küçük Hayvan Ürünleri
-            </h2>
-            <p className="text-sm text-muted-foreground leading-relaxed" data-testid="text-rich-p4">
-              Muhabbet kuşu, kanarya, sultan papağanı ve Afrika gri papağanı gibi farklı kuş türleri için özel formüle edilmiş yemler, kafesler, tünekler, mineral taşları ve vitamin takviyeleri sunmaktayız. Akvaryum tutkunları için tatlı su ve tuzlu su balıkları yemleri, filtre sistemleri, hava motorları, termometreler ve dekor ürünleri geniş seçeneklerle mevcuttur. Hamster, tavşan, guinea pig ve diğer küçük hayvanlar için mama, altlık malzemeleri ve kafesler de mağazamızda bulunmaktadır.
-            </p>
-          </div>
-
-          <div>
-            <h2 className="text-lg font-bold text-foreground mb-2" data-testid="text-rich-h2-5">
-              Gross Market Fiyat Avantajı Nasıl İşliyor?
-            </h2>
-            <p className="text-sm text-muted-foreground leading-relaxed" data-testid="text-rich-p5">
-              Gross market modeli, ürünleri büyük miktarda temin ederek birim maliyetleri düşüren bir ticaret biçimidir. Perakende petshoplar küçük miktarlarda stok tutarken biz aynı ürünü palet ve koli olarak satın alırız; bu da birim fiyatı önemli ölçüde aşağı çeker. Mağazamızda perakende fiyatlara kıyasla yüzde otuz ila elli arasında tasarruf etmek mümkündür. Özellikle büyük gramaj tercihi yapan çok kedili ya da köpekli haneler, yılda yüzlerce lira tasarruf sağlamaktadır. Toplu alım yapan müşterilerimize ek indirim uygulaması da mevcuttur.
-            </p>
-          </div>
-
-          <div>
-            <h2 className="text-lg font-bold text-foreground mb-2" data-testid="text-rich-h2-6">
-              Uzman Danışmanlık ve Kişisel Hizmet
-            </h2>
-            <p className="text-sm text-muted-foreground leading-relaxed" data-testid="text-rich-p6">
-              Hangi mamayı seçeceğinizi bilmiyorsanız, kedi kumunun farkları konusunda kafanız karışıksa ya da köpeğiniz için ideal gramaj ve beden arıyorsanız mağazamızdaki deneyimli personelimiz size ücretsiz danışmanlık sunar. Veteriner tavsiyeleriyle örtüşen, kanıtlanmış ürün önerileri yapıyoruz. WhatsApp hattımız (+90 542 211 49 44) üzerinden görüntülü ya da yazılı danışma da yapabilirsiniz; ürün fotoğrafı göndererek stok ve fiyat sorabilirsiniz.
-            </p>
-          </div>
-
-          <div>
-            <h2 className="text-lg font-bold text-foreground mb-2" data-testid="text-rich-h2-7">
-              Samsun'un Her Noktasından Bize Ulaşın
-            </h2>
-            <p className="text-sm text-muted-foreground leading-relaxed" data-testid="text-rich-p7">
-              Mağazamız Samsun Atakum'da Atatürk Bulvarı üzerinde, ana arterde konumlanan tek katlı bir gross market yapısındadır. Önünde ücretsiz otopark imkânı bulunmaktadır. Minibüs ve dolmuş güzergahlarıyla ulaşımı kolaydır. İlkadım, Canik, Tekkeköy ve Samsun merkezden 15-30 dakika içinde ulaşılabilecek mesafededir. Google Harita üzerinden "EnuygunPet" aratarak doğrudan yol tarifi alabilirsiniz. Ayrıca Samsun içi WhatsApp üzerinden sipariş verip kapınıza teslim seçeneğimizden de yararlanabilirsiniz.
-            </p>
-          </div>
-        </section>
-
-        <section className="px-4 mt-8" aria-label="Mağaza görselleri">
-          <h3 className="text-lg font-bold text-foreground mb-3" data-testid="text-gallery-title">Mağazamızdan Kareler</h3>
-          <div className="relative rounded-md border border-card-border bg-card">
-            <div className="relative h-52 rounded-t-md">
+        {/* ── MAĞAZA GALERİSİ ── */}
+        <section className="px-4 pt-5" aria-label="Mağaza görselleri">
+          <h2 className="text-base font-bold text-gray-800 mb-3" data-testid="text-gallery-title">📸 Mağazamızdan</h2>
+          <div className="relative rounded-2xl overflow-hidden shadow-sm border border-gray-200 bg-white">
+            <div className="relative h-48">
               <AnimatePresence mode="wait">
                 <motion.img
                   key={activeGallery}
                   src={optimizedImg(galleryImages[activeGallery].src, 600)}
                   alt={galleryImages[activeGallery].alt}
-                  className="w-full h-full object-cover rounded-t-md"
+                  className="w-full h-full object-cover"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
-                  transition={{ duration: 0.5 }}
+                  transition={{ duration: 0.4 }}
                   loading="lazy"
-                  decoding="async"
                 />
               </AnimatePresence>
             </div>
-            <div className="flex items-center justify-center gap-1.5 py-3">
+            <div className="flex items-center justify-center gap-2 py-2.5">
               {galleryImages.map((_, i) => (
                 <button
                   key={i}
                   onClick={() => setActiveGallery(i)}
-                  className={`w-2 h-2 rounded-full transition-all ${
-                    i === activeGallery ? "bg-primary w-5" : "bg-muted-foreground/30"
-                  }`}
+                  className={`rounded-full transition-all ${i === activeGallery ? "bg-green-600 w-5 h-2" : "bg-gray-300 w-2 h-2"}`}
                   data-testid={`button-gallery-dot-${i}`}
-                  aria-label={`Görsel ${i + 1}`}
                 />
               ))}
             </div>
           </div>
         </section>
 
-        <section className="px-4 mt-8" aria-label="Popüler markalar">
-          <h3 className="text-lg font-bold text-foreground mb-3" data-testid="text-brands-title">Popüler Markalar</h3>
+        {/* ── POPÜLER KATEGORİLER ── */}
+        <section className="px-4 pt-5" aria-label="Popüler kategoriler">
+          <h2 className="text-base font-bold text-gray-800 mb-3" data-testid="text-hub-title">📂 Popüler Kategoriler</h2>
+          <div className="grid grid-cols-2 gap-2">
+            {[
+              { slug: "kedi-mamasi", label: "Kedi Maması", emoji: "🐱" },
+              { slug: "kopek-mamasi", label: "Köpek Maması", emoji: "🐶" },
+              { slug: "kedi-kumu", label: "Kedi Kumu", emoji: "🪣" },
+              { slug: "atakum-petshop", label: "Atakum Petshop", emoji: "📍" },
+              { slug: "petshop-samsun", label: "Samsun Petshop", emoji: "🏪" },
+              { slug: "kapida-teslim-petshop", label: "Kapıda Teslim", emoji: "🚚" },
+            ].map(c => (
+              <Link key={c.slug} href={`/${c.slug}`}>
+                <a className="flex items-center gap-2.5 p-3 rounded-xl bg-white border border-gray-200 shadow-sm hover:border-green-400 transition-all" data-testid={`link-hub-${c.slug}`}>
+                  <span className="text-xl">{c.emoji}</span>
+                  <span className="text-sm font-semibold text-gray-700">{c.label}</span>
+                  <ChevronRight className="w-3.5 h-3.5 text-gray-400 ml-auto shrink-0" />
+                </a>
+              </Link>
+            ))}
+          </div>
+        </section>
+
+        {/* ── POPÜLER MARKALAR ── */}
+        <section className="px-4 pt-5" aria-label="Popüler markalar">
+          <h2 className="text-base font-bold text-gray-800 mb-3" data-testid="text-brands-title">🏷️ Popüler Markalar</h2>
           <div className="flex flex-wrap gap-2">
-            {brandLinks.map((brand) => (
+            {brandLinks.map(brand => (
               <Link key={brand.slug} href={`/${brand.slug}`}>
                 <a data-testid={`link-brand-${brand.slug}`}>
-                  <Badge variant="secondary" className="text-xs py-1 px-2.5 cursor-pointer hover:bg-primary/10 hover:text-primary transition-colors">
+                  <Badge variant="secondary" className="text-xs py-1 px-3 cursor-pointer bg-white border border-gray-200 text-gray-700 hover:bg-green-50 hover:border-green-400 hover:text-green-700 transition-colors shadow-sm">
                     {brand.name}
                   </Badge>
                 </a>
@@ -614,13 +324,17 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="px-4 mt-8" aria-label="Popüler aramalar">
-          <h3 className="text-lg font-bold text-foreground mb-3" data-testid="text-popular-title">Popüler Aramalar</h3>
+        {/* ── POPÜLER ARAMALAR ── */}
+        <section className="px-4 pt-5" aria-label="Popüler aramalar">
+          <div className="flex items-center gap-2 mb-3">
+            <Search className="w-4 h-4 text-green-600" />
+            <h2 className="text-base font-bold text-gray-800" data-testid="text-popular-title">Popüler Aramalar</h2>
+          </div>
           <div className="flex flex-wrap gap-2">
-            {popularSearches.map((item) => (
+            {popularSearches.map(item => (
               <Link key={item.slug} href={`/${item.slug}`}>
                 <a
-                  className="text-xs px-3 py-1.5 rounded-full border border-border bg-muted/40 text-foreground hover:border-primary hover:text-primary hover:bg-primary/5 transition-colors"
+                  className="text-xs px-3 py-1.5 rounded-full bg-white border border-gray-200 text-gray-600 hover:border-green-400 hover:text-green-700 hover:bg-green-50 transition-colors shadow-sm"
                   data-testid={`link-popular-${item.slug}`}
                 >
                   {item.label}
@@ -630,161 +344,147 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="px-4 mt-8" aria-label="Konum ve iletişim">
-          <div className="flex items-center justify-between mb-3">
-            <h2 className="text-lg font-bold text-foreground" data-testid="text-contact-title">Konum & İletişim</h2>
-            <Link href="/iletisim" className="text-xs text-primary font-medium" data-testid="link-iletisim">Tümü →</Link>
+        {/* ── BLOG / BAKIM REHBERİ ── */}
+        <section className="px-4 pt-5" aria-label="Bakım rehberleri">
+          <div className="flex items-center gap-2 mb-3">
+            <BookOpen className="w-4 h-4 text-green-600" />
+            <h2 className="text-base font-bold text-gray-800">Bakım Rehberi</h2>
           </div>
-          <Card className="border border-card-border">
-            <div className="p-4">
-              <div className="flex items-start gap-3 mb-4">
-                <div className="w-10 h-10 rounded-full bg-red-50 dark:bg-red-950/30 flex items-center justify-center shrink-0">
-                  <MapPin className="w-5 h-5 text-red-500" />
-                </div>
-                <div>
-                  <h3 className="text-sm font-semibold text-foreground">Adres</h3>
-                  <p className="text-xs text-muted-foreground mt-0.5 leading-relaxed" data-testid="text-address">
-                    Yeni Mahalle Atatürk 3. Kısım Bulvarı No:113
-                    <br />Atakum / SAMSUN
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-3 mb-4">
-                <div className="w-10 h-10 rounded-full bg-green-50 dark:bg-green-950/30 flex items-center justify-center shrink-0">
-                  <Phone className="w-5 h-5 text-green-600" />
-                </div>
-                <div>
-                  <h3 className="text-sm font-semibold text-foreground">Telefon</h3>
-                  <a href={`tel:${PHONE}`} className="text-xs text-primary font-medium mt-0.5 block" data-testid="link-contact-phone">
-                    0542 211 49 44
-                  </a>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-3 mb-4">
-                <div className="w-10 h-10 rounded-full bg-blue-50 dark:bg-blue-950/30 flex items-center justify-center shrink-0">
-                  <Clock className="w-5 h-5 text-blue-500" />
-                </div>
-                <div>
-                  <h3 className="text-sm font-semibold text-foreground">Çalışma Saatleri</h3>
-                  <p className="text-xs text-muted-foreground mt-0.5" data-testid="text-working-hours">
-                    Haftanın Her Günü: 09:00 - 21:00
-                  </p>
-                </div>
-              </div>
-
-              <a
-                href={MAPS_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block"
-                data-testid="link-google-maps"
-              >
-                <div className="relative h-40 rounded-md bg-muted flex items-center justify-center border border-border">
-                  <div className="text-center">
-                    <SiGoogle className="w-6 h-6 text-muted-foreground mx-auto mb-2" />
-                    <p className="text-sm font-medium text-foreground">Google Harita'da Aç</p>
-                    <p className="text-[11px] text-muted-foreground mt-0.5">Yol tarifi almak için dokunun</p>
-                  </div>
-                </div>
+          <div className="space-y-2">
+            {[
+              { slug: "kopek-asi-takvimi-hangi-asilar-ne-zaman-yapilmali", title: "Köpek Aşı Takvimi: Hangi Aşılar Ne Zaman?", isNew: true },
+              { slug: "kisir-kedi-mamasi-hangisi", title: "Kısır Kedi Maması Hangisi?", isNew: false },
+              { slug: "en-iyi-kedi-mamasi-hangisi-2025-rehberi", title: "En İyi Kedi Maması 2025 Rehberi", isNew: false },
+              { slug: "kopek-neden-mama-yemez-7-neden-ve-cozumler", title: "Köpek Neden Mama Yemez?", isNew: false },
+            ].map(({ slug, title, isNew }, i) => (
+              <Link key={slug} href={`/blog/${slug}`}>
+                <a className="flex items-center gap-2 p-3 rounded-xl bg-white border border-gray-200 shadow-sm hover:border-green-400 transition-all" data-testid={`link-blog-home-${i}`}>
+                  {isNew && <span className="text-[10px] font-bold px-1.5 py-0.5 rounded-md bg-green-100 text-green-700 shrink-0">YENİ</span>}
+                  <span className="text-sm text-gray-700 flex-1">{title}</span>
+                  <ChevronRight className="w-3.5 h-3.5 text-gray-400 shrink-0" />
+                </a>
+              </Link>
+            ))}
+            <Link href="/blog">
+              <a className="flex items-center justify-center gap-1.5 mt-1 text-sm text-green-600 font-medium hover:underline" data-testid="link-all-blogs">
+                Tüm Blog Yazıları <ChevronRight className="w-4 h-4" />
               </a>
+            </Link>
+          </div>
+        </section>
+
+        {/* ── İLETİŞİM ── */}
+        <section className="px-4 pt-5" aria-label="İletişim ve konum">
+          <h2 className="text-base font-bold text-gray-800 mb-3" data-testid="text-contact-title">📞 İletişim & Konum</h2>
+          <Card className="bg-white border border-gray-200 shadow-sm rounded-2xl overflow-hidden">
+            <div className="p-4 space-y-3">
+              <div className="flex items-center gap-3">
+                <div className="w-9 h-9 rounded-xl bg-red-50 flex items-center justify-center shrink-0">
+                  <MapPin className="w-4.5 h-4.5 text-red-500" />
+                </div>
+                <div>
+                  <p className="text-xs font-semibold text-gray-700">Adres</p>
+                  <p className="text-xs text-gray-500 leading-relaxed" data-testid="text-address">
+                    Atatürk 3. Kısım Bulvarı No:113, Atakum / Samsun
+                  </p>
+                </div>
+              </div>
+              <div className="flex items-center gap-3">
+                <div className="w-9 h-9 rounded-xl bg-green-50 flex items-center justify-center shrink-0">
+                  <Phone className="w-4 h-4 text-green-600" />
+                </div>
+                <div>
+                  <p className="text-xs font-semibold text-gray-700">Telefon</p>
+                  <a href={`tel:${PHONE}`} className="text-xs text-green-600 font-semibold" data-testid="link-contact-phone">0542 211 49 44</a>
+                </div>
+              </div>
+              <div className="flex items-center gap-3">
+                <div className="w-9 h-9 rounded-xl bg-blue-50 flex items-center justify-center shrink-0">
+                  <Clock className="w-4 h-4 text-blue-500" />
+                </div>
+                <div>
+                  <p className="text-xs font-semibold text-gray-700">Çalışma Saatleri</p>
+                  <p className="text-xs text-gray-500" data-testid="text-working-hours">Haftanın Her Günü: 09:00 – 21:00</p>
+                </div>
+              </div>
             </div>
+            <a href={MAPS_URL} target="_blank" rel="noopener noreferrer" data-testid="link-google-maps"
+              className="flex items-center justify-center gap-2 py-3 bg-green-600 text-white text-sm font-semibold">
+              <Navigation className="w-4 h-4" />
+              Google Harita'da Aç – Yol Tarifi Al
+            </a>
           </Card>
         </section>
 
-        <section className="px-4 mt-8 mb-6" aria-label="Sosyal medya">
-          <h3 className="text-lg font-bold text-foreground mb-3" data-testid="text-social-title">Bizi Takip Edin</h3>
-          <div className="grid grid-cols-2 gap-3">
-            <a href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer" data-testid="link-instagram">
-              <Card className="p-4 border border-card-border flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-gradient-to-br from-purple-500 via-pink-500 to-orange-400 flex items-center justify-center shrink-0">
-                  <SiInstagram className="w-5 h-5 text-white" />
-                </div>
-                <div>
-                  <p className="text-sm font-semibold text-foreground">Instagram</p>
-                  <p className="text-[11px] text-muted-foreground">@enuygun.pet</p>
-                </div>
-              </Card>
+        {/* ── SOSYAL MEDYA ── */}
+        <section className="px-4 pt-4" aria-label="Sosyal medya">
+          <div className="grid grid-cols-2 gap-2">
+            <a href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer" data-testid="link-instagram"
+              className="flex items-center gap-2.5 p-3 rounded-2xl bg-gradient-to-br from-purple-500 via-pink-500 to-orange-400 shadow-sm">
+              <SiInstagram className="w-5 h-5 text-white shrink-0" />
+              <div>
+                <p className="text-xs font-bold text-white">Instagram</p>
+                <p className="text-[10px] text-white/80">@enuygun.pet</p>
+              </div>
             </a>
-            <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" data-testid="link-whatsapp-social">
-              <Card className="p-4 border border-card-border flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-[#25D366] flex items-center justify-center shrink-0">
-                  <SiWhatsapp className="w-5 h-5 text-white" />
-                </div>
-                <div>
-                  <p className="text-sm font-semibold text-foreground">WhatsApp</p>
-                  <p className="text-[11px] text-muted-foreground">Mesaj Gönder</p>
-                </div>
-              </Card>
+            <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" data-testid="link-whatsapp-social"
+              className="flex items-center gap-2.5 p-3 rounded-2xl bg-[#25D366] shadow-sm">
+              <SiWhatsapp className="w-5 h-5 text-white shrink-0" />
+              <div>
+                <p className="text-xs font-bold text-white">WhatsApp</p>
+                <p className="text-[10px] text-white/80">Mesaj Gönder</p>
+              </div>
             </a>
           </div>
         </section>
 
-        <section className="px-4 pb-4" aria-label="Sıkça sorulan sorular">
-          <h2 className="text-lg font-bold text-foreground mb-3" data-testid="text-faq-title">Sıkça Sorulan Sorular</h2>
-          <div className="space-y-2.5">
-            <FaqItem
-              question="Mağazada canlı hayvan satılıyor mu?"
-              answer="Hayır, mağazamızda canlı hayvan satışı yapılmamaktadır. Sadece evcil hayvan ürünleri ve aksesuarları satılmaktadır."
-            />
-            <FaqItem
-              question="Hangi ödeme yöntemlerini kabul ediyorsunuz?"
-              answer="Nakit, kredi kartı ve banka kartı ile ödeme yapabilirsiniz."
-            />
-            <FaqItem
-              question="Online sipariş verebilir miyim?"
-              answer="Şu an için online sipariş hizmetimiz bulunmamaktadır. WhatsApp üzerinden ürün sorgulayabilir ve mağazamızı ziyaret edebilirsiniz."
-            />
-            <FaqItem
-              question="Hangi markaların ürünleri mevcut?"
-              answer="Royal Canin, Pro Plan, Acana, Orijen, Reflex, N&D, Brit Care ve daha birçok premium markanın ürünleri mağazamızda mevcuttur."
-            />
+        {/* ── SSS ── */}
+        <section className="px-4 pt-5 pb-2" aria-label="Sıkça sorulan sorular">
+          <h2 className="text-base font-bold text-gray-800 mb-3" data-testid="text-faq-title">❓ Sıkça Sorulan Sorular</h2>
+          <div className="space-y-2">
+            <FaqItem question="Mağazada canlı hayvan satılıyor mu?" answer="Hayır, mağazamızda canlı hayvan satışı yapılmamaktadır. Sadece evcil hayvan ürünleri ve aksesuarları satılmaktadır." />
+            <FaqItem question="Hangi ödeme yöntemleri kabul ediliyor?" answer="Nakit, kredi kartı ve banka kartı ile ödeme yapabilirsiniz." />
+            <FaqItem question="Online sipariş verebilir miyim?" answer="Şu an için online sipariş hizmetimiz bulunmamaktadır. WhatsApp üzerinden ürün sorgulayabilir ve mağazamızı ziyaret edebilirsiniz." />
+            <FaqItem question="Hangi markalar mevcut?" answer="Royal Canin, Pro Plan, Acana, Orijen, Reflex, N&D, Brit Care ve daha birçok premium markanın ürünleri mağazamızda mevcuttur." />
           </div>
         </section>
 
-        <footer className="px-4 pt-6 pb-28 border-t border-border mt-6" data-testid="footer">
-          <div className="text-center space-y-1.5">
-            <p className="text-[10px] text-muted-foreground/70">&copy; {new Date().getFullYear()} EnuygunPet — Tüm hakları saklıdır.</p>
-            <p className="text-[10px] text-muted-foreground/60">
-              Bu web sitesi,{" "}
-              <a href="https://www.sizpa.net/" target="_blank" rel="noopener noreferrer"
-                className="underline hover:text-primary transition-colors">
+        {/* ── FOOTER ── */}
+        <footer className="px-4 pt-5 pb-4 border-t border-gray-200 mt-5" data-testid="footer">
+          <div className="text-center space-y-1">
+            <p className="text-[10px] text-gray-400">&copy; {new Date().getFullYear()} EnuygunPet — Tüm hakları saklıdır.</p>
+            <p className="text-[10px] text-gray-400">
+              Tasarım:{" "}
+              <a href="https://www.sizpa.net/" target="_blank" rel="noopener noreferrer" className="underline hover:text-green-600">
                 Sizpa Yazılım
-              </a>{" "}
-              tarafından tasarlanmış ve geliştirilmiştir.
+              </a>
             </p>
           </div>
         </footer>
       </main>
 
+      {/* ── CANLI HAYVAN UYARI ── */}
       <div className="fixed bottom-[68px] left-0 right-0 z-50 bg-red-600 text-white text-center text-[11px] font-bold py-1.5 px-3 leading-snug shadow-lg">
-        🚫 CANLI HAYVAN SATIŞIMIZ YOKTUR — Ürün sormak için yukarıdaki "E-TİCARET SİTEMİZ / TIKLA VE ALIŞVERİŞ YAP" resmine tıklayın.
+        🚫 CANLI HAYVAN SATIŞIMIZ YOKTUR — Ürün sormak için yukarıdaki "E-TİCARET / TIKLA ALIŞVERİŞ YAP" resmine tıklayın.
       </div>
 
-      <nav className="fixed bottom-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-xl border-t border-border safe-bottom" aria-label="Hızlı iletişim">
-        <div className="flex items-center justify-around gap-1 px-2 py-2 pb-3 max-w-lg mx-auto">
-          <a href={`tel:${PHONE}`} className="flex-1" data-testid="link-bottom-call">
-            <Button variant="outline" className="w-full gap-1.5 text-xs h-11">
-              <Phone className="w-4 h-4" />
-              Ara
-            </Button>
+      {/* ── ALT NAVİGASYON ── */}
+      <nav className="fixed bottom-0 left-0 right-0 z-50 bg-white border-t border-gray-200 shadow-lg" aria-label="Hızlı iletişim">
+        <div className="flex items-center max-w-lg mx-auto">
+          <a href={`tel:${PHONE}`} className="flex-1 flex flex-col items-center gap-0.5 py-3 border-r border-gray-200" data-testid="link-bottom-call">
+            <Phone className="w-5 h-5 text-gray-600" />
+            <span className="text-[10px] font-semibold text-gray-600">Ara</span>
           </a>
-          <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="flex-1" data-testid="link-bottom-whatsapp">
-            <Button className="w-full gap-1.5 text-xs h-11 bg-[#25D366] text-white border-[#20BD5A]">
-              <SiWhatsapp className="w-4 h-4" />
-              WhatsApp
-            </Button>
+          <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="flex-1 flex flex-col items-center gap-0.5 py-3 bg-[#25D366] border-r border-[#20BD5A]" data-testid="link-bottom-whatsapp">
+            <SiWhatsapp className="w-5 h-5 text-white" />
+            <span className="text-[10px] font-semibold text-white">WhatsApp</span>
           </a>
-          <a href={MAPS_URL} target="_blank" rel="noopener noreferrer" className="flex-1" data-testid="link-bottom-map">
-            <Button variant="outline" className="w-full gap-1.5 text-xs h-11">
-              <Navigation className="w-4 h-4" />
-              Yol Tarifi
-            </Button>
+          <a href={MAPS_URL} target="_blank" rel="noopener noreferrer" className="flex-1 flex flex-col items-center gap-0.5 py-3" data-testid="link-bottom-map">
+            <Navigation className="w-5 h-5 text-gray-600" />
+            <span className="text-[10px] font-semibold text-gray-600">Yol Tarifi</span>
           </a>
         </div>
       </nav>
-
     </div>
   );
 }
@@ -792,16 +492,14 @@ export default function Home() {
 function FaqItem({ question, answer }: { question: string; answer: string }) {
   const [open, setOpen] = useState(false);
   return (
-    <div className="rounded-md border border-card-border bg-card" data-testid={`faq-item-${question.slice(0, 20)}`}>
+    <div className="rounded-xl border border-gray-200 bg-white shadow-sm overflow-hidden" data-testid={`faq-item-${question.slice(0, 20)}`}>
       <button
         onClick={() => setOpen(!open)}
-        className="w-full flex items-center justify-between gap-2 p-3 text-left"
+        className="w-full flex items-center justify-between gap-2 p-3.5 text-left"
         data-testid={`button-faq-${question.slice(0, 20)}`}
       >
-        <span className="text-sm font-medium text-foreground">{question}</span>
-        <ChevronDown
-          className={`w-4 h-4 text-muted-foreground shrink-0 transition-transform ${open ? "rotate-180" : ""}`}
-        />
+        <span className="text-sm font-semibold text-gray-700">{question}</span>
+        <ChevronDown className={`w-4 h-4 text-gray-400 shrink-0 transition-transform ${open ? "rotate-180" : ""}`} />
       </button>
       <AnimatePresence>
         {open && (
@@ -811,7 +509,7 @@ function FaqItem({ question, answer }: { question: string; answer: string }) {
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.2 }}
           >
-            <p className="text-xs text-muted-foreground px-3 pb-3 leading-relaxed">{answer}</p>
+            <p className="text-xs text-gray-500 px-3.5 pb-3.5 leading-relaxed border-t border-gray-100 pt-2">{answer}</p>
           </motion.div>
         )}
       </AnimatePresence>
