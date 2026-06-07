@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect } from "react";
 import { useTrack } from "@/hooks/use-track";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "wouter";
@@ -24,8 +24,6 @@ import {
   Sparkles,
   CheckCircle2,
   X,
-  Download,
-  Share2,
   BookOpen,
   ChevronRight,
 } from "lucide-react";
@@ -115,19 +113,10 @@ const galleryImages = [
   { src: STORE_PHOTOS[3], alt: "Samsun Atakum kuş yemleri, muhabbet kuşu ve papağan ürünleri - EnuygunPet" },
 ];
 
-interface BeforeInstallPromptEvent extends Event {
-  prompt(): Promise<void>;
-  userChoice: Promise<{ outcome: "accepted" | "dismissed" }>;
-}
-
 export default function Home() {
   useTrack("anasayfa", "EnuygunPet Petshop Samsun Atakum");
   const [showNotice, setShowNotice] = useState(true);
   const [activeGallery, setActiveGallery] = useState(0);
-  const [installPrompt, setInstallPrompt] = useState<BeforeInstallPromptEvent | null>(null);
-  const [showInstallBanner, setShowInstallBanner] = useState(false);
-  const [isIOS, setIsIOS] = useState(false);
-  const [showIOSGuide, setShowIOSGuide] = useState(false);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -140,54 +129,7 @@ export default function Home() {
     if ("serviceWorker" in navigator) {
       navigator.serviceWorker.register("/sw.js").catch(() => {});
     }
-
-    const ios = /iPad|iPhone|iPod/.test(navigator.userAgent) && !(window as any).MSStream;
-    setIsIOS(ios);
-
-    const isStandalone = window.matchMedia("(display-mode: standalone)").matches
-      || (navigator as any).standalone === true;
-
-    if (isStandalone) return;
-
-    if (ios) {
-      const dismissed = localStorage.getItem("pwa-ios-dismissed");
-      if (!dismissed) {
-        setTimeout(() => setShowInstallBanner(true), 3000);
-      }
-    }
-
-    const handler = (e: Event) => {
-      e.preventDefault();
-      setInstallPrompt(e as BeforeInstallPromptEvent);
-      const dismissed = localStorage.getItem("pwa-dismissed");
-      if (!dismissed) {
-        setTimeout(() => setShowInstallBanner(true), 3000);
-      }
-    };
-
-    window.addEventListener("beforeinstallprompt", handler);
-    return () => window.removeEventListener("beforeinstallprompt", handler);
   }, []);
-
-  const handleInstall = useCallback(async () => {
-    if (isIOS) {
-      setShowIOSGuide(true);
-      setShowInstallBanner(false);
-      return;
-    }
-    if (!installPrompt) return;
-    await installPrompt.prompt();
-    const { outcome } = await installPrompt.userChoice;
-    if (outcome === "accepted") {
-      setShowInstallBanner(false);
-    }
-    setInstallPrompt(null);
-  }, [installPrompt, isIOS]);
-
-  const dismissInstallBanner = useCallback(() => {
-    setShowInstallBanner(false);
-    localStorage.setItem(isIOS ? "pwa-ios-dismissed" : "pwa-dismissed", "1");
-  }, [isIOS]);
 
   const homeSchema = {
     "@context": "https://schema.org",
@@ -839,94 +781,6 @@ export default function Home() {
         </div>
       </nav>
 
-      <AnimatePresence>
-        {showInstallBanner && (
-          <motion.div
-            initial={{ y: 100, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            exit={{ y: 100, opacity: 0 }}
-            className="fixed bottom-20 left-3 right-3 z-[60] max-w-lg mx-auto"
-          >
-            <Card className="p-4 border border-primary/30 bg-card shadow-xl">
-              <div className="flex items-start gap-3">
-                <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
-                  <Download className="w-5 h-5 text-primary" />
-                </div>
-                <div className="flex-1 min-w-0">
-                  <h3 className="text-sm font-semibold text-foreground">Uygulamayı Yükle</h3>
-                  <p className="text-xs text-muted-foreground mt-0.5 leading-snug">
-                    EnuygunPet'i telefonunuza ekleyin, her zaman hızlı erişim sağlayın.
-                  </p>
-                  <div className="flex items-center gap-2 mt-3">
-                    <Button size="sm" onClick={handleInstall} className="gap-1.5 text-xs" data-testid="button-install-pwa">
-                      <Download className="w-3.5 h-3.5" />
-                      Yükle
-                    </Button>
-                    <Button size="sm" variant="ghost" onClick={dismissInstallBanner} className="text-xs" data-testid="button-dismiss-install">
-                      Daha Sonra
-                    </Button>
-                  </div>
-                </div>
-                <button onClick={dismissInstallBanner} className="text-muted-foreground shrink-0">
-                  <X className="w-4 h-4" />
-                </button>
-              </div>
-            </Card>
-          </motion.div>
-        )}
-      </AnimatePresence>
-
-      <AnimatePresence>
-        {showIOSGuide && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[70] bg-black/50 flex items-end justify-center"
-            onClick={() => setShowIOSGuide(false)}
-          >
-            <motion.div
-              initial={{ y: 100 }}
-              animate={{ y: 0 }}
-              exit={{ y: 100 }}
-              className="w-full max-w-lg"
-              onClick={(e) => e.stopPropagation()}
-            >
-              <Card className="p-5 rounded-b-none border-t border-card-border">
-                <div className="flex items-center justify-between gap-2 mb-4">
-                  <h3 className="text-base font-bold text-foreground">Ana Ekrana Ekle</h3>
-                  <button onClick={() => setShowIOSGuide(false)}>
-                    <X className="w-5 h-5 text-muted-foreground" />
-                  </button>
-                </div>
-                <div className="space-y-4">
-                  <div className="flex items-center gap-3">
-                    <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center shrink-0 text-sm font-bold text-primary">1</div>
-                    <p className="text-sm text-foreground">
-                      Alt kısımdaki <Share2 className="w-4 h-4 inline text-blue-500" /> paylaş butonuna dokunun
-                    </p>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center shrink-0 text-sm font-bold text-primary">2</div>
-                    <p className="text-sm text-foreground">
-                      "Ana Ekrana Ekle" seçeneğine dokunun
-                    </p>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center shrink-0 text-sm font-bold text-primary">3</div>
-                    <p className="text-sm text-foreground">
-                      "Ekle" butonuna dokunun
-                    </p>
-                  </div>
-                </div>
-                <Button className="w-full mt-5" onClick={() => setShowIOSGuide(false)} data-testid="button-close-ios-guide">
-                  Anladım
-                </Button>
-              </Card>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
     </div>
   );
 }
