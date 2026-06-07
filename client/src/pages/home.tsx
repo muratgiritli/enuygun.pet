@@ -205,7 +205,11 @@ export default function Home() {
 
         {/* ── KATEGORİLER ── */}
         <section className="px-4 pt-5 pb-2" aria-label="Ürün kategorileri">
-          <h2 className="text-base font-bold text-gray-800 mb-3" data-testid="text-categories-title">🛒 Ürün Kategorileri</h2>
+          <a href="https://www.atakumpetshop.com" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center mb-3" data-testid="link-categories-cta">
+            <span className="animate-pulse inline-flex items-center gap-2 bg-red-600 text-white text-sm font-extrabold px-5 py-2.5 rounded-full shadow-lg tracking-wide">
+              🛒 TIKLA ONLİNE ALIŞVERİŞ YAP
+            </span>
+          </a>
           <div className="grid grid-cols-3 gap-2.5">
             {categories.map((cat, i) => (
               <a key={cat.slug} href="https://www.atakumpetshop.com" target="_blank" rel="noopener noreferrer" data-testid={`link-category-${i}`}>
