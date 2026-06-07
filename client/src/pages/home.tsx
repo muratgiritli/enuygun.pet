@@ -44,7 +44,7 @@ const categories = [
   { icon: Dog, label: "Köpek Maması", emoji: "🐶", slug: "kopek-mamasi", color: "from-blue-400 to-blue-600" },
   { icon: Bird, label: "Kuş Ürünleri", emoji: "🦜", slug: "gold-wings-muhabbet-yemi", color: "from-green-400 to-emerald-600" },
   { icon: Fish, label: "Akvaryum", emoji: "🐠", slug: "balik-yemi-samsun", color: "from-cyan-400 to-blue-500" },
-  { icon: Cat, label: "Kedi Kumu", emoji: "🪣", slug: "kedi-kumu", color: "from-slate-400 to-slate-600" },
+  { icon: Cat, label: "Kemirgen Sürüngen", emoji: "🐹", slug: "kedi-kumu", color: "from-slate-400 to-slate-600" },
   { icon: Dog, label: "Atakum Petshop", emoji: "📍", slug: "atakum-petshop", color: "from-red-400 to-rose-600" },
 ];
 
@@ -262,7 +262,7 @@ export default function Home() {
             {[
               { slug: "kedi-mamasi", label: "Kedi Maması", emoji: "🐱" },
               { slug: "kopek-mamasi", label: "Köpek Maması", emoji: "🐶" },
-              { slug: "kedi-kumu", label: "Kedi Kumu", emoji: "🪣" },
+              { slug: "kedi-kumu", label: "Kemirgen Sürüngen", emoji: "🐹" },
               { slug: "atakum-petshop", label: "Atakum Petshop", emoji: "📍" },
               { slug: "petshop-samsun", label: "Samsun Petshop", emoji: "🏪" },
               { slug: "kapida-teslim-petshop", label: "Kapıda Teslim", emoji: "🚚" },
