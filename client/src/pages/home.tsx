@@ -208,8 +208,7 @@ export default function Home() {
           <h2 className="text-base font-bold text-gray-800 mb-3" data-testid="text-categories-title">🛒 Ürün Kategorileri</h2>
           <div className="grid grid-cols-3 gap-2.5">
             {categories.map((cat, i) => (
-              <Link key={cat.slug} href={`/${cat.slug}`}>
-                <a data-testid={`link-category-${i}`}>
+              <a key={cat.slug} href="https://www.atakumpetshop.com" target="_blank" rel="noopener noreferrer" data-testid={`link-category-${i}`}>
                   <motion.div
                     initial={{ opacity: 0, scale: 0.95 }}
                     animate={{ opacity: 1, scale: 1 }}
@@ -220,7 +219,6 @@ export default function Home() {
                     <span className="text-white text-[11px] font-bold text-center leading-tight">{cat.label}</span>
                   </motion.div>
                 </a>
-              </Link>
             ))}
           </div>
         </section>
@@ -269,13 +267,11 @@ export default function Home() {
               { slug: "petshop-samsun", label: "Samsun Petshop", emoji: "🏪" },
               { slug: "kapida-teslim-petshop", label: "Kapıda Teslim", emoji: "🚚" },
             ].map(c => (
-              <Link key={c.slug} href={`/${c.slug}`}>
-                <a className="flex items-center gap-2.5 p-3 rounded-xl bg-white border border-gray-200 shadow-sm hover:border-green-400 transition-all" data-testid={`link-hub-${c.slug}`}>
-                  <span className="text-xl">{c.emoji}</span>
-                  <span className="text-sm font-semibold text-gray-700">{c.label}</span>
-                  <ChevronRight className="w-3.5 h-3.5 text-gray-400 ml-auto shrink-0" />
-                </a>
-              </Link>
+              <a key={c.slug} href="https://www.atakumpetshop.com" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2.5 p-3 rounded-xl bg-white border border-gray-200 shadow-sm hover:border-green-400 transition-all" data-testid={`link-hub-${c.slug}`}>
+                <span className="text-xl">{c.emoji}</span>
+                <span className="text-sm font-semibold text-gray-700">{c.label}</span>
+                <ChevronRight className="w-3.5 h-3.5 text-gray-400 ml-auto shrink-0" />
+              </a>
             ))}
           </div>
         </section>
