@@ -758,6 +758,10 @@ export default function Home() {
         </footer>
       </main>
 
+      <div className="fixed bottom-[68px] left-0 right-0 z-50 bg-red-600 text-white text-center text-[11px] font-bold py-1.5 px-3 leading-snug shadow-lg">
+        🚫 CANLI HAYVAN SATIŞIMIZ YOKTUR — Ürün sormak için yukarıdaki "E-TİCARET SİTEMİZ / TIKLA VE ALIŞVERİŞ YAP" resmine tıklayın.
+      </div>
+
       <nav className="fixed bottom-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-xl border-t border-border safe-bottom" aria-label="Hızlı iletişim">
         <div className="flex items-center justify-around gap-1 px-2 py-2 pb-3 max-w-lg mx-auto">
           <a href={`tel:${PHONE}`} className="flex-1" data-testid="link-bottom-call">
