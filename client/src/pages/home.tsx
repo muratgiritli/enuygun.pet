@@ -3,7 +3,6 @@ import { useTrack } from "@/hooks/use-track";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "wouter";
 import { Card } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import {
   Phone,
@@ -16,11 +15,9 @@ import {
   Dog,
   Bird,
   Fish,
-  X,
   BookOpen,
   ChevronRight,
   Search,
-  MessageCircle,
 } from "lucide-react";
 import { SiWhatsapp, SiInstagram } from "react-icons/si";
 
@@ -138,7 +135,6 @@ const homeSchema = {
 
 export default function Home() {
   useTrack("anasayfa", "EnuygunPet Petshop Samsun Atakum");
-  const [showNotice, setShowNotice] = useState(true);
   const [activeGallery, setActiveGallery] = useState(0);
 
   useEffect(() => {
@@ -158,26 +154,6 @@ export default function Home() {
     <div className="min-h-screen bg-gray-50">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(homeSchema) }} />
 
-      {/* ── NOTICE ── */}
-      <AnimatePresence>
-        {showNotice && (
-          <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            className="bg-amber-50 border-b border-amber-200"
-          >
-            <div className="flex items-center justify-between gap-2 px-4 py-2">
-              <p className="text-xs text-amber-800 leading-snug flex-1" data-testid="text-notice">
-                <span className="font-semibold">Bilgi:</span> Mağazamızda canlı hayvan satışı yapılmamaktadır.
-              </p>
-              <button onClick={() => setShowNotice(false)} className="text-amber-600 shrink-0" data-testid="button-close-notice">
-                <X className="w-4 h-4" />
-              </button>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
 
       {/* ── HEADER ── */}
       <header className="sticky top-0 z-50 bg-white border-b border-gray-200 shadow-sm">
@@ -208,10 +184,6 @@ export default function Home() {
         </div>
       </header>
 
-      {/* ── BANNER ── */}
-      <a href="https://www.atakumpetshop.com" target="_blank" rel="noopener noreferrer" className="block w-full" data-testid="link-atakum-banner">
-        <img src="/images/atakum-banner.avif" alt="Atakum Petshop - E-Ticaret Sitesi" className="w-full object-cover" loading="eager" />
-      </a>
 
       {/* ── QUICK INFO BAR ── */}
       <div className="bg-green-600 text-white px-4 py-2.5 flex items-center justify-between">
