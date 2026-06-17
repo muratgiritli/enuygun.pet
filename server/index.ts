@@ -42,6 +42,15 @@ app.use((req, res, next) => {
     const redirectUrl = req.originalUrl.replace(req.path, cleanPath);
     return res.redirect(301, redirectUrl);
   }
+  if (
+    (req.method === "GET" || req.method === "HEAD") &&
+    !req.path.startsWith("/api/") &&
+    /(^|\/)cazip-pet(-|$)/.test(req.path)
+  ) {
+    const newPath = req.path.replace(/cazip-pet/g, "cazip-ve-uygun-pet");
+    const redirectUrl = req.originalUrl.replace(req.path, newPath);
+    return res.redirect(301, redirectUrl);
+  }
   next();
 });
 
