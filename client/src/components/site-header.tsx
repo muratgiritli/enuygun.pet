@@ -21,33 +21,42 @@ export default function SiteHeader({ showShopGrid = true }: { showShopGrid?: boo
   return (
     <>
       {/* ── HEADER ── */}
-      <header className="sticky top-0 z-50 bg-white border-b border-gray-200 shadow-sm">
-        <div className="flex items-center justify-between px-4 py-3 max-w-lg mx-auto">
+      <header className="sticky top-0 z-50 bg-white lg:bg-white/90 lg:backdrop-blur border-b border-gray-200 shadow-sm">
+        <div className="flex items-center justify-between px-4 lg:px-8 py-3 max-w-lg lg:max-w-6xl mx-auto">
           <Link href="/" className="flex items-center gap-2.5" data-testid="link-home-logo">
-            <div className="w-9 h-9 rounded-xl bg-green-600 flex items-center justify-center shadow">
-              <span className="text-lg">🐾</span>
+            <div className="w-9 h-9 lg:w-11 lg:h-11 rounded-xl bg-green-600 flex items-center justify-center shadow">
+              <span className="text-lg lg:text-2xl">🐾</span>
             </div>
             <div>
-              <span className="text-base font-extrabold text-gray-900 tracking-tight block" data-testid="text-brand-name">
+              <span className="text-base lg:text-xl font-extrabold text-gray-900 tracking-tight block" data-testid="text-brand-name">
                 ENUYGUN<span className="text-green-600">.PET</span>
               </span>
-              <p className="text-[10px] text-gray-500 leading-tight">Petshop Gross Market · Samsun Atakum</p>
+              <p className="text-[10px] lg:text-xs text-gray-500 leading-tight">Petshop Gross Market · Samsun Atakum</p>
             </div>
           </Link>
+          <nav className="hidden lg:flex items-center gap-7 text-sm font-semibold text-gray-600" aria-label="Menü">
+            <Link href="/proplan" className="hover:text-green-600 transition-colors" data-testid="nav-proplan">Pro Plan</Link>
+            <Link href="/royal-canin" className="hover:text-green-600 transition-colors" data-testid="nav-royal-canin">Royal Canin</Link>
+            <Link href="/kedi-mamasi" className="hover:text-green-600 transition-colors" data-testid="nav-kedi">Kedi Maması</Link>
+            <Link href="/kopek-mamasi" className="hover:text-green-600 transition-colors" data-testid="nav-kopek">Köpek Maması</Link>
+          </nav>
           <div className="flex items-center gap-2">
-            <a href={`tel:${PHONE}`} className="w-9 h-9 rounded-xl border border-gray-200 flex items-center justify-center bg-white shadow-sm" data-testid="link-header-phone" aria-label="Telefon">
+            <a href={`tel:${PHONE}`} className="w-9 h-9 rounded-xl border border-gray-200 flex items-center justify-center bg-white shadow-sm hover:bg-gray-50 transition-colors" data-testid="link-header-phone" aria-label="Telefon">
               <Phone className="w-4 h-4 text-gray-600" />
             </a>
-            <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="w-9 h-9 rounded-xl bg-[#25D366] flex items-center justify-center shadow-sm" data-testid="link-header-whatsapp" aria-label="WhatsApp">
+            <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="w-9 h-9 rounded-xl bg-[#25D366] flex items-center justify-center shadow-sm hover:brightness-105 transition" data-testid="link-header-whatsapp" aria-label="WhatsApp">
               <SiWhatsapp className="w-4 h-4 text-white" />
+            </a>
+            <a href={SHOP_URL} target="_blank" rel="noopener noreferrer" className="hidden lg:inline-flex" data-testid="link-header-shop">
+              <span className="inline-flex items-center gap-1.5 bg-red-600 hover:bg-red-700 transition-colors text-white text-sm font-bold px-4 py-2.5 rounded-xl shadow">🛒 Online Alışveriş</span>
             </a>
           </div>
         </div>
       </header>
 
       {/* ── QUICK INFO BAR ── */}
-      <div className="bg-green-600 text-white px-4 py-2.5">
-        <div className="flex items-center justify-between max-w-lg mx-auto">
+      <div className="bg-green-600 text-white px-4 lg:px-8 py-2.5">
+        <div className="flex items-center justify-between max-w-lg lg:max-w-6xl mx-auto">
           <div className="flex items-center gap-1.5">
             <Clock className="w-3.5 h-3.5 opacity-80" />
             <span className="text-xs font-medium">Her Gün 09:00–21:00</span>
@@ -65,23 +74,23 @@ export default function SiteHeader({ showShopGrid = true }: { showShopGrid?: boo
 
       {/* ── CTA + KATEGORİLER ── */}
       {showShopGrid && (
-      <section className="px-4 pt-5 pb-2 max-w-lg mx-auto" aria-label="Online alışveriş ve kategoriler">
-        <a href={SHOP_URL} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center mb-3" data-testid="link-categories-cta">
+      <section className="px-4 lg:px-8 pt-5 pb-2 max-w-lg lg:max-w-6xl mx-auto" aria-label="Online alışveriş ve kategoriler">
+        <a href={SHOP_URL} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center mb-3 lg:hidden" data-testid="link-categories-cta">
           <span className="animate-pulse inline-flex items-center gap-2 bg-red-600 text-white text-sm font-extrabold px-5 py-2.5 rounded-full shadow-lg tracking-wide">
             🛒 TIKLA ONLİNE ALIŞVERİŞ YAP
           </span>
         </a>
-        <div className="grid grid-cols-3 gap-2.5">
+        <div className="grid grid-cols-3 gap-2.5 lg:grid-cols-6 lg:gap-4">
           {categories.map((cat, i) => (
             <a key={cat.label} href={SHOP_URL} target="_blank" rel="noopener noreferrer" data-testid={`link-category-${i}`}>
               <motion.div
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 0.05 * i }}
-                className={`rounded-2xl bg-gradient-to-br ${cat.color} p-3 flex flex-col items-center justify-center gap-1.5 shadow-sm aspect-square`}
+                className={`rounded-2xl bg-gradient-to-br ${cat.color} p-3 lg:p-4 flex flex-col items-center justify-center gap-1.5 lg:gap-2.5 shadow-sm lg:hover:shadow-lg lg:hover:-translate-y-0.5 lg:transition-all aspect-square`}
               >
-                <span className="text-2xl">{cat.emoji}</span>
-                <span className="text-white text-[11px] font-bold text-center leading-tight">{cat.label}</span>
+                <span className="text-2xl lg:text-4xl">{cat.emoji}</span>
+                <span className="text-white text-[11px] lg:text-sm font-bold text-center leading-tight">{cat.label}</span>
               </motion.div>
             </a>
           ))}

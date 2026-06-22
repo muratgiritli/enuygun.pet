@@ -1,0 +1,1 @@
+- [Responsive desktop modernization](responsive-modernization.md) — how this mobile-first site adds desktop layouts without touching mobile.
