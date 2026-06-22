@@ -156,29 +156,40 @@ export default function Home() {
 
 
       {/* ── HEADER ── */}
-      <header className="sticky top-0 z-50 bg-white border-b border-gray-200 shadow-sm">
-        <div className="flex items-center justify-between px-4 py-3">
-          <div className="flex items-center gap-2.5">
-            <div className="w-9 h-9 rounded-xl bg-green-600 flex items-center justify-center shadow">
-              <span className="text-lg">🐾</span>
+      <header className="sticky top-0 z-50 bg-white lg:bg-white/90 lg:backdrop-blur border-b border-gray-200 shadow-sm">
+        <div className="max-w-7xl mx-auto flex items-center justify-between px-4 lg:px-8 py-3">
+          <a href="/" className="flex items-center gap-2.5" data-testid="link-home-logo">
+            <div className="w-9 h-9 lg:w-11 lg:h-11 rounded-xl bg-green-600 flex items-center justify-center shadow">
+              <span className="text-lg lg:text-2xl">🐾</span>
             </div>
             <div>
-              <span className="text-base font-extrabold text-gray-900 tracking-tight block" data-testid="text-brand-name">
+              <span className="text-base lg:text-xl font-extrabold text-gray-900 tracking-tight block" data-testid="text-brand-name">
                 ENUYGUN<span className="text-green-600">.PET</span>
               </span>
-              <p className="text-[10px] text-gray-500 leading-tight">Petshop Gross Market · Samsun Atakum</p>
+              <p className="text-[10px] lg:text-xs text-gray-500 leading-tight">Petshop Gross Market · Samsun Atakum</p>
             </div>
-          </div>
+          </a>
+          <nav className="hidden lg:flex items-center gap-8 text-sm font-semibold text-gray-600" aria-label="Masaüstü menü">
+            <a href="#kategoriler" className="hover:text-green-600 transition-colors" data-testid="nav-kategoriler">Kategoriler</a>
+            <a href="#markalar" className="hover:text-green-600 transition-colors" data-testid="nav-markalar">Markalar</a>
+            <a href="#blog" className="hover:text-green-600 transition-colors" data-testid="nav-blog">Bakım Rehberi</a>
+            <a href="#iletisim" className="hover:text-green-600 transition-colors" data-testid="nav-iletisim">İletişim</a>
+          </nav>
           <div className="flex items-center gap-2">
             <a href={`tel:${PHONE}`} data-testid="link-header-phone">
-              <button className="w-9 h-9 rounded-xl border border-gray-200 flex items-center justify-center bg-white shadow-sm">
+              <button className="w-9 h-9 rounded-xl border border-gray-200 flex items-center justify-center bg-white shadow-sm hover:bg-gray-50 transition-colors">
                 <Phone className="w-4 h-4 text-gray-600" />
               </button>
             </a>
             <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" data-testid="link-header-whatsapp">
-              <button className="w-9 h-9 rounded-xl bg-[#25D366] flex items-center justify-center shadow-sm">
+              <button className="w-9 h-9 rounded-xl bg-[#25D366] flex items-center justify-center shadow-sm hover:brightness-105 transition">
                 <SiWhatsapp className="w-4 h-4 text-white" />
               </button>
+            </a>
+            <a href="https://www.atakumpetshop.com" target="_blank" rel="noopener noreferrer" className="hidden lg:inline-flex" data-testid="link-header-shop">
+              <span className="inline-flex items-center gap-1.5 bg-red-600 hover:bg-red-700 transition-colors text-white text-sm font-bold px-4 py-2.5 rounded-xl shadow">
+                🛒 Online Alışveriş
+              </span>
             </a>
           </div>
         </div>
@@ -186,7 +197,8 @@ export default function Home() {
 
 
       {/* ── QUICK INFO BAR ── */}
-      <div className="bg-green-600 text-white px-4 py-2.5 flex items-center justify-between">
+      <div className="bg-green-600 text-white">
+        <div className="max-w-7xl mx-auto px-4 lg:px-8 py-2.5 flex items-center justify-between">
         <div className="flex items-center gap-1.5">
           <Clock className="w-3.5 h-3.5 opacity-80" />
           <span className="text-xs font-medium">Her Gün 09:00–21:00</span>
@@ -199,28 +211,61 @@ export default function Home() {
           <MapPin className="w-3.5 h-3.5 opacity-80" />
           <span className="text-xs font-medium">Haritada Gör</span>
         </a>
+        </div>
       </div>
 
-      <main className="pb-36">
+      <main className="pb-36 lg:pb-16">
+
+        {/* ── DESKTOP HERO ── */}
+        <section className="hidden lg:block" aria-label="Tanıtım">
+          <div className="max-w-7xl mx-auto px-8 pt-8">
+            <div className="relative rounded-3xl overflow-hidden shadow-lg min-h-[360px] flex">
+              <img src={optimizedImg(STORE_HERO, 1400)} alt="EnuygunPet Gross Market mağaza" className="absolute inset-0 w-full h-full object-cover" />
+              <div className="absolute inset-0 bg-gradient-to-r from-green-950/90 via-green-900/75 to-green-800/20" />
+              <div className="relative px-12 py-14 max-w-2xl text-white flex flex-col justify-center">
+                <span className="inline-flex items-center gap-2 bg-white/15 backdrop-blur px-3 py-1 rounded-full text-xs font-semibold mb-5 w-fit">
+                  <Star className="w-3.5 h-3.5 text-amber-300 fill-amber-300" /> 4.8 · 120+ Mutlu Müşteri
+                </span>
+                <h1 className="text-4xl xl:text-5xl font-extrabold leading-[1.1]">Samsun Atakum'un<br />Gross Petshop Marketi</h1>
+                <p className="mt-5 text-white/90 text-base leading-relaxed max-w-lg">
+                  Royal Canin, Pro Plan ve daha birçok premium markada kedi, köpek, kuş ve akvaryum ürünleri — uygun gross market fiyatlarıyla, Atakum içine 1 saatte teslimat.
+                </p>
+                <div className="flex flex-wrap items-center gap-3 mt-8">
+                  <a href="https://www.atakumpetshop.com" target="_blank" rel="noopener noreferrer" data-testid="link-hero-shop">
+                    <span className="inline-flex items-center gap-2 bg-red-600 hover:bg-red-700 transition-colors text-white font-bold px-6 py-3.5 rounded-2xl shadow-lg">🛒 Online Alışveriş Yap</span>
+                  </a>
+                  <a href={MAPS_URL} target="_blank" rel="noopener noreferrer" data-testid="link-hero-maps">
+                    <span className="inline-flex items-center gap-2 bg-white/15 hover:bg-white/25 backdrop-blur transition-colors text-white font-semibold px-6 py-3.5 rounded-2xl">
+                      <Navigation className="w-4 h-4" /> Yol Tarifi Al
+                    </span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <div className="max-w-6xl mx-auto w-full lg:grid lg:grid-cols-12 lg:gap-x-8 lg:gap-y-2 lg:px-8 lg:pt-2">
 
         {/* ── KATEGORİLER ── */}
-        <section className="px-4 pt-5 pb-2" aria-label="Ürün kategorileri">
-          <a href="https://www.atakumpetshop.com" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center mb-3" data-testid="link-categories-cta">
+        <section id="kategoriler" className="px-4 pt-5 pb-2 lg:col-span-12 lg:order-1" aria-label="Ürün kategorileri">
+          <h2 className="hidden lg:block text-2xl font-extrabold text-gray-900 mb-5">Kategoriler</h2>
+          <a href="https://www.atakumpetshop.com" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center mb-3 lg:hidden" data-testid="link-categories-cta">
             <span className="animate-pulse inline-flex items-center gap-2 bg-red-600 text-white text-sm font-extrabold px-5 py-2.5 rounded-full shadow-lg tracking-wide">
               🛒 TIKLA ONLİNE ALIŞVERİŞ YAP
             </span>
           </a>
-          <div className="grid grid-cols-3 gap-2.5">
+          <div className="grid grid-cols-3 gap-2.5 lg:grid-cols-6 lg:gap-4">
             {categories.map((cat, i) => (
               <a key={cat.slug} href="https://www.atakumpetshop.com" target="_blank" rel="noopener noreferrer" data-testid={`link-category-${i}`}>
                   <motion.div
                     initial={{ opacity: 0, scale: 0.95 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ delay: 0.05 * i }}
-                    className={`rounded-2xl bg-gradient-to-br ${cat.color} p-3 flex flex-col items-center justify-center gap-1.5 shadow-sm aspect-square`}
+                    className={`rounded-2xl bg-gradient-to-br ${cat.color} p-3 lg:p-4 flex flex-col items-center justify-center gap-1.5 lg:gap-2.5 shadow-sm lg:hover:shadow-lg lg:hover:-translate-y-0.5 lg:transition-all aspect-square`}
                   >
-                    <span className="text-2xl">{cat.emoji}</span>
-                    <span className="text-white text-[11px] font-bold text-center leading-tight">{cat.label}</span>
+                    <span className="text-2xl lg:text-4xl">{cat.emoji}</span>
+                    <span className="text-white text-[11px] lg:text-sm font-bold text-center leading-tight">{cat.label}</span>
                   </motion.div>
                 </a>
             ))}
@@ -228,10 +273,10 @@ export default function Home() {
         </section>
 
         {/* ── MAĞAZA GALERİSİ ── */}
-        <section className="px-4 pt-5" aria-label="Mağaza görselleri">
-          <h2 className="text-base font-bold text-gray-800 mb-3" data-testid="text-gallery-title">📸 Mağazamızdan</h2>
+        <section id="galeri" className="px-4 pt-5 lg:col-span-8 lg:order-2" aria-label="Mağaza görselleri">
+          <h2 className="text-base lg:text-xl font-bold text-gray-800 mb-3" data-testid="text-gallery-title">📸 Mağazamızdan</h2>
           <div className="relative rounded-2xl overflow-hidden shadow-sm border border-gray-200 bg-white">
-            <div className="relative h-48">
+            <div className="relative h-48 lg:h-[440px]">
               <AnimatePresence mode="wait">
                 <motion.img
                   key={activeGallery}
@@ -261,8 +306,8 @@ export default function Home() {
 
 
         {/* ── POPÜLER MARKALAR ── */}
-        <section className="px-4 pt-5" aria-label="Popüler markalar">
-          <h2 className="text-base font-bold text-gray-800 mb-3" data-testid="text-brands-title">🏷️ Popüler Markalar</h2>
+        <section id="markalar" className="px-4 pt-5 lg:col-span-12 lg:order-4" aria-label="Popüler markalar">
+          <h2 className="text-base lg:text-xl font-bold text-gray-800 mb-3" data-testid="text-brands-title">🏷️ Popüler Markalar</h2>
           <div className="flex flex-wrap gap-2">
             {brandLinks.map(brand => (
               <Link key={brand.slug} href={`/${brand.slug}`}>
@@ -277,10 +322,10 @@ export default function Home() {
         </section>
 
         {/* ── POPÜLER ARAMALAR ── */}
-        <section className="px-4 pt-5" aria-label="Popüler aramalar">
+        <section className="px-4 pt-5 lg:col-span-7 lg:order-5" aria-label="Popüler aramalar">
           <div className="flex items-center gap-2 mb-3">
-            <Search className="w-4 h-4 text-green-600" />
-            <h2 className="text-base font-bold text-gray-800" data-testid="text-popular-title">Popüler Aramalar</h2>
+            <Search className="w-4 h-4 lg:w-5 lg:h-5 text-green-600" />
+            <h2 className="text-base lg:text-xl font-bold text-gray-800" data-testid="text-popular-title">Popüler Aramalar</h2>
           </div>
           <div className="flex flex-wrap gap-2">
             {popularSearches.map(item => (
@@ -297,10 +342,10 @@ export default function Home() {
         </section>
 
         {/* ── BLOG / BAKIM REHBERİ ── */}
-        <section className="px-4 pt-5" aria-label="Bakım rehberleri">
+        <section id="blog" className="px-4 pt-5 lg:col-span-5 lg:order-6" aria-label="Bakım rehberleri">
           <div className="flex items-center gap-2 mb-3">
-            <BookOpen className="w-4 h-4 text-green-600" />
-            <h2 className="text-base font-bold text-gray-800">Bakım Rehberi</h2>
+            <BookOpen className="w-4 h-4 lg:w-5 lg:h-5 text-green-600" />
+            <h2 className="text-base lg:text-xl font-bold text-gray-800">Bakım Rehberi</h2>
           </div>
           <div className="space-y-2">
             {[
@@ -326,8 +371,8 @@ export default function Home() {
         </section>
 
         {/* ── İLETİŞİM ── */}
-        <section className="px-4 pt-5" aria-label="İletişim ve konum">
-          <h2 className="text-base font-bold text-gray-800 mb-3" data-testid="text-contact-title">📞 İletişim & Konum</h2>
+        <section id="iletisim" className="px-4 pt-5 lg:col-span-4 lg:order-3" aria-label="İletişim ve konum">
+          <h2 className="text-base lg:text-xl font-bold text-gray-800 mb-3" data-testid="text-contact-title">📞 İletişim & Konum</h2>
           <Card className="bg-white border border-gray-200 shadow-sm rounded-2xl overflow-hidden">
             <div className="p-4 space-y-3">
               <div className="flex items-center gap-3">
@@ -369,8 +414,8 @@ export default function Home() {
         </section>
 
         {/* ── SOSYAL MEDYA ── */}
-        <section className="px-4 pt-4" aria-label="Sosyal medya">
-          <div className="grid grid-cols-2 gap-2">
+        <section className="px-4 pt-4 lg:col-span-12 lg:order-7" aria-label="Sosyal medya">
+          <div className="grid grid-cols-2 gap-2 lg:gap-4">
             <a href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer" data-testid="link-instagram"
               className="flex items-center gap-2.5 p-3 rounded-2xl bg-gradient-to-br from-purple-500 via-pink-500 to-orange-400 shadow-sm">
               <SiInstagram className="w-5 h-5 text-white shrink-0" />
@@ -391,9 +436,9 @@ export default function Home() {
         </section>
 
         {/* ── SSS ── */}
-        <section className="px-4 pt-5 pb-2" aria-label="Sıkça sorulan sorular">
-          <h2 className="text-base font-bold text-gray-800 mb-3" data-testid="text-faq-title">❓ Sıkça Sorulan Sorular</h2>
-          <div className="space-y-2">
+        <section className="px-4 pt-5 pb-2 lg:col-span-12 lg:order-8" aria-label="Sıkça sorulan sorular">
+          <h2 className="text-base lg:text-2xl font-bold text-gray-800 mb-3 lg:mb-5" data-testid="text-faq-title">❓ Sıkça Sorulan Sorular</h2>
+          <div className="space-y-2 lg:grid lg:grid-cols-2 lg:gap-3 lg:space-y-0 lg:items-start">
             <FaqItem question="Mağazada canlı hayvan satılıyor mu?" answer="Hayır, mağazamızda canlı hayvan satışı yapılmamaktadır. Sadece evcil hayvan ürünleri ve aksesuarları satılmaktadır." />
             <FaqItem question="Hangi ödeme yöntemleri kabul ediliyor?" answer="Nakit, kredi kartı ve banka kartı ile ödeme yapabilirsiniz." />
             <FaqItem question="Online sipariş verebilir miyim?" answer="Şu an için online sipariş hizmetimiz bulunmamaktadır. WhatsApp üzerinden ürün sorgulayabilir ve mağazamızı ziyaret edebilirsiniz." />
@@ -402,7 +447,7 @@ export default function Home() {
         </section>
 
         {/* ── FOOTER ── */}
-        <footer className="px-4 pt-5 pb-4 border-t border-gray-200 mt-5" data-testid="footer">
+        <footer className="px-4 pt-5 pb-4 border-t border-gray-200 mt-5 lg:col-span-12 lg:order-9" data-testid="footer">
           <div className="text-center space-y-1">
             <p className="text-[10px] text-gray-400">&copy; {new Date().getFullYear()} EnuygunPet — Tüm hakları saklıdır.</p>
             <p className="text-[10px] text-gray-400">
@@ -413,15 +458,16 @@ export default function Home() {
             </p>
           </div>
         </footer>
+        </div>
       </main>
 
       {/* ── CANLI HAYVAN UYARI ── */}
-      <div className="fixed bottom-[68px] left-0 right-0 z-50 bg-red-600 text-white text-center text-[11px] font-bold py-1.5 px-3 leading-snug shadow-lg">
+      <div className="lg:hidden fixed bottom-[68px] left-0 right-0 z-50 bg-red-600 text-white text-center text-[11px] font-bold py-1.5 px-3 leading-snug shadow-lg">
         🚫 CANLI HAYVAN SATIŞIMIZ YOKTUR — Ürün sormak için yukarıdaki "E-TİCARET / TIKLA ALIŞVERİŞ YAP" resmine tıklayın.
       </div>
 
       {/* ── ALT NAVİGASYON ── */}
-      <nav className="fixed bottom-0 left-0 right-0 z-50 bg-white border-t border-gray-200 shadow-lg" aria-label="Hızlı iletişim">
+      <nav className="lg:hidden fixed bottom-0 left-0 right-0 z-50 bg-white border-t border-gray-200 shadow-lg" aria-label="Hızlı iletişim">
         <div className="flex items-center max-w-lg mx-auto">
           <a href={`tel:${PHONE}`} className="flex-1 flex flex-col items-center gap-0.5 py-3 border-r border-gray-200" data-testid="link-bottom-call">
             <Phone className="w-5 h-5 text-gray-600" />
