@@ -1,4 +1,4 @@
-const CACHE_NAME = 'enuygunpet-v1';
+const CACHE_NAME = 'enuygunpet-v2';
 const STATIC_ASSETS = [
   '/',
   '/manifest.json',
@@ -36,6 +36,14 @@ self.addEventListener('fetch', (event) => {
 
   if (request.method !== 'GET') return;
 
+  // Navigations/HTML documents must be network-first so a fresh deploy's
+  // index.html (with new hashed bundle filenames) is never masked by a stale
+  // cached copy that points to JS files which no longer exist.
+  if (request.mode === 'navigate' || request.destination === 'document') {
+    event.respondWith(networkFirst(request));
+    return;
+  }
+
   if (
     request.destination === 'image' ||
     url.pathname.startsWith('/api/image-proxy')
@@ -49,6 +57,18 @@ self.addEventListener('fetch', (event) => {
     return;
   }
 });
+
+async function networkFirst(request) {
+  const cache = await caches.open(CACHE_NAME);
+  try {
+    const response = await fetch(request);
+    if (response.ok) cache.put(request, response.clone());
+    return response;
+  } catch {
+    const cached = await cache.match(request);
+    return cached || cache.match('/');
+  }
+}
 
 async function cacheFirstImage(request) {
   const cache = await caches.open(IMAGE_CACHE);

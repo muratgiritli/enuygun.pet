@@ -1,1 +1,2 @@
 - [Responsive desktop modernization](responsive-modernization.md) — how this mobile-first site adds desktop layouts without touching mobile.
+- [Service worker staleness after deploy](sw-deploy-staleness.md) — SW must be network-first for navigations or deployed pages go blank; sendBeacon needs JSON Blob.

@@ -534,7 +534,9 @@ Disallow: /api/
 
   app.post("/api/analytics/duration", async (req, res) => {
     try {
-      const { sessionId, slug, duration } = req.body;
+      let body = req.body;
+      if (typeof body === "string") { try { body = JSON.parse(body); } catch { body = {}; } }
+      const { sessionId, slug, duration } = body || {};
       if (sessionId && slug && duration > 0) await updateDuration(sessionId, slug, duration);
       return res.json({ ok: true });
     } catch {

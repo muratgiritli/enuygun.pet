@@ -36,9 +36,11 @@ export function useTrack(slug: string, keyword: string) {
     const sendDuration = () => {
       const duration = Math.round((Date.now() - startRef.current) / 1000);
       if (duration < 2) return;
-      navigator.sendBeacon("/api/analytics/duration",
-        JSON.stringify({ sessionId, slug, duration })
+      const blob = new Blob(
+        [JSON.stringify({ sessionId, slug, duration })],
+        { type: "application/json" }
       );
+      navigator.sendBeacon("/api/analytics/duration", blob);
     };
 
     const onVisibility = () => { if (document.visibilityState === "hidden") sendDuration(); };
