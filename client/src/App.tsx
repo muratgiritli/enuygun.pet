@@ -12,6 +12,7 @@ import BlogPage from "@/pages/blog-page";
 import CategoryPage from "@/pages/category-page";
 import LocalPage from "@/pages/local-page";
 import RoyalCaninPage from "@/pages/royal-canin";
+import ProPlanPage from "@/pages/proplan";
 import IletisimPage from "@/pages/iletisim";
 import AdminPage from "@/pages/admin";
 import { AnalyticsProvider } from "@/components/analytics-provider";
@@ -35,6 +36,7 @@ function Router() {
       <Route path="/atakum-petshop" component={CategoryPage} />
       <Route path="/kapida-teslim-petshop" component={CategoryPage} />
       <Route path="/royal-canin" component={RoyalCaninPage} />
+      <Route path="/proplan" component={ProPlanPage} />
       <Route path="/local/:slug" component={LocalPage} />
       <Route path="/:slug" component={KeywordPage} />
       <Route component={NotFound} />
