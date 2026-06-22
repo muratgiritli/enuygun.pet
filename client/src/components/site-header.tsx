@@ -17,7 +17,7 @@ const categories = [
   { label: "Atakum Petshop", emoji: "📍", color: "from-red-400 to-rose-600" },
 ];
 
-export default function SiteHeader() {
+export default function SiteHeader({ showShopGrid = true }: { showShopGrid?: boolean }) {
   return (
     <>
       {/* ── HEADER ── */}
@@ -64,6 +64,7 @@ export default function SiteHeader() {
       </div>
 
       {/* ── CTA + KATEGORİLER ── */}
+      {showShopGrid && (
       <section className="px-4 pt-5 pb-2 max-w-lg mx-auto" aria-label="Online alışveriş ve kategoriler">
         <a href={SHOP_URL} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center mb-3" data-testid="link-categories-cta">
           <span className="animate-pulse inline-flex items-center gap-2 bg-red-600 text-white text-sm font-extrabold px-5 py-2.5 rounded-full shadow-lg tracking-wide">
@@ -86,6 +87,7 @@ export default function SiteHeader() {
           ))}
         </div>
       </section>
+      )}
     </>
   );
 }

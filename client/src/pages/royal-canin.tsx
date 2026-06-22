@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { Link } from "wouter";
 import { useTrack } from "@/hooks/use-track";
 import SiteHeader from "@/components/site-header";
-import { Phone, MapPin, Clock, Star, Truck, ShieldCheck, BadgeCheck, ChevronRight } from "lucide-react";
+import { Phone, MapPin, Clock, Truck, ShieldCheck, BadgeCheck, ChevronRight } from "lucide-react";
 import { SiWhatsapp } from "react-icons/si";
 
 const IMG = "/images/royal-canin";
@@ -21,68 +21,6 @@ const PHONE_DISPLAY = "0542 211 49 44";
 const WHATSAPP_URL = `https://wa.me/905422114944?text=${encodeURIComponent("Merhaba, Royal Canin ürünleri hakkında bilgi almak istiyorum.")}`;
 const MAPS_URL = "https://www.google.com/maps/place/Samsun+Petshop+Enuygunpet/@41.3494032,36.2410372,17z/data=!4m10!1m2!2m1!1senuygunpet!3m6!1s0x408879a38cad8b89:0x2f8d7996011cec2d!8m2!3d41.349366!4d36.243738!15sCgplbnV5Z3VucGV0WgwiCmVudXlndW5wZXSSAQlwZXRfc3RvcmXgAQA!16s%2Fg%2F11x2x7jtwk?entry=ttu";
 const SHOP_URL = "https://www.atakumpetshop.com";
-
-type Product = {
-  id: string;
-  name: string;
-  type: "kedi" | "kopek";
-  desc: string;
-  size: string;
-  price: number;
-  rating: number;
-  reviews: number;
-  img: string;
-  alt: string;
-  best?: boolean;
-};
-
-const PRODUCTS: Product[] = [
-  { id: "kitten", name: "Royal Canin Kitten", type: "kedi", desc: "Yavru kediler için (4-12 ay)", size: "2 kg", price: 549, rating: 4.9, reviews: 324, img: kittenImg, alt: "royal canin kitten", best: true },
-  { id: "sterilised", name: "Royal Canin Sterilised", type: "kedi", desc: "Kısırlaştırılmış yetişkin kediler için", size: "4 kg", price: 1249, rating: 4.8, reviews: 512, img: sterilisedImg, alt: "royal canin sterilised", best: true },
-  { id: "mini-adult", name: "Royal Canin Mini Adult", type: "kopek", desc: "Küçük ırk yetişkin köpekler için", size: "3 kg", price: 899, rating: 4.8, reviews: 268, img: miniAdultImg, alt: "royal canin mini adult", best: true },
-  { id: "medium-adult", name: "Royal Canin Medium Adult", type: "kopek", desc: "Orta ırk yetişkin köpekler için", size: "4 kg", price: 1099, rating: 4.8, reviews: 211, img: mediumAdultImg, alt: "royal canin medium adult", best: true },
-  { id: "mini-puppy", name: "Royal Canin Mini Puppy", type: "kopek", desc: "Küçük ırk yavru köpekler için", size: "3 kg", price: 949, rating: 4.9, reviews: 176, img: miniPuppyImg, alt: "royal canin puppy" },
-  { id: "maxi-adult", name: "Royal Canin Maxi Adult", type: "kopek", desc: "Büyük ırk yetişkin köpekler için", size: "4 kg", price: 1149, rating: 4.7, reviews: 143, img: maxiAdultImg, alt: "royal canin maxi adult" },
-  { id: "gastrointestinal", name: "Royal Canin Gastrointestinal", type: "kopek", desc: "Sindirim sistemi desteği — veteriner diyeti", size: "2 kg", price: 899, rating: 4.9, reviews: 98, img: gastroImg, alt: "royal canin gastrointestinal" },
-  { id: "hypoallergenic", name: "Royal Canin Hypoallergenic", type: "kopek", desc: "Besin alerjileri için — veteriner diyeti", size: "2 kg", price: 1049, rating: 4.8, reviews: 84, img: hypoImg, alt: "royal canin hypoallergenic" },
-];
-
-const fmtPrice = (n: number) => n.toLocaleString("tr-TR") + " ₺";
-
-function ProductCard({ p }: { p: Product }) {
-  return (
-    <div className="rounded-2xl border border-gray-200 bg-white p-3 flex flex-col shadow-sm" data-testid={`card-product-${p.id}`}>
-      <div className="aspect-square rounded-xl bg-gray-50 overflow-hidden flex items-center justify-center mb-2.5">
-        <img src={p.img} alt={p.alt} loading="lazy" className="w-full h-full object-contain" data-testid={`img-product-${p.id}`} />
-      </div>
-      <h3 className="text-[13px] font-bold text-gray-900 leading-tight" data-testid={`text-name-${p.id}`}>{p.name}</h3>
-      <p className="text-[11px] text-gray-500 mt-0.5 leading-snug">{p.desc}</p>
-      <div className="flex items-center gap-1 mt-1.5">
-        <Star className="w-3.5 h-3.5 text-amber-400 fill-amber-400" />
-        <span className="text-[11px] font-semibold text-gray-700">{p.rating.toLocaleString("tr-TR")}</span>
-        <span className="text-[11px] text-gray-400">({p.reviews})</span>
-        <span className="ml-auto inline-flex items-center gap-1 text-[10px] font-semibold text-green-700 bg-green-50 px-1.5 py-0.5 rounded-full">
-          <span className="w-1.5 h-1.5 rounded-full bg-green-500" /> Stokta
-        </span>
-      </div>
-      <div className="flex items-end justify-between mt-2">
-        <div>
-          <span className="text-[10px] text-gray-400 block leading-none">{p.size}</span>
-          <span className="text-base font-extrabold text-gray-900" data-testid={`text-price-${p.id}`}>{fmtPrice(p.price)}</span>
-        </div>
-      </div>
-      <a
-        href={SHOP_URL}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="mt-2.5 w-full inline-flex items-center justify-center gap-1.5 bg-green-600 hover:bg-green-700 active:scale-[0.98] transition text-white text-[13px] font-bold py-2 rounded-xl shadow-sm"
-        data-testid={`button-add-${p.id}`}
-      >
-        🛒 Sepete Ekle
-      </a>
-    </div>
-  );
-}
 
 export default function RoyalCaninPage() {
   useTrack("royal-canin", "royal canin");
@@ -116,47 +54,9 @@ export default function RoyalCaninPage() {
     setMeta('meta[name="twitter:description"]', "content", desc);
   }, []);
 
-  const kediProducts = PRODUCTS.filter(p => p.type === "kedi");
-  const kopekProducts = PRODUCTS.filter(p => p.type === "kopek" && p.id !== "gastrointestinal" && p.id !== "hypoallergenic");
-  const vetProducts = PRODUCTS.filter(p => p.id === "gastrointestinal" || p.id === "hypoallergenic");
-  const bestSellers = PRODUCTS.filter(p => p.best);
-
-  const productSchema = PRODUCTS.map(p => ({
-    "@type": "Product",
-    "name": p.name,
-    "image": `https://www.enuygun.pet/images/royal-canin/${p.id}.${p.img.includes(".png") ? "png" : "jpg"}`,
-    "description": p.desc,
-    "brand": { "@type": "Brand", "name": "Royal Canin" },
-    "category": p.type === "kedi" ? "Kedi Maması" : "Köpek Maması",
-    "offers": {
-      "@type": "Offer",
-      "url": "https://www.enuygun.pet/royal-canin",
-      "priceCurrency": "TRY",
-      "price": p.price,
-      "availability": "https://schema.org/InStock",
-      "seller": { "@type": "Organization", "name": "EnuygunPet Gross Market" }
-    },
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": p.rating,
-      "reviewCount": p.reviews,
-      "bestRating": 5,
-      "worstRating": 1
-    }
-  }));
-
   const schema = {
     "@context": "https://schema.org",
     "@graph": [
-      {
-        "@type": "ItemList",
-        "name": "Royal Canin Kedi ve Köpek Mamaları",
-        "itemListElement": PRODUCTS.map((p, i) => ({
-          "@type": "ListItem",
-          "position": i + 1,
-          "item": productSchema[i]
-        }))
-      },
       {
         "@type": "BreadcrumbList",
         "itemListElement": [
@@ -214,7 +114,7 @@ export default function RoyalCaninPage() {
   return (
     <div className="min-h-screen bg-background flex flex-col pb-20">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
-      <SiteHeader />
+      <SiteHeader showShopGrid={false} />
 
       {/* ── HERO ── */}
       <section className="px-4 pt-4 max-w-lg mx-auto w-full">
@@ -238,39 +138,71 @@ export default function RoyalCaninPage() {
       </section>
 
       <main className="flex-1 max-w-lg mx-auto w-full px-4 py-6 space-y-8">
-        {/* ── EN ÇOK SATANLAR ── */}
-        <section aria-label="En çok satan Royal Canin ürünleri">
-          <div className="flex items-center justify-between mb-3">
-            <h3 className="text-lg font-extrabold text-gray-900">⭐ En Çok Satanlar</h3>
-            <span className="text-[11px] font-semibold text-green-700 bg-green-50 px-2 py-0.5 rounded-full">Stokta</span>
-          </div>
-          <div className="grid grid-cols-2 gap-3">
-            {bestSellers.map(p => <ProductCard key={p.id} p={p} />)}
-          </div>
+        {/* ── MAKALE: NEDEN ROYAL CANIN ── */}
+        <section aria-label="Royal Canin neden tercih edilmeli" className="space-y-3">
+          <h2 className="text-lg font-extrabold text-gray-900">Neden Royal Canin?</h2>
+          <p className="text-sm text-gray-600 leading-relaxed">
+            Royal Canin, 1968'den bu yana evcil hayvan beslenmesinde bilimsel yaklaşımı standart haline getiren dünya çapında bir markadır. Sıradan mamalardan farklı olarak Royal Canin, her ürününü kedi ve köpeklerin <strong>yaşına, ırkına, boyutuna ve özel sağlık ihtiyaçlarına</strong> göre ayrı ayrı formüle eder. Bu nedenle veteriner hekimlerin en çok önerdiği markaların başında gelir.
+          </p>
+          <p className="text-sm text-gray-600 leading-relaxed">
+            Yüksek sindirilebilirlik oranı, dengeli protein-yağ profili ve kontrollü mineral içeriği sayesinde Royal Canin mamaları; sağlıklı tüy, güçlü bağışıklık, ideal kilo ve iyi bir sindirim sistemi sağlar. EnuygunPet olarak tüm Royal Canin ürünlerini <strong>orijinal, güncel üretim tarihli ve Samsun'un en uygun fiyatlarıyla</strong> sunuyoruz.
+          </p>
         </section>
 
-        {/* ── KEDI MAMALARI ── */}
-        <section aria-label="Royal Canin Kedi Mamaları">
-          <h2 className="text-lg font-extrabold text-gray-900 mb-3" data-testid="text-h2-kedi">🐱 Royal Canin Kedi Mamaları</h2>
-          <div className="grid grid-cols-2 gap-3">
-            {kediProducts.map(p => <ProductCard key={p.id} p={p} />)}
+        {/* ── MAKALE: KEDI MAMALARI ── */}
+        <section aria-label="Royal Canin Kedi Mamaları" className="space-y-3">
+          <h2 className="text-lg font-extrabold text-gray-900" data-testid="text-h2-kedi">Royal Canin Kedi Mamaları</h2>
+          <div className="grid grid-cols-2 gap-2.5">
+            <img src={kittenImg} alt="royal canin kitten" loading="lazy" className="w-full aspect-square object-contain rounded-xl bg-gray-50" />
+            <img src={sterilisedImg} alt="royal canin sterilised" loading="lazy" className="w-full aspect-square object-contain rounded-xl bg-gray-50" />
           </div>
+          <p className="text-sm text-gray-600 leading-relaxed">
+            Royal Canin kedi mamaları, kedinizin yaşam evresine göre özelleştirilmiştir. <strong>Royal Canin Kitten</strong>, 4-12 aylık yavru kedilerin hızlı büyüme dönemini destekler; bağışıklık sistemini güçlendiren antioksidanlar ve kolay sindirilen proteinler içerir. <strong>Royal Canin Sterilised</strong> ise kısırlaştırılmış yetişkin kediler için tasarlanmıştır. Kısırlaştırma sonrası artan iştahı dengeler, ideal kiloda kalmayı sağlar ve idrar yolu sağlığını destekler.
+          </p>
+          <p className="text-sm text-gray-600 leading-relaxed">
+            Hassas mideli, tüy yumağı problemi yaşayan veya belirli bir ırka sahip kediler için de Royal Canin'in özel formülleri mevcuttur. Mağazamızdan kedinize en uygun çeşidi seçebilir, emin olamadığınız noktada ekibimizden ücretsiz öneri alabilirsiniz.
+          </p>
+          <a href={SHOP_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-sm font-bold text-[#b91c1c]" data-testid="link-shop-kedi">
+            Kedi mamalarını online incele <ChevronRight className="w-4 h-4" />
+          </a>
         </section>
 
-        {/* ── KOPEK MAMALARI ── */}
-        <section aria-label="Royal Canin Köpek Mamaları">
-          <h2 className="text-lg font-extrabold text-gray-900 mb-3" data-testid="text-h2-kopek">🐶 Royal Canin Köpek Mamaları</h2>
-          <div className="grid grid-cols-2 gap-3">
-            {kopekProducts.map(p => <ProductCard key={p.id} p={p} />)}
+        {/* ── MAKALE: KOPEK MAMALARI ── */}
+        <section aria-label="Royal Canin Köpek Mamaları" className="space-y-3">
+          <h2 className="text-lg font-extrabold text-gray-900" data-testid="text-h2-kopek">Royal Canin Köpek Mamaları</h2>
+          <div className="grid grid-cols-2 gap-2.5">
+            <img src={miniPuppyImg} alt="royal canin puppy" loading="lazy" className="w-full aspect-square object-contain rounded-xl bg-gray-50" />
+            <img src={miniAdultImg} alt="royal canin mini adult" loading="lazy" className="w-full aspect-square object-contain rounded-xl bg-gray-50" />
+            <img src={mediumAdultImg} alt="royal canin medium adult" loading="lazy" className="w-full aspect-square object-contain rounded-xl bg-gray-50" />
+            <img src={maxiAdultImg} alt="royal canin maxi adult" loading="lazy" className="w-full aspect-square object-contain rounded-xl bg-gray-50" />
           </div>
+          <p className="text-sm text-gray-600 leading-relaxed">
+            Royal Canin köpek mamaları, köpeğinizin ırk boyutuna göre ayrılır. <strong>Royal Canin Mini Puppy</strong> küçük ırk yavruların gelişimini desteklerken, <strong>Mini Adult</strong> 10 kg altındaki yetişkin köpekler için ideal kroket boyutu ve enerji yoğunluğu sunar. Orta ırklar için <strong>Medium Adult</strong>, büyük ırklar için ise <strong>Maxi Adult</strong> eklem sağlığını ve kas yapısını koruyacak şekilde formüle edilmiştir.
+          </p>
+          <p className="text-sm text-gray-600 leading-relaxed">
+            Her formül; köpeğin çene yapısına uygun kroket tasarımı, ırkına özgü enerji ihtiyacı ve sindirim hassasiyeti göz önünde bulundurularak hazırlanır. Bu sayede dostunuz hem mamayı severek yer hem de günlük ihtiyacı olan tüm besinleri eksiksiz alır.
+          </p>
+          <a href={SHOP_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-sm font-bold text-[#b91c1c]" data-testid="link-shop-kopek">
+            Köpek mamalarını online incele <ChevronRight className="w-4 h-4" />
+          </a>
         </section>
 
-        {/* ── VETERINER DIYET ── */}
-        <section aria-label="Royal Canin Veteriner Diyet Mamaları">
-          <h3 className="text-lg font-extrabold text-gray-900 mb-3">🩺 Veteriner Diyet Mamaları</h3>
-          <div className="grid grid-cols-2 gap-3">
-            {vetProducts.map(p => <ProductCard key={p.id} p={p} />)}
+        {/* ── MAKALE: VETERINER DIYET ── */}
+        <section aria-label="Royal Canin Veteriner Diyet Mamaları" className="space-y-3">
+          <h2 className="text-lg font-extrabold text-gray-900">Royal Canin Veteriner Diyet Mamaları</h2>
+          <div className="grid grid-cols-2 gap-2.5">
+            <img src={gastroImg} alt="royal canin gastrointestinal" loading="lazy" className="w-full aspect-square object-contain rounded-xl bg-gray-50" />
+            <img src={hypoImg} alt="royal canin hypoallergenic" loading="lazy" className="w-full aspect-square object-contain rounded-xl bg-gray-50" />
           </div>
+          <p className="text-sm text-gray-600 leading-relaxed">
+            Bazı dostlarımızın özel sağlık ihtiyaçları olur. <strong>Royal Canin Gastrointestinal</strong>, hassas sindirim sistemine sahip, ishal veya kusma gibi sorunlar yaşayan kedi ve köpekler için yüksek sindirilebilirlikte hazırlanmış bir veteriner diyetidir. <strong>Royal Canin Hypoallergenic</strong> ise besin alerjisi ya da gıda intoleransı bulunan dostlar için hidrolize protein içeren özel bir formüldür.
+          </p>
+          <p className="text-sm text-gray-600 leading-relaxed">
+            Veteriner diyet mamaları mutlaka bir veteriner hekim önerisiyle kullanılmalıdır. EnuygunPet'te bu özel ürünleri orijinal garantisiyle bulabilir, doğru kullanımı hakkında bilgi alabilirsiniz.
+          </p>
+          <a href={SHOP_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-sm font-bold text-[#b91c1c]" data-testid="link-shop-vet">
+            Veteriner diyet mamalarını online incele <ChevronRight className="w-4 h-4" />
+          </a>
         </section>
 
         {/* ── ILETISIM / KONUM ── */}
