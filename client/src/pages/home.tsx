@@ -186,7 +186,7 @@ export default function Home() {
                 <SiWhatsapp className="w-4 h-4 text-white" />
               </button>
             </a>
-            <a href="https://www.jetgomarket.com" target="_blank" rel="noopener noreferrer" className="hidden lg:inline-flex" data-testid="link-header-shop">
+            <a href="https://www.enuygunpet.com" target="_blank" rel="noopener noreferrer" className="hidden lg:inline-flex" data-testid="link-header-shop">
               <span className="inline-flex items-center gap-1.5 bg-red-600 hover:bg-red-700 transition-colors text-white text-sm font-bold px-4 py-2.5 rounded-xl shadow">
                 🛒 Online Alışveriş
               </span>
@@ -231,7 +231,7 @@ export default function Home() {
                   Royal Canin, Pro Plan ve daha birçok premium markada kedi, köpek, kuş ve akvaryum ürünleri — uygun gross market fiyatlarıyla, Atakum içine 1 saatte teslimat.
                 </p>
                 <div className="flex flex-wrap items-center gap-3 mt-8">
-                  <a href="https://www.jetgomarket.com" target="_blank" rel="noopener noreferrer" data-testid="link-hero-shop">
+                  <a href="https://www.enuygunpet.com" target="_blank" rel="noopener noreferrer" data-testid="link-hero-shop">
                     <span className="inline-flex items-center gap-2 bg-red-600 hover:bg-red-700 transition-colors text-white font-bold px-6 py-3.5 rounded-2xl shadow-lg">🛒 Online Alışveriş Yap</span>
                   </a>
                   <a href={MAPS_URL} target="_blank" rel="noopener noreferrer" data-testid="link-hero-maps">
@@ -250,14 +250,14 @@ export default function Home() {
         {/* ── KATEGORİLER ── */}
         <section id="kategoriler" className="px-4 pt-5 pb-2 lg:col-span-12 lg:order-1" aria-label="Ürün kategorileri">
           <h2 className="hidden lg:block text-2xl font-extrabold text-gray-900 mb-5">Kategoriler</h2>
-          <a href="https://www.jetgomarket.com" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center mb-3 lg:hidden" data-testid="link-categories-cta">
+          <a href="https://www.enuygunpet.com" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center mb-3 lg:hidden" data-testid="link-categories-cta">
             <span className="animate-pulse inline-flex items-center gap-2 bg-red-600 text-white text-sm font-extrabold px-5 py-2.5 rounded-full shadow-lg tracking-wide">
               🛒 TIKLA ONLİNE ALIŞVERİŞ YAP
             </span>
           </a>
           <div className="grid grid-cols-3 gap-2.5 lg:grid-cols-6 lg:gap-4">
             {categories.map((cat, i) => (
-              <a key={cat.slug} href="https://www.jetgomarket.com" target="_blank" rel="noopener noreferrer" data-testid={`link-category-${i}`}>
+              <a key={cat.slug} href="https://www.enuygunpet.com" target="_blank" rel="noopener noreferrer" data-testid={`link-category-${i}`}>
                   <motion.div
                     initial={{ opacity: 0, scale: 0.95 }}
                     animate={{ opacity: 1, scale: 1 }}

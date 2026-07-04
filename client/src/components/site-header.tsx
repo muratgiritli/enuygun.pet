@@ -6,7 +6,7 @@ import { SiWhatsapp } from "react-icons/si";
 const PHONE = "+905422114944";
 const WHATSAPP_URL = `https://wa.me/905422114944?text=Merhaba,%20Enuygun.pet%20mağazanızdaki%20ürünler%20hakkında%20bilgi%20almak%20istiyorum.`;
 const MAPS_URL = "https://www.google.com/maps/place/Samsun+Petshop+Enuygunpet/@41.3494032,36.2410372,17z/data=!4m10!1m2!2m1!1senuygunpet!3m6!1s0x408879a38cad8b89:0x2f8d7996011cec2d!8m2!3d41.349366!4d36.243738!15sCgplbnV5Z3VucGV0WgwiCmVudXlndW5wZXSSAQlwZXRfc3RvcmXgAQA!16s%2Fg%2F11x2x7jtwk?entry=ttu";
-const SHOP_URL = "https://www.jetgomarket.com";
+const SHOP_URL = "https://www.enuygunpet.com";
 
 const categories = [
   { label: "Kedi Maması", emoji: "🐱", color: "from-orange-400 to-amber-500" },
