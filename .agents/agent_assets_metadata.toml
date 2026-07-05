@@ -678,3 +678,9 @@ id = "N18SUcYYXhc8JsBaNYVFc"
 uri = "file://exports/marka-pet-tum-url-listesi.txt"
 type = "text"
 title = "marka.pet - Tüm URL Listesi (12.117)"
+
+[[outputs]]
+id = "jo_LRKOZYdLLJI-_ggGW0"
+uri = "file://exports/jetgomarket-tum-url-listesi.txt"
+type = "text"
+title = "jetgomarket.com - Tüm URL Listesi (12.117)"
