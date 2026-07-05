@@ -672,3 +672,9 @@ id = "h8aJ-K6moTten12a_pQ7n"
 uri = "file://exports/jetgo-shop-tum-url-listesi.txt"
 type = "text"
 title = "jetgo.shop - Tüm URL Listesi (12.117)"
+
+[[outputs]]
+id = "N18SUcYYXhc8JsBaNYVFc"
+uri = "file://exports/marka-pet-tum-url-listesi.txt"
+type = "text"
+title = "marka.pet - Tüm URL Listesi (12.117)"
