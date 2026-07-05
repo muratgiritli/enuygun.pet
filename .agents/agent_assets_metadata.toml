@@ -684,3 +684,9 @@ id = "jo_LRKOZYdLLJI-_ggGW0"
 uri = "file://exports/jetgomarket-tum-url-listesi.txt"
 type = "text"
 title = "jetgomarket.com - Tüm URL Listesi (12.117)"
+
+[[outputs]]
+id = "D5v7dwP1sNVlFFMjOWTsk"
+uri = "file://exports/atakumpetshop-tum-url-listesi.txt"
+type = "text"
+title = "atakumpetshop.com - Tüm URL Listesi (12.117)"
