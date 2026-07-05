@@ -660,3 +660,9 @@ id = "MaygVuydmB5bY4Ps4kXaS"
 uri = "file://exports/atakumpet-tum-url-listesi.txt"
 type = "text"
 title = "atakumpet.com - Tüm URL Listesi (12.117)"
+
+[[outputs]]
+id = "O9BJRekat61P7ctjtIDs3"
+uri = "file://exports/jetgo-pet-tum-url-listesi.txt"
+type = "text"
+title = "jetgo.pet - Tüm URL Listesi (12.117)"
