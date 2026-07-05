@@ -9,17 +9,6 @@ const httpServer = createServer(app);
 
 app.disable("x-powered-by");
 
-const OLD_DOMAINS = new Set(["marka.pet", "www.marka.pet"]);
-const CANONICAL_ORIGIN = "https://www.enuygun.pet";
-
-app.use((req, res, next) => {
-  const hostHeader = (req.headers.host || "").toLowerCase().split(":")[0];
-  if (OLD_DOMAINS.has(hostHeader)) {
-    return res.redirect(301, CANONICAL_ORIGIN + req.originalUrl);
-  }
-  next();
-});
-
 app.use((req, res, next) => {
   res.setHeader("X-Content-Type-Options", "nosniff");
   res.setHeader("X-Frame-Options", "SAMEORIGIN");
@@ -33,34 +22,6 @@ app.use((req, res, next) => {
     !req.path.match(/\.(js|css|png|jpg|jpeg|webp|ico|svg|woff2?|ttf|eot|txt|xml|json)$/)
   ) {
     res.setHeader("Cache-Control", "public, max-age=300, must-revalidate");
-  }
-  next();
-});
-
-app.use((req, res, next) => {
-  if (
-    (req.method === "GET" || req.method === "HEAD") &&
-    req.path !== "/" &&
-    req.path.endsWith("/") &&
-    !req.path.startsWith("/api/")
-  ) {
-    const cleanPath = req.path.slice(0, -1);
-    const redirectUrl = req.originalUrl.replace(req.path, cleanPath);
-    return res.redirect(301, redirectUrl);
-  }
-  if ((req.method === "GET" || req.method === "HEAD") && /\/\//.test(req.path)) {
-    const cleanPath = req.path.replace(/\/+/g, "/");
-    const redirectUrl = req.originalUrl.replace(req.path, cleanPath);
-    return res.redirect(301, redirectUrl);
-  }
-  if (
-    (req.method === "GET" || req.method === "HEAD") &&
-    !req.path.startsWith("/api/") &&
-    /(^|\/)cazip-pet(-|$)/.test(req.path)
-  ) {
-    const newPath = req.path.replace(/cazip-pet/g, "cazip-ve-uygun-pet");
-    const redirectUrl = req.originalUrl.replace(req.path, newPath);
-    return res.redirect(301, redirectUrl);
   }
   next();
 });
