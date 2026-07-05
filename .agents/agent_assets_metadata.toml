@@ -696,3 +696,9 @@ id = "uu-jxuRAWg7BSHToHGQDF"
 uri = "file://exports/atakum-biz-tum-url-listesi.txt"
 type = "text"
 title = "atakum.biz - Tüm URL Listesi (12.117)"
+
+[[outputs]]
+id = "Nkzr59ZFBQvLx4sEvhXXP"
+uri = "file://exports/murat-com-tum-url-listesi.txt"
+type = "text"
+title = "murat.com - Tüm URL Listesi (12.117)"
