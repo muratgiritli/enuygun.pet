@@ -9,6 +9,17 @@ const httpServer = createServer(app);
 
 app.disable("x-powered-by");
 
+const OLD_DOMAINS = new Set(["marka.pet", "www.marka.pet"]);
+const CANONICAL_ORIGIN = "https://www.enuygun.pet";
+
+app.use((req, res, next) => {
+  const hostHeader = (req.headers.host || "").toLowerCase().split(":")[0];
+  if (OLD_DOMAINS.has(hostHeader)) {
+    return res.redirect(301, CANONICAL_ORIGIN + req.originalUrl);
+  }
+  next();
+});
+
 app.use((req, res, next) => {
   res.setHeader("X-Content-Type-Options", "nosniff");
   res.setHeader("X-Frame-Options", "SAMEORIGIN");
