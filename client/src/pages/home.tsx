@@ -20,13 +20,14 @@ import {
   Search,
 } from "lucide-react";
 import { SiWhatsapp, SiInstagram } from "react-icons/si";
+import storeHeroImg from "@assets/enuygunpet_magaza_1783254091827.png";
 
 const PHONE = "+905422114944";
 const WHATSAPP_URL = `https://wa.me/905422114944?text=Merhaba,%20Enuygun.pet%20mağazanızdaki%20ürünler%20hakkında%20bilgi%20almak%20istiyorum.`;
 const MAPS_URL = "https://www.google.com/maps/place/Samsun+Petshop+Enuygunpet/@41.3494032,36.2410372,17z/data=!4m10!1m2!2m1!1senuygunpet!3m6!1s0x408879a38cad8b89:0x2f8d7996011cec2d!8m2!3d41.349366!4d36.243738!15sCgplbnV5Z3VucGV0WgwiCmVudXlndW5wZXSSAQlwZXRfc3RvcmXgAQA!16s%2Fg%2F11x2x7jtwk?entry=ttu";
 const INSTAGRAM_URL = "https://www.instagram.com/enuygun.pet/";
 
-const STORE_HERO = "https://static.wixstatic.com/media/63853e_77a3ee3fa9d942a7af5b6f25a0520653~mv2.jpeg";
+const STORE_HERO = storeHeroImg;
 const STORE_PHOTOS = [
   "https://static.wixstatic.com/media/63853e_f5ae600f104c4dfcae521fe694ba017b~mv2.jpeg",
   "https://static.wixstatic.com/media/63853e_4c33bdb1dc274eab8358c2d598f7cfee~mv2.jpeg",
