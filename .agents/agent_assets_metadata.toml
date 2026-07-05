@@ -690,3 +690,9 @@ id = "D5v7dwP1sNVlFFMjOWTsk"
 uri = "file://exports/atakumpetshop-tum-url-listesi.txt"
 type = "text"
 title = "atakumpetshop.com - Tüm URL Listesi (12.117)"
+
+[[outputs]]
+id = "uu-jxuRAWg7BSHToHGQDF"
+uri = "file://exports/atakum-biz-tum-url-listesi.txt"
+type = "text"
+title = "atakum.biz - Tüm URL Listesi (12.117)"
