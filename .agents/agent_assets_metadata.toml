@@ -636,3 +636,15 @@ id = "NULX7WJd-acV-U62HsIXN"
 uri = "file://prochoice-kopek-mamasi-url.txt"
 type = "text"
 title = "Prochoice Köpek Maması Sayfaları - 48 URL"
+
+[[outputs]]
+id = "it1t_Y3LosolkrqcAoNQ2"
+uri = "file://exports/marka-pet-sayfa-uzantilari.txt"
+type = "text"
+title = "Sayfa Uzantıları (12.117 path)"
+
+[[outputs]]
+id = "G4jQHpz2yhkXU9106W__1"
+uri = "file://exports/enuygunpet-tum-url-listesi.txt"
+type = "text"
+title = "Tüm URL Listesi (tam adres)"
