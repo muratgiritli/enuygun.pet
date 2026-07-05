@@ -21,6 +21,12 @@ import {
 } from "lucide-react";
 import { SiWhatsapp, SiInstagram } from "react-icons/si";
 import storeHeroImg from "@assets/enuygunpet_magaza_1783254091827.png";
+import catImg from "@assets/stock_images/cat_category.jpg";
+import dogImg from "@assets/stock_images/dog_category.jpg";
+import birdImg from "@assets/stock_images/bird_category.jpg";
+import fishImg from "@assets/stock_images/fish_category.jpg";
+import hamsterImg from "@assets/stock_images/hamster_category.jpg";
+import petshopImg from "@assets/stock_images/petshop_category.jpg";
 
 const PHONE = "+905422114944";
 const WHATSAPP_URL = `https://wa.me/905422114944?text=Merhaba,%20Enuygun.pet%20mağazanızdaki%20ürünler%20hakkında%20bilgi%20almak%20istiyorum.`;
@@ -41,12 +47,12 @@ function optimizedImg(url: string, width: number = 0) {
 }
 
 const categories = [
-  { icon: Cat, label: "Kedi Maması", emoji: "🐱", slug: "kedi-mamasi", color: "from-orange-400 to-amber-500" },
-  { icon: Dog, label: "Köpek Maması", emoji: "🐶", slug: "kopek-mamasi", color: "from-blue-400 to-blue-600" },
-  { icon: Bird, label: "Kuş Ürünleri", emoji: "🦜", slug: "gold-wings-muhabbet-yemi", color: "from-green-400 to-emerald-600" },
-  { icon: Fish, label: "Akvaryum", emoji: "🐠", slug: "balik-yemi-samsun", color: "from-cyan-400 to-blue-500" },
-  { icon: Cat, label: "Kemirgen Sürüngen", emoji: "🐹", slug: "kedi-kumu", color: "from-slate-400 to-slate-600" },
-  { icon: Dog, label: "Atakum Petshop", emoji: "📍", slug: "atakum-petshop", color: "from-red-400 to-rose-600" },
+  { icon: Cat, label: "Kedi Maması", emoji: "🐱", img: catImg, slug: "kedi-mamasi", color: "from-orange-400 to-amber-500" },
+  { icon: Dog, label: "Köpek Maması", emoji: "🐶", img: dogImg, slug: "kopek-mamasi", color: "from-blue-400 to-blue-600" },
+  { icon: Bird, label: "Kuş Ürünleri", emoji: "🦜", img: birdImg, slug: "gold-wings-muhabbet-yemi", color: "from-green-400 to-emerald-600" },
+  { icon: Fish, label: "Akvaryum", emoji: "🐠", img: fishImg, slug: "balik-yemi-samsun", color: "from-cyan-400 to-blue-500" },
+  { icon: Cat, label: "Kemirgen & Sürüngen", emoji: "🐹", img: hamsterImg, slug: "kedi-kumu", color: "from-slate-400 to-slate-600" },
+  { icon: Dog, label: "Atakum Petshop", emoji: "📍", img: petshopImg, slug: "atakum-petshop", color: "from-red-400 to-rose-600" },
 ];
 
 const popularSearches = [
@@ -246,6 +252,35 @@ export default function Home() {
           </div>
         </section>
 
+        {/* ── MOBİL HERO ── */}
+        <section className="lg:hidden px-4 pt-4" aria-label="Tanıtım">
+          <div className="relative rounded-3xl overflow-hidden shadow-xl">
+            <img src={STORE_HERO} alt="EnuygunPet Petshop mağaza" className="absolute inset-0 w-full h-full object-cover" />
+            <div className="absolute inset-0 bg-gradient-to-t from-green-950/95 via-green-900/80 to-green-800/40" />
+            <div className="relative p-5 flex flex-col">
+              <span className="inline-flex items-center gap-1.5 bg-white/15 backdrop-blur px-2.5 py-1 rounded-full text-[11px] font-semibold text-white w-fit mb-3">
+                <Star className="w-3 h-3 text-amber-300 fill-amber-300" /> 4.8 · 120+ Mutlu Müşteri
+              </span>
+              <h1 className="text-[28px] font-extrabold text-white leading-[1.15] drop-shadow">
+                1 Saatte Kapında<br />Tüm Petshop Ürünleri
+              </h1>
+              <p className="mt-2.5 text-white/90 text-sm leading-snug">
+                Kedi, köpek, kuş ve akvaryum ürünleri — uygun gross market fiyatlarıyla Atakum'a hızlı teslimat.
+              </p>
+              <a href="https://www.enuygunpet.com" target="_blank" rel="noopener noreferrer" className="mt-4" data-testid="link-mobile-hero-shop">
+                <span className="animate-pulse flex items-center justify-center gap-2 bg-red-600 text-white font-extrabold text-[15px] py-4 rounded-2xl shadow-lg tracking-wide">
+                  🛒 TIKLA · HEMEN SİPARİŞ VER
+                </span>
+              </a>
+              <div className="flex flex-wrap items-center gap-x-3 gap-y-1.5 mt-3 text-white/90 text-[11px] font-medium">
+                <span className="inline-flex items-center gap-1">⚡ 1 Saatte Teslimat</span>
+                <span className="inline-flex items-center gap-1">🚚 Kapıda Ödeme</span>
+                <span className="inline-flex items-center gap-1">✅ Güvenli</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
         <div className="max-w-6xl mx-auto w-full lg:grid lg:grid-cols-12 lg:gap-x-8 lg:gap-y-2 lg:px-8 lg:pt-2">
 
         {/* ── KATEGORİLER ── */}
@@ -263,10 +298,11 @@ export default function Home() {
                     initial={{ opacity: 0, scale: 0.95 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ delay: 0.05 * i }}
-                    className={`rounded-2xl bg-gradient-to-br ${cat.color} p-3 lg:p-4 flex flex-col items-center justify-center gap-1.5 lg:gap-2.5 shadow-sm lg:hover:shadow-lg lg:hover:-translate-y-0.5 lg:transition-all aspect-square`}
+                    className="relative rounded-2xl overflow-hidden shadow-sm lg:hover:shadow-lg lg:hover:-translate-y-0.5 lg:transition-all aspect-square"
                   >
-                    <span className="text-2xl lg:text-4xl">{cat.emoji}</span>
-                    <span className="text-white text-[11px] lg:text-sm font-bold text-center leading-tight">{cat.label}</span>
+                    <img src={cat.img} alt={cat.label} loading="lazy" className="absolute inset-0 w-full h-full object-cover" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/25 to-transparent" />
+                    <span className="absolute bottom-1.5 left-1.5 right-1.5 text-white text-[11px] lg:text-sm font-bold text-center leading-tight drop-shadow-md">{cat.label}</span>
                   </motion.div>
                 </a>
             ))}
@@ -442,7 +478,7 @@ export default function Home() {
           <div className="space-y-2 lg:grid lg:grid-cols-2 lg:gap-3 lg:space-y-0 lg:items-start">
             <FaqItem question="Mağazada canlı hayvan satılıyor mu?" answer="Hayır, mağazamızda canlı hayvan satışı yapılmamaktadır. Sadece evcil hayvan ürünleri ve aksesuarları satılmaktadır." />
             <FaqItem question="Hangi ödeme yöntemleri kabul ediliyor?" answer="Nakit, kredi kartı ve banka kartı ile ödeme yapabilirsiniz." />
-            <FaqItem question="Online sipariş verebilir miyim?" answer="Şu an için online sipariş hizmetimiz bulunmamaktadır. WhatsApp üzerinden ürün sorgulayabilir ve mağazamızı ziyaret edebilirsiniz." />
+            <FaqItem question="Online sipariş verebilir miyim?" answer="Evet! www.enuygunpet.com adresinden online sipariş verebilirsiniz. Atakum içine 1 saatte teslimat ve kapıda ödeme imkânı sunuyoruz. Ayrıca WhatsApp üzerinden de ürün sorgulayabilir veya mağazamızı ziyaret edebilirsiniz." />
             <FaqItem question="Hangi markalar mevcut?" answer="Royal Canin, Pro Plan, Acana, Orijen, Reflex, N&D, Brit Care ve daha birçok premium markanın ürünleri mağazamızda mevcuttur." />
           </div>
         </section>

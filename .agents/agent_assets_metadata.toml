@@ -702,3 +702,39 @@ id = "Nkzr59ZFBQvLx4sEvhXXP"
 uri = "file://exports/murat-com-tum-url-listesi.txt"
 type = "text"
 title = "murat.com - Tüm URL Listesi (12.117)"
+
+[[outputs]]
+id = "vbkbTkqm6jixNzVdmLPNm"
+uri = "file://attached_assets/stock_images/bird_category.jpg"
+type = "image"
+title = "colorful parrot pet bird perched, vibrant feathers close up"
+
+[[outputs]]
+id = "pqj4iqOkm8NPsMK5gi-f0"
+uri = "file://attached_assets/stock_images/dog_category.jpg"
+type = "image"
+title = "happy golden retriever puppy portrait close up, bright"
+
+[[outputs]]
+id = "kTRZeXAzwWqX3xXW5wu8Y"
+uri = "file://attached_assets/stock_images/cat_category.jpg"
+type = "image"
+title = "adorable domestic cat looking at camera, close up portrait, soft light"
+
+[[outputs]]
+id = "wQzDhnjS8zCS5KucZgqfW"
+uri = "file://attached_assets/stock_images/fish_category.jpg"
+type = "image"
+title = "colorful tropical aquarium fish underwater vibrant"
+
+[[outputs]]
+id = "19YTD1GJCViiVm6UDGYXr"
+uri = "file://attached_assets/stock_images/petshop_category.jpg"
+type = "image"
+title = "cat and dog together happy pets studio"
+
+[[outputs]]
+id = "wDCXggqdVexrw7ZPwoo5u"
+uri = "file://attached_assets/stock_images/hamster_category.jpg"
+type = "image"
+title = "cute hamster small pet close up"
