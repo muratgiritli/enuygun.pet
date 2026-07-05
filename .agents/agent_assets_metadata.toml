@@ -648,3 +648,9 @@ id = "G4jQHpz2yhkXU9106W__1"
 uri = "file://exports/enuygunpet-tum-url-listesi.txt"
 type = "text"
 title = "Tüm URL Listesi (tam adres)"
+
+[[outputs]]
+id = "I1pzC1S2tkfJX99evkFrZ"
+uri = "file://exports/karadenizpetshop-tum-url-listesi.txt"
+type = "text"
+title = "karadenizpetshop.com - Tüm URL Listesi (12.117)"
