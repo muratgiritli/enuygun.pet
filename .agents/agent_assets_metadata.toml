@@ -654,3 +654,9 @@ id = "I1pzC1S2tkfJX99evkFrZ"
 uri = "file://exports/karadenizpetshop-tum-url-listesi.txt"
 type = "text"
 title = "karadenizpetshop.com - Tüm URL Listesi (12.117)"
+
+[[outputs]]
+id = "MaygVuydmB5bY4Ps4kXaS"
+uri = "file://exports/atakumpet-tum-url-listesi.txt"
+type = "text"
+title = "atakumpet.com - Tüm URL Listesi (12.117)"
