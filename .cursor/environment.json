@@ -1,0 +1,16 @@
+{
+  "name": "EnuygunPet",
+  "install": "npm ci",
+  "terminals": [
+    {
+      "name": "dev",
+      "command": "npm run dev"
+    }
+  ],
+  "ports": [
+    {
+      "name": "app",
+      "port": 5000
+    }
+  ]
+}
