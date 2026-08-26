@@ -40,7 +40,7 @@ export default function CategoryPage() {
     if (!cat || (cat as any).error) return;
     const canonicalUrl = `https://www.enuygun.pet/${cat.slug}`;
     const img = "https://static.wixstatic.com/media/63853e_77a3ee3fa9d942a7af5b6f25a0520653~mv2.jpeg";
-    document.title = cat.title;
+    document.title = cat.title.length <= 62 ? cat.title : cat.title.slice(0, 62).replace(/\s+\S*$/, "").trim();
     const setMeta = (sel: string, attr: string, val: string) => {
       let el = document.querySelector(sel) as HTMLMetaElement | null;
       if (!el) { el = document.createElement("meta") as HTMLMetaElement; document.head.appendChild(el); }

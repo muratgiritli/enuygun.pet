@@ -14,7 +14,7 @@ import LocalPage from "@/pages/local-page";
 import RoyalCaninPage from "@/pages/royal-canin";
 import ProPlanPage from "@/pages/proplan";
 import IletisimPage from "@/pages/iletisim";
-import AdminPage from "@/pages/admin";
+import HealthHubPage from "@/pages/health-hub-page";
 import { AnalyticsProvider } from "@/components/analytics-provider";
 
 function Router() {
@@ -35,6 +35,16 @@ function Router() {
       <Route path="/petshop-samsun" component={CategoryPage} />
       <Route path="/atakum-petshop" component={CategoryPage} />
       <Route path="/kapida-teslim-petshop" component={CategoryPage} />
+      <Route path="/kedi-urunleri" component={CategoryPage} />
+      <Route path="/kopek-urunleri" component={CategoryPage} />
+      <Route path="/kus-urunleri" component={CategoryPage} />
+      <Route path="/balik-urunleri" component={CategoryPage} />
+      <Route path="/kucuk-hayvan-urunleri" component={CategoryPage} />
+      <Route path="/surungen-urunleri" component={CategoryPage} />
+      <Route path="/kedi-mamasi-atakum" component={CategoryPage} />
+      <Route path="/kopek-mamasi-atakum" component={CategoryPage} />
+      <Route path="/hills-science-plan-samsun" component={CategoryPage} />
+      <Route path="/saglik/:animal" component={HealthHubPage} />
       <Route path="/royal-canin" component={RoyalCaninPage} />
       <Route path="/proplan" component={ProPlanPage} />
       <Route path="/local/:slug" component={LocalPage} />

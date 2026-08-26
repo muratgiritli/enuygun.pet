@@ -44,7 +44,8 @@ export default function BlogPage() {
 
   useEffect(() => {
     if (!post || (post as any).error) return;
-    const title = `${post.title} | EnuygunPet Evcil Hayvan Bakım Rehberi`;
+    const rawTitle = `${post.title} | EnuygunPet`;
+    const title = rawTitle.length <= 62 ? rawTitle : rawTitle.slice(0, 62).replace(/\s+\S*$/, "").trim();
     const canonicalUrl = `https://www.enuygun.pet/blog/${post.slug}`;
     const CAT_IMGS: Record<string, string> = {
       kedi: "https://static.wixstatic.com/media/63853e_4c33bdb1dc274eab8358c2d598f7cfee~mv2.jpeg",

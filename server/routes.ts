@@ -168,6 +168,30 @@ ${sitemapEntries}
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
+  <url>
+    <loc>https://www.enuygun.pet/saglik/kedi</loc>
+    <lastmod>${today}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.enuygun.pet/saglik/kopek</loc>
+    <lastmod>${today}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.enuygun.pet/saglik/kus</loc>
+    <lastmod>${today}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.enuygun.pet/saglik/balik</loc>
+    <lastmod>${today}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
 </urlset>`;
     res.set("Content-Type", "application/xml");
     res.set("Cache-Control", "public, max-age=86400");
@@ -252,7 +276,12 @@ ${urlEntries}
   // Sitemap for local SEO (must be BEFORE /sitemap-:n.xml catch-all)
   app.get("/sitemap-local.xml", (_req, res) => {
     const today = new Date().toISOString().split("T")[0];
-    const urls = localPages.map(p =>
+    const seenLocal = new Set<string>();
+    const urls = localPages.filter((p) => {
+      if (seenLocal.has(p.slug)) return false;
+      seenLocal.add(p.slug);
+      return true;
+    }).map(p =>
       `  <url>\n    <loc>https://www.enuygun.pet/local/${p.slug}</loc>\n    <lastmod>${today}</lastmod>\n    <changefreq>monthly</changefreq>\n    <priority>0.7</priority>\n  </url>`
     ).join("\n");
     res.set("Content-Type", "application/xml");
