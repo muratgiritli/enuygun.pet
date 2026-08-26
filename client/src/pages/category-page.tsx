@@ -209,8 +209,8 @@ export default function CategoryPage() {
         },
         "geo": {
           "@type": "GeoCoordinates",
-          "latitude": 41.3286,
-          "longitude": 36.2917
+          "latitude": 41.349366,
+          "longitude": 36.243738
         },
         "hasMap": "https://www.google.com/maps/place/Samsun+Petshop+Enuygunpet/@41.3494032,36.2410372,17z/data=!4m10!1m2!2m1!1senuygunpet!3m6!1s0x408879a38cad8b89:0x2f8d7996011cec2d!8m2!3d41.349366!4d36.243738!15sCgplbnV5Z3VucGV0WgwiCmVudXlndW5wZXSSAQlwZXRfc3RvcmXgAQA!16s%2Fg%2F11x2x7jtwk?entry=ttu",
         "openingHoursSpecification": [{

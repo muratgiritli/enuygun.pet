@@ -29,7 +29,11 @@ export function serveStatic(app: Express) {
     }
     const urlPath = req.originalUrl.split("?")[0];
     const meta = getPageMeta(urlPath);
-    const html = injectMeta(indexHtml, meta);
+    const html = injectMeta(indexHtml, meta, urlPath);
+    if (meta.notFound) {
+      res.status(404);
+      res.setHeader("Cache-Control", "no-store");
+    }
     res.setHeader("Content-Type", "text/html; charset=utf-8");
     res.send(html);
   });

@@ -1,5 +1,4 @@
 import { useEffect, useRef } from "react";
-import { randomUUID } from "crypto";
 
 function getSessionId(): string {
   let id = sessionStorage.getItem("ep_session");
