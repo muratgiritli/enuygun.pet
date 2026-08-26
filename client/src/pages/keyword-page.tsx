@@ -308,14 +308,11 @@ export default function KeywordPage() {
 
   useEffect(() => {
     if (data) {
-      const isBreedPage = detectBreed(data.keyword);
-      const title = isBreedPage
-        ? `Konu: ${data.keyword} satın almak istiyorum | EnuygunPet Gross Market`
-        : `${data.keyword} Samsun Atakum | EnuygunPet Gross Market`;
+      const rawTitle = `${data.keyword} | EnuygunPet Samsun`.replace(/\s+/g, " ").trim();
+      const title = rawTitle.length <= 62 ? rawTitle : rawTitle.slice(0, 62).replace(/\s+\S*$/, "").trim();
       document.title = title;
-      const desc = isBreedPage
-        ? `${data.keyword} bakım rehberi: beslenme, sağlık ve ihtiyaçları. EnuygunPet Gross Market Samsun Atakum'da ırka özel mama ve aksesuar. Haftanın her günü 09:00-21:00.`
-        : `Samsun Atakum'da ${data.keyword} için EnuygunPet Gross Market. En uygun fiyat, geniş stok. Haftanın her günü 09:00-21:00 açık. WhatsApp ile hemen bilgi alın.`;
+      let desc = `Samsun Atakum'da ${data.keyword} için EnuygunPet Gross Market. En uygun fiyat, geniş stok. Her gün 09:00-21:00. WhatsApp: 0542 211 49 44.`;
+      if (desc.length > 160) desc = desc.slice(0, 160).replace(/\s+\S*$/, "").trim();
       const imgUrl = pickImage(data.keyword);
 
       const setMeta = (sel: string, attr: string, val: string) => {
