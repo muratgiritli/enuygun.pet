@@ -150,6 +150,24 @@ ${sitemapEntries}
       <image:title>Kuş yemleri ve kafesleri</image:title>
     </image:image>
   </url>
+  <url>
+    <loc>https://www.enuygun.pet/iletisim</loc>
+    <lastmod>${today}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.enuygun.pet/royal-canin</loc>
+    <lastmod>${today}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.enuygun.pet/proplan</loc>
+    <lastmod>${today}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
 </urlset>`;
     res.set("Content-Type", "application/xml");
     res.set("Cache-Control", "public, max-age=86400");
@@ -265,20 +283,24 @@ ${urlEntries}
     const robots = `User-agent: *
 Allow: /
 Disallow: /api/
+Disallow: /admin
 
 Sitemap: https://www.enuygun.pet/sitemap.xml
 
 User-agent: Googlebot
 Allow: /
 Disallow: /api/
+Disallow: /admin
 
 User-agent: Bingbot
 Allow: /
 Disallow: /api/
+Disallow: /admin
 
 User-agent: Yandex
 Allow: /
 Disallow: /api/
+Disallow: /admin
 `;
     res.set("Content-Type", "text/plain");
     res.set("Cache-Control", "public, max-age=86400");

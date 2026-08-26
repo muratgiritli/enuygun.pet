@@ -31,7 +31,10 @@ import petshopImg from "@assets/stock_images/petshop_category.jpg";
 const PHONE = "+905422114944";
 const WHATSAPP_URL = `https://wa.me/905422114944?text=Merhaba,%20Enuygun.pet%20mağazanızdaki%20ürünler%20hakkında%20bilgi%20almak%20istiyorum.`;
 const MAPS_URL = "https://www.google.com/maps/place/Samsun+Petshop+Enuygunpet/@41.3494032,36.2410372,17z/data=!4m10!1m2!2m1!1senuygunpet!3m6!1s0x408879a38cad8b89:0x2f8d7996011cec2d!8m2!3d41.349366!4d36.243738!15sCgplbnV5Z3VucGV0WgwiCmVudXlndW5wZXSSAQlwZXRfc3RvcmXgAQA!16s%2Fg%2F11x2x7jtwk?entry=ttu";
+const SHOP_URL = "https://www.enuygunpetshop.com";
 const INSTAGRAM_URL = "https://www.instagram.com/enuygun.pet/";
+const STORE_LAT = 41.349366;
+const STORE_LNG = 36.243738;
 
 const STORE_HERO = storeHeroImg;
 const STORE_PHOTOS = [
@@ -135,6 +138,11 @@ const homeSchema = {
         "opens": "09:00",
         "closes": "21:00"
       }],
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": STORE_LAT,
+        "longitude": STORE_LNG
+      },
       "hasMap": "https://www.google.com/maps/place/Samsun+Petshop+Enuygunpet/@41.3494032,36.2410372,17z/data=!4m10!1m2!2m1!1senuygunpet!3m6!1s0x408879a38cad8b89:0x2f8d7996011cec2d!8m2!3d41.349366!4d36.243738!15sCgplbnV5Z3VucGV0WgwiCmVudXlndW5wZXSSAQlwZXRfc3RvcmXgAQA!16s%2Fg%2F11x2x7jtwk?entry=ttu",
     }
   ]
@@ -193,7 +201,7 @@ export default function Home() {
                 <SiWhatsapp className="w-4 h-4 text-white" />
               </button>
             </a>
-            <a href="https://www.enuygunpet.com" target="_blank" rel="noopener noreferrer" className="hidden lg:inline-flex" data-testid="link-header-shop">
+            <a href={SHOP_URL} target="_blank" rel="noopener noreferrer" className="hidden lg:inline-flex" data-testid="link-header-shop">
               <span className="inline-flex items-center gap-1.5 bg-red-600 hover:bg-red-700 transition-colors text-white text-sm font-bold px-4 py-2.5 rounded-xl shadow">
                 🛒 Online Alışveriş
               </span>
@@ -238,7 +246,7 @@ export default function Home() {
                   Royal Canin, Pro Plan ve daha birçok premium markada kedi, köpek, kuş ve akvaryum ürünleri — uygun gross market fiyatlarıyla, Atakum içine 1 saatte teslimat.
                 </p>
                 <div className="flex flex-wrap items-center gap-3 mt-8">
-                  <a href="https://www.enuygunpet.com" target="_blank" rel="noopener noreferrer" data-testid="link-hero-shop">
+                  <a href={SHOP_URL} target="_blank" rel="noopener noreferrer" data-testid="link-hero-shop">
                     <span className="inline-flex items-center gap-2 bg-red-600 hover:bg-red-700 transition-colors text-white font-bold px-6 py-3.5 rounded-2xl shadow-lg">🛒 Online Alışveriş Yap</span>
                   </a>
                   <a href={MAPS_URL} target="_blank" rel="noopener noreferrer" data-testid="link-hero-maps">
@@ -267,7 +275,7 @@ export default function Home() {
               <p className="mt-2.5 text-white/90 text-sm leading-snug">
                 Kedi, köpek, kuş ve akvaryum ürünleri — uygun gross market fiyatlarıyla Atakum'a hızlı teslimat.
               </p>
-              <a href="https://www.enuygunpet.com" target="_blank" rel="noopener noreferrer" className="mt-4" data-testid="link-mobile-hero-shop">
+              <a href={SHOP_URL} target="_blank" rel="noopener noreferrer" className="mt-4" data-testid="link-mobile-hero-shop">
                 <span className="animate-pulse flex items-center justify-center gap-2 bg-red-600 text-white font-extrabold text-[15px] py-4 rounded-2xl shadow-lg tracking-wide">
                   🛒 TIKLA · HEMEN SİPARİŞ VER
                 </span>
@@ -286,14 +294,14 @@ export default function Home() {
         {/* ── KATEGORİLER ── */}
         <section id="kategoriler" className="px-4 pt-5 pb-2 lg:col-span-12 lg:order-1" aria-label="Ürün kategorileri">
           <h2 className="hidden lg:block text-2xl font-extrabold text-gray-900 mb-5">Kategoriler</h2>
-          <a href="https://www.enuygunpet.com" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center mb-3 lg:hidden" data-testid="link-categories-cta">
+          <a href={SHOP_URL} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center mb-3 lg:hidden" data-testid="link-categories-cta">
             <span className="animate-pulse inline-flex items-center gap-2 bg-red-600 text-white text-sm font-extrabold px-5 py-2.5 rounded-full shadow-lg tracking-wide">
               🛒 TIKLA ONLİNE ALIŞVERİŞ YAP
             </span>
           </a>
           <div className="grid grid-cols-3 gap-2.5 lg:grid-cols-6 lg:gap-4">
             {categories.map((cat, i) => (
-              <a key={cat.slug} href="https://www.enuygunpet.com" target="_blank" rel="noopener noreferrer" data-testid={`link-category-${i}`}>
+              <a key={cat.slug} href={SHOP_URL} target="_blank" rel="noopener noreferrer" data-testid={`link-category-${i}`}>
                   <motion.div
                     initial={{ opacity: 0, scale: 0.95 }}
                     animate={{ opacity: 1, scale: 1 }}
@@ -478,7 +486,7 @@ export default function Home() {
           <div className="space-y-2 lg:grid lg:grid-cols-2 lg:gap-3 lg:space-y-0 lg:items-start">
             <FaqItem question="Mağazada canlı hayvan satılıyor mu?" answer="Hayır, mağazamızda canlı hayvan satışı yapılmamaktadır. Sadece evcil hayvan ürünleri ve aksesuarları satılmaktadır." />
             <FaqItem question="Hangi ödeme yöntemleri kabul ediliyor?" answer="Nakit, kredi kartı ve banka kartı ile ödeme yapabilirsiniz." />
-            <FaqItem question="Online sipariş verebilir miyim?" answer="Evet! www.enuygunpet.com adresinden online sipariş verebilirsiniz. Atakum içine 1 saatte teslimat ve kapıda ödeme imkânı sunuyoruz. Ayrıca WhatsApp üzerinden de ürün sorgulayabilir veya mağazamızı ziyaret edebilirsiniz." />
+            <FaqItem question="Online sipariş verebilir miyim?" answer="Evet! www.enuygunpetshop.com adresinden online sipariş verebilirsiniz. Atakum içine 1 saatte teslimat ve kapıda ödeme imkânı sunuyoruz. Ayrıca WhatsApp üzerinden de ürün sorgulayabilir veya mağazamızı ziyaret edebilirsiniz." />
             <FaqItem question="Hangi markalar mevcut?" answer="Royal Canin, Pro Plan, Acana, Orijen, Reflex, N&D, Brit Care ve daha birçok premium markanın ürünleri mağazamızda mevcuttur." />
           </div>
         </section>

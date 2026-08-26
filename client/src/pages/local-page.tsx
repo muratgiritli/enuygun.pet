@@ -137,7 +137,7 @@ export default function LocalPage() {
           "postalCode": "55200",
           "addressCountry": "TR"
         },
-        "geo": { "@type": "GeoCoordinates", "latitude": 41.3286, "longitude": 36.2917 },
+        "geo": { "@type": "GeoCoordinates", "latitude": 41.349366, "longitude": 36.243738 },
         "openingHoursSpecification": [{
           "@type": "OpeningHoursSpecification",
           "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],

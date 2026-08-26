@@ -12,6 +12,9 @@ interface PageMeta {
   h1: string;
   description: string;
   bodyHtml?: string;
+  canonicalPath?: string;
+  noIndex?: boolean;
+  notFound?: boolean;
 }
 
 const BRAND = "EnuygunPet Samsun Atakum";
@@ -112,7 +115,7 @@ function generateContent(keyword: string): { article: string; faqs: Array<{ q: s
       { q: `Samsun'da ${keyword} nereden alınır?`, a: `Samsun Atakum'daki EnuygunPet Gross Market mağazamızda ${keyword} ürününü stokta bulabilirsiniz. Haftanın her günü 09:00-21:00 saatleri arasında hizmetinizdeyiz. WhatsApp üzerinden ürün sorgulaması da yapabilirsiniz.` },
       { q: `${keyword} fiyatı ne kadar?`, a: `${keyword} fiyatları markaya ve gramaja göre değişmektedir. En güncel fiyat bilgisi için mağazamızı arayabilir veya WhatsApp'tan bilgi alabilirsiniz. Gross market avantajımızla rakipsiz fiyatlar sunuyoruz.` },
       { q: `${keyword} için hangi marka daha iyi?`, a: `Kedinizin ihtiyacına göre Royal Canin, Hills Science Plan, Pro Plan, Brit Care ve Reflex başta olmak üzere pek çok kaliteli marka arasından seçim yapabilirsiniz. Uzman ekibimiz ücretsiz öneri sunar.` },
-      { q: `Atakum'da kedi maması kapıda teslim var mı?`, a: `EnuygunPet olarak şu an online satış yapmamaktayız. Ancak mağazamızı ziyaret ederek veya WhatsApp üzerinden sipariş oluşturarak ürünlerinizi hazır bulabilirsiniz.` },
+      { q: `Atakum'da kedi maması kapıda teslim var mı?`, a: `Evet. WhatsApp hattımız (+90 542 211 49 44) üzerinden sipariş oluşturabilirsiniz. Atakum içine hızlı teslimat ve mağazadan teslim seçeneklerimiz vardır.` },
     ];
   } else if (isKopekMama) {
     article = `Samsun Atakum'da ${keyword} arayanlar için EnuygunPet Gross Market geniş stoku ve uygun fiyatlarıyla hizmet vermektedir. Köpeğinizin sağlıklı beslenmesi için en kaliteli markaların ürünlerini bir arada bulabileceğiniz tek adresiz.\n\n${keyword} için Samsun'un en büyük petshop gross marketi olan mağazamızı tercih eden müşterilerimize ücretsiz beslenme danışmanlığı sunuyoruz. Köpeğinizin ırkına, yaşına ve ağırlığına göre en doğru mamayı seçmenize yardımcı oluyoruz.\n\nAtakum'da haftanın her günü 09:00-21:00 saatleri arasında kapımız açık. ${keyword} ve daha pek çok köpek ürününü mağazamızda bulabilirsiniz. Royal Canin, Pedigree, Pro Plan, Brit, Reflex, Enjoy gibi dünya markalarının tüm köpek maması gamlarını stokta tutuyoruz. Yavru, yetişkin, yaşlı ve özel diyet mamaları her ırk için mevcuttur.\n\nKöpek maması seçiminde dikkat edilmesi gereken en önemli faktörler: köpeğin ırkı, yaşı ve kilosu. Büyük ırk, küçük ırk ve orta ırk formülleri birbirinden farklı besin değerleri içerir. Mağazamızdaki uzman ekibimiz köpeğiniz için en uygun ürünü seçmenize yardımcı olur. Toplu alımlarda özel fiyat avantajlarından yararlanabilirsiniz.`;
@@ -322,6 +325,27 @@ function buildBodyHtml(h1: string, article: string, faqs: Array<{ q: string; a: 
   return `<h1>${escapeHtml(h1)}</h1><article>${imgHtml}${paragraphs}<section><h2>Sık Sorulan Sorular</h2>${faqHtml}</section>${COMMON_SECTION}<address>EnuygunPet Gross Market — Atatürk Bulvarı No:113, Atakum / Samsun — Tel: +90 542 211 49 44 — Haftanın her günü 09:00-21:00</address></article>`;
 }
 
+function notFoundMeta(): PageMeta {
+  return {
+    title: "Sayfa Bulunamadı | EnuygunPet",
+    h1: "Sayfa Bulunamadı",
+    description: "Aradığınız sayfa bulunamadı. EnuygunPet Gross Market — Samsun Atakum petshop. Ana sayfadan devam edebilirsiniz.",
+    noIndex: true,
+    notFound: true,
+    bodyHtml: `<h1>Sayfa Bulunamadı</h1><article><p>Aradığınız sayfa kaldırılmış, taşınmış ya da hiç var olmamış olabilir.</p><p><a href="/">Ana sayfaya dön</a> · <a href="/blog">Bakım Rehberleri</a> · <a href="/kedi-mamasi">Kedi Maması</a></p>${COMMON_SECTION}<address>EnuygunPet Gross Market — Atatürk Bulvarı No:113, Atakum / Samsun — Tel: +90 542 211 49 44 — Haftanın her günü 09:00-21:00</address></article>`,
+  };
+}
+
+function findHealthByPath(prefix: string, slug: string): { keyword: string; categoryName: string } | undefined {
+  const table: Record<string, Array<{ slug: string; keyword: string; categoryName: string }>> = {
+    "kedi-hastaliklari": healthData as Array<{ slug: string; keyword: string; categoryName: string }>,
+    "kopek-hastaliklari": kopekHealthData as Array<{ slug: string; keyword: string; categoryName: string }>,
+    "papagan-hastaliklari": papagaHealthData as Array<{ slug: string; keyword: string; categoryName: string }>,
+    "muhabbet-kusu-hastaliklari": muhabbet as Array<{ slug: string; keyword: string; categoryName: string }>,
+  };
+  return table[prefix]?.find((h) => h.slug === slug);
+}
+
 // ── Public API ─────────────────────────────────────────────────────────────────
 export function getPageMeta(urlPath: string): PageMeta {
   const path = urlPath.replace(/\?.*$/, "").replace(/\/+$/, "") || "/";
@@ -364,6 +388,64 @@ export function getPageMeta(urlPath: string): PageMeta {
     };
   }
 
+  if (path === "/iletisim") {
+    return {
+      title: "İletişim | EnuygunPet – Samsun Atakum Petshop Gross Market",
+      h1: "İletişim — EnuygunPet Gross Market",
+      description: "EnuygunPet Gross Market iletişim bilgileri. Adres: Atatürk 3. Kısım Bulvarı No:113 Atakum/Samsun. Tel: 0542 211 49 44. Haftanın 7 günü 09:00-21:00 açık.",
+      bodyHtml: buildSectionsHtml("İletişim — EnuygunPet Gross Market",
+        "Samsun Atakum'daki EnuygunPet Gross Market mağazamıza ulaşın. Adres, telefon, WhatsApp ve çalışma saatleri.",
+        [
+          { h: "Adres", p: "Yeni Mahalle Atatürk 3. Kısım Bulvarı No:113, Atakum / Samsun. Ücretsiz otopark imkânı bulunmaktadır." },
+          { h: "Telefon ve WhatsApp", p: "0542 211 49 44 numaralı hattımızdan arayabilir veya WhatsApp üzerinden stok ve fiyat sorabilirsiniz." },
+          { h: "Çalışma Saatleri", p: "Haftanın her günü 09:00–21:00 saatleri arasında açığız. Resmi tatillerde de hizmet veriyoruz." },
+        ]
+      ),
+    };
+  }
+
+  if (path === "/royal-canin") {
+    return {
+      title: "Royal Canin Samsun | Atakum İçi 1 Saatte Teslim",
+      h1: "Royal Canin Samsun — EnuygunPet Gross Market",
+      description: "Royal Canin kedi ve köpek mamaları Samsun Atakum'da hızlı teslimat ile. Kitten, Sterilised, Mini Adult, Mini Puppy, Medium Adult, Maxi Adult, Gastrointestinal ve Hypoallergenic ürünleri uygun fiyatla EnuygunPet'te.",
+      bodyHtml: buildSectionsHtml("Royal Canin Samsun — EnuygunPet Gross Market",
+        "Royal Canin kedi ve köpek mamaları Samsun Atakum'da EnuygunPet Gross Market'te. Kitten, Sterilised ve ırka özel formüller uygun fiyatla.",
+        [
+          { h: "Kedi Mamaları", p: "Royal Canin Kitten, Sterilised, Indoor, Hair & Skin ve ırka özel kedi mamaları mağazamızda stokta. Yavru, kısır ve yetişkin seçenekleri uzman danışmanlıkla sunulur." },
+          { h: "Köpek Mamaları", p: "Mini Puppy, Mini Adult, Medium Adult ve Maxi Adult serileri Samsun Atakum'da. Irkın büyüklüğüne göre doğru taneli formülleri EnuygunPet'te bulun." },
+          { h: "Veterinary Diets", p: "Gastrointestinal ve Hypoallergenic gibi veteriner diyetleri için mağazamızı ziyaret edin veya WhatsApp'tan stok sorun." },
+        ]
+      ),
+    };
+  }
+
+  if (path === "/proplan") {
+    return {
+      title: "Pro Plan Samsun | Atakum İçi 1 Saatte Teslim",
+      h1: "Pro Plan Samsun — EnuygunPet Gross Market",
+      description: "Pro Plan (Purina Pro Plan) kedi ve köpek mamaları Samsun Atakum'da hızlı teslimat ile. Kitten, Sterilised, Adult, Puppy, Small & Mini, Medium Adult, Large Adult ve Veterinary Diets ürünleri uygun fiyatla EnuygunPet'te.",
+      bodyHtml: buildSectionsHtml("Pro Plan Samsun — EnuygunPet Gross Market",
+        "Purina Pro Plan kedi ve köpek mamaları Samsun Atakum'da EnuygunPet Gross Market'te. Kitten, Sterilised, Adult ve Veterinary Diets stokta.",
+        [
+          { h: "Kedi Mamaları", p: "Pro Plan Kitten, Sterilised ve Adult kedi mamaları Atakum'da uygun fiyatla. Kedinizin yaşına ve ihtiyacına göre uzman ekibimiz yönlendirir." },
+          { h: "Köpek Mamaları", p: "Puppy, Small & Mini, Medium Adult ve Large Adult serileri Samsun Atakum'da. Irka ve aktiviteye uygun Pro Plan formülleri EnuygunPet'te." },
+          { h: "Veterinary Diets", p: "Pro Plan Veterinary Diets ürünleri için mağazamızı arayın veya WhatsApp hattımızdan stok ve fiyat sorun." },
+        ]
+      ),
+    };
+  }
+
+  if (path === "/admin") {
+    return {
+      title: "Admin | EnuygunPet Analytics",
+      h1: "Admin",
+      description: "EnuygunPet yönetim paneli.",
+      noIndex: true,
+      bodyHtml: "<h1>Admin</h1>",
+    };
+  }
+
   const blogMatch = path.match(/^\/blog\/(.+)$/);
   if (blogMatch) {
     const slug = blogMatch[1];
@@ -376,6 +458,7 @@ export function getPageMeta(urlPath: string): PageMeta {
         bodyHtml: buildSectionsHtml(b.title, b.desc, b.sections),
       };
     }
+    return notFoundMeta();
   }
 
   const localMatch = path.match(/^\/local\/(.+)$/);
@@ -390,6 +473,7 @@ export function getPageMeta(urlPath: string): PageMeta {
         bodyHtml: buildSectionsHtml(l.h1, l.intro || l.desc, l.sections || []),
       };
     }
+    return notFoundMeta();
   }
 
   const bare = path.replace(/^\//, "");
@@ -498,6 +582,24 @@ export function getPageMeta(urlPath: string): PageMeta {
     };
   }
 
+  const healthPathMatch = path.match(/^\/(kedi-hastaliklari|kopek-hastaliklari|papagan-hastaliklari|muhabbet-kusu-hastaliklari)\/([^/]+)$/);
+  if (healthPathMatch) {
+    const health = findHealthByPath(healthPathMatch[1], healthPathMatch[2]);
+    if (health) {
+      const kw = cleanKeyword(health.keyword);
+      const kwTitle = toTitleCase(kw);
+      const h1 = `${kwTitle} — ${health.categoryName}`;
+      const { article, faqs } = generateContent(kw);
+      return {
+        title: `${kwTitle} - ${health.categoryName} | EnuygunPet Samsun Atakum`,
+        h1,
+        description: `${kw} hakkında bilgi: belirtiler, nedenler ve ne yapmalısınız? Samsun Atakum EnuygunPet'te ${health.categoryName.toLowerCase()} ürünleri.`,
+        bodyHtml: buildBodyHtml(h1, article, faqs),
+      };
+    }
+    return notFoundMeta();
+  }
+
   const health = healthMap.get(bare);
   if (health) {
     const kw = cleanKeyword(health.keyword);
@@ -526,16 +628,14 @@ export function getPageMeta(urlPath: string): PageMeta {
     };
   }
 
-  return {
-    title: "EnuygunPet - Samsun Atakum Petshop Gross Market | Kedi Köpek Maması",
-    h1: "EnuygunPet Gross Market — Samsun Atakum Petshop",
-    description:
-      "Samsun Atakum'da kedi, köpek, kuş ve tüm evcil hayvan ürünleri. Royal Canin, Hills, Pro Plan en uygun fiyatla.",
-  };
+  return notFoundMeta();
 }
 
-export function injectMeta(html: string, meta: PageMeta): string {
+export function injectMeta(html: string, meta: PageMeta, urlPath = "/"): string {
   let result = html;
+  const rawPath = (meta.canonicalPath || urlPath).replace(/\?.*$/, "").replace(/\/+$/, "") || "/";
+  const path = rawPath.startsWith("/") ? rawPath : `/${rawPath}`;
+  const canonicalUrl = path === "/" ? "https://www.enuygun.pet/" : `https://www.enuygun.pet${path}`;
 
   result = result.replace(
     /<title>[^<]*<\/title>/,
@@ -551,6 +651,42 @@ export function injectMeta(html: string, meta: PageMeta): string {
     result = result.replace(
       "</head>",
       `<meta name="description" content="${escapeHtml(meta.description)}">\n</head>`,
+    );
+  }
+
+  result = result.replace(
+    /<link rel="canonical" href="[^"]*"\s*\/?>/,
+    `<link rel="canonical" href="${escapeHtml(canonicalUrl)}" />`,
+  );
+  result = result.replace(
+    /<meta property="og:title" content="[^"]*"\s*\/?>/,
+    `<meta property="og:title" content="${escapeHtml(meta.title)}" />`,
+  );
+  result = result.replace(
+    /<meta property="og:description" content="[^"]*"\s*\/?>/,
+    `<meta property="og:description" content="${escapeHtml(meta.description)}" />`,
+  );
+  result = result.replace(
+    /<meta property="og:url" content="[^"]*"\s*\/?>/,
+    `<meta property="og:url" content="${escapeHtml(canonicalUrl)}" />`,
+  );
+  result = result.replace(
+    /<meta name="twitter:title" content="[^"]*"\s*\/?>/,
+    `<meta name="twitter:title" content="${escapeHtml(meta.title)}" />`,
+  );
+  result = result.replace(
+    /<meta name="twitter:description" content="[^"]*"\s*\/?>/,
+    `<meta name="twitter:description" content="${escapeHtml(meta.description)}" />`,
+  );
+
+  if (meta.noIndex) {
+    result = result.replace(
+      /<meta name="robots" content="[^"]*"\s*\/?>/,
+      `<meta name="robots" content="noindex, nofollow">`,
+    );
+    result = result.replace(
+      /<meta name="googlebot" content="[^"]*"\s*\/?>/,
+      `<meta name="googlebot" content="noindex, nofollow">`,
     );
   }
 

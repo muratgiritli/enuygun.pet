@@ -21,7 +21,7 @@ const PHONE = "+905422114944";
 const PHONE_DISPLAY = "0542 211 49 44";
 const WHATSAPP_URL = `https://wa.me/905422114944?text=${encodeURIComponent("Merhaba, Pro Plan ürünleri hakkında bilgi almak istiyorum.")}`;
 const MAPS_URL = "https://www.google.com/maps/place/Samsun+Petshop+Enuygunpet/@41.3494032,36.2410372,17z/data=!4m10!1m2!2m1!1senuygunpet!3m6!1s0x408879a38cad8b89:0x2f8d7996011cec2d!8m2!3d41.349366!4d36.243738!15sCgplbnV5Z3VucGV0WgwiCmVudXlndW5wZXSSAQlwZXRfc3RvcmXgAQA!16s%2Fg%2F11x2x7jtwk?entry=ttu";
-const SHOP_URL = "https://www.enuygunpet.com";
+const SHOP_URL = "https://www.enuygunpetshop.com";
 
 const catProducts = [
   { img: kittenImg, alt: "pro plan kitten kedi maması", label: "Kitten" },
@@ -131,7 +131,7 @@ export default function ProPlanPage() {
           "postalCode": "55200",
           "addressCountry": "TR"
         },
-        "geo": { "@type": "GeoCoordinates", "latitude": 41.3286, "longitude": 36.2917 },
+        "geo": { "@type": "GeoCoordinates", "latitude": 41.349366, "longitude": 36.243738 },
         "openingHoursSpecification": [{
           "@type": "OpeningHoursSpecification",
           "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
@@ -151,7 +151,7 @@ export default function ProPlanPage() {
           {
             "@type": "Question",
             "name": "Pro Plan siparişi nasıl verebilirim?",
-            "acceptedAnswer": { "@type": "Answer", "text": "Online alışveriş için enuygunpet.com üzerinden sipariş verebilir, ayrıca 0542 211 49 44 numaralı telefon ve WhatsApp hattından da sipariş oluşturabilirsiniz." }
+            "acceptedAnswer": { "@type": "Answer", "text": "Online alışveriş için enuygunpetshop.com üzerinden sipariş verebilir, ayrıca 0542 211 49 44 numaralı telefon ve WhatsApp hattından da sipariş oluşturabilirsiniz." }
           },
           {
             "@type": "Question",
@@ -290,7 +290,7 @@ export default function ProPlanPage() {
               Hassas sindirim sistemine sahip dostlarınız için <strong>Pro Plan Veterinary Diets EN Gastrointestinal</strong>, besin alerjisi olan dostlar için ise <strong>Pro Plan Veterinary Diets HA Hypoallergenic</strong> veteriner diyet mamalarımız mevcuttur. Bu özel diyet ürünleri, veteriner hekim önerisiyle kullanıldığında sindirim ve cilt sağlığı sorunlarının yönetilmesine destek olur. Tüm ürünlerimiz orijinal Pro Plan garantisi taşır, son kullanma tarihleri uzun ve saklama koşulları uygundur. Samsun Atakum bölgesinde Pro Plan arayanlar için EnuygunPet, gross market fiyat avantajı ve geniş stok seçeneğiyle en doğru adrestir. Mağazamızda ayrıca farklı gramaj ve paket seçenekleriyle hem küçük denemelik boylar hem de avantajlı büyük boy çuvallar bulunur.
             </p>
             <p className="text-sm lg:text-base text-gray-600 leading-relaxed">
-              Atakum içine <strong>1 saatte teslimat</strong> imkanımızla, mamanız bittiğinde beklemeden sipariş verebilirsiniz. Online alışveriş için sayfanın üstündeki <strong>"ONLİNE ALIŞVERİŞ İÇİN TIKLA"</strong> butonuna tıklayarak enuygunpet.com üzerinden güvenle ödeme yapabilir; dilerseniz telefon veya WhatsApp hattımızdan da hızlıca sipariş oluşturabilirsiniz. Hangi ürünün dostunuza uygun olduğundan emin değilseniz, deneyimli ekibimiz yaş, ırk ve özel ihtiyaçlara göre ücretsiz ürün önerisi sunar. Pro Plan Samsun, Pro Plan Atakum ve uygun fiyatlı kedi-köpek maması arayışınızda EnuygunPet Gross Market her gün 09:00–21:00 saatleri arasında yanınızda. Doğru beslenme, sağlıklı ve mutlu bir evcil hayvan için ilk adımdır; biz de bu yolda en kaliteli ürünleri en uygun fiyatla sizlere ulaştırmak için buradayız.
+              Atakum içine <strong>1 saatte teslimat</strong> imkanımızla, mamanız bittiğinde beklemeden sipariş verebilirsiniz. Online alışveriş için sayfanın üstündeki <strong>"ONLİNE ALIŞVERİŞ İÇİN TIKLA"</strong> butonuna tıklayarak enuygunpetshop.com üzerinden güvenle ödeme yapabilir; dilerseniz telefon veya WhatsApp hattımızdan da hızlıca sipariş oluşturabilirsiniz. Hangi ürünün dostunuza uygun olduğundan emin değilseniz, deneyimli ekibimiz yaş, ırk ve özel ihtiyaçlara göre ücretsiz ürün önerisi sunar. Pro Plan Samsun, Pro Plan Atakum ve uygun fiyatlı kedi-köpek maması arayışınızda EnuygunPet Gross Market her gün 09:00–21:00 saatleri arasında yanınızda. Doğru beslenme, sağlıklı ve mutlu bir evcil hayvan için ilk adımdır; biz de bu yolda en kaliteli ürünleri en uygun fiyatla sizlere ulaştırmak için buradayız.
             </p>
           </section>
         </div>

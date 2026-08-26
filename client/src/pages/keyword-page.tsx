@@ -101,7 +101,7 @@ Samsun'da kedi maması satın almak için en güvenilir adres EnuygunPet'tir. ${
       { q: `Samsun'da ${keyword} nereden alınır?`, a: `Samsun Atakum'daki EnuygunPet Gross Market mağazamızda ${keyword} ürününü stokta bulabilirsiniz. Haftanın her günü 09:00-21:00 saatleri arasında hizmetinizdeyiz. WhatsApp üzerinden ürün sorgulaması da yapabilirsiniz.` },
       { q: `${keyword} fiyatı ne kadar?`, a: `${keyword} fiyatları markaya ve gramaja göre değişmektedir. En güncel fiyat bilgisi için mağazamızı arayabilir veya WhatsApp'tan bilgi alabilirsiniz. Gross market avantajımızla rakipsiz fiyatlar sunuyoruz.` },
       { q: `${keyword} için hangi marka daha iyi?`, a: `Kedinizin ihtiyacına göre Royal Canin, Hills Science Plan, Pro Plan, Brit Care ve Reflex başta olmak üzere pek çok kaliteli marka arasından seçim yapabilirsiniz. Uzman ekibimiz ücretsiz öneri sunar.` },
-      { q: `Atakum'da kedi maması kapıda teslim var mı?`, a: `EnuygunPet olarak şu an online satış yapmamaktayız. Ancak mağazamızı ziyaret ederek veya WhatsApp üzerinden sipariş oluşturarak ürünlerinizi hazır bulabilirsiniz.` },
+      { q: `Atakum'da kedi maması kapıda teslim var mı?`, a: `Evet. WhatsApp hattımız (+90 542 211 49 44) üzerinden sipariş oluşturabilirsiniz. Atakum içine hızlı teslimat ve mağazadan teslim seçeneklerimiz vardır.` },
     ];
   } else if (isKopekMama) {
     article = `Samsun Atakum'da ${keyword} arayanlar için EnuygunPet Gross Market geniş stoku ve uygun fiyatlarıyla hizmet vermektedir. Köpeğinizin sağlıklı beslenmesi için en kaliteli markaların ürünlerini bir arada bulabileceğiniz tek adresiz.
@@ -482,8 +482,8 @@ export default function KeywordPage() {
         },
         "geo": {
           "@type": "GeoCoordinates",
-          "latitude": 41.3286,
-          "longitude": 36.2917
+          "latitude": 41.349366,
+          "longitude": 36.243738
         },
         "hasMap": "https://www.google.com/maps/place/Samsun+Petshop+Enuygunpet/@41.3494032,36.2410372,17z/data=!4m10!1m2!2m1!1senuygunpet!3m6!1s0x408879a38cad8b89:0x2f8d7996011cec2d!8m2!3d41.349366!4d36.243738!15sCgplbnV5Z3VucGV0WgwiCmVudXlndW5wZXSSAQlwZXRfc3RvcmXgAQA!16s%2Fg%2F11x2x7jtwk?entry=ttu",
         "openingHoursSpecification": [{
