@@ -14,6 +14,7 @@ import LocalPage from "@/pages/local-page";
 import RoyalCaninPage from "@/pages/royal-canin";
 import ProPlanPage from "@/pages/proplan";
 import IletisimPage from "@/pages/iletisim";
+import AdminPage from "@/pages/admin";
 import HealthHubPage from "@/pages/health-hub-page";
 import { AnalyticsProvider } from "@/components/analytics-provider";
 
