@@ -5,6 +5,8 @@ import SiteHeader from "@/components/site-header";
 import { Phone, MapPin, Clock, ChevronRight } from "lucide-react";
 import { SiWhatsapp } from "react-icons/si";
 import NotFound from "@/pages/not-found";
+import SeoArticleBody from "@/components/seo-article-body";
+import { buildKeywordArticle } from "@shared/seo-article";
 
 const PHONE = "+905422114944";
 const WHATSAPP_URL = `https://wa.me/905422114944`;
@@ -93,6 +95,8 @@ export default function HealthHubPage() {
 
   if (!guide) return <NotFound />;
 
+  const article = buildKeywordArticle(guide.h1, `saglik/${animal}`);
+
   return (
     <div className="min-h-screen bg-background">
       <SiteHeader />
@@ -113,6 +117,7 @@ export default function HealthHubPage() {
             </li>
           ))}
         </ul>
+        <SeoArticleBody article={article} testId="health-hub-article" />
         <div className="flex flex-wrap gap-2 pt-2">
           <a href={`tel:${PHONE}`} className="inline-flex items-center gap-1 text-sm"><Phone className="w-4 h-4" /> 0542 211 49 44</a>
           <a href={WHATSAPP_URL} className="inline-flex items-center gap-1 text-sm"><SiWhatsapp className="w-4 h-4" /> WhatsApp</a>
