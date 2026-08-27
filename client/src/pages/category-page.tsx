@@ -8,6 +8,8 @@ import { Phone, MessageCircle, MapPin, ArrowLeft, BookOpen, Tag, ChevronRight, S
 import InternalLinksSection, { detectType } from "@/components/internal-links";
 import { Card } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
+import SeoArticleBody from "@/components/seo-article-body";
+import { buildKeywordArticle } from "@shared/seo-article";
 
 const PHONE = "+905422114944";
 const WA_URL = `https://wa.me/905422114944`;
@@ -40,7 +42,7 @@ export default function CategoryPage() {
     if (!cat || (cat as any).error) return;
     const canonicalUrl = `https://www.enuygun.pet/${cat.slug}`;
     const img = "https://static.wixstatic.com/media/63853e_77a3ee3fa9d942a7af5b6f25a0520653~mv2.jpeg";
-    document.title = cat.title;
+    document.title = cat.title.length <= 62 ? cat.title : cat.title.slice(0, 62).replace(/\s+\S*$/, "").trim();
     const setMeta = (sel: string, attr: string, val: string) => {
       let el = document.querySelector(sel) as HTMLMetaElement | null;
       if (!el) { el = document.createElement("meta") as HTMLMetaElement; document.head.appendChild(el); }
@@ -80,6 +82,15 @@ export default function CategoryPage() {
       <Link href="/"><a className="text-primary underline">Ana Sayfa</a></Link>
     </div>
   );
+
+  const generated = buildKeywordArticle(cat.h1, cat.slug);
+  const article = {
+    ...generated,
+    sections: [
+      ...cat.sections.map((s) => ({ heading: s.h, paragraphs: [s.p] })),
+      ...generated.sections,
+    ],
+  };
 
   const CAT_SLUG_IMAGES: Record<string, string> = {
     "kedi-urunleri": "https://static.wixstatic.com/media/63853e_4c33bdb1dc274eab8358c2d598f7cfee~mv2.jpeg",
@@ -249,12 +260,7 @@ export default function CategoryPage() {
       </header>
 
       <main className="flex-1 max-w-2xl mx-auto w-full px-4 py-6 space-y-6">
-        {cat.sections.map((sec, i) => (
-          <section key={i}>
-            <h2 className="text-lg font-semibold text-foreground mb-2">{sec.h}</h2>
-            <p className="text-muted-foreground leading-relaxed text-sm">{sec.p}</p>
-          </section>
-        ))}
+        <SeoArticleBody article={article} testId="category-article" />
 
         {cat.brands && cat.brands.length > 0 && (
           <Card className="p-4">

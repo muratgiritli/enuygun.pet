@@ -52,9 +52,9 @@ function optimizedImg(url: string, width: number = 0) {
 const categories = [
   { icon: Cat, label: "Kedi Maması", emoji: "🐱", img: catImg, slug: "kedi-mamasi", color: "from-orange-400 to-amber-500" },
   { icon: Dog, label: "Köpek Maması", emoji: "🐶", img: dogImg, slug: "kopek-mamasi", color: "from-blue-400 to-blue-600" },
-  { icon: Bird, label: "Kuş Ürünleri", emoji: "🦜", img: birdImg, slug: "gold-wings-muhabbet-yemi", color: "from-green-400 to-emerald-600" },
-  { icon: Fish, label: "Akvaryum", emoji: "🐠", img: fishImg, slug: "balik-yemi-samsun", color: "from-cyan-400 to-blue-500" },
-  { icon: Cat, label: "Kemirgen & Sürüngen", emoji: "🐹", img: hamsterImg, slug: "kedi-kumu", color: "from-slate-400 to-slate-600" },
+  { icon: Bird, label: "Kuş Ürünleri", emoji: "🦜", img: birdImg, slug: "kus-urunleri", color: "from-green-400 to-emerald-600" },
+  { icon: Fish, label: "Akvaryum", emoji: "🐠", img: fishImg, slug: "balik-urunleri", color: "from-cyan-400 to-blue-500" },
+  { icon: Cat, label: "Kemirgen & Sürüngen", emoji: "🐹", img: hamsterImg, slug: "kucuk-hayvan-urunleri", color: "from-slate-400 to-slate-600" },
   { icon: Dog, label: "Atakum Petshop", emoji: "📍", img: petshopImg, slug: "atakum-petshop", color: "from-red-400 to-rose-600" },
 ];
 
@@ -63,7 +63,7 @@ const popularSearches = [
   { label: "Pro Plan Köpek Maması", slug: "pro-plan-kopek-mamasi" },
   { label: "Kedi Kumu Samsun", slug: "kedi-kumu-samsun" },
   { label: "Köpek Maması Samsun", slug: "kopek-mamasi-samsun" },
-  { label: "Kedi Maması Atakum", slug: "kedi-mamasi-atakum-samsun" },
+  { label: "Kedi Maması Atakum", slug: "kedi-mamasi-atakum" },
   { label: "Brit Care Kedi", slug: "brit-care-kedi-mamasi" },
   { label: "Hill's Kedi Maması", slug: "hills-kedi-mamasi" },
   { label: "Vancat Kedi Kumu", slug: "vancat-kedi-kumu" },

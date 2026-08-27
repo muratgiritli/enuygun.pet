@@ -239,5 +239,131 @@
         "p": "+90 542 211 49 44 numaralı WhatsApp hattımızdan stok sorgulama, fiyat öğrenme ve mağazamıza yönlendirme alabilirsiniz."
       }
     ]
+  },
+  {
+    "slug": "kedi-urunleri",
+    "title": "Kedi Ürünleri Samsun | Mama, Kum, Oyuncak",
+    "h1": "Kedi Ürünleri — Samsun Atakum",
+    "desc": "Kedi maması, kedi kumu, oyuncak ve tırmalama tahtası Samsun Atakum'da gross market fiyatıyla. Royal Canin, Hills, Pro Plan EnuygunPet'te.",
+    "intro": "EnuygunPet Gross Market'te kedi sahiplerine mama, kum, oyuncak, tırmalama ve taşıma çantası tek çatı altında sunulur.",
+    "relatedBlogs": ["kisir-kedi-mamasi-hangisi", "en-iyi-kedi-mamasi-hangisi-2025-rehberi", "kedi-kumu-secimi-hangi-cesit-daha-iyi"],
+    "relatedKeywords": ["royal-canin-kedi-mamasi", "hills-kedi-mamasi", "pro-plan-kedi-mamasi", "kedi-kumu-samsun"],
+    "brands": ["Royal Canin", "Hills Science Plan", "Pro Plan", "Reflex", "Brit Care"],
+    "sections": [
+      {"h": "Kedi Maması ve Kum", "p": "Yavru, yetişkin, kısır ve diyet kedi mamalarının yanı sıra bentonit, silika ve doğal kedi kumu çeşitleri stokta."},
+      {"h": "Oyuncak ve Aksesuar", "p": "Tırmalama tahtası, yatak, taşıma çantası ve kedi oyuncakları Samsun Atakum'da uygun fiyatla bulunur."}
+    ]
+  },
+  {
+    "slug": "kopek-urunleri",
+    "title": "Köpek Ürünleri Samsun | Mama, Tasma, Oyuncak",
+    "h1": "Köpek Ürünleri — Samsun Atakum",
+    "desc": "Köpek maması, tasma, koşum, oyuncak ve yatak Samsun Atakum'da gross market fiyatıyla. Royal Canin, Pro Plan, Brit Care EnuygunPet'te.",
+    "intro": "Köpek sahipleri için mama, tasma, oyuncak ve bakım ürünleri EnuygunPet Gross Market'te geniş stokla sunulur.",
+    "relatedBlogs": ["kopek-mamasi-secimi-tam-rehber-2025", "kopek-tasmasi-ve-kosum-secim-rehberi"],
+    "relatedKeywords": ["royal-canin-kopek-mamasi", "pro-plan-kopek-mamasi", "kopek-tasmasi"],
+    "brands": ["Royal Canin", "Pro Plan", "Brit Care", "Pedigree", "Hills"],
+    "sections": [
+      {"h": "Irka Özel Mama", "p": "Küçük, orta ve büyük ırk köpek mamaları Samsun Atakum'da. Yavru ve yetişkin formüller uzman danışmanlıkla seçilir."},
+      {"h": "Tasma ve Aksesuar", "p": "Tasma, koşum, gezdirme ipi, oyuncak ve yatak çeşitleri mağazamızda hazırdır."}
+    ]
+  },
+  {
+    "slug": "kus-urunleri",
+    "title": "Kuş Ürünleri Samsun | Yem, Kafes, Vitamin",
+    "h1": "Kuş Ürünleri — Samsun Atakum",
+    "desc": "Muhabbet kuşu, papağan ve kanarya yemi, kafes ve vitamin takviyeleri Samsun Atakum'da EnuygunPet Gross Market'te.",
+    "intro": "Kuş sahipleri için yem, kafes, tünek ve vitamin EnuygunPet Gross Market'te geniş yelpazede bulunur.",
+    "relatedBlogs": ["muhabbet-kusu-nasil-beslenir-dogru-diyet", "papagan-mamasi-ve-beslenmesi-kapsamli-rehber-2026"],
+    "relatedKeywords": ["gold-wings-muhabbet-yemi", "papagan-kafesi", "muhabbet-kusu-kafesi"],
+    "brands": ["Gold Wings", "Quik", "Vitakraft"],
+    "sections": [
+      {"h": "Yem ve Vitamin", "p": "Muhabbet, papağan ve kanarya yemleri ile mineral taşı ve vitamin takviyeleri stokta."},
+      {"h": "Kafes ve Aksesuar", "p": "Kafes, tünek, yem kabı ve oyuncaklar Samsun Atakum'da uygun fiyatla sunulur."}
+    ]
+  },
+  {
+    "slug": "balik-urunleri",
+    "title": "Balık ve Akvaryum Ürünleri Samsun | EnuygunPet",
+    "h1": "Balık ve Akvaryum Ürünleri — Samsun Atakum",
+    "desc": "Balık yemi, akvaryum filtresi, aydınlatma ve süsleme ürünleri Samsun Atakum'da EnuygunPet Gross Market'te.",
+    "intro": "Akvaryum tutkunları için yem, filtre, ışık ve dekor ürünleri EnuygunPet'te gross market fiyatıyla bulunur.",
+    "relatedBlogs": ["balik-akvaryumu-kurma-baslangic-rehberi"],
+    "relatedKeywords": ["balik-yemi-samsun"],
+    "brands": ["Tetra", "Sera", "JBL"],
+    "sections": [
+      {"h": "Yem ve Filtre", "p": "Tatlı su ve tuzlu su yemleri, filtre ve hava motoru seçenekleri mağazamızda mevcuttur."},
+      {"h": "Kurulum Desteği", "p": "Akvaryum kurulumu ve su kalitesi için mağaza ekibimizden ücretsiz yönlendirme alabilirsiniz."}
+    ]
+  },
+  {
+    "slug": "kucuk-hayvan-urunleri",
+    "title": "Küçük Hayvan Ürünleri Samsun | Hamster Tavşan",
+    "h1": "Küçük Hayvan Ürünleri — Samsun Atakum",
+    "desc": "Hamster, tavşan ve guinea pig yemi, kafes ve aksesuarları Samsun Atakum'da EnuygunPet Gross Market'te.",
+    "intro": "Kemirgen ve küçük evcil hayvan ürünleri EnuygunPet Gross Market'te uygun fiyatla sunulur.",
+    "relatedBlogs": ["hamster-bakim-rehberi-yeni-baslayanlar-icin", "tavsan-bakim-rehberi-evcil-tavsan-icin"],
+    "relatedKeywords": ["kedi-kumu-samsun"],
+    "brands": ["Vitakraft", "Versele-Laga"],
+    "sections": [
+      {"h": "Yem ve Altlık", "p": "Hamster, tavşan ve kobay yemleri ile talaş ve pelet altlık seçenekleri stokta."},
+      {"h": "Kafes ve Aksesuar", "p": "Kafes, suluk, yem kabı ve oyuncaklar Samsun Atakum'da bulunur."}
+    ]
+  },
+  {
+    "slug": "surungen-urunleri",
+    "title": "Sürüngen Ürünleri Samsun | EnuygunPet",
+    "h1": "Sürüngen ve Egzotik Hayvan Ürünleri — Samsun Atakum",
+    "desc": "Kaplumbağa, kertenkele ve egzotik hayvan yemi, teraryum ve aksesuar Samsun Atakum'da EnuygunPet'te.",
+    "intro": "Sürüngen ve egzotik hayvan bakımı için yem, teraryum ve ısıtma ürünleri EnuygunPet'te.",
+    "relatedBlogs": ["hamster-bakim-rehberi-yeni-baslayanlar-icin"],
+    "relatedKeywords": ["petshop-samsun"],
+    "brands": ["Exo Terra", "Zoo Med"],
+    "sections": [
+      {"h": "Yem ve Teraryum", "p": "Kaplumbağa ve kertenkele yemleri ile teraryum malzemeleri mağazamızda bulunur."},
+      {"h": "Uzman Danışmanlık", "p": "Egzotik hayvan bakımı için mağaza ekibimiz ürün seçiminde yardımcı olur."}
+    ]
+  },
+  {
+    "slug": "kedi-mamasi-atakum",
+    "title": "Kedi Maması Atakum | Royal Canin, Hills, Pro Plan",
+    "h1": "Kedi Maması Atakum — EnuygunPet Gross Market",
+    "desc": "Atakum'da kedi maması için EnuygunPet. Royal Canin, Hills, Pro Plan, Reflex gross market fiyatıyla stokta.",
+    "intro": "Atakum içi kedi maması alışverişi için EnuygunPet Gross Market: yavru, kısır ve yetişkin formüller.",
+    "relatedBlogs": ["kisir-kedi-mamasi-hangisi", "en-iyi-kedi-mamasi-hangisi-2025-rehberi"],
+    "relatedKeywords": ["kedi-mamasi-atakum-samsun", "royal-canin-kedi-mamasi", "hills-kedi-mamasi"],
+    "brands": ["Royal Canin", "Hills Science Plan", "Pro Plan", "Reflex"],
+    "sections": [
+      {"h": "Atakum'da Hızlı Teslim", "p": "Mağazadan teslim veya WhatsApp sipariş ile Atakum içine hızlı ürün temini."},
+      {"h": "Gross Market Fiyatı", "p": "Büyük gramaj kedi mamalarında perakende fiyatların altında alışveriş yapabilirsiniz."}
+    ]
+  },
+  {
+    "slug": "kopek-mamasi-atakum",
+    "title": "Köpek Maması Atakum | Royal Canin, Pro Plan",
+    "h1": "Köpek Maması Atakum — EnuygunPet Gross Market",
+    "desc": "Atakum'da köpek maması için EnuygunPet. Royal Canin, Pro Plan, Brit Care gross market fiyatıyla stokta.",
+    "intro": "Atakum'da ırka özel, yavru ve yetişkin köpek mamaları EnuygunPet Gross Market'te.",
+    "relatedBlogs": ["kopek-mamasi-secimi-tam-rehber-2025", "yavru-kopek-bakim-rehberi-ilk-haftalar"],
+    "relatedKeywords": ["kopek-mamasi-samsun", "royal-canin-kopek-mamasi", "pro-plan-kopek-mamasi"],
+    "brands": ["Royal Canin", "Pro Plan", "Brit Care", "Pedigree"],
+    "sections": [
+      {"h": "Irka Göre Seçim", "p": "Küçük, orta ve büyük ırk köpek mamaları Atakum mağazamızda uzman önerisiyle sunulur."},
+      {"h": "Toplu Alım", "p": "15 kg ve üzeri çuvallarda gross market fiyat avantajı belirgindir."}
+    ]
+  },
+  {
+    "slug": "hills-science-plan-samsun",
+    "title": "Hills Science Plan Samsun | Veteriner Önerisi",
+    "h1": "Hills Science Plan Samsun — EnuygunPet Gross Market",
+    "desc": "Samsun Atakum'da Hills Science Plan kedi ve köpek mamaları. Veteriner önerili formüller EnuygunPet'te.",
+    "intro": "Hills Science Plan kedi ve köpek mamaları Samsun Atakum'da orijinal ve uygun fiyatla.",
+    "relatedBlogs": ["hills-kedi-mamasi-veteriner-onerisi-mi"],
+    "relatedKeywords": ["hills-kedi-mamasi", "hills-kedi-mamasi-atakum"],
+    "brands": ["Hills Science Plan", "Hills Prescription Diet"],
+    "sections": [
+      {"h": "Kedi ve Köpek Formülleri", "p": "Yavru, yetişkin ve kısır Hills mamaları Samsun Atakum'da stokta."},
+      {"h": "Orijinal Ürün", "p": "EnuygunPet yetkili kanallardan temin edilen Hills ürünlerini sunar."}
+    ]
   }
 ]

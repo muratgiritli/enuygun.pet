@@ -9,6 +9,7 @@ import InternalLinksSection, { detectType } from "@/components/internal-links";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Skeleton } from "@/components/ui/skeleton";
+import { pickImages } from "@shared/seo-article";
 
 const PHONE = "+905422114944";
 const WA_URL = `https://wa.me/905422114944`;
@@ -44,7 +45,8 @@ export default function BlogPage() {
 
   useEffect(() => {
     if (!post || (post as any).error) return;
-    const title = `${post.title} | EnuygunPet Evcil Hayvan Bakım Rehberi`;
+    const rawTitle = `${post.title} | EnuygunPet`;
+    const title = rawTitle.length <= 62 ? rawTitle : rawTitle.slice(0, 62).replace(/\s+\S*$/, "").trim();
     const canonicalUrl = `https://www.enuygun.pet/blog/${post.slug}`;
     const CAT_IMGS: Record<string, string> = {
       kedi: "https://static.wixstatic.com/media/63853e_4c33bdb1dc274eab8358c2d598f7cfee~mv2.jpeg",
@@ -271,12 +273,33 @@ export default function BlogPage() {
       </header>
 
       <main className="flex-1 max-w-2xl mx-auto w-full px-4 py-6 space-y-6">
-        {post.sections.map((sec, i) => (
-          <section key={i}>
-            <h2 className="text-lg font-semibold text-foreground mb-2">{sec.h}</h2>
-            <p className="text-muted-foreground leading-relaxed text-sm">{sec.p}</p>
-          </section>
-        ))}
+        {(() => {
+          const imgs = pickImages(post.title);
+          const n = post.sections.length;
+          const slots = Array.from(new Set([0, Math.floor(n / 3), Math.floor((2 * n) / 3)]));
+          return post.sections.map((sec, i) => {
+            const imgIdx = slots.indexOf(i);
+            const img = imgIdx >= 0 ? imgs[imgIdx] : undefined;
+            return (
+              <section key={i}>
+                {img && i === 0 && (
+                  <figure className="mb-4 rounded-xl overflow-hidden border border-border">
+                    <img src={img.src} alt={img.alt} title={img.alt} className="w-full h-44 object-cover" width={800} height={450} loading="eager" />
+                    <figcaption className="text-[10px] text-muted-foreground text-center py-1.5 bg-muted/30 px-2">{img.alt}</figcaption>
+                  </figure>
+                )}
+                <h2 className="text-lg font-semibold text-foreground mb-2">{sec.h}</h2>
+                <p className="text-muted-foreground leading-relaxed text-sm">{sec.p}</p>
+                {img && i !== 0 && (
+                  <figure className="mt-4 rounded-xl overflow-hidden border border-border">
+                    <img src={img.src} alt={img.alt} title={img.alt} className="w-full h-44 object-cover" width={800} height={450} loading="lazy" />
+                    <figcaption className="text-[10px] text-muted-foreground text-center py-1.5 bg-muted/30 px-2">{img.alt}</figcaption>
+                  </figure>
+                )}
+              </section>
+            );
+          });
+        })()}
 
         <section className="space-y-3 border-t border-border pt-6">
           <h2 className="text-base font-bold text-foreground">EnuygunPet'te Satın Alın</h2>

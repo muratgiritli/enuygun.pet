@@ -8,6 +8,8 @@ import { Phone, MessageCircle, MapPin, ArrowLeft, ChevronRight, BookOpen, Store 
 import InternalLinksSection from "@/components/internal-links";
 import { Card } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
+import SeoArticleBody from "@/components/seo-article-body";
+import { buildLocalArticle, pickImages } from "@shared/seo-article";
 
 const PHONE = "+905422114944";
 const WA_URL = `https://wa.me/905422114944`;
@@ -50,7 +52,7 @@ export default function LocalPage() {
   useEffect(() => {
     if (!page || (page as any).error) return;
     const canonicalUrl = `https://www.enuygun.pet/local/${page.slug}`;
-    const img = "https://static.wixstatic.com/media/63853e_77a3ee3fa9d942a7af5b6f25a0520653~mv2.jpeg";
+    const img = pickImages(page.h1)[0]?.src || "https://static.wixstatic.com/media/63853e_77a3ee3fa9d942a7af5b6f25a0520653~mv2.jpeg";
     document.title = page.title;
     const setMeta = (sel: string, attr: string, val: string) => {
       let el = document.querySelector(sel) as HTMLMetaElement | null;
@@ -95,6 +97,16 @@ export default function LocalPage() {
   const locationLabel = page.neighborhood
     ? `${page.district} ${page.neighborhood}`
     : page.district;
+
+  const article = buildLocalArticle({
+    keyword: page.h1,
+    slug: page.slug,
+    h1: page.h1,
+    intro: page.intro,
+    district: page.district,
+    neighborhood: page.neighborhood,
+    sections: page.sections,
+  });
 
   const STORE_IMAGES = [
     "https://static.wixstatic.com/media/63853e_77a3ee3fa9d942a7af5b6f25a0520653~mv2.jpeg",
@@ -216,30 +228,7 @@ export default function LocalPage() {
       </header>
 
       <main className="flex-1 max-w-2xl mx-auto w-full px-4 py-6 space-y-6">
-        {page.sections.map((sec, i) => (
-          <section key={i}>
-            <h2 className="text-lg font-semibold text-foreground mb-2">{sec.h}</h2>
-            <p className="text-muted-foreground leading-relaxed text-sm">{sec.p}</p>
-          </section>
-        ))}
-
-        <section className="space-y-4">
-          <h2 className="text-base font-bold text-foreground">EnuygunPet Gross Market Hakkında</h2>
-          <p className="text-sm text-muted-foreground leading-relaxed">
-            EnuygunPet, Samsun Atakum'da Atatürk Bulvarı No:113 adresinde faaliyet gösteren Samsun'un en büyük petshop gross marketidir. Kedi maması, köpek maması, kuş yemi, kedi kumu, tasma, oyuncak, yatak, kafes ve akvaryum malzemeleri dahil on binlerce ürün çeşidi tek çatı altında sunulmaktadır. Royal Canin, Hills Science Plan, Pro Plan, Brit Care, Reflex ve Enjoy gibi önde gelen markaların tüm ürün gamları stoğumuzda mevcuttur.
-          </p>
-          <p className="text-sm text-muted-foreground leading-relaxed">
-            Gross market modelimiz sayesinde perakende fiyatlarının çok altında alışveriş yapabilirsiniz. Büyük gramaj ve toplu alımlarda fiyat avantajı daha da belirginleşmektedir. Uzman personelimiz evcil hayvanınızın beslenme ve bakım ihtiyaçları hakkında ücretsiz danışmanlık sunmaktadır.
-          </p>
-          <h3 className="text-sm font-bold text-foreground">Ürün Kategorileri</h3>
-          <p className="text-sm text-muted-foreground leading-relaxed">
-            Kedi ürünleri (mama, kum, oyuncak, tırmalama, taşıma çantası), köpek ürünleri (mama, tasma, koşum, oyuncak, yatak), kuş ürünleri (yem, kafes, tünek, vitamin), balık ve akvaryum ürünleri (yem, filtre, ışık, dekorasyon) ile küçük hayvan ürünleri (hamster, tavşan, guinea pig) kategorilerinde geniş ürün yelpazesi sunuyoruz.
-          </p>
-          <h3 className="text-sm font-bold text-foreground">Neden EnuygunPet?</h3>
-          <p className="text-sm text-muted-foreground leading-relaxed">
-            Gross market fiyat avantajı, geniş stok, uzman danışmanlık ve kolay erişim imkânıyla Samsun'un en güvenilir petshop markasıyız. Haftanın her günü 09:00–21:00 saatleri arasında açığız. WhatsApp hattımız (+90 542 211 49 44) üzerinden stok sorgusu ve sipariş alıyoruz.
-          </p>
-        </section>
+        <SeoArticleBody article={article} testId="local-article" />
 
         <Card className="p-4 bg-primary text-primary-foreground rounded-2xl">
           <p className="text-sm font-semibold mb-1">EnuygunPet Gross Market</p>
