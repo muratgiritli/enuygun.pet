@@ -215,7 +215,7 @@ function imgTag(src: string, alt: string, eager = false): string {
 }
 
 function footerHtml(): string {
-  return `${COMMON_SECTION}<address>EnuygunPet Gross Market — Atatürk Bulvarı No:113, Atakum / Samsun — Tel: +90 542 211 49 44 — Haftanın her günü 09:00-21:00</address>`;
+  return `${COMMON_SECTION}<address>EnuygunPet Gross Market — Atatürk Bulvarı No:113, Atakum / Samsun — Tel: +90 542 211 49 44 — Haftanın her günü 09:00-21:00</address><p>Bu site <a href="https://www.sizpa.com/" rel="noopener noreferrer">Sizpa İnternet Tic. Ltd. Şti.</a> tarafından yapılmıştır.</p>`;
 }
 
 function interleaveImages(sectionHtml: string[], images: Array<{ src: string; alt: string }>): string {
@@ -276,7 +276,7 @@ function notFoundMeta(): PageMeta {
     description: "Aradığınız sayfa bulunamadı. EnuygunPet Gross Market — Samsun Atakum petshop. Ana sayfadan devam edebilirsiniz.",
     noIndex: true,
     notFound: true,
-    bodyHtml: `<h1>Sayfa Bulunamadı</h1><article><p>Aradığınız sayfa kaldırılmış, taşınmış ya da hiç var olmamış olabilir.</p><p><a href="/">Ana sayfaya dön</a> · <a href="/blog">Bakım Rehberleri</a> · <a href="/kedi-mamasi">Kedi Maması</a></p>${COMMON_SECTION}<address>EnuygunPet Gross Market — Atatürk Bulvarı No:113, Atakum / Samsun — Tel: +90 542 211 49 44 — Haftanın her günü 09:00-21:00</address></article>`,
+    bodyHtml: `<h1>Sayfa Bulunamadı</h1><article><p>Aradığınız sayfa kaldırılmış, taşınmış ya da hiç var olmamış olabilir.</p><p><a href="/">Ana sayfaya dön</a> · <a href="/blog">Bakım Rehberleri</a> · <a href="/kedi-mamasi">Kedi Maması</a></p>${footerHtml()}</article>`,
   };
 }
 
@@ -706,7 +706,7 @@ export function injectMeta(html: string, meta: PageMeta, urlPath = "/"): string 
     .join("");
   const seoContent = meta.bodyHtml
     ? meta.bodyHtml
-    : `<h1>${escapeHtml(meta.h1)}</h1><article>${fallbackImgHtml}<p>${escapeHtml(meta.description)}</p>${COMMON_SECTION}<address>EnuygunPet Gross Market — Atatürk Bulvarı No:113, Atakum / Samsun — Tel: +90 542 211 49 44 — Haftanın her günü 09:00-21:00</address></article>`;
+    : `<h1>${escapeHtml(meta.h1)}</h1><article>${fallbackImgHtml}<p>${escapeHtml(meta.description)}</p>${footerHtml()}</article>`;
 
   result = result.replace(
     '<div id="root"></div>',

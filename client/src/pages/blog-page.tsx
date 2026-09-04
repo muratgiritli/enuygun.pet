@@ -10,6 +10,7 @@ import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Skeleton } from "@/components/ui/skeleton";
 import { pickImages } from "@shared/seo-article";
+import SiteCredit from "@/components/site-credit";
 
 const PHONE = "+905422114944";
 const WA_URL = `https://wa.me/905422114944`;
@@ -387,13 +388,7 @@ export default function BlogPage() {
 
         <footer className="pb-4 text-center space-y-1">
           <p className="text-[10px] text-muted-foreground/70">© {new Date().getFullYear()} EnuygunPet — Tüm hakları saklıdır.</p>
-          <p className="text-[10px] text-muted-foreground/60">
-            Bu web sitesi,{" "}
-            <a href="https://www.sizpa.net/" target="_blank" rel="noopener noreferrer" className="underline hover:text-primary transition-colors">
-              Sizpa Yazılım
-            </a>{" "}
-            tarafından tasarlanmış ve geliştirilmiştir.
-          </p>
+          <SiteCredit />
         </footer>
       </main>
     </div>

@@ -6,6 +6,7 @@ import SiteHeader from "@/components/site-header";
 
 import { BookOpen, ChevronRight, ArrowLeft, Cat, Dog, Bird, Sparkles } from "lucide-react";
 import { Skeleton } from "@/components/ui/skeleton";
+import SiteCredit from "@/components/site-credit";
 
 const CAT_META: Record<string, { label: string; icon: React.ReactNode; desc: string; color: string }> = {
   kedi: {
@@ -209,13 +210,7 @@ export default function BlogListPage() {
 
         <footer className="mt-8 pb-4 text-center space-y-1">
           <p className="text-[10px] text-muted-foreground/70">© {new Date().getFullYear()} EnuygunPet — Tüm hakları saklıdır.</p>
-          <p className="text-[10px] text-muted-foreground/60">
-            Bu web sitesi,{" "}
-            <a href="https://www.sizpa.net/" target="_blank" rel="noopener noreferrer" className="underline hover:text-primary transition-colors">
-              Sizpa Yazılım
-            </a>{" "}
-            tarafından tasarlanmış ve geliştirilmiştir.
-          </p>
+          <SiteCredit />
         </footer>
       </main>
     </div>
