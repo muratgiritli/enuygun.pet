@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { Link } from "wouter";
 import { useTrack } from "@/hooks/use-track";
 import SiteHeader from "@/components/site-header";
+import SiteCredit from "@/components/site-credit";
 import { Phone, MapPin, Clock, Truck, ShieldCheck, BadgeCheck, ChevronRight } from "lucide-react";
 import { SiWhatsapp } from "react-icons/si";
 
@@ -313,6 +314,10 @@ export default function ProPlanPage() {
           </div>
         </section>
       </main>
+
+      <footer className="px-4 pb-6 text-center space-y-1">
+        <SiteCredit />
+      </footer>
 
       {/* ── STICKY BOTTOM BAR ── */}
       <div className="lg:hidden fixed bottom-0 left-0 right-0 z-50 bg-white border-t border-gray-200 shadow-[0_-2px_10px_rgba(0,0,0,0.06)]">

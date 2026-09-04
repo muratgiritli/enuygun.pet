@@ -9,6 +9,7 @@ import InternalLinksSection from "@/components/internal-links";
 import { Card } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
 import SeoArticleBody from "@/components/seo-article-body";
+import SiteCredit from "@/components/site-credit";
 import { buildLocalArticle, pickImages } from "@shared/seo-article";
 
 const PHONE = "+905422114944";
@@ -299,13 +300,7 @@ export default function LocalPage() {
 
         <footer className="pb-4 text-center space-y-1">
           <p className="text-[10px] text-muted-foreground/70">© {new Date().getFullYear()} EnuygunPet — Tüm hakları saklıdır.</p>
-          <p className="text-[10px] text-muted-foreground/60">
-            Bu web sitesi,{" "}
-            <a href="https://www.sizpa.net/" target="_blank" rel="noopener noreferrer" className="underline hover:text-primary transition-colors">
-              Sizpa Yazılım
-            </a>{" "}
-            tarafından tasarlanmış ve geliştirilmiştir.
-          </p>
+          <SiteCredit />
         </footer>
       </main>
     </div>

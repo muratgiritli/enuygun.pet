@@ -3,6 +3,7 @@ import { Link } from "wouter";
 import { useTrack } from "@/hooks/use-track";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import SiteCredit from "@/components/site-credit";
 import {
   Phone,
   MapPin,
@@ -292,6 +293,10 @@ export default function IletisimPage() {
             </p>
           </div>
         </Card>
+
+        <footer className="pt-2 pb-4 text-center space-y-1">
+          <SiteCredit />
+        </footer>
 
       </main>
     </div>

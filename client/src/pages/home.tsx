@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "wouter";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import SiteCredit from "@/components/site-credit";
 import {
   Phone,
   MapPin,
@@ -495,12 +496,7 @@ export default function Home() {
         <footer className="px-4 pt-5 pb-4 border-t border-gray-200 mt-5 lg:col-span-12 lg:order-9" data-testid="footer">
           <div className="text-center space-y-1">
             <p className="text-[10px] text-gray-400">&copy; {new Date().getFullYear()} EnuygunPet — Tüm hakları saklıdır.</p>
-            <p className="text-[10px] text-gray-400">
-              Tasarım:{" "}
-              <a href="https://www.sizpa.net/" target="_blank" rel="noopener noreferrer" className="underline hover:text-green-600">
-                Sizpa Yazılım
-              </a>
-            </p>
+            <SiteCredit className="text-[10px] text-gray-400" linkClassName="underline hover:text-green-600" />
           </div>
         </footer>
         </div>

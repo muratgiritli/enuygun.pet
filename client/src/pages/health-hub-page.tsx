@@ -6,6 +6,7 @@ import { Phone, MapPin, Clock, ChevronRight } from "lucide-react";
 import { SiWhatsapp } from "react-icons/si";
 import NotFound from "@/pages/not-found";
 import SeoArticleBody from "@/components/seo-article-body";
+import SiteCredit from "@/components/site-credit";
 import { buildKeywordArticle } from "@shared/seo-article";
 
 const PHONE = "+905422114944";
@@ -124,6 +125,9 @@ export default function HealthHubPage() {
           <a href={MAPS_URL} className="inline-flex items-center gap-1 text-sm"><MapPin className="w-4 h-4" /> Yol tarifi</a>
         </div>
         <p className="text-xs text-muted-foreground flex items-center gap-1"><Clock className="w-3 h-3" /> Her gün 09:00–21:00 · Atatürk Bulvarı No:113 Atakum / Samsun</p>
+        <footer className="pt-4 text-center space-y-1">
+          <SiteCredit />
+        </footer>
       </main>
     </div>
   );

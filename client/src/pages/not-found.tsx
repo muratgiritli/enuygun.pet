@@ -1,5 +1,6 @@
 import { Link } from "wouter";
 import { Home, BookOpen, ShoppingBag, ChevronRight } from "lucide-react";
+import SiteCredit from "@/components/site-credit";
 
 export default function NotFound() {
   return (
@@ -53,6 +54,7 @@ export default function NotFound() {
             WhatsApp'tan bize ulaşın
           </a>
         </p>
+        <SiteCredit />
       </div>
     </div>
   );
