@@ -4,6 +4,18 @@ import { useTrack } from "@/hooks/use-track";
 import SiteHeader from "@/components/site-header";
 import { Phone, MapPin, Clock, Truck, ShieldCheck, BadgeCheck, ChevronRight } from "lucide-react";
 import { SiWhatsapp } from "react-icons/si";
+import {
+  PHONE_E164 as PHONE,
+  PHONE_DISPLAY,
+  PHONE_WHATSAPP_URL,
+  STORE_MAPS_URL as MAPS_URL,
+  STORE_LAT,
+  STORE_LNG,
+  STORE_STREET,
+  STORE_POSTAL,
+  STORE_ADDRESS_LINE,
+  STORE_ADDRESS_SHORT,
+} from "@shared/store-info";
 
 const IMG = "/images/proplan";
 const logoImg = `${IMG}/logo.jpg`;
@@ -17,10 +29,7 @@ const largeAdultImg = `${IMG}/large-adult.jpg`;
 const gastroImg = `${IMG}/gastrointestinal.jpg`;
 const hypoImg = `${IMG}/hypoallergenic.webp`;
 
-const PHONE = "+905422114944";
-const PHONE_DISPLAY = "0542 211 49 44";
-const WHATSAPP_URL = `https://wa.me/905422114944?text=${encodeURIComponent("Merhaba, Pro Plan ürünleri hakkında bilgi almak istiyorum.")}`;
-const MAPS_URL = "https://www.google.com/maps/place/Samsun+Petshop+Enuygunpet/@41.3494032,36.2410372,17z/data=!4m10!1m2!2m1!1senuygunpet!3m6!1s0x408879a38cad8b89:0x2f8d7996011cec2d!8m2!3d41.349366!4d36.243738!15sCgplbnV5Z3VucGV0WgwiCmVudXlndW5wZXSSAQlwZXRfc3RvcmXgAQA!16s%2Fg%2F11x2x7jtwk?entry=ttu";
+const WHATSAPP_URL = `${PHONE_WHATSAPP_URL}?text=${encodeURIComponent("Merhaba, Pro Plan ürünleri hakkında bilgi almak istiyorum.")}`;
 const SHOP_URL = "https://www.enuygunpetshop.com";
 
 const catProducts = [
@@ -122,16 +131,16 @@ export default function ProPlanPage() {
         "name": "EnuygunPet Gross Market — Pro Plan Bayi",
         "description": "Samsun Atakum'da Pro Plan kedi ve köpek mamaları satış noktası.",
         "url": "https://www.enuygun.pet/proplan",
-        "telephone": "+905422114944",
+        "telephone": PHONE,
         "address": {
           "@type": "PostalAddress",
-          "streetAddress": "Yeni Mahalle Atatürk 3. Kısım Bulvarı No:113",
+          "streetAddress": STORE_STREET,
           "addressLocality": "Atakum",
           "addressRegion": "Samsun",
-          "postalCode": "55200",
+          "postalCode": STORE_POSTAL,
           "addressCountry": "TR"
         },
-        "geo": { "@type": "GeoCoordinates", "latitude": 41.349366, "longitude": 36.243738 },
+        "geo": { "@type": "GeoCoordinates", "latitude": STORE_LAT, "longitude": STORE_LNG },
         "openingHoursSpecification": [{
           "@type": "OpeningHoursSpecification",
           "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
@@ -146,12 +155,12 @@ export default function ProPlanPage() {
           {
             "@type": "Question",
             "name": "Pro Plan ürünleri Samsun'da hangi adreste bulunur?",
-            "acceptedAnswer": { "@type": "Answer", "text": "Pro Plan kedi ve köpek mamalarının tüm çeşitleri EnuygunPet Gross Market'te, Samsun Atakum Atatürk Bulvarı No:113 adresinde bulunmaktadır. Atakum içine 1 saatte teslimat yapılmaktadır." }
+            "acceptedAnswer": { "@type": "Answer", "text": `Pro Plan kedi ve köpek mamalarının tüm çeşitleri EnuygunPet Gross Market'te, Samsun Atakum ${STORE_ADDRESS_SHORT} adresinde bulunmaktadır. Atakum içine 1 saatte teslimat yapılmaktadır.` }
           },
           {
             "@type": "Question",
             "name": "Pro Plan siparişi nasıl verebilirim?",
-            "acceptedAnswer": { "@type": "Answer", "text": "Online alışveriş için enuygunpetshop.com üzerinden sipariş verebilir, ayrıca 0542 211 49 44 numaralı telefon ve WhatsApp hattından da sipariş oluşturabilirsiniz." }
+            "acceptedAnswer": { "@type": "Answer", "text": `Online alışveriş için enuygunpetshop.com üzerinden sipariş verebilir, ayrıca ${PHONE_DISPLAY} numaralı telefon ve WhatsApp hattından da sipariş oluşturabilirsiniz.` }
           },
           {
             "@type": "Question",
@@ -268,7 +277,7 @@ export default function ProPlanPage() {
               </a>
             </div>
             <div className="space-y-1.5 text-sm text-gray-600">
-              <p className="flex items-center gap-2"><MapPin className="w-4 h-4 text-gray-400 shrink-0" /> Yeni Mah. Atatürk 3. Kısım Bulvarı No:113, Atakum / Samsun</p>
+              <p className="flex items-center gap-2"><MapPin className="w-4 h-4 text-gray-400 shrink-0" /> {STORE_ADDRESS_LINE}</p>
               <p className="flex items-center gap-2"><Phone className="w-4 h-4 text-gray-400 shrink-0" /> {PHONE_DISPLAY}</p>
               <p className="flex items-center gap-2"><Clock className="w-4 h-4 text-gray-400 shrink-0" /> Her gün 09:00 – 21:00</p>
             </div>

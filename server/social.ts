@@ -1,7 +1,8 @@
 import { TwitterApi } from "twitter-api-v2";
+import { PHONE_INTL, WHATSAPP_NUMBER } from "@shared/store-info";
 
 const SITE = "https://www.enuygun.pet";
-const STORE_INFO = "📍 Samsun Atakum | ⏰ 09:00-21:00 | 📞 +90 542 211 49 44";
+const STORE_INFO = `📍 Samsun Atakum | ⏰ 09:00-21:00 | 📞 ${PHONE_INTL}`;
 
 function buildTweetText(keyword: string, slug: string): string {
   const url = `${SITE}/${slug}`;
@@ -11,7 +12,7 @@ function buildTweetText(keyword: string, slug: string): string {
 
 function buildFacebookText(keyword: string, slug: string): string {
   const url = `${SITE}/${slug}`;
-  return `🐾 ${keyword} — En Uygun Fiyat Samsun Atakum'da!\n\nEnuygunPet Gross Market olarak ${keyword} ürünlerinde en geniş stok ve en uygun fiyat garantisiyle hizmetinizdeyiz.\n\n${STORE_INFO}\n📲 WhatsApp: wa.me/905422114944\n🌐 ${url}`;
+  return `🐾 ${keyword} — En Uygun Fiyat Samsun Atakum'da!\n\nEnuygunPet Gross Market olarak ${keyword} ürünlerinde en geniş stok ve en uygun fiyat garantisiyle hizmetinizdeyiz.\n\n${STORE_INFO}\n📲 WhatsApp: wa.me/${WHATSAPP_NUMBER}\n🌐 ${url}`;
 }
 
 function buildInstagramCaption(keyword: string, slug: string): string {

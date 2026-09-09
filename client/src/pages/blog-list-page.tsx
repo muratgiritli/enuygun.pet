@@ -131,7 +131,7 @@ export default function BlogListPage() {
             "name": "Bu rehberlerdeki ürünler Samsun'da nereden alınır?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Rehberlerde bahsedilen tüm ürünler Samsun Atakum, Atatürk Bulvarı No:113'teki EnuygunPet Gross Market'te satılmaktadır. Haftanın her günü 09:00-21:00 hizmetinizdeyiz. Bilgi için WhatsApp: +90 542 211 49 44"
+              "text": "Rehberlerde bahsedilen tüm ürünler Samsun Atakum, Yeni Mahalle 3078. Sokak No:10 adresindeki EnuygunPet Gross Market'te satılmaktadır. Haftanın her günü 09:00-21:00 hizmetinizdeyiz. Bilgi için WhatsApp: +90 542 462 29 59"
             }
           }
         ]

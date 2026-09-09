@@ -4,6 +4,8 @@
  * Article body (headings + paragraphs) is always ≥ 1000 Turkish words.
  */
 
+import { PHONE_DISPLAY as PHONE, STORE_ADDRESS_LINE as ADDRESS } from "./store-info";
+
 export type SeoImage = { src: string; alt: string };
 export type SeoSection = { heading: string; paragraphs: string[] };
 export type SeoFaq = { q: string; a: string };
@@ -23,9 +25,7 @@ export const STORE_IMAGES = {
   kus: "https://static.wixstatic.com/media/63853e_346d0d0b96154639b0a27296b18d70f5~mv2.jpeg",
 } as const;
 
-const PHONE = "0542 211 49 44";
 const HOURS = "09:00–21:00";
-const ADDRESS = "Yeni Mahalle Atatürk 3. Kısım Bulvarı No:113, Atakum / Samsun";
 const STORE = "EnuygunPet Gross Market";
 
 type Kind =
@@ -296,7 +296,7 @@ const OPENINGS = [
 
 const STORE_VISIT = [
   "Mağazamız {address} konumundadır. Haftanın her günü {hours} açıktır; Pazar ve resmi tatillerde de kapı kapanmaz. Ücretsiz otopark ve araç yanı yükleme imkânı özellikle {weight} gibi ağır paketlerde işe yarar.",
-  "{store} Atatürk Bulvarı üzerinde tek katlı gross market düzenindedir. {quiet} saatlerinde reyonlar daha sakindir; {kw} çeşitlerini yan yana koymak için bu aralık rahattır.",
+  "{store} 3078. Sokak üzerinde tek katlı gross market düzenindedir. {quiet} saatlerinde reyonlar daha sakindir; {kw} çeşitlerini yan yana koymak için bu aralık rahattır.",
   "WhatsApp hattımız {phone} üzerinden {kw} fotoğrafı, stok ve güncel fiyat sorabilirsiniz. Atakum içi teslimat ve mağazadan teslim seçenekleri aynı günde planlanır.",
 ];
 
@@ -774,7 +774,7 @@ export function buildLocalArticle(opts: {
     ]),
     ...(opts.sections || []).map((s) => sec(s.h, [s.p])),
     sec(`${place} bölgesinden ulaşım`, [
-      fill("{place} yönünden Atatürk Bulvarı hattı {store}’e bağlanır. Otopark vardır; {weight} mama çuvalları bagaja personelle yüklenir. {quiet} saatleri park ve kasa için daha sakindir. Yol tarifi için Google’da EnuygunPet yazın veya {phone} arayın.", ctx),
+      fill("{place} yönünden 3078. Sokak hattı {store}’e bağlanır. Otopark vardır; {weight} mama çuvalları bagaja personelle yüklenir. {quiet} saatleri park ve kasa için daha sakindir. Yol tarifi için Google’da EnuygunPet yazın veya {phone} arayın.", ctx),
       fill("{place} içindeki kedi ve köpek sahipleri {kw} yerine geniş reyonu tercih eder: mama, kum, tasma ve kuş yemi aynı ziyarette biter. {brands} stokta tutulur. {hours} her gün açık olmamız mesai ve hafta sonuna uyar.", ctx),
     ]),
     sec(`${place} için teslimat ve WhatsApp`, [

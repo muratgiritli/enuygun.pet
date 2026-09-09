@@ -10,10 +10,17 @@ import { Card } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
 import SeoArticleBody from "@/components/seo-article-body";
 import { buildLocalArticle, pickImages } from "@shared/seo-article";
-
-const PHONE = "+905422114944";
-const WA_URL = `https://wa.me/905422114944`;
-const MAPS_URL = "https://www.google.com/maps/place/Samsun+Petshop+Enuygunpet/@41.3494032,36.2410372,17z/data=!4m10!1m2!2m1!1senuygunpet!3m6!1s0x408879a38cad8b89:0x2f8d7996011cec2d!8m2!3d41.349366!4d36.243738!15sCgplbnV5Z3VucGV0WgwiCmVudXlndW5wZXSSAQlwZXRfc3RvcmXgAQA!16s%2Fg%2F11x2x7jtwk?entry=ttu";
+import {
+  PHONE_E164 as PHONE,
+  PHONE_INTL,
+  PHONE_WHATSAPP_URL as WA_URL,
+  STORE_MAPS_URL as MAPS_URL,
+  STORE_STREET,
+  STORE_POSTAL,
+  STORE_LAT,
+  STORE_LNG,
+  STORE_ADDRESS_SHORT,
+} from "@shared/store-info";
 
 const RELATED_CATEGORIES = [
   { slug: "kedi-mamasi", label: "Kedi Maması" },
@@ -139,17 +146,17 @@ export default function LocalPage() {
         "name": page.h1,
         "description": page.desc,
         "url": `https://www.enuygun.pet/local/${page.slug}`,
-        "telephone": "+905422114944",
+        "telephone": PHONE,
         "image": STORE_IMAGES,
         "address": {
           "@type": "PostalAddress",
-          "streetAddress": "Yeni Mahalle Atatürk 3. Kısım Bulvarı No:113",
+          "streetAddress": STORE_STREET,
           "addressLocality": "Atakum",
           "addressRegion": "Samsun",
-          "postalCode": "55200",
+          "postalCode": STORE_POSTAL,
           "addressCountry": "TR"
         },
-        "geo": { "@type": "GeoCoordinates", "latitude": 41.349366, "longitude": 36.243738 },
+        "geo": { "@type": "GeoCoordinates", "latitude": STORE_LAT, "longitude": STORE_LNG },
         "openingHoursSpecification": [{
           "@type": "OpeningHoursSpecification",
           "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
@@ -190,7 +197,7 @@ export default function LocalPage() {
             "name": `${locationLabel} bölgesine en yakın petshop nerede?`,
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": `${locationLabel} bölgesine en yakın petshop EnuygunPet Gross Market'tir. Samsun Atakum, Atatürk Bulvarı No:113 adresinde hizmet vermektedir. Haftanın 7 günü 09:00-21:00 açık olup WhatsApp: +90 542 211 49 44 numarasından bilgi alabilirsiniz.`
+              "text": `${locationLabel} bölgesine en yakın petshop EnuygunPet Gross Market'tir. Samsun Atakum, ${STORE_ADDRESS_SHORT} adresinde hizmet vermektedir. Haftanın 7 günü 09:00-21:00 açık olup WhatsApp: ${PHONE_INTL} numarasından bilgi alabilirsiniz.`
             }
           },
           {
@@ -232,7 +239,7 @@ export default function LocalPage() {
 
         <Card className="p-4 bg-primary text-primary-foreground rounded-2xl">
           <p className="text-sm font-semibold mb-1">EnuygunPet Gross Market</p>
-          <p className="text-xs text-primary-foreground/80 mb-3">Atatürk Bulvarı, Atakum / Samsun — Her gün 09:00-21:00</p>
+          <p className="text-xs text-primary-foreground/80 mb-3">{STORE_ADDRESS_SHORT} — Her gün 09:00-21:00</p>
           <div className="grid grid-cols-3 gap-2">
             <a href={WA_URL} target="_blank" rel="noopener noreferrer" data-testid="btn-wa-local"
               className="flex flex-col items-center gap-1 bg-white/15 hover:bg-white/25 rounded-xl p-3 transition-colors">

@@ -29,8 +29,8 @@ Mobile-first landing page for EnuygunPet, a pet shop gross market located in Sam
 
 ## Business Info
 - **Name**: EnuygunPet - Petshop Gross Market
-- **Address**: Yeni Mahalle Atatürk 3. Kısım Bulvarı No:113, Atakum / SAMSUN
-- **Phone**: 0542 211 49 44
+- **Address**: Yeni Mahalle, 3078. Sokak No:10, 55270 Atakum / SAMSUN
+- **Phone**: 0542 462 29 59
 - **Hours**: Every day 09:00 - 21:00
 - **Instagram**: @enuygun.pet
 - **Website**: https://www.enuygun.pet/

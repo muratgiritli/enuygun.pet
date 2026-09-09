@@ -1,5 +1,6 @@
 import { Link } from "wouter";
 import { Home, BookOpen, ShoppingBag, ChevronRight } from "lucide-react";
+import { PHONE_WHATSAPP_URL } from "@shared/store-info";
 
 export default function NotFound() {
   return (
@@ -46,7 +47,7 @@ export default function NotFound() {
         <p className="text-xs text-muted-foreground">
           Yardım için{" "}
           <a
-            href="https://wa.me/905422114944"
+            href={PHONE_WHATSAPP_URL}
             className="text-primary underline underline-offset-2"
             data-testid="link-404-whatsapp"
           >

@@ -7,10 +7,13 @@ import { SiWhatsapp } from "react-icons/si";
 import NotFound from "@/pages/not-found";
 import SeoArticleBody from "@/components/seo-article-body";
 import { buildKeywordArticle } from "@shared/seo-article";
-
-const PHONE = "+905422114944";
-const WHATSAPP_URL = `https://wa.me/905422114944`;
-const MAPS_URL = "https://www.google.com/maps/place/Samsun+Petshop+Enuygunpet/@41.3494032,36.2410372,17z/data=!4m10!1m2!2m1!1senuygunpet!3m6!1s0x408879a38cad8b89:0x2f8d7996011cec2d!8m2!3d41.349366!4d36.243738!15sCgplbnV5Z3VucGV0WgwiCmVudXlndW5wZXSSAQlwZXRfc3RvcmXgAQA!16s%2Fg%2F11x2x7jtwk?entry=ttu";
+import {
+  PHONE_E164 as PHONE,
+  PHONE_DISPLAY,
+  PHONE_WHATSAPP_URL as WHATSAPP_URL,
+  STORE_MAPS_URL as MAPS_URL,
+  STORE_ADDRESS_SHORT,
+} from "@shared/store-info";
 
 const GUIDES: Record<string, {
   title: string;
@@ -119,11 +122,11 @@ export default function HealthHubPage() {
         </ul>
         <SeoArticleBody article={article} testId="health-hub-article" />
         <div className="flex flex-wrap gap-2 pt-2">
-          <a href={`tel:${PHONE}`} className="inline-flex items-center gap-1 text-sm"><Phone className="w-4 h-4" /> 0542 211 49 44</a>
+          <a href={`tel:${PHONE}`} className="inline-flex items-center gap-1 text-sm"><Phone className="w-4 h-4" /> {PHONE_DISPLAY}</a>
           <a href={WHATSAPP_URL} className="inline-flex items-center gap-1 text-sm"><SiWhatsapp className="w-4 h-4" /> WhatsApp</a>
           <a href={MAPS_URL} className="inline-flex items-center gap-1 text-sm"><MapPin className="w-4 h-4" /> Yol tarifi</a>
         </div>
-        <p className="text-xs text-muted-foreground flex items-center gap-1"><Clock className="w-3 h-3" /> Her gün 09:00–21:00 · Atatürk Bulvarı No:113 Atakum / Samsun</p>
+        <p className="text-xs text-muted-foreground flex items-center gap-1"><Clock className="w-3 h-3" /> Her gün 09:00–21:00 · {STORE_ADDRESS_SHORT}</p>
       </main>
     </div>
   );

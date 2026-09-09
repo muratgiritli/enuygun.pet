@@ -27,14 +27,20 @@ import birdImg from "@assets/stock_images/bird_category.jpg";
 import fishImg from "@assets/stock_images/fish_category.jpg";
 import hamsterImg from "@assets/stock_images/hamster_category.jpg";
 import petshopImg from "@assets/stock_images/petshop_category.jpg";
+import {
+  PHONE_E164 as PHONE,
+  PHONE_DISPLAY,
+  WHATSAPP_PREFILL_URL as WHATSAPP_URL,
+  STORE_MAPS_URL as MAPS_URL,
+  STORE_LAT,
+  STORE_LNG,
+  STORE_STREET,
+  STORE_POSTAL,
+  STORE_ADDRESS_LINE,
+} from "@shared/store-info";
 
-const PHONE = "+905422114944";
-const WHATSAPP_URL = `https://wa.me/905422114944?text=Merhaba,%20Enuygun.pet%20mağazanızdaki%20ürünler%20hakkında%20bilgi%20almak%20istiyorum.`;
-const MAPS_URL = "https://www.google.com/maps/place/Samsun+Petshop+Enuygunpet/@41.3494032,36.2410372,17z/data=!4m10!1m2!2m1!1senuygunpet!3m6!1s0x408879a38cad8b89:0x2f8d7996011cec2d!8m2!3d41.349366!4d36.243738!15sCgplbnV5Z3VucGV0WgwiCmVudXlndW5wZXSSAQlwZXRfc3RvcmXgAQA!16s%2Fg%2F11x2x7jtwk?entry=ttu";
 const SHOP_URL = "https://www.enuygunpetshop.com";
 const INSTAGRAM_URL = "https://www.instagram.com/enuygun.pet/";
-const STORE_LAT = 41.349366;
-const STORE_LNG = 36.243738;
 
 const STORE_HERO = storeHeroImg;
 const STORE_PHOTOS = [
@@ -123,13 +129,13 @@ const homeSchema = {
       "@id": "https://www.enuygun.pet/#localbusiness",
       "name": "EnuygunPet Gross Market",
       "url": "https://www.enuygun.pet/",
-      "telephone": "+905422114944",
+      "telephone": PHONE,
       "address": {
         "@type": "PostalAddress",
-        "streetAddress": "Yeni Mahalle Atatürk 3. Kısım Bulvarı No:113",
+        "streetAddress": STORE_STREET,
         "addressLocality": "Atakum",
         "addressRegion": "Samsun",
-        "postalCode": "55200",
+        "postalCode": STORE_POSTAL,
         "addressCountry": "TR"
       },
       "openingHoursSpecification": [{
@@ -143,7 +149,7 @@ const homeSchema = {
         "latitude": STORE_LAT,
         "longitude": STORE_LNG
       },
-      "hasMap": "https://www.google.com/maps/place/Samsun+Petshop+Enuygunpet/@41.3494032,36.2410372,17z/data=!4m10!1m2!2m1!1senuygunpet!3m6!1s0x408879a38cad8b89:0x2f8d7996011cec2d!8m2!3d41.349366!4d36.243738!15sCgplbnV5Z3VucGV0WgwiCmVudXlndW5wZXSSAQlwZXRfc3RvcmXgAQA!16s%2Fg%2F11x2x7jtwk?entry=ttu",
+      "hasMap": MAPS_URL,
     }
   ]
 };
@@ -427,7 +433,7 @@ export default function Home() {
                 <div>
                   <p className="text-xs font-semibold text-gray-700">Adres</p>
                   <p className="text-xs text-gray-500 leading-relaxed" data-testid="text-address">
-                    Atatürk 3. Kısım Bulvarı No:113, Atakum / Samsun
+                    {STORE_ADDRESS_LINE}
                   </p>
                 </div>
               </div>
@@ -437,7 +443,7 @@ export default function Home() {
                 </div>
                 <div>
                   <p className="text-xs font-semibold text-gray-700">Telefon</p>
-                  <a href={`tel:${PHONE}`} className="text-xs text-green-600 font-semibold" data-testid="link-contact-phone">0542 211 49 44</a>
+                  <a href={`tel:${PHONE}`} className="text-xs text-green-600 font-semibold" data-testid="link-contact-phone">{PHONE_DISPLAY}</a>
                 </div>
               </div>
               <div className="flex items-center gap-3">

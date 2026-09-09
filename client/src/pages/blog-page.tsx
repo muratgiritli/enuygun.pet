@@ -10,10 +10,17 @@ import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Skeleton } from "@/components/ui/skeleton";
 import { pickImages } from "@shared/seo-article";
-
-const PHONE = "+905422114944";
-const WA_URL = `https://wa.me/905422114944`;
-const MAPS_URL = "https://www.google.com/maps/place/Samsun+Petshop+Enuygunpet/@41.3494032,36.2410372,17z/data=!4m10!1m2!2m1!1senuygunpet!3m6!1s0x408879a38cad8b89:0x2f8d7996011cec2d!8m2!3d41.349366!4d36.243738!15sCgplbnV5Z3VucGV0WgwiCmVudXlndW5wZXSSAQlwZXRfc3RvcmXgAQA!16s%2Fg%2F11x2x7jtwk?entry=ttu";
+import {
+  PHONE_E164 as PHONE,
+  PHONE_INTL,
+  PHONE_WHATSAPP_URL as WA_URL,
+  STORE_MAPS_URL as MAPS_URL,
+  STORE_STREET,
+  STORE_POSTAL,
+  STORE_LAT,
+  STORE_LNG,
+  STORE_ADDRESS_SHORT,
+} from "@shared/store-info";
 
 const CAT_LABELS: Record<string, string> = {
   kedi: "Kedi",
@@ -180,7 +187,7 @@ export default function BlogPage() {
             "name": "Bu ürünler Samsun'da nerede satın alınır?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Samsun Atakum'daki EnuygunPet Gross Market'te (Atatürk Bulvarı No:113) tüm evcil hayvan ürünleri gross market fiyatıyla satılmaktadır. Haftanın her günü 09:00-21:00 açıktır. WhatsApp: +90 542 211 49 44"
+              "text": `Samsun Atakum'daki EnuygunPet Gross Market'te (${STORE_ADDRESS_SHORT}) tüm evcil hayvan ürünleri gross market fiyatıyla satılmaktadır. Haftanın her günü 09:00-21:00 açıktır. WhatsApp: ${PHONE_INTL}`
             }
           },
           {
@@ -206,7 +213,7 @@ export default function BlogPage() {
         "alternateName": "Enuygun Pet",
         "description": "Samsun Atakum'da evcil hayvan ürünleri gross market. Kedi maması, köpek maması, kuş yemi ve aksesuar toptan fiyatıyla.",
         "url": "https://www.enuygun.pet/",
-        "telephone": "+905422114944",
+        "telephone": PHONE,
         "image": [
           "https://static.wixstatic.com/media/63853e_77a3ee3fa9d942a7af5b6f25a0520653~mv2.jpeg",
           "https://static.wixstatic.com/media/63853e_f5ae600f104c4dfcae521fe694ba017b~mv2.jpeg",
@@ -216,18 +223,18 @@ export default function BlogPage() {
         ],
         "address": {
           "@type": "PostalAddress",
-          "streetAddress": "Yeni Mahalle Atatürk 3. Kısım Bulvarı No:113",
+          "streetAddress": STORE_STREET,
           "addressLocality": "Atakum",
           "addressRegion": "Samsun",
-          "postalCode": "55200",
+          "postalCode": STORE_POSTAL,
           "addressCountry": "TR"
         },
         "geo": {
           "@type": "GeoCoordinates",
-          "latitude": 41.349366,
-          "longitude": 36.243738
+          "latitude": STORE_LAT,
+          "longitude": STORE_LNG
         },
-        "hasMap": "https://www.google.com/maps/place/Samsun+Petshop+Enuygunpet/@41.3494032,36.2410372,17z/data=!4m10!1m2!2m1!1senuygunpet!3m6!1s0x408879a38cad8b89:0x2f8d7996011cec2d!8m2!3d41.349366!4d36.243738!15sCgplbnV5Z3VucGV0WgwiCmVudXlndW5wZXSSAQlwZXRfc3RvcmXgAQA!16s%2Fg%2F11x2x7jtwk?entry=ttu",
+        "hasMap": MAPS_URL,
         "openingHoursSpecification": [{
           "@type": "OpeningHoursSpecification",
           "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
@@ -304,10 +311,10 @@ export default function BlogPage() {
         <section className="space-y-3 border-t border-border pt-6">
           <h2 className="text-base font-bold text-foreground">EnuygunPet'te Satın Alın</h2>
           <p className="text-sm text-muted-foreground leading-relaxed">
-            Bu içerikte bahsedilen tüm ürünleri Samsun Atakum'daki EnuygunPet Gross Market mağazamızda bulabilirsiniz. Royal Canin, Hills Science Plan, Pro Plan, Brit Care, Reflex ve daha pek çok markayı gross market fiyatıyla sunuyoruz. Mağazamız Atatürk Bulvarı No:113, Atakum / Samsun adresinde haftanın her günü 09:00–21:00 saatleri arasında açıktır.
+            Bu içerikte bahsedilen tüm ürünleri Samsun Atakum'daki EnuygunPet Gross Market mağazamızda bulabilirsiniz. Royal Canin, Hills Science Plan, Pro Plan, Brit Care, Reflex ve daha pek çok markayı gross market fiyatıyla sunuyoruz. Mağazamız {STORE_ADDRESS_SHORT} adresinde haftanın her günü 09:00–21:00 saatleri arasında açıktır.
           </p>
           <p className="text-sm text-muted-foreground leading-relaxed">
-            Ürün stok sorgusu, fiyat bilgisi ve sipariş için WhatsApp hattımız (+90 542 211 49 44) üzerinden bize ulaşabilirsiniz. Uzman personelimiz evcil hayvanınızın ihtiyacına en uygun ürünü önerir. Kedi maması, köpek maması, kuş yemi, kedi kumu, vitamin takviyeleri ve bakım ürünlerinden oluşan geniş stok yapımızla tüm ihtiyaçlarınıza tek adreste hizmet veriyoruz.
+            Ürün stok sorgusu, fiyat bilgisi ve sipariş için WhatsApp hattımız (+90 542 462 29 59) üzerinden bize ulaşabilirsiniz. Uzman personelimiz evcil hayvanınızın ihtiyacına en uygun ürünü önerir. Kedi maması, köpek maması, kuş yemi, kedi kumu, vitamin takviyeleri ve bakım ürünlerinden oluşan geniş stok yapımızla tüm ihtiyaçlarınıza tek adreste hizmet veriyoruz.
           </p>
           <h3 className="text-sm font-bold text-foreground">Neden EnuygunPet?</h3>
           <p className="text-sm text-muted-foreground leading-relaxed">

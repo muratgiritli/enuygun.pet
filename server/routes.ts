@@ -11,6 +11,7 @@ import blogPostsData from "./blog-posts.json";
 import localSeoData from "./local-seo.json";
 import categoriesData from "./categories.json";
 import { postToTwitter, postToFacebook, postToInstagram, postToAllPlatforms } from "./social";
+import { PHONE_E164 } from "@shared/store-info";
 
 type HealthKw = { keyword: string; slug: string; category: string; categoryName: string };
 const keywords = keywordsData as Array<{ keyword: string; slug: string }>;
@@ -360,7 +361,7 @@ Disallow: /admin
     const rssItems = items.map(k => {
       const url = `https://www.enuygun.pet/${k.slug}`;
       const img = pickRssImg(k.keyword);
-      const desc = `Samsun Atakum'da ${k.keyword} için EnuygunPet Gross Market. En uygun fiyat, geniş stok. Haftanın her günü 09:00-21:00 açık. WhatsApp: +905422114944`;
+      const desc = `Samsun Atakum'da ${k.keyword} için EnuygunPet Gross Market. En uygun fiyat, geniş stok. Haftanın her günü 09:00-21:00 açık. WhatsApp: ${PHONE_E164}`;
       return `
     <item>
       <title><![CDATA[${k.keyword} — Samsun Atakum EnuygunPet]]></title>

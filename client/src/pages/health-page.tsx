@@ -10,11 +10,17 @@ import { Card } from "@/components/ui/card";
 import NotFound from "@/pages/not-found";
 import SeoArticleBody from "@/components/seo-article-body";
 import { buildHealthArticle } from "@shared/seo-article";
-
-const PHONE = "+905422114944";
-const WHATSAPP_URL = `https://wa.me/905422114944`;
-const MAPS_URL = "https://www.google.com/maps/place/Samsun+Petshop+Enuygunpet/@41.3494032,36.2410372,17z/data=!4m10!1m2!2m1!1senuygunpet!3m6!1s0x408879a38cad8b89:0x2f8d7996011cec2d!8m2!3d41.349366!4d36.243738!15sCgplbnV5Z3VucGV0WgwiCmVudXlndW5wZXSSAQlwZXRfc3RvcmXgAQA!16s%2Fg%2F11x2x7jtwk?entry=ttu";
-const ADDRESS = "Atatürk Bulvarı, Atakum / Samsun";
+import {
+  PHONE_E164 as PHONE,
+  PHONE_INTL,
+  PHONE_WHATSAPP_URL as WHATSAPP_URL,
+  STORE_MAPS_URL as MAPS_URL,
+  STORE_ADDRESS_SHORT as ADDRESS,
+  STORE_STREET,
+  STORE_POSTAL,
+  STORE_LAT,
+  STORE_LNG,
+} from "@shared/store-info";
 
 interface HealthData {
   keyword: string;
@@ -175,18 +181,18 @@ export default function HealthPage() {
         ],
         "address": {
           "@type": "PostalAddress",
-          "streetAddress": "Yeni Mahalle Atatürk 3. Kısım Bulvarı No:113",
+          "streetAddress": STORE_STREET,
           "addressLocality": "Atakum",
           "addressRegion": "Samsun",
-          "postalCode": "55200",
+          "postalCode": STORE_POSTAL,
           "addressCountry": "TR"
         },
         "geo": {
           "@type": "GeoCoordinates",
-          "latitude": 41.349366,
-          "longitude": 36.243738
+          "latitude": STORE_LAT,
+          "longitude": STORE_LNG
         },
-        "hasMap": "https://www.google.com/maps/place/Samsun+Petshop+Enuygunpet/@41.3494032,36.2410372,17z/data=!4m10!1m2!2m1!1senuygunpet!3m6!1s0x408879a38cad8b89:0x2f8d7996011cec2d!8m2!3d41.349366!4d36.243738!15sCgplbnV5Z3VucGV0WgwiCmVudXlndW5wZXSSAQlwZXRfc3RvcmXgAQA!16s%2Fg%2F11x2x7jtwk?entry=ttu",
+        "hasMap": MAPS_URL,
         "openingHoursSpecification": [{
           "@type": "OpeningHoursSpecification",
           "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
@@ -256,7 +262,7 @@ export default function HealthPage() {
             EnuygunPet Gross Market olarak evcil hayvan sağlığını destekleyen ürünleri gross market fiyatıyla sunuyoruz. Veteriner önerileriyle uyumlu mama, takviye ve bakım ürünlerini Samsun Atakum mağazamızda bulabilirsiniz. Mağazamızda kedi maması, köpek maması, kuş yemi, vitamin takviyeleri, probiyotikler ve özel diyet mamaları stoğumuzda mevcuttur.
           </p>
           <p className="text-sm text-muted-foreground leading-relaxed">
-            Royal Canin, Hills Prescription Diet, Pro Plan Veterinary Diets ve Brit Care gibi veteriner onaylı markaların ürünleri mağazamızda bulunmaktadır. Ürün seçiminde kararsız kaldığınızda WhatsApp hattımız (+90 542 211 49 44) üzerinden uzman personelimizden yardım alabilirsiniz. Haftanın her günü saat 09:00 ile 21:00 arasında Atatürk Bulvarı Atakum adresimizde hizmetinizdeyiz.
+            Royal Canin, Hills Prescription Diet, Pro Plan Veterinary Diets ve Brit Care gibi veteriner onaylı markaların ürünleri mağazamızda bulunmaktadır. Ürün seçiminde kararsız kaldığınızda WhatsApp hattımız ({PHONE_INTL}) üzerinden uzman personelimizden yardım alabilirsiniz. Haftanın her günü saat 09:00 ile 21:00 arasında {ADDRESS} adresimizde hizmetinizdeyiz.
           </p>
           <h3 className="text-sm font-bold text-foreground">Neden EnuygunPet?</h3>
           <p className="text-sm text-muted-foreground leading-relaxed">

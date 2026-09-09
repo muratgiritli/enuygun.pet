@@ -10,11 +10,17 @@ import { Card } from "@/components/ui/card";
 import NotFound from "@/pages/not-found";
 import SeoArticleBody from "@/components/seo-article-body";
 import { buildKeywordArticle } from "@shared/seo-article";
-
-const PHONE = "+905422114944";
-const WHATSAPP_URL = `https://wa.me/905422114944`;
-const MAPS_URL = "https://www.google.com/maps/place/Samsun+Petshop+Enuygunpet/@41.3494032,36.2410372,17z/data=!4m10!1m2!2m1!1senuygunpet!3m6!1s0x408879a38cad8b89:0x2f8d7996011cec2d!8m2!3d41.349366!4d36.243738!15sCgplbnV5Z3VucGV0WgwiCmVudXlndW5wZXSSAQlwZXRfc3RvcmXgAQA!16s%2Fg%2F11x2x7jtwk?entry=ttu";
-const ADDRESS = "Atatürk Bulvarı, Atakum / Samsun";
+import {
+  PHONE_E164 as PHONE,
+  PHONE_DISPLAY,
+  PHONE_WHATSAPP_URL as WHATSAPP_URL,
+  STORE_MAPS_URL as MAPS_URL,
+  STORE_ADDRESS_SHORT as ADDRESS,
+  STORE_STREET,
+  STORE_POSTAL,
+  STORE_LAT,
+  STORE_LNG,
+} from "@shared/store-info";
 
 interface KeywordData {
   keyword: string;
@@ -103,7 +109,7 @@ export default function KeywordPage() {
       const rawTitle = `${data.keyword} | EnuygunPet Samsun`.replace(/\s+/g, " ").trim();
       const title = rawTitle.length <= 62 ? rawTitle : rawTitle.slice(0, 62).replace(/\s+\S*$/, "").trim();
       document.title = title;
-      let desc = `Samsun Atakum'da ${data.keyword} için EnuygunPet Gross Market. En uygun fiyat, geniş stok. Her gün 09:00-21:00. WhatsApp: 0542 211 49 44.`;
+      let desc = `Samsun Atakum'da ${data.keyword} için EnuygunPet Gross Market. En uygun fiyat, geniş stok. Her gün 09:00-21:00. WhatsApp: ${PHONE_DISPLAY}.`;
       if (desc.length > 160) desc = desc.slice(0, 160).replace(/\s+\S*$/, "").trim();
       const article = buildKeywordArticle(data.keyword, data.slug);
       const imgUrl = article.images[0]?.src || "";
@@ -230,10 +236,10 @@ export default function KeywordPage() {
             "telephone": PHONE,
             "address": {
               "@type": "PostalAddress",
-              "streetAddress": "Atatürk Bulvarı",
+              "streetAddress": STORE_STREET,
               "addressLocality": "Atakum",
               "addressRegion": "Samsun",
-              "postalCode": "55200",
+              "postalCode": STORE_POSTAL,
               "addressCountry": "TR"
             }
           },
@@ -265,18 +271,18 @@ export default function KeywordPage() {
         ],
         "address": {
           "@type": "PostalAddress",
-          "streetAddress": "Yeni Mahalle Atatürk 3. Kısım Bulvarı No:113",
+          "streetAddress": STORE_STREET,
           "addressLocality": "Atakum",
           "addressRegion": "Samsun",
-          "postalCode": "55200",
+          "postalCode": STORE_POSTAL,
           "addressCountry": "TR"
         },
         "geo": {
           "@type": "GeoCoordinates",
-          "latitude": 41.349366,
-          "longitude": 36.243738
+          "latitude": STORE_LAT,
+          "longitude": STORE_LNG
         },
-        "hasMap": "https://www.google.com/maps/place/Samsun+Petshop+Enuygunpet/@41.3494032,36.2410372,17z/data=!4m10!1m2!2m1!1senuygunpet!3m6!1s0x408879a38cad8b89:0x2f8d7996011cec2d!8m2!3d41.349366!4d36.243738!15sCgplbnV5Z3VucGV0WgwiCmVudXlndW5wZXSSAQlwZXRfc3RvcmXgAQA!16s%2Fg%2F11x2x7jtwk?entry=ttu",
+        "hasMap": MAPS_URL,
         "openingHoursSpecification": [{
           "@type": "OpeningHoursSpecification",
           "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
@@ -383,7 +389,7 @@ export default function KeywordPage() {
             EnuygunPet Gross Market Hakkında
           </h2>
           <p className="text-xs text-muted-foreground leading-relaxed">
-            EnuygunPet, Samsun Atakum'da Atatürk Bulvarı No:113 adresinde faaliyet gösteren Samsun'un en büyük petshop gross marketidir. Kedi maması, köpek maması, kuş yemi, kedi kumu, tasma, oyuncak, yatak, kafes ve akvaryum malzemeleri dahil on binlerce ürün çeşidi tek çatı altında sunulmaktadır.
+            EnuygunPet, Samsun Atakum'da 3078. Sokak No:10 adresinde faaliyet gösteren Samsun'un en büyük petshop gross marketidir. Kedi maması, köpek maması, kuş yemi, kedi kumu, tasma, oyuncak, yatak, kafes ve akvaryum malzemeleri dahil on binlerce ürün çeşidi tek çatı altında sunulmaktadır.
           </p>
           <p className="text-xs text-muted-foreground leading-relaxed">
             Gross market modelimiz sayesinde perakende fiyatlarının çok altında alışveriş yapabilirsiniz. Royal Canin, Hills Science Plan, Pro Plan, Brit Care, Reflex, Enjoy, Acana, Orijen, Pedigree, Whiskas ve Felix gibi Türkiye'nin önde gelen markalarının tüm ürün gamlarını stoğumuzda bulunduruyoruz. Büyük gramaj ve toplu alımlarda fiyat avantajı daha da belirginleşmektedir.
@@ -396,7 +402,7 @@ export default function KeywordPage() {
 
           <h3 className="text-sm font-bold text-foreground">Neden EnuygunPet?</h3>
           <p className="text-xs text-muted-foreground leading-relaxed">
-            Samsun'da petshop arayan evcil hayvan sahiplerinin EnuygunPet'i tercih etme nedenleri şunlardır: Gross market fiyat avantajı — perakende fiyatların %30–50 altında fiyatlar. Geniş stok — binlerce ürün çeşidi her zaman raflarda, stoksuz kalmak nadiren yaşanır. Uzman danışmanlık — personelimiz beslenme ve bakım konusunda deneyimlidir. Kolay erişim — Atatürk Bulvarı üzerinde, geniş otopark imkânı mevcut.
+            Samsun'da petshop arayan evcil hayvan sahiplerinin EnuygunPet'i tercih etme nedenleri şunlardır: Gross market fiyat avantajı — perakende fiyatların %30–50 altında fiyatlar. Geniş stok — binlerce ürün çeşidi her zaman raflarda, stoksuz kalmak nadiren yaşanır. Uzman danışmanlık — personelimiz beslenme ve bakım konusunda deneyimlidir. Kolay erişim — 3078. Sokak üzerinde, geniş otopark imkânı mevcut.
           </p>
 
           <div className="border border-border rounded-lg p-3 space-y-2">

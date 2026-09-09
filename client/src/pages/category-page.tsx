@@ -10,10 +10,16 @@ import { Card } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
 import SeoArticleBody from "@/components/seo-article-body";
 import { buildKeywordArticle } from "@shared/seo-article";
-
-const PHONE = "+905422114944";
-const WA_URL = `https://wa.me/905422114944`;
-const MAPS_URL = "https://www.google.com/maps/place/Samsun+Petshop+Enuygunpet/@41.3494032,36.2410372,17z/data=!4m10!1m2!2m1!1senuygunpet!3m6!1s0x408879a38cad8b89:0x2f8d7996011cec2d!8m2!3d41.349366!4d36.243738!15sCgplbnV5Z3VucGV0WgwiCmVudXlndW5wZXSSAQlwZXRfc3RvcmXgAQA!16s%2Fg%2F11x2x7jtwk?entry=ttu";
+import {
+  PHONE_E164 as PHONE,
+  PHONE_WHATSAPP_URL as WA_URL,
+  STORE_MAPS_URL as MAPS_URL,
+  STORE_STREET,
+  STORE_POSTAL,
+  STORE_LAT,
+  STORE_LNG,
+  STORE_ADDRESS_SHORT,
+} from "@shared/store-info";
 
 type CategoryData = {
   slug: string;
@@ -149,7 +155,7 @@ export default function CategoryPage() {
             "name": `Samsun'da ${cat.h1.toLowerCase()} nerede bulunur?`,
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": `Samsun Atakum'da ${cat.h1.toLowerCase()} için EnuygunPet Gross Market'i ziyaret edebilirsiniz. Atatürk Bulvarı No:113 adresinde haftanın her günü 09:00-21:00 açıktır. ${cat.brands?.slice(0,3).join(", ")} başta olmak üzere pek çok marka bulunmaktadır.`
+              "text": `Samsun Atakum'da ${cat.h1.toLowerCase()} için EnuygunPet Gross Market'i ziyaret edebilirsiniz. ${STORE_ADDRESS_SHORT} adresinde haftanın her günü 09:00-21:00 açıktır. ${cat.brands?.slice(0,3).join(", ")} başta olmak üzere pek çok marka bulunmaktadır.`
             }
           },
           {
@@ -202,7 +208,7 @@ export default function CategoryPage() {
         "alternateName": "Enuygun Pet",
         "description": "Samsun Atakum'da evcil hayvan ürünleri gross market. Kedi maması, köpek maması, kuş yemi ve aksesuar toptan fiyatıyla.",
         "url": "https://www.enuygun.pet/",
-        "telephone": "+905422114944",
+        "telephone": PHONE,
         "image": [
           "https://static.wixstatic.com/media/63853e_77a3ee3fa9d942a7af5b6f25a0520653~mv2.jpeg",
           "https://static.wixstatic.com/media/63853e_f5ae600f104c4dfcae521fe694ba017b~mv2.jpeg",
@@ -212,18 +218,18 @@ export default function CategoryPage() {
         ],
         "address": {
           "@type": "PostalAddress",
-          "streetAddress": "Yeni Mahalle Atatürk 3. Kısım Bulvarı No:113",
+          "streetAddress": STORE_STREET,
           "addressLocality": "Atakum",
           "addressRegion": "Samsun",
-          "postalCode": "55200",
+          "postalCode": STORE_POSTAL,
           "addressCountry": "TR"
         },
         "geo": {
           "@type": "GeoCoordinates",
-          "latitude": 41.349366,
-          "longitude": 36.243738
+          "latitude": STORE_LAT,
+          "longitude": STORE_LNG
         },
-        "hasMap": "https://www.google.com/maps/place/Samsun+Petshop+Enuygunpet/@41.3494032,36.2410372,17z/data=!4m10!1m2!2m1!1senuygunpet!3m6!1s0x408879a38cad8b89:0x2f8d7996011cec2d!8m2!3d41.349366!4d36.243738!15sCgplbnV5Z3VucGV0WgwiCmVudXlndW5wZXSSAQlwZXRfc3RvcmXgAQA!16s%2Fg%2F11x2x7jtwk?entry=ttu",
+        "hasMap": MAPS_URL,
         "openingHoursSpecification": [{
           "@type": "OpeningHoursSpecification",
           "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],

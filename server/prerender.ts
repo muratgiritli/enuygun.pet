@@ -13,6 +13,7 @@ import {
   pickImages,
   type SeoArticle,
 } from "../shared/seo-article";
+import { PHONE_DISPLAY, PHONE_INTL, STORE_ADDRESS_SHORT, STORE_ADDRESS_LINE } from "../shared/store-info";
 
 interface PageMeta {
   title: string;
@@ -81,7 +82,7 @@ function clipTitle(title: string, max = 62): string {
 function clipDesc(desc: string, min = 110, max = 160): string {
   let d = desc.replace(/\s+/g, " ").trim();
   if (d.length < min) {
-    d = `${d} EnuygunPet Gross Market, Samsun Atakum. Her gün 09:00-21:00. Tel: 0542 211 49 44.`;
+    d = `${d} EnuygunPet Gross Market, Samsun Atakum. Her gün 09:00-21:00. Tel: ${PHONE_DISPLAY}.`;
   }
   if (d.length > max) {
     d = d.slice(0, max).replace(/\s+\S*$/, "").trim();
@@ -103,7 +104,7 @@ function buildKeywordDesc(kw: string): string {
   if (["royal canin","hills","pro plan","brit care","reflex","acana","orijen"].some(m => k.includes(m)))
     return `${kw} — Orijinal ve garantili ürünler Samsun Atakum'da. EnuygunPet Gross Market'te gross market fiyatıyla tüm gramaj seçenekleri.`;
   if (k.includes("petshop") || k.includes("pet shop") || k.includes("pet market"))
-    return `${kw} — Samsun Atakum'un en büyük petshop gross marketi. Kedi, köpek, kuş ürünleri haftanın 7 günü 09:00-21:00. WhatsApp: +90 542 211 49 44`;
+    return `${kw} — Samsun Atakum'un en büyük petshop gross marketi. Kedi, köpek, kuş ürünleri haftanın 7 günü 09:00-21:00. WhatsApp: ${PHONE_INTL}`;
   if (k.includes("tasma") || k.includes("koşum") || k.includes("oyuncak"))
     return `${kw} — Geniş aksesuar ve oyuncak yelpazesi Samsun Atakum'da. EnuygunPet Gross Market'te uygun fiyatlarla tüm evcil hayvan aksesuarları.`;
   return `${kw} Samsun Atakum'da EnuygunPet Gross Market'te. Gross market fiyatı, geniş stok ve uzman danışmanlıkla hizmetinizde. Haftanın 7 günü açık.`;
@@ -115,16 +116,16 @@ function generateContent(keyword: string, slug: string): SeoArticle {
 
 const COMMON_SECTION = `<section>
 <h2>EnuygunPet Gross Market Hakkında</h2>
-<p>EnuygunPet, Samsun Atakum'da Atatürk Bulvarı No:113 adresinde faaliyet gösteren Samsun'un en büyük petshop gross marketidir. Mağazamızda kedi maması, köpek maması, kuş yemi, kedi kumu, tasma, oyuncak, yatak, kafes, akvaryum malzemeleri ve daha pek çok kategoriyi kapsayan on binlerce ürün çeşidi bulunmaktadır.</p>
+<p>EnuygunPet, Samsun Atakum'da ${STORE_ADDRESS_SHORT} adresinde faaliyet gösteren Samsun'un en büyük petshop gross marketidir. Mağazamızda kedi maması, köpek maması, kuş yemi, kedi kumu, tasma, oyuncak, yatak, kafes, akvaryum malzemeleri ve daha pek çok kategoriyi kapsayan on binlerce ürün çeşidi bulunmaktadır.</p>
 <p>Gross market formatımız sayesinde müşterilerimize perakende mağazaların çok altında fiyatlar sunabiliyoruz. Özellikle büyük gramaj ve toplu alımlarda fiyat avantajımız belirgin biçimde hissedilmektedir. Royal Canin, Hills Science Plan, Pro Plan, Brit Care, Reflex, Enjoy, Acana, Orijen, Pedigree, Whiskas, Felix gibi dünyanın önde gelen markalarının tüm ürün gamlarını stokta bulunduruyoruz.</p>
 <h3>Ürün Kategorileri</h3>
 <p>Mağazamızda beş ana kategoride ürün sunmaktayız: Kedi ürünleri (mama, kum, oyuncak, tırmalama tahtası, taşıma çantası), Köpek ürünleri (mama, tasma, koşum, oyuncak, yatak, bakım ürünleri), Kuş ürünleri (yem, kafes, tünek, mineral taşı, vitamin), Balık ve akvaryum ürünleri (yem, filtre, ışık, süsleme), Küçük hayvan ürünleri (hamster, tavşan, guinea pig yemi ve kafesleri). Her kategoride geniş marka ve gramaj seçenekleri mevcuttur.</p>
 <h3>Neden EnuygunPet?</h3>
-<p>Samsun'da petshop arayışındaki evcil hayvan sahipleri EnuygunPet'i şu nedenlerle tercih etmektedir: Birincisi, gross market fiyat avantajı — perakende fiyatların yüzde otuz ila elli altında fiyatlar sunuyoruz. İkincisi, geniş stok — binlerce ürün çeşidi her zaman raflarımızda mevcuttur, stoksuz kalmak nadiren yaşanır. Üçüncüsü, uzman danışmanlık — mağazamızdaki personelimiz evcil hayvan beslenme ve bakımı konusunda deneyimlidir, size en doğru ürünü önerir. Dördüncüsü, kolay erişim — Atatürk Bulvarı üzerinde konumlanan mağazamıza ulaşmak oldukça kolaydır ve geniş otopark imkânı sunmaktadır.</p>
+<p>Samsun'da petshop arayışındaki evcil hayvan sahipleri EnuygunPet'i şu nedenlerle tercih etmektedir: Birincisi, gross market fiyat avantajı — perakende fiyatların yüzde otuz ila elli altında fiyatlar sunuyoruz. İkincisi, geniş stok — binlerce ürün çeşidi her zaman raflarımızda mevcuttur, stoksuz kalmak nadiren yaşanır. Üçüncüsü, uzman danışmanlık — mağazamızdaki personelimiz evcil hayvan beslenme ve bakımı konusunda deneyimlidir, size en doğru ürünü önerir. Dördüncüsü, kolay erişim — 3078. Sokak üzerinde konumlanan mağazamıza ulaşmak oldukça kolaydır ve geniş otopark imkânı sunmaktadır.</p>
 <h3>Online Sipariş ve Teslimat</h3>
-<p>Mağazamıza gelmeden de sipariş verebilirsiniz. WhatsApp hattımız (+90 542 211 49 44) üzerinden ürün fotoğrafı ve fiyat listesi isteyebilir, sipariş oluşturabilirsiniz. Samsun içi teslimat seçeneğimizle ürünleri kapınıza kadar getiriyoruz. Büyük gramaj veya ağır ürünlerde özellikle bu hizmet tercih edilmektedir. Instagram sayfamız (@enuygun.pet) üzerinden ürün kataloğumuzu inceleyebilir, yeni gelen ürünleri takip edebilirsiniz.</p>
+<p>Mağazamıza gelmeden de sipariş verebilirsiniz. WhatsApp hattımız (${PHONE_INTL}) üzerinden ürün fotoğrafı ve fiyat listesi isteyebilir, sipariş oluşturabilirsiniz. Samsun içi teslimat seçeneğimizle ürünleri kapınıza kadar getiriyoruz. Büyük gramaj veya ağır ürünlerde özellikle bu hizmet tercih edilmektedir. Instagram sayfamız (@enuygun.pet) üzerinden ürün kataloğumuzu inceleyebilir, yeni gelen ürünleri takip edebilirsiniz.</p>
 <h3>İletişim ve Konum</h3>
-<p>Mağazamıza ulaşmak için Google Harita üzerinden "EnuygunPet" araması yapabilir veya doğrudan yol tarifi alabilirsiniz. Adresimiz: Atatürk Bulvarı No:113, Atakum / Samsun. WhatsApp hattımız (+90 542 211 49 44) üzerinden ürün stok sorgusu, fiyat bilgisi ve genel sorularınız için bize ulaşabilirsiniz. Haftanın her günü saat 09:00 ile 21:00 saatleri arasında sizlere hizmet veriyoruz; resmi tatillerde de mağazamız açıktır. Samsun Atakum'da güvenilir, uygun fiyatlı ve geniş stoklu bir evcil hayvan mağazası arıyorsanız EnuygunPet Gross Market'e bekliyoruz.</p>
+<p>Mağazamıza ulaşmak için Google Harita üzerinden "EnuygunPet" araması yapabilir veya doğrudan yol tarifi alabilirsiniz. Adresimiz: ${STORE_ADDRESS_SHORT}. WhatsApp hattımız (${PHONE_INTL}) üzerinden ürün stok sorgusu, fiyat bilgisi ve genel sorularınız için bize ulaşabilirsiniz. Haftanın her günü saat 09:00 ile 21:00 saatleri arasında sizlere hizmet veriyoruz; resmi tatillerde de mağazamız açıktır. Samsun Atakum'da güvenilir, uygun fiyatlı ve geniş stoklu bir evcil hayvan mağazası arıyorsanız EnuygunPet Gross Market'e bekliyoruz.</p>
 </section>
 <nav aria-label="Site içi bağlantılar">
 <h3>Ana Kategoriler</h3>
@@ -215,7 +216,7 @@ function imgTag(src: string, alt: string, eager = false): string {
 }
 
 function footerHtml(): string {
-  return `${COMMON_SECTION}<address>EnuygunPet Gross Market — Atatürk Bulvarı No:113, Atakum / Samsun — Tel: +90 542 211 49 44 — Haftanın her günü 09:00-21:00</address>`;
+  return `${COMMON_SECTION}<address>EnuygunPet Gross Market — ${STORE_ADDRESS_SHORT} — Tel: ${PHONE_INTL} — Haftanın her günü 09:00-21:00</address>`;
 }
 
 function interleaveImages(sectionHtml: string[], images: Array<{ src: string; alt: string }>): string {
@@ -276,7 +277,7 @@ function notFoundMeta(): PageMeta {
     description: "Aradığınız sayfa bulunamadı. EnuygunPet Gross Market — Samsun Atakum petshop. Ana sayfadan devam edebilirsiniz.",
     noIndex: true,
     notFound: true,
-    bodyHtml: `<h1>Sayfa Bulunamadı</h1><article><p>Aradığınız sayfa kaldırılmış, taşınmış ya da hiç var olmamış olabilir.</p><p><a href="/">Ana sayfaya dön</a> · <a href="/blog">Bakım Rehberleri</a> · <a href="/kedi-mamasi">Kedi Maması</a></p>${COMMON_SECTION}<address>EnuygunPet Gross Market — Atatürk Bulvarı No:113, Atakum / Samsun — Tel: +90 542 211 49 44 — Haftanın her günü 09:00-21:00</address></article>`,
+    bodyHtml: `<h1>Sayfa Bulunamadı</h1><article><p>Aradığınız sayfa kaldırılmış, taşınmış ya da hiç var olmamış olabilir.</p><p><a href="/">Ana sayfaya dön</a> · <a href="/blog">Bakım Rehberleri</a> · <a href="/kedi-mamasi">Kedi Maması</a></p>${footerHtml()}</article>`,
   };
 }
 
@@ -299,17 +300,17 @@ export function getPageMeta(urlPath: string): PageMeta {
       title: "EnuygunPet | Samsun Atakum Petshop Gross Market",
       h1: "EnuygunPet Gross Market — Samsun Atakum Petshop",
       description:
-        "Samsun Atakum'da kedi, köpek, kuş ve tüm evcil hayvan ürünleri. Royal Canin, Hills, Pro Plan en uygun fiyatla. WhatsApp: +90 542 211 49 44",
+        `Samsun Atakum'da kedi, köpek, kuş ve tüm evcil hayvan ürünleri. Royal Canin, Hills, Pro Plan en uygun fiyatla. WhatsApp: ${PHONE_INTL}`,
       bodyHtml: buildSectionsHtml("EnuygunPet Gross Market — Samsun Atakum Petshop",
         "Samsun Atakum'ın en büyük petshop gross marketi EnuygunPet'e hoş geldiniz. Kedi, köpek, kuş, balık ve tüm evcil hayvanlarınız için on binlerce ürün çeşidi gross market fiyatıyla tek çatı altında.",
         [
-          { h: "Samsun Atakum'un En Büyük Petshop Gross Marketi", p: "EnuygunPet, Samsun'un Atakum ilçesinde Atatürk Bulvarı No:113 adresinde hizmet veren petshop gross marketidir. Gross market formatıyla faaliyet gösteren mağazamız, perakende petshopların çok altında fiyatlarla kedi maması, köpek maması, kuş yemi ve tüm evcil hayvan ürünlerini müşterilerimize sunmaktadır. Büyük gramajlı ürünleri toplu temin ettiğimiz için birim maliyetlerimiz düşük tutulabilmektedir; bu avantajı doğrudan müşterilerimize yansıtıyoruz. Haftanın her günü 09:00-21:00 arası kesintisiz açığız, Pazar ve resmi tatillerde de kapılarımızı kapatmıyoruz." },
+          { h: "Samsun Atakum'un En Büyük Petshop Gross Marketi", p: `EnuygunPet, Samsun'un Atakum ilçesinde ${STORE_ADDRESS_SHORT} adresinde hizmet veren petshop gross marketidir. Gross market formatıyla faaliyet gösteren mağazamız, perakende petshopların çok altında fiyatlarla kedi maması, köpek maması, kuş yemi ve tüm evcil hayvan ürünlerini müşterilerimize sunmaktadır. Büyük gramajlı ürünleri toplu temin ettiğimiz için birim maliyetlerimiz düşük tutulabilmektedir; bu avantajı doğrudan müşterilerimize yansıtıyoruz. Haftanın her günü 09:00-21:00 arası kesintisiz açığız, Pazar ve resmi tatillerde de kapılarımızı kapatmıyoruz.` },
           { h: "Kedi Sahiplerine Özel Geniş Ürün Seçeneği", p: "Kedi maması seçimi; yaş, kısırlaştırma durumu ve sağlık geçmişine göre farklılık göstermektedir. Mağazamızda Royal Canin, Hills Science Plan, Pro Plan, Brit Care, Reflex, Acana, Orijen, Felicia ve N&D başta olmak üzere 20'yi aşkın markanın kedi mamasını bulabilirsiniz. Yavru kedi, yetişkin kedi, kısırlaştırılmış kedi ve özel diyet mamaları ayrı ayrı stoklanmaktadır. Kedi kumu konusunda ise topaklanan bentonit kum, silika kristal kum, doğal odun talaşı ve tozsuz pelet seçenekleri mevcuttur. Bunların yanı sıra kedi tırmalama tahtaları, yataklar, taşıma çantaları ve oyuncaklar da raflarımızda hazır bulunmaktadır." },
           { h: "Köpek Sahipleri İçin Her Şey Tek Çatı Altında", p: "Köpek maması seçiminde ırkın büyüklüğü, yaşı ve aktivite düzeyi belirleyici rol oynar. Mağazamızda Royal Canin Breed Specific serisi, Pro Plan Performance, Hills Science Plan, Brit Care Grain Free, Acana ve Orijen gibi premium markaların yanı sıra uygun bütçeli seçenekler de yer almaktadır. Küçük ırk, orta ırk ve büyük ırk mamaları ayrı olarak stoklanmaktadır. Tasma, koşum, gezdirme ipi, oyuncak, yatak, şampuan ve diş bakım ürünleri gibi köpek aksesuarlarına da tek adresten ulaşabilirsiniz. Özellikle büyük gramajlı köpek mamalarında gross market fiyat avantajımız belirgin biçimde hissedilmektedir." },
           { h: "Kuş, Akvaryum ve Küçük Hayvan Ürünleri", p: "Muhabbet kuşu, kanarya, sultan papağanı ve Afrika gri papağanı gibi farklı kuş türleri için özel formüle edilmiş yemler, kafesler, tünekler, mineral taşları ve vitamin takviyeleri sunmaktayız. Akvaryum tutkunları için tatlı su ve tuzlu su balıkları yemleri, filtre sistemleri, hava motorları ve dekor ürünleri geniş seçeneklerle mevcuttur. Hamster, tavşan, guinea pig ve diğer küçük hayvanlar için mama, altlık malzemeleri ve kafesler de mağazamızda bulunmaktadır." },
           { h: "Gross Market Fiyat Avantajı Nasıl İşliyor?", p: "Gross market modeli, ürünleri büyük miktarda temin ederek birim maliyetleri düşüren bir ticaret biçimidir. Perakende petshoplar küçük miktarlarda stok tutarken biz aynı ürünü palet ve koli olarak satın alırız; bu da birim fiyatı önemli ölçüde aşağı çeker. Mağazamızda perakende fiyatlara kıyasla yüzde otuz ila elli arasında tasarruf etmek mümkündür. Özellikle büyük gramaj tercihi yapan çok kedili ya da köpekli haneler, yılda yüzlerce lira tasarruf sağlamaktadır. Toplu alım yapan müşterilerimize ek indirim uygulaması da mevcuttur." },
           { h: "Uzman Danışmanlık ve Kişisel Hizmet", p: "Hangi mamayı seçeceğinizi bilmiyorsanız, kedi kumunun farkları konusunda kafanız karışıksa ya da köpeğiniz için ideal gramaj ve beden arıyorsanız mağazamızdaki deneyimli personelimiz size ücretsiz danışmanlık sunar. Veteriner tavsiyeleriyle örtüşen, kanıtlanmış ürün önerileri yapıyoruz. WhatsApp hattımız aracılığıyla yazılı danışma da yapabilirsiniz; ürün fotoğrafı göndererek stok ve fiyat sorabilirsiniz." },
-          { h: "Samsun'un Her Noktasından Bize Ulaşın", p: "Mağazamız Samsun Atakum'da Atatürk Bulvarı üzerinde konumlanan tek katlı bir gross market yapısındadır. Önünde ücretsiz otopark imkânı bulunmaktadır. Minibüs ve dolmuş güzergahlarıyla ulaşımı kolaydır. İlkadım, Canik, Tekkeköy ve Samsun merkezden 15-30 dakika içinde ulaşılabilecek mesafededir. Google Harita üzerinden EnuygunPet aratarak doğrudan yol tarifi alabilirsiniz. Samsun içi WhatsApp üzerinden sipariş verip kapınıza teslim seçeneğimizden de yararlanabilirsiniz." },
+          { h: "Samsun'un Her Noktasından Bize Ulaşın", p: "Mağazamız Samsun Atakum'da 3078. Sokak üzerinde konumlanan tek katlı bir gross market yapısındadır. Önünde ücretsiz otopark imkânı bulunmaktadır. Minibüs ve dolmuş güzergahlarıyla ulaşımı kolaydır. İlkadım, Canik, Tekkeköy ve Samsun merkezden 15-30 dakika içinde ulaşılabilecek mesafededir. Google Harita üzerinden EnuygunPet aratarak doğrudan yol tarifi alabilirsiniz. Samsun içi WhatsApp üzerinden sipariş verip kapınıza teslim seçeneğimizden de yararlanabilirsiniz." },
         ]
       ),
     };
@@ -337,12 +338,12 @@ export function getPageMeta(urlPath: string): PageMeta {
     return {
       title: "İletişim | EnuygunPet – Samsun Atakum Petshop Gross Market",
       h1: "İletişim — EnuygunPet Gross Market",
-      description: "EnuygunPet Gross Market iletişim bilgileri. Adres: Atatürk 3. Kısım Bulvarı No:113 Atakum/Samsun. Tel: 0542 211 49 44. Haftanın 7 günü 09:00-21:00 açık.",
+      description: `EnuygunPet Gross Market iletişim bilgileri. Adres: ${STORE_ADDRESS_LINE}. Tel: ${PHONE_DISPLAY}. Haftanın 7 günü 09:00-21:00 açık.`,
       bodyHtml: buildSectionsHtml("İletişim — EnuygunPet Gross Market",
         "Samsun Atakum'daki EnuygunPet Gross Market mağazamıza ulaşın. Adres, telefon, WhatsApp ve çalışma saatleri.",
         [
-          { h: "Adres", p: "Yeni Mahalle Atatürk 3. Kısım Bulvarı No:113, Atakum / Samsun. Ücretsiz otopark imkânı bulunmaktadır." },
-          { h: "Telefon ve WhatsApp", p: "0542 211 49 44 numaralı hattımızdan arayabilir veya WhatsApp üzerinden stok ve fiyat sorabilirsiniz." },
+          { h: "Adres", p: `${STORE_ADDRESS_LINE}. Ücretsiz otopark imkânı bulunmaktadır.` },
+          { h: "Telefon ve WhatsApp", p: `${PHONE_DISPLAY} numaralı hattımızdan arayabilir veya WhatsApp üzerinden stok ve fiyat sorabilirsiniz.` },
           { h: "Çalışma Saatleri", p: "Haftanın her günü 09:00–21:00 saatleri arasında açığız. Resmi tatillerde de hizmet veriyoruz." },
         ]
       ),
@@ -706,7 +707,7 @@ export function injectMeta(html: string, meta: PageMeta, urlPath = "/"): string 
     .join("");
   const seoContent = meta.bodyHtml
     ? meta.bodyHtml
-    : `<h1>${escapeHtml(meta.h1)}</h1><article>${fallbackImgHtml}<p>${escapeHtml(meta.description)}</p>${COMMON_SECTION}<address>EnuygunPet Gross Market — Atatürk Bulvarı No:113, Atakum / Samsun — Tel: +90 542 211 49 44 — Haftanın her günü 09:00-21:00</address></article>`;
+    : `<h1>${escapeHtml(meta.h1)}</h1><article>${fallbackImgHtml}<p>${escapeHtml(meta.description)}</p>${footerHtml()}</article>`;
 
   result = result.replace(
     '<div id="root"></div>',
