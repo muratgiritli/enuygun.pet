@@ -22,13 +22,13 @@ const HEALTH_LINKS = [
 ];
 
 const LOCAL_LINKS = [
-  { href: "/local/atakum-petshop",         label: "Atakum" },
+  { href: "/atakum-petshop",               label: "Atakum" },
   { href: "/local/yeni-mahalle-petshop",   label: "Yeni Mahalle" },
   { href: "/local/kurupelit-petshop",      label: "Kurupelit" },
   { href: "/local/ondokuzmayis-petshop",   label: "19 Mayıs" },
   { href: "/local/ilkadim-petshop",        label: "İlkadım" },
   { href: "/local/canik-petshop",          label: "Canik" },
-  { href: "/local/tekkeköy-petshop",       label: "Tekkeköy" },
+  { href: "/local/tekkekoy-petshop",       label: "Tekkeköy" },
   { href: "/local/bafra-petshop",          label: "Bafra" },
 ];
 
@@ -71,11 +71,11 @@ const POPULAR_BY_TYPE: Record<AnimalType, { href: string; label: string }[]> = {
     { href: "/tropikal-balik-yemi",            label: "Tropikal Balık Yemi" },
     { href: "/akvaryum-susleme-samsun",        label: "Akvaryum Süsleme" },
     { href: "/petshop-samsun",                 label: "Petshop Samsun" },
-    { href: "/petshop-atakum",                 label: "Petshop Atakum" },
+    { href: "/atakum-petshop",                 label: "Petshop Atakum" },
   ],
   genel: [
     { href: "/petshop-samsun",                 label: "Petshop Samsun" },
-    { href: "/petshop-atakum",                 label: "Petshop Atakum" },
+    { href: "/atakum-petshop",                 label: "Petshop Atakum" },
     { href: "/kapida-teslim-petshop",          label: "Kapıda Teslim Petshop" },
     { href: "/kedi-mamasi-samsun",             label: "Kedi Maması Samsun" },
     { href: "/kopek-mamasi-samsun",            label: "Köpek Maması Samsun" },

@@ -37,9 +37,8 @@ import {
   STORE_STREET,
   STORE_POSTAL,
   STORE_ADDRESS_LINE,
+  SHOP_URL,
 } from "@shared/store-info";
-
-const SHOP_URL = "https://www.enuygunpetshop.com";
 const INSTAGRAM_URL = "https://www.instagram.com/enuygun.pet/";
 
 const STORE_HERO = storeHeroImg;
@@ -226,7 +225,7 @@ export default function Home() {
         </div>
         <div className="flex items-center gap-1">
           <Star className="w-3.5 h-3.5 text-amber-300 fill-amber-300" />
-          <span className="text-xs font-medium">4.8 · 120+ Yorum</span>
+          <span className="text-xs font-medium">Gross market · Atakum</span>
         </div>
         <a href={MAPS_URL} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1" data-testid="link-maps-bar">
           <MapPin className="w-3.5 h-3.5 opacity-80" />
@@ -245,11 +244,11 @@ export default function Home() {
               <div className="absolute inset-0 bg-gradient-to-r from-green-950/90 via-green-900/75 to-green-800/20" />
               <div className="relative px-12 py-14 max-w-2xl text-white flex flex-col justify-center">
                 <span className="inline-flex items-center gap-2 bg-white/15 backdrop-blur px-3 py-1 rounded-full text-xs font-semibold mb-5 w-fit">
-                  <Star className="w-3.5 h-3.5 text-amber-300 fill-amber-300" /> 4.8 · 120+ Mutlu Müşteri
+                  <Star className="w-3.5 h-3.5 text-amber-300 fill-amber-300" /> Samsun Atakum Petshop
                 </span>
-                <h1 className="text-4xl xl:text-5xl font-extrabold leading-[1.1]">Samsun Atakum'un<br />Gross Petshop Marketi</h1>
+                <h1 className="text-4xl xl:text-5xl font-extrabold leading-[1.1]">EnuygunPet Gross Market<br />Samsun Atakum Petshop</h1>
                 <p className="mt-5 text-white/90 text-base leading-relaxed max-w-lg">
-                  Royal Canin, Pro Plan ve daha birçok premium markada kedi, köpek, kuş ve akvaryum ürünleri — uygun gross market fiyatlarıyla, Atakum içine 1 saatte teslimat.
+                  Atakum petshop ve Samsun pet shop arayanlar için Royal Canin, Pro Plan ve diğer markalar — 3078. Sokak No:10, her gün 09:00–21:00.
                 </p>
                 <div className="flex flex-wrap items-center gap-3 mt-8">
                   <a href={SHOP_URL} target="_blank" rel="noopener noreferrer" data-testid="link-hero-shop">
@@ -273,13 +272,13 @@ export default function Home() {
             <div className="absolute inset-0 bg-gradient-to-t from-green-950/95 via-green-900/80 to-green-800/40" />
             <div className="relative p-5 flex flex-col">
               <span className="inline-flex items-center gap-1.5 bg-white/15 backdrop-blur px-2.5 py-1 rounded-full text-[11px] font-semibold text-white w-fit mb-3">
-                <Star className="w-3 h-3 text-amber-300 fill-amber-300" /> 4.8 · 120+ Mutlu Müşteri
+                <Star className="w-3 h-3 text-amber-300 fill-amber-300" /> Atakum Petshop
               </span>
               <h1 className="text-[28px] font-extrabold text-white leading-[1.15] drop-shadow">
-                1 Saatte Kapında<br />Tüm Petshop Ürünleri
+                Samsun Atakum Petshop<br />Gross Market
               </h1>
               <p className="mt-2.5 text-white/90 text-sm leading-snug">
-                Kedi, köpek, kuş ve akvaryum ürünleri — uygun gross market fiyatlarıyla Atakum'a hızlı teslimat.
+                Kedi, köpek, kuş ve akvaryum ürünleri — 3078. Sokak No:10, her gün 09:00–21:00.
               </p>
               <a href={SHOP_URL} target="_blank" rel="noopener noreferrer" className="mt-4" data-testid="link-mobile-hero-shop">
                 <span className="animate-pulse flex items-center justify-center gap-2 bg-red-600 text-white font-extrabold text-[15px] py-4 rounded-2xl shadow-lg tracking-wide">

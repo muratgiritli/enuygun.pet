@@ -3,6 +3,7 @@ import compression from "compression";
 import { registerRoutes } from "./routes";
 import { serveStatic } from "./static";
 import { createServer } from "http";
+import { resolveSeoRedirect } from "@shared/seo-redirects";
 
 const app = express();
 const httpServer = createServer(app);
@@ -15,6 +16,27 @@ app.use((req, res, next) => {
   res.setHeader("X-XSS-Protection", "1; mode=block");
   res.setHeader("Referrer-Policy", "strict-origin-when-cross-origin");
   res.setHeader("Permissions-Policy", "camera=(), microphone=(), geolocation=()");
+
+  if (req.method === "GET" || req.method === "HEAD") {
+    const xfHost = req.headers["x-forwarded-host"];
+    const rawHost = (typeof xfHost === "string" ? xfHost.split(",")[0] : req.headers.host) || "";
+    const host = rawHost.replace(/:\d+$/, "").toLowerCase();
+    const original = req.originalUrl || "/";
+    const pathOnly = original.split("?")[0];
+    const qs = original.includes("?") ? original.slice(original.indexOf("?")) : "";
+    const to = resolveSeoRedirect(pathOnly);
+
+    if (host === "enuygun.pet") {
+      const pathWithQuery = to ? `${to}${qs}` : original;
+      res.setHeader("Cache-Control", "public, max-age=86400");
+      return res.redirect(301, `https://www.enuygun.pet${pathWithQuery.startsWith("/") ? pathWithQuery : `/${pathWithQuery}`}`);
+    }
+
+    if (to) {
+      res.setHeader("Cache-Control", "public, max-age=86400");
+      return res.redirect(301, to + qs);
+    }
+  }
 
   if (
     req.method === "GET" &&

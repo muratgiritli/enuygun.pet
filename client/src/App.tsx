@@ -1,4 +1,5 @@
-import { Switch, Route } from "wouter";
+import { Switch, Route, useLocation } from "wouter";
+import { useEffect } from "react";
 import { queryClient } from "./lib/queryClient";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
@@ -17,8 +18,18 @@ import IletisimPage from "@/pages/iletisim";
 import AdminPage from "@/pages/admin";
 import HealthHubPage from "@/pages/health-hub-page";
 import { AnalyticsProvider } from "@/components/analytics-provider";
+import { resolveSeoRedirect } from "@shared/seo-redirects";
 
 function Router() {
+  const [location, setLocation] = useLocation();
+  const dest = resolveSeoRedirect(location);
+
+  useEffect(() => {
+    if (dest) setLocation(dest);
+  }, [dest, setLocation]);
+
+  if (dest) return null;
+
   return (
     <Switch>
       <Route path="/" component={Home} />

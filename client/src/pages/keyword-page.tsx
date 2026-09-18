@@ -245,13 +245,6 @@ export default function KeywordPage() {
           },
           "priceValidUntil": new Date(new Date().setFullYear(new Date().getFullYear() + 1)).toISOString().split("T")[0],
           "url": `https://www.enuygun.pet/${data.slug}`
-        },
-        "aggregateRating": {
-          "@type": "AggregateRating",
-          "ratingValue": priceData.rating,
-          "reviewCount": priceData.reviewCount,
-          "bestRating": "5",
-          "worstRating": "1"
         }
       },
       {

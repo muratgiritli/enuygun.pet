@@ -12,6 +12,7 @@ import localSeoData from "./local-seo.json";
 import categoriesData from "./categories.json";
 import { postToTwitter, postToFacebook, postToInstagram, postToAllPlatforms } from "./social";
 import { PHONE_E164 } from "@shared/store-info";
+import { resolveSeoRedirect } from "@shared/seo-redirects";
 
 type HealthKw = { keyword: string; slug: string; category: string; categoryName: string };
 const keywords = keywordsData as Array<{ keyword: string; slug: string }>;
@@ -60,7 +61,8 @@ export async function registerRoutes(
     return SITEMAP_IMGS[0];
   }
 
-  function buildKeywordUrl(k: { keyword: string; slug: string }, today: string): string {
+  function buildKeywordUrl(k: { keyword: string; slug: string }, today: string): string | null {
+    if (resolveSeoRedirect(`/${k.slug}`) || categoryBySlug.has(k.slug)) return null;
     const img = pickSitemapImg(k.keyword);
     const altTitle = xmlEscape(`${k.keyword} - Samsun Atakum EnuygunPet Petshop`);
     const caption = xmlEscape(`${img.base} - ${k.keyword}`);
@@ -150,6 +152,18 @@ ${sitemapEntries}
       <image:loc>https://static.wixstatic.com/media/63853e_346d0d0b96154639b0a27296b18d70f5~mv2.jpeg</image:loc>
       <image:title>Kuş yemleri ve kafesleri</image:title>
     </image:image>
+  </url>
+  <url>
+    <loc>https://www.enuygun.pet/atakum-petshop</loc>
+    <lastmod>${today}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+  </url>
+  <url>
+    <loc>https://www.enuygun.pet/petshop-samsun</loc>
+    <lastmod>${today}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
   </url>
   <url>
     <loc>https://www.enuygun.pet/iletisim</loc>
@@ -266,7 +280,7 @@ ${urlEntries}
   // Sitemap for categories (must be BEFORE /sitemap-:n.xml catch-all)
   app.get("/sitemap-kategoriler.xml", (_req, res) => {
     const today = new Date().toISOString().split("T")[0];
-    const urls = categoryPages.map(c =>
+    const urls = categoryPages.filter(c => c.slug !== "atakum-petshop" && c.slug !== "petshop-samsun").map(c =>
       `  <url>\n    <loc>https://www.enuygun.pet/${c.slug}</loc>\n    <lastmod>${today}</lastmod>\n    <changefreq>weekly</changefreq>\n    <priority>0.9</priority>\n  </url>`
     ).join("\n");
     res.set("Content-Type", "application/xml");
@@ -281,7 +295,7 @@ ${urlEntries}
     const urls = localPages.filter((p) => {
       if (seenLocal.has(p.slug)) return false;
       seenLocal.add(p.slug);
-      return true;
+      return !resolveSeoRedirect(`/local/${p.slug}`);
     }).map(p =>
       `  <url>\n    <loc>https://www.enuygun.pet/local/${p.slug}</loc>\n    <lastmod>${today}</lastmod>\n    <changefreq>monthly</changefreq>\n    <priority>0.7</priority>\n  </url>`
     ).join("\n");
@@ -298,7 +312,7 @@ ${urlEntries}
     const today = new Date().toISOString().split("T")[0];
     const start = (n - 1) * chunkSize;
     const chunk = keywords.slice(start, start + chunkSize);
-    const urlEntries = chunk.map(k => buildKeywordUrl(k, today)).join("\n");
+    const urlEntries = chunk.map(k => buildKeywordUrl(k, today)).filter(Boolean).join("\n");
     const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
@@ -354,7 +368,7 @@ Disallow: /admin
 
     const dayIndex = Math.floor(Date.now() / (1000 * 60 * 60 * 24));
     const rotated = [...keywords].slice(dayIndex % keywords.length).concat([...keywords].slice(0, dayIndex % keywords.length));
-    const items = rotated.slice(0, 50);
+    const items = rotated.filter(k => !resolveSeoRedirect(`/${k.slug}`) && !categoryBySlug.has(k.slug)).slice(0, 50);
 
     const pubDate = new Date().toUTCString();
 

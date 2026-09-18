@@ -112,7 +112,7 @@ export default function IletisimPage() {
   useTrack("iletisim", "İletişim Sayfası");
   useEffect(() => {
     document.title = "İletişim | EnuygunPet – Samsun Atakum Petshop Gross Market";
-    setMeta("description", `EnuygunPet Gross Market iletişim bilgileri. Adres: ${STORE_ADDRESS_LINE}. Tel: ${PHONE_DISPLAY}. Haftanın 7 günü 09:00-21:00 açık.`);
+    setMeta("description", `EnuygunPet iletişim: ${STORE_ADDRESS_LINE}. Tel ${PHONE_DISPLAY}. Atakum petshop, her gün 09:00-21:00.`);
     setMeta("robots", "index, follow");
     setMeta("og:title", "İletişim | EnuygunPet Samsun Atakum Petshop", true);
     setMeta("og:description", "Adres, telefon, çalışma saatleri ve sosyal medya hesaplarımız.", true);

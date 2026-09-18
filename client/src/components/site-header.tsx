@@ -6,9 +6,8 @@ import {
   PHONE_E164 as PHONE,
   WHATSAPP_PREFILL_URL as WHATSAPP_URL,
   STORE_MAPS_URL as MAPS_URL,
+  SHOP_URL,
 } from "@shared/store-info";
-
-const SHOP_URL = "https://www.enuygunpetshop.com";
 
 const categories = [
   { label: "Kedi Maması", emoji: "🐱", color: "from-orange-400 to-amber-500" },
@@ -65,7 +64,7 @@ export default function SiteHeader({ showShopGrid = true }: { showShopGrid?: boo
           </div>
           <div className="flex items-center gap-1">
             <Star className="w-3.5 h-3.5 text-amber-300 fill-amber-300" />
-            <span className="text-xs font-medium">4.8 · 120+ Yorum</span>
+            <span className="text-xs font-medium">Gross market · Atakum</span>
           </div>
           <a href={MAPS_URL} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1" data-testid="link-maps-bar">
             <MapPin className="w-3.5 h-3.5 opacity-80" />

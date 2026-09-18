@@ -9,7 +9,7 @@ import InternalLinksSection, { detectType } from "@/components/internal-links";
 import { Card } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
 import SeoArticleBody from "@/components/seo-article-body";
-import { buildKeywordArticle } from "@shared/seo-article";
+import { buildKeywordArticle, pickImages } from "@shared/seo-article";
 import {
   PHONE_E164 as PHONE,
   PHONE_WHATSAPP_URL as WA_URL,
@@ -89,9 +89,13 @@ export default function CategoryPage() {
     </div>
   );
 
-  const generated = buildKeywordArticle(cat.h1, cat.slug);
+  const LANDING_SLUGS = new Set(["atakum-petshop", "petshop-samsun"]);
+  const generated = LANDING_SLUGS.has(cat.slug)
+    ? { images: [], sections: [] as { heading: string; paragraphs: string[] }[], faqs: [] }
+    : buildKeywordArticle(cat.h1, cat.slug);
   const article = {
     ...generated,
+    images: generated.images.length ? generated.images : pickImages(cat.h1),
     sections: [
       ...cat.sections.map((s) => ({ heading: s.h, paragraphs: [s.p] })),
       ...generated.sections,

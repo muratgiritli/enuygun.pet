@@ -47,9 +47,9 @@ for (const b of blogPosts as { slug: string; title: string; desc: string; sectio
   blogMap.set(b.slug, { title: b.title, desc: b.desc, sections: b.sections || [] });
 }
 
-const categoryMap = new Map<string, { title: string; h1: string; desc: string }>();
-for (const c of categories as { slug: string; title: string; h1: string; desc: string }[]) {
-  categoryMap.set(c.slug, { title: c.title, h1: c.h1, desc: c.desc });
+const categoryMap = new Map<string, { title: string; h1: string; desc: string; intro?: string; sections?: Array<{ h: string; p: string }> }>();
+for (const c of categories as { slug: string; title: string; h1: string; desc: string; intro?: string; sections?: Array<{ h: string; p: string }> }[]) {
+  categoryMap.set(c.slug, { title: c.title, h1: c.h1, desc: c.desc, intro: c.intro, sections: c.sections || [] });
 }
 
 const localMap = new Map<string, { title?: string; h1: string; desc: string; intro?: string; sections?: Array<{ h: string; p: string }>; district?: string; neighborhood?: string | null }>();
@@ -79,10 +79,11 @@ function clipTitle(title: string, max = 62): string {
   return t.slice(0, max).replace(/\s+\S*$/, "").trim();
 }
 
-function clipDesc(desc: string, min = 110, max = 160): string {
+function clipDesc(desc: string, min = 110, max = 155): string {
   let d = desc.replace(/\s+/g, " ").trim();
   if (d.length < min) {
-    d = `${d} EnuygunPet Gross Market, Samsun Atakum. Her gün 09:00-21:00. Tel: ${PHONE_DISPLAY}.`;
+    const extra = ` Samsun Atakum petshop. Tel: ${PHONE_DISPLAY}.`;
+    if (d.length + extra.length <= max) d += extra;
   }
   if (d.length > max) {
     d = d.slice(0, max).replace(/\s+\S*$/, "").trim();
@@ -166,7 +167,7 @@ const COMMON_SECTION = `<section>
 </ul>
 <h3>Petshop Samsun — Semte Göre</h3>
 <ul>
-<li><a href="/local/atakum-petshop">Atakum Petshop — EnuygunPet Gross Market</a></li>
+<li><a href="/atakum-petshop">Atakum Petshop — EnuygunPet Gross Market</a></li>
 <li><a href="/local/yeni-mahalle-petshop">Yeni Mahalle Petshop — Atakum</a></li>
 <li><a href="/local/kurupelit-petshop">Kurupelit Petshop — Atakum</a></li>
 <li><a href="/local/ondokuzmayis-petshop">19 Mayıs Petshop — Atakum</a></li>
@@ -206,7 +207,7 @@ const COMMON_SECTION = `<section>
 <ul>
 <li><a href="/">EnuygunPet Gross Market — Ana Sayfa</a></li>
 <li><a href="/petshop-samsun">Petshop Samsun — Gross Market Fiyatları</a></li>
-<li><a href="/petshop-atakum">Petshop Atakum — Haftanın 7 Günü Açık</a></li>
+<li><a href="/atakum-petshop">Petshop Atakum — Haftanın 7 Günü Açık</a></li>
 <li><a href="/kapida-teslim-petshop">Kapıda Teslim Petshop — Samsun</a></li>
 </ul>
 </nav>`;
@@ -300,9 +301,9 @@ export function getPageMeta(urlPath: string): PageMeta {
       title: "EnuygunPet | Samsun Atakum Petshop Gross Market",
       h1: "EnuygunPet Gross Market — Samsun Atakum Petshop",
       description:
-        `Samsun Atakum'da kedi, köpek, kuş ve tüm evcil hayvan ürünleri. Royal Canin, Hills, Pro Plan en uygun fiyatla. WhatsApp: ${PHONE_INTL}`,
+        "Atakum petshop ve Samsun pet shop: EnuygunPet, 3078. Sokak No:10. Kedi-köpek maması, kum. Tel 0542 462 29 59. Her gün 09:00-21:00.",
       bodyHtml: buildSectionsHtml("EnuygunPet Gross Market — Samsun Atakum Petshop",
-        "Samsun Atakum'ın en büyük petshop gross marketi EnuygunPet'e hoş geldiniz. Kedi, köpek, kuş, balık ve tüm evcil hayvanlarınız için on binlerce ürün çeşidi gross market fiyatıyla tek çatı altında.",
+        "Samsun Atakum petshop arayanlar için EnuygunPet Gross Market, Yeni Mahalle 3078. Sokak No:10 adresinde kedi, köpek, kuş ve akvaryum ürünlerini gross market fiyatıyla tek çatı altında sunar.",
         [
           { h: "Samsun Atakum'un En Büyük Petshop Gross Marketi", p: `EnuygunPet, Samsun'un Atakum ilçesinde ${STORE_ADDRESS_SHORT} adresinde hizmet veren petshop gross marketidir. Gross market formatıyla faaliyet gösteren mağazamız, perakende petshopların çok altında fiyatlarla kedi maması, köpek maması, kuş yemi ve tüm evcil hayvan ürünlerini müşterilerimize sunmaktadır. Büyük gramajlı ürünleri toplu temin ettiğimiz için birim maliyetlerimiz düşük tutulabilmektedir; bu avantajı doğrudan müşterilerimize yansıtıyoruz. Haftanın her günü 09:00-21:00 arası kesintisiz açığız, Pazar ve resmi tatillerde de kapılarımızı kapatmıyoruz.` },
           { h: "Kedi Sahiplerine Özel Geniş Ürün Seçeneği", p: "Kedi maması seçimi; yaş, kısırlaştırma durumu ve sağlık geçmişine göre farklılık göstermektedir. Mağazamızda Royal Canin, Hills Science Plan, Pro Plan, Brit Care, Reflex, Acana, Orijen, Felicia ve N&D başta olmak üzere 20'yi aşkın markanın kedi mamasını bulabilirsiniz. Yavru kedi, yetişkin kedi, kısırlaştırılmış kedi ve özel diyet mamaları ayrı ayrı stoklanmaktadır. Kedi kumu konusunda ise topaklanan bentonit kum, silika kristal kum, doğal odun talaşı ve tozsuz pelet seçenekleri mevcuttur. Bunların yanı sıra kedi tırmalama tahtaları, yataklar, taşıma çantaları ve oyuncaklar da raflarımızda hazır bulunmaktadır." },
@@ -338,7 +339,7 @@ export function getPageMeta(urlPath: string): PageMeta {
     return {
       title: "İletişim | EnuygunPet – Samsun Atakum Petshop Gross Market",
       h1: "İletişim — EnuygunPet Gross Market",
-      description: `EnuygunPet Gross Market iletişim bilgileri. Adres: ${STORE_ADDRESS_LINE}. Tel: ${PHONE_DISPLAY}. Haftanın 7 günü 09:00-21:00 açık.`,
+      description: `EnuygunPet iletişim: ${STORE_ADDRESS_LINE}. Tel ${PHONE_DISPLAY}. Atakum petshop, her gün 09:00-21:00.`,
       bodyHtml: buildSectionsHtml("İletişim — EnuygunPet Gross Market",
         "Samsun Atakum'daki EnuygunPet Gross Market mağazamıza ulaşın. Adres, telefon, WhatsApp ve çalışma saatleri.",
         [
@@ -438,12 +439,15 @@ export function getPageMeta(urlPath: string): PageMeta {
   if (CATEGORY_SLUGS.has(bare)) {
     const c = categoryMap.get(bare);
     if (c) {
-      const art = generateContent(c.h1, bare);
+      const isLanding = bare === "atakum-petshop" || bare === "petshop-samsun";
+      const art = isLanding ? null : generateContent(c.h1, bare);
       return {
         title: clipTitle(c.title || `${c.h1} | EnuygunPet`),
         h1: c.h1,
         description: clipDesc(c.desc),
-        bodyHtml: buildSeoBodyHtml(c.h1, art),
+        bodyHtml: art
+          ? buildSeoBodyHtml(c.h1, art)
+          : buildSectionsHtml(c.h1, c.intro || c.desc, c.sections || []),
       };
     }
   }

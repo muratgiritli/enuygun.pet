@@ -25,3 +25,10 @@ export const STORE_POSTAL = "55270";
 export const STORE_LOCALITY = "Atakum";
 export const STORE_REGION = "Samsun";
 export const STORE_COUNTRY = "TR";
+
+export const SITE_ORIGIN = "https://www.enuygun.pet";
+export const SITE_HOST = "www.enuygun.pet";
+export const APEX_HOST = "enuygun.pet";
+export const SHOP_URL = "https://www.enuygunpetshop.com";
+export const STORE_HOURS = "09:00–21:00";
+export const STORE_HOURS_LABEL = "Her gün 09:00–21:00";
