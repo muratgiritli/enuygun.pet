@@ -9,7 +9,11 @@ import { SiWhatsapp } from "react-icons/si";
 import { Card } from "@/components/ui/card";
 import NotFound from "@/pages/not-found";
 import SeoArticleBody from "@/components/seo-article-body";
-import { buildHealthArticle } from "@shared/seo-article";
+import {
+  buildHealthArticle,
+  buildKeywordDescription,
+  keywordAsTitle,
+} from "@shared/seo-article";
 import {
   PHONE_E164 as PHONE,
   PHONE_INTL,
@@ -61,8 +65,8 @@ export default function HealthPage() {
 
   useEffect(() => {
     if (data) {
-      const title = `${data.keyword} - ${data.animalTr} Sağlığı | EnuygunPet Samsun Atakum`;
-      const desc = `${data.keyword} hakkında bilgi: belirtiler, nedenler ve ne yapmalısınız? Samsun Atakum EnuygunPet'te ${data.animalTr.toLowerCase()} sağlığı ürünleri.`;
+      const title = keywordAsTitle(data.keyword);
+      const desc = buildKeywordDescription(`${data.animalTr} bakım ürünleri`);
       document.title = title;
       const built = buildHealthArticle(data.keyword, data.animalTr, data.category, data.slug);
       const imgUrl = built.images[0]?.src || "";
@@ -259,14 +263,14 @@ export default function HealthPage() {
         <section className="mb-6 space-y-3">
           <h2 className="text-base font-bold text-foreground">EnuygunPet'te Ürün ve Destek</h2>
           <p className="text-sm text-muted-foreground leading-relaxed">
-            EnuygunPet Gross Market olarak evcil hayvan sağlığını destekleyen ürünleri gross market fiyatıyla sunuyoruz. Veteriner önerileriyle uyumlu mama, takviye ve bakım ürünlerini Samsun Atakum mağazamızda bulabilirsiniz. Mağazamızda kedi maması, köpek maması, kuş yemi, vitamin takviyeleri, probiyotikler ve özel diyet mamaları stoğumuzda mevcuttur.
+            Evcil hayvanınız için mama, takviye veya bakım ürünü ararken veterinerin verdiği ürün adını, kullanım amacını ve hayvanın güncel kilosunu not edin. Petshop ürünü tanı ya da tedavinin yerine geçmez.
           </p>
           <p className="text-sm text-muted-foreground leading-relaxed">
-            Royal Canin, Hills Prescription Diet, Pro Plan Veterinary Diets ve Brit Care gibi veteriner onaylı markaların ürünleri mağazamızda bulunmaktadır. Ürün seçiminde kararsız kaldığınızda WhatsApp hattımız ({PHONE_INTL}) üzerinden uzman personelimizden yardım alabilirsiniz. Haftanın her günü saat 09:00 ile 21:00 arasında {ADDRESS} adresimizde hizmetinizdeyiz.
+            Tam ürün adı ve gramajla WhatsApp hattımızdan ({PHONE_INTL}) güncel stok bilgisi alabilirsiniz. Haftanın her günü 09:00–21:00 arasında {ADDRESS} adresindeyiz.
           </p>
-          <h3 className="text-sm font-bold text-foreground">Neden EnuygunPet?</h3>
+          <h3 className="text-sm font-bold text-foreground">Güvenli Ürün Seçimi</h3>
           <p className="text-sm text-muted-foreground leading-relaxed">
-            Samsun'un en büyük petshop gross marketi olarak binlerce ürün çeşidi, uzman danışmanlık ve gross market fiyat avantajı sunuyoruz. Perakende fiyatlarının %30-50 altında alışveriş yapabilirsiniz. Evcil hayvanınızın sağlık durumuna uygun ürünü bulmak için mağazamızı ziyaret edin veya bize ulaşın.
+            Etikette hedef hayvan türünü, kullanım talimatını, son kullanma tarihini ve uyarıları kontrol edin. İlaç niteliğindeki ürünleri yalnızca veteriner yönlendirmesiyle kullanın.
           </p>
         </section>
 

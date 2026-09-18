@@ -7,9 +7,11 @@ import blogPosts from "./blog-posts.json";
 import categories from "./categories.json";
 import localPages from "./local-seo.json";
 import {
+  buildKeywordDescription,
   buildKeywordArticle,
   buildHealthArticle,
   buildLocalArticle,
+  keywordAsTitle,
   pickImages,
   type SeoArticle,
 } from "../shared/seo-article";
@@ -93,22 +95,7 @@ function clipDesc(desc: string, min = 110, max = 155): string {
 
 // ── Type-specific meta description generator ──────────────────────────────────
 function buildKeywordDesc(kw: string): string {
-  const k = kw.toLowerCase();
-  if (k.includes("kedi") && k.includes("mama"))
-    return `${kw} — Royal Canin, Hills, Pro Plan, Reflex gross market fiyatıyla Samsun Atakum'da. Yavru, kısır ve yetişkin kedi maması stokta.`;
-  if ((k.includes("köpek") || k.includes("kopek")) && k.includes("mama"))
-    return `${kw} — Royal Canin, Pro Plan, Brit Care köpek mamaları Samsun Atakum'da gross market fiyatıyla. Irka özel, yavru ve yetişkin seçenekleri.`;
-  if (k.includes("kedi") && k.includes("kum"))
-    return `${kw} — Topaklanan, silika ve doğal kedi kumu çeşitleri Samsun Atakum'da. Büyük gramaj ve toplu alım avantajıyla EnuygunPet'te.`;
-  if (k.includes("kuş") || k.includes("kus") || k.includes("muhabbet") || k.includes("papağan"))
-    return `${kw} — Muhabbet kuşu, papağan, kanarya yemi ve aksesuar Samsun Atakum'da. EnuygunPet Gross Market'te geniş kuş ürünleri yelpazesi.`;
-  if (["royal canin","hills","pro plan","brit care","reflex","acana","orijen"].some(m => k.includes(m)))
-    return `${kw} — Orijinal ve garantili ürünler Samsun Atakum'da. EnuygunPet Gross Market'te gross market fiyatıyla tüm gramaj seçenekleri.`;
-  if (k.includes("petshop") || k.includes("pet shop") || k.includes("pet market"))
-    return `${kw} — Samsun Atakum'un en büyük petshop gross marketi. Kedi, köpek, kuş ürünleri haftanın 7 günü 09:00-21:00. WhatsApp: ${PHONE_INTL}`;
-  if (k.includes("tasma") || k.includes("koşum") || k.includes("oyuncak"))
-    return `${kw} — Geniş aksesuar ve oyuncak yelpazesi Samsun Atakum'da. EnuygunPet Gross Market'te uygun fiyatlarla tüm evcil hayvan aksesuarları.`;
-  return `${kw} Samsun Atakum'da EnuygunPet Gross Market'te. Gross market fiyatı, geniş stok ve uzman danışmanlıkla hizmetinizde. Haftanın 7 günü açık.`;
+  return buildKeywordDescription(kw);
 }
 
 function generateContent(keyword: string, slug: string): SeoArticle {
@@ -217,7 +204,18 @@ function imgTag(src: string, alt: string, eager = false): string {
 }
 
 function footerHtml(): string {
-  return `${COMMON_SECTION}<address>EnuygunPet Gross Market — ${STORE_ADDRESS_SHORT} — Tel: ${PHONE_INTL} — Haftanın her günü 09:00-21:00</address>`;
+  return `<aside aria-label="Mağaza ve ürün kategorileri">
+<h2>Petshop ürün kategorileri</h2>
+<p>Kedi ve köpek mamaları, kedi kumu, tasma ve koşumlar, taşıma ürünleri, oyuncaklar, kuş yemleri, akvaryum ekipmanları ve küçük hayvan malzemeleri için ürün özelliklerini karşılaştırın.</p>
+<nav aria-label="Ana ürün kategorileri"><ul>
+<li><a href="/kedi-urunleri">Kedi ürünleri</a></li>
+<li><a href="/kopek-urunleri">Köpek ürünleri</a></li>
+<li><a href="/kus-urunleri">Kuş ürünleri</a></li>
+<li><a href="/balik-urunleri">Akvaryum ürünleri</a></li>
+<li><a href="/kucuk-hayvan-urunleri">Küçük hayvan ürünleri</a></li>
+</ul></nav>
+<address>EnuygunPet Gross Market — ${STORE_ADDRESS_SHORT} — Tel: ${PHONE_INTL} — Her gün 09:00–21:00</address>
+</aside>`;
 }
 
 function interleaveImages(sectionHtml: string[], images: Array<{ src: string; alt: string }>): string {
@@ -414,9 +412,9 @@ export function getPageMeta(urlPath: string): PageMeta {
     const l = localMap.get(slug);
     if (l) {
       return {
-        title: clipTitle(l.title || `${l.h1} | EnuygunPet`),
+        title: keywordAsTitle(l.h1),
         h1: l.h1,
-        description: clipDesc(l.desc),
+        description: clipDesc(buildKeywordDesc(l.h1)),
         bodyHtml: buildSeoBodyHtml(
           l.h1,
           buildLocalArticle({
@@ -439,15 +437,12 @@ export function getPageMeta(urlPath: string): PageMeta {
   if (CATEGORY_SLUGS.has(bare)) {
     const c = categoryMap.get(bare);
     if (c) {
-      const isLanding = bare === "atakum-petshop" || bare === "petshop-samsun";
-      const art = isLanding ? null : generateContent(c.h1, bare);
+      const art = generateContent(c.h1, bare);
       return {
-        title: clipTitle(c.title || `${c.h1} | EnuygunPet`),
+        title: keywordAsTitle(c.h1),
         h1: c.h1,
-        description: clipDesc(c.desc),
-        bodyHtml: art
-          ? buildSeoBodyHtml(c.h1, art)
-          : buildSectionsHtml(c.h1, c.intro || c.desc, c.sections || []),
+        description: clipDesc(buildKeywordDesc(c.h1)),
+        bodyHtml: buildSeoBodyHtml(c.h1, art),
       };
     }
   }
@@ -552,8 +547,8 @@ export function getPageMeta(urlPath: string): PageMeta {
     const health = findHealthByPath(healthPathMatch[1], healthPathMatch[2]);
     if (health) {
       const kw = cleanKeyword(health.keyword);
-      const kwTitle = toTitleCase(kw);
-      const h1 = `${kwTitle} — ${health.categoryName}`;
+      const kwTitle = keywordAsTitle(kw);
+      const h1 = kwTitle;
       const animalByPrefix: Record<string, string> = {
         "kedi-hastaliklari": "Kedi",
         "kopek-hastaliklari": "Köpek",
@@ -562,7 +557,7 @@ export function getPageMeta(urlPath: string): PageMeta {
       };
       const art = buildHealthArticle(kw, animalByPrefix[healthPathMatch[1]] || "Evcil hayvan", health.categoryName, healthPathMatch[2]);
       return {
-        title: clipTitle(`${kwTitle} | ${health.categoryName}`),
+        title: kwTitle,
         h1,
         description: clipDesc(`${kw} hakkında bilgi: belirtiler, nedenler ve ne yapmalısınız? Samsun Atakum EnuygunPet'te ${health.categoryName.toLowerCase()} ürünleri.`),
         bodyHtml: buildSeoBodyHtml(h1, art),
@@ -574,11 +569,11 @@ export function getPageMeta(urlPath: string): PageMeta {
   const health = healthMap.get(bare);
   if (health) {
     const kw = cleanKeyword(health.keyword);
-    const kwTitle = toTitleCase(kw);
-    const h1 = `${kwTitle} — Samsun Atakum`;
+    const kwTitle = keywordAsTitle(kw);
+    const h1 = kwTitle;
     const art = buildHealthArticle(kw, health.categoryName, health.categoryName, bare);
     return {
-      title: clipTitle(`${kwTitle} | EnuygunPet Samsun`),
+      title: kwTitle,
       h1,
       description: clipDesc(buildKeywordDesc(kw)),
       bodyHtml: buildSeoBodyHtml(h1, art),
@@ -588,11 +583,11 @@ export function getPageMeta(urlPath: string): PageMeta {
   const keyword = keywordMap.get(bare);
   if (keyword) {
     const kw = cleanKeyword(keyword);
-    const kwTitle = toTitleCase(kw);
-    const h1 = `${kwTitle} — Samsun Atakum`;
+    const kwTitle = keywordAsTitle(kw);
+    const h1 = kwTitle;
     const art = generateContent(kw, bare);
     return {
-      title: clipTitle(`${kwTitle} | EnuygunPet Samsun`),
+      title: kwTitle,
       h1,
       description: clipDesc(buildKeywordDesc(kw)),
       bodyHtml: buildSeoBodyHtml(h1, art),

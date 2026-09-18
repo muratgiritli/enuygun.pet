@@ -195,7 +195,7 @@ export default function BlogPage() {
             "name": "EnuygunPet Samsun'da hangi markaları satıyor?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Royal Canin, Hills Science Plan, Pro Plan, Reflex, Brit Care, Acana, Taste of the Wild başta olmak üzere 50'den fazla marka bulunmaktadır. Tüm markalar perakende fiyatlarının altında gross market fiyatıyla satılmaktadır."
+              "text": `Marka ve ürün stoğu dönemsel olarak değişebilir. Tam ürün adı ve gramajla ${PHONE_INTL} numarasından güncel bilgi alınabilir.`
             }
           }
         ]
@@ -309,16 +309,16 @@ export default function BlogPage() {
         })()}
 
         <section className="space-y-3 border-t border-border pt-6">
-          <h2 className="text-base font-bold text-foreground">EnuygunPet'te Satın Alın</h2>
+          <h2 className="text-base font-bold text-foreground">Ürün Bilgisi ve Mağaza</h2>
           <p className="text-sm text-muted-foreground leading-relaxed">
-            Bu içerikte bahsedilen tüm ürünleri Samsun Atakum'daki EnuygunPet Gross Market mağazamızda bulabilirsiniz. Royal Canin, Hills Science Plan, Pro Plan, Brit Care, Reflex ve daha pek çok markayı gross market fiyatıyla sunuyoruz. Mağazamız {STORE_ADDRESS_SHORT} adresinde haftanın her günü 09:00–21:00 saatleri arasında açıktır.
+            İçerikte geçen ürünleri seçerken hayvanın türünü, yaşını, kilosunu ve varsa veteriner önerisini dikkate alın. Mağazamız {STORE_ADDRESS_SHORT} adresinde haftanın her günü 09:00–21:00 saatleri arasında açıktır.
           </p>
           <p className="text-sm text-muted-foreground leading-relaxed">
-            Ürün stok sorgusu, fiyat bilgisi ve sipariş için WhatsApp hattımız (+90 542 462 29 59) üzerinden bize ulaşabilirsiniz. Uzman personelimiz evcil hayvanınızın ihtiyacına en uygun ürünü önerir. Kedi maması, köpek maması, kuş yemi, kedi kumu, vitamin takviyeleri ve bakım ürünlerinden oluşan geniş stok yapımızla tüm ihtiyaçlarınıza tek adreste hizmet veriyoruz.
+            Ürün stok sorgusu için WhatsApp hattımız (+90 542 462 29 59) üzerinden tam ürün adı, marka, gramaj veya ölçüyü iletebilirsiniz.
           </p>
-          <h3 className="text-sm font-bold text-foreground">Neden EnuygunPet?</h3>
+          <h3 className="text-sm font-bold text-foreground">Satın Almadan Önce</h3>
           <p className="text-sm text-muted-foreground leading-relaxed">
-            Gross market fiyat avantajı, geniş stok ve uzman danışmanlıkla Samsun'un en büyük petshopuyuz. Perakende fiyatların %30-50 altında alışveriş imkânı, büyük gramaj seçenekleri ve toplu alım indirimleri sunuyoruz.
+            Ambalaj bütünlüğünü, son kullanma tarihini, hedef hayvan türünü ve kullanım talimatını kontrol edin. Sağlık sorularında veteriner görüşünü esas alın.
           </p>
         </section>
 

@@ -9,7 +9,11 @@ import InternalLinksSection, { detectType } from "@/components/internal-links";
 import { Card } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
 import SeoArticleBody from "@/components/seo-article-body";
-import { buildKeywordArticle, pickImages } from "@shared/seo-article";
+import {
+  buildCategoryArticle,
+  buildKeywordDescription,
+  keywordAsTitle,
+} from "@shared/seo-article";
 import {
   PHONE_E164 as PHONE,
   PHONE_WHATSAPP_URL as WA_URL,
@@ -18,7 +22,6 @@ import {
   STORE_POSTAL,
   STORE_LAT,
   STORE_LNG,
-  STORE_ADDRESS_SHORT,
 } from "@shared/store-info";
 
 type CategoryData = {
@@ -48,7 +51,9 @@ export default function CategoryPage() {
     if (!cat || (cat as any).error) return;
     const canonicalUrl = `https://www.enuygun.pet/${cat.slug}`;
     const img = "https://static.wixstatic.com/media/63853e_77a3ee3fa9d942a7af5b6f25a0520653~mv2.jpeg";
-    document.title = cat.title.length <= 62 ? cat.title : cat.title.slice(0, 62).replace(/\s+\S*$/, "").trim();
+    const title = keywordAsTitle(cat.h1);
+    const description = buildKeywordDescription(cat.h1);
+    document.title = title;
     const setMeta = (sel: string, attr: string, val: string) => {
       let el = document.querySelector(sel) as HTMLMetaElement | null;
       if (!el) { el = document.createElement("meta") as HTMLMetaElement; document.head.appendChild(el); }
@@ -60,17 +65,17 @@ export default function CategoryPage() {
       el.setAttribute("href", href);
     };
     setLink("canonical", canonicalUrl);
-    setMeta('meta[name="description"]', "content", cat.desc);
-    setMeta('meta[property="og:title"]', "content", cat.title);
-    setMeta('meta[property="og:description"]', "content", cat.desc);
+    setMeta('meta[name="description"]', "content", description);
+    setMeta('meta[property="og:title"]', "content", title);
+    setMeta('meta[property="og:description"]', "content", description);
     setMeta('meta[property="og:url"]', "content", canonicalUrl);
     setMeta('meta[property="og:image"]', "content", img);
     setMeta('meta[property="og:image:alt"]', "content", `${cat.h1} - EnuygunPet Samsun Atakum`);
     setMeta('meta[property="og:type"]', "content", "website");
     setMeta('meta[property="og:site_name"]', "content", "EnuygunPet");
     setMeta('meta[name="twitter:card"]', "content", "summary_large_image");
-    setMeta('meta[name="twitter:title"]', "content", cat.title);
-    setMeta('meta[name="twitter:description"]', "content", cat.desc);
+    setMeta('meta[name="twitter:title"]', "content", title);
+    setMeta('meta[name="twitter:description"]', "content", description);
     setMeta('meta[name="twitter:image"]', "content", img);
   }, [cat]);
 
@@ -89,18 +94,7 @@ export default function CategoryPage() {
     </div>
   );
 
-  const LANDING_SLUGS = new Set(["atakum-petshop", "petshop-samsun"]);
-  const generated = LANDING_SLUGS.has(cat.slug)
-    ? { images: [], sections: [] as { heading: string; paragraphs: string[] }[], faqs: [] }
-    : buildKeywordArticle(cat.h1, cat.slug);
-  const article = {
-    ...generated,
-    images: generated.images.length ? generated.images : pickImages(cat.h1),
-    sections: [
-      ...cat.sections.map((s) => ({ heading: s.h, paragraphs: [s.p] })),
-      ...generated.sections,
-    ],
-  };
+  const article = buildCategoryArticle(cat.h1, cat.slug);
 
   const CAT_SLUG_IMAGES: Record<string, string> = {
     "kedi-urunleri": "https://static.wixstatic.com/media/63853e_4c33bdb1dc274eab8358c2d598f7cfee~mv2.jpeg",
@@ -113,7 +107,7 @@ export default function CategoryPage() {
     "url": catImg,
     "contentUrl": catImg,
     "name": `${cat.h1} - EnuygunPet Samsun Atakum`,
-    "description": cat.desc,
+    "description": buildKeywordDescription(cat.h1),
     "caption": `${cat.h1} | EnuygunPet Gross Market Samsun Atakum`,
     "representativeOfPage": true,
     "license": "https://www.enuygun.pet",
@@ -129,8 +123,8 @@ export default function CategoryPage() {
         "@type": "CollectionPage",
         "@id": `https://www.enuygun.pet/${cat.slug}`,
         "url": `https://www.enuygun.pet/${cat.slug}`,
-        "name": cat.title,
-        "description": cat.desc,
+        "name": keywordAsTitle(cat.h1),
+        "description": buildKeywordDescription(cat.h1),
         "inLanguage": "tr-TR",
         "isPartOf": { "@id": "https://www.enuygun.pet/#website" },
         "primaryImageOfPage": catImgObj
@@ -146,58 +140,23 @@ export default function CategoryPage() {
       {
         "@type": "FAQPage",
         "mainEntity": [
-          ...cat.sections.slice(0, 3).map((sec: { h: string; p: string }) => ({
+          ...article.faqs.map((faq) => ({
             "@type": "Question",
-            "name": sec.h,
+            "name": faq.q,
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": sec.p
+              "text": faq.a
             }
           })),
-          {
-            "@type": "Question",
-            "name": `Samsun'da ${cat.h1.toLowerCase()} nerede bulunur?`,
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": `Samsun Atakum'da ${cat.h1.toLowerCase()} için EnuygunPet Gross Market'i ziyaret edebilirsiniz. ${STORE_ADDRESS_SHORT} adresinde haftanın her günü 09:00-21:00 açıktır. ${cat.brands?.slice(0,3).join(", ")} başta olmak üzere pek çok marka bulunmaktadır.`
-            }
-          },
           {
             "@type": "Question",
             "name": "Gross market petshop ile normal petshop arasındaki fark nedir?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Gross market petshop, perakende mağazalara kıyasla çok daha büyük gramajlı ürünleri ve toplu alım avantajlarını doğrudan son tüketiciye sunar. EnuygunPet'te büyük gramaj ürünlerde %20-40 daha uygun fiyatlar mevcuttur."
+              "text": "Gross market formatı farklı ürün türlerini ve büyük gramaj seçeneklerini aynı mağazada karşılaştırmaya imkân verir. Güncel fiyat ve stok ürün bazında doğrulanmalıdır."
             }
           }
         ]
-      },
-      {
-        "@type": "Service",
-        "name": cat.h1,
-        "description": cat.desc,
-        "serviceType": "Evcil Hayvan Ürünleri Satışı",
-        "provider": { "@id": "https://www.enuygun.pet/#organization" },
-        "areaServed": { "@type": "City", "name": "Samsun" },
-        "image": catImg,
-        "offers": (cat.brands || []).map((brand: string) => ({
-          "@type": "Offer",
-          "itemOffered": {
-            "@type": "Product",
-            "name": `${cat.h1} - ${brand}`,
-            "description": `${brand} marka ${cat.h1.toLowerCase()} EnuygunPet Gross Market'te. Samsun Atakum'da geniş stok ve uygun fiyat.`,
-            "image": catImg,
-            "brand": { "@type": "Brand", "name": brand },
-            "offers": {
-              "@type": "Offer",
-              "priceCurrency": "TRY",
-              "availability": "https://schema.org/InStock",
-              "seller": { "@id": "https://www.enuygun.pet/#organization" }
-            }
-          },
-          "priceCurrency": "TRY",
-          "availability": "https://schema.org/InStock"
-        }))
       },
       {
         "@type": "Organization",
@@ -265,7 +224,7 @@ export default function CategoryPage() {
       <header className="bg-primary text-primary-foreground px-4 pt-6 pb-6">
         <div className="max-w-2xl mx-auto">
           <h1 className="text-2xl font-bold leading-tight" data-testid="category-h1">{cat.h1}</h1>
-          <p className="mt-2 text-primary-foreground/80 text-sm leading-relaxed">{cat.intro}</p>
+          <p className="mt-2 text-primary-foreground/80 text-sm leading-relaxed">{buildKeywordDescription(cat.h1)}</p>
         </div>
       </header>
 

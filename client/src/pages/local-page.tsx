@@ -9,7 +9,12 @@ import InternalLinksSection from "@/components/internal-links";
 import { Card } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
 import SeoArticleBody from "@/components/seo-article-body";
-import { buildLocalArticle, pickImages } from "@shared/seo-article";
+import {
+  buildKeywordDescription,
+  buildLocalArticle,
+  keywordAsTitle,
+  pickImages,
+} from "@shared/seo-article";
 import {
   PHONE_E164 as PHONE,
   PHONE_INTL,
@@ -60,7 +65,9 @@ export default function LocalPage() {
     if (!page || (page as any).error) return;
     const canonicalUrl = `https://www.enuygun.pet/local/${page.slug}`;
     const img = pickImages(page.h1)[0]?.src || "https://static.wixstatic.com/media/63853e_77a3ee3fa9d942a7af5b6f25a0520653~mv2.jpeg";
-    document.title = page.title;
+    const title = keywordAsTitle(page.h1);
+    const description = buildKeywordDescription(page.h1);
+    document.title = title;
     const setMeta = (sel: string, attr: string, val: string) => {
       let el = document.querySelector(sel) as HTMLMetaElement | null;
       if (!el) { el = document.createElement("meta") as HTMLMetaElement; document.head.appendChild(el); }
@@ -72,17 +79,17 @@ export default function LocalPage() {
       el.setAttribute("href", href);
     };
     setLink("canonical", canonicalUrl);
-    setMeta('meta[name="description"]', "content", page.desc);
-    setMeta('meta[property="og:title"]', "content", page.title);
-    setMeta('meta[property="og:description"]', "content", page.desc);
+    setMeta('meta[name="description"]', "content", description);
+    setMeta('meta[property="og:title"]', "content", title);
+    setMeta('meta[property="og:description"]', "content", description);
     setMeta('meta[property="og:url"]', "content", canonicalUrl);
     setMeta('meta[property="og:image"]', "content", img);
     setMeta('meta[property="og:image:alt"]', "content", `${page.h1} - EnuygunPet Samsun Atakum`);
     setMeta('meta[property="og:type"]', "content", "website");
     setMeta('meta[property="og:site_name"]', "content", "EnuygunPet");
     setMeta('meta[name="twitter:card"]', "content", "summary_large_image");
-    setMeta('meta[name="twitter:title"]', "content", page.title);
-    setMeta('meta[name="twitter:description"]', "content", page.desc);
+    setMeta('meta[name="twitter:title"]', "content", title);
+    setMeta('meta[name="twitter:description"]', "content", description);
     setMeta('meta[name="twitter:image"]', "content", img);
   }, [page]);
 

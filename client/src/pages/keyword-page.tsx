@@ -9,7 +9,11 @@ import { SiWhatsapp } from "react-icons/si";
 import { Card } from "@/components/ui/card";
 import NotFound from "@/pages/not-found";
 import SeoArticleBody from "@/components/seo-article-body";
-import { buildKeywordArticle } from "@shared/seo-article";
+import {
+  buildKeywordArticle,
+  buildKeywordDescription,
+  keywordAsTitle,
+} from "@shared/seo-article";
 import {
   PHONE_E164 as PHONE,
   PHONE_DISPLAY,
@@ -66,29 +70,6 @@ function detectBreed(keyword: string): boolean {
   return BREED_TERMS.some(t => kw.includes(t));
 }
 
-function generateProductPrice(keyword: string): { min: number; max: number; reviewCount: number; rating: string } {
-  const k = keyword.toLowerCase();
-  if (k.includes("15 kg") || k.includes("15kg")) return { min: 750, max: 2200, reviewCount: 143, rating: "4.8" };
-  if (k.includes("10 kg") || k.includes("10kg")) return { min: 550, max: 1600, reviewCount: 118, rating: "4.8" };
-  if (k.includes("5 kg") || k.includes("5kg")) return { min: 280, max: 850, reviewCount: 97, rating: "4.7" };
-  if (k.includes("3 kg") || k.includes("3kg")) return { min: 180, max: 550, reviewCount: 86, rating: "4.8" };
-  if (k.includes("2 kg") || k.includes("2kg")) return { min: 130, max: 380, reviewCount: 74, rating: "4.7" };
-  if (k.includes("1 kg") || k.includes("1kg") || k.includes("1.5 kg")) return { min: 80, max: 260, reviewCount: 62, rating: "4.8" };
-  if (k.includes("500 gr") || k.includes("500gr")) return { min: 50, max: 150, reviewCount: 48, rating: "4.7" };
-  if (k.includes("30 lt") || k.includes("30lt")) return { min: 280, max: 480, reviewCount: 91, rating: "4.8" };
-  if (k.includes("20 lt") || k.includes("20lt")) return { min: 180, max: 320, reviewCount: 78, rating: "4.8" };
-  if (k.includes("10 lt") || k.includes("10lt")) return { min: 100, max: 180, reviewCount: 65, rating: "4.7" };
-  if ((k.includes("kedi") || k.includes("köpek")) && k.includes("mama")) return { min: 150, max: 1800, reviewCount: 127, rating: "4.8" };
-  if (k.includes("kedi kumu") || k.includes("kum")) return { min: 80, max: 450, reviewCount: 89, rating: "4.8" };
-  if (k.includes("kafes") || k.includes("taşıma")) return { min: 250, max: 1500, reviewCount: 54, rating: "4.7" };
-  if (k.includes("tırmalama") || k.includes("kulübe") || k.includes("yatak")) return { min: 180, max: 1200, reviewCount: 67, rating: "4.7" };
-  if (k.includes("tasma") || k.includes("taşma") || k.includes("şampuan") || k.includes("tarak")) return { min: 80, max: 450, reviewCount: 43, rating: "4.8" };
-  if (k.includes("ödül") || k.includes("odul") || k.includes("snack")) return { min: 40, max: 180, reviewCount: 112, rating: "4.9" };
-  if (k.includes("talaş") || k.includes("yonca") || k.includes("otu")) return { min: 60, max: 280, reviewCount: 38, rating: "4.7" };
-  if (k.includes("yem") || k.includes("kuş") || k.includes("muhabbet")) return { min: 40, max: 350, reviewCount: 72, rating: "4.8" };
-  return { min: 80, max: 800, reviewCount: 84, rating: "4.8" };
-}
-
 export default function KeywordPage() {
   const [, params] = useRoute("/:slug");
   const slug = params?.slug || "";
@@ -106,10 +87,9 @@ export default function KeywordPage() {
 
   useEffect(() => {
     if (data) {
-      const rawTitle = `${data.keyword} | EnuygunPet Samsun`.replace(/\s+/g, " ").trim();
-      const title = rawTitle.length <= 62 ? rawTitle : rawTitle.slice(0, 62).replace(/\s+\S*$/, "").trim();
+      const title = keywordAsTitle(data.keyword);
       document.title = title;
-      let desc = `Samsun Atakum'da ${data.keyword} için EnuygunPet Gross Market. En uygun fiyat, geniş stok. Her gün 09:00-21:00. WhatsApp: ${PHONE_DISPLAY}.`;
+      let desc = buildKeywordDescription(data.keyword);
       if (desc.length > 160) desc = desc.slice(0, 160).replace(/\s+\S*$/, "").trim();
       const article = buildKeywordArticle(data.keyword, data.slug);
       const imgUrl = article.images[0]?.src || "";
@@ -156,8 +136,7 @@ export default function KeywordPage() {
   const article = buildKeywordArticle(data.keyword, data.slug);
   const faqs = article.faqs;
   const imgUrl = article.images[0]?.src || "";
-  const imgAlt = `${data.keyword} - Samsun Atakum EnuygunPet Petshop Gross Market`;
-  const priceData = generateProductPrice(data.keyword);
+  const imgAlt = `${data.keyword} ürün seçimi ve kullanım rehberi`;
   const isBreedPage = detectBreed(data.keyword);
 
   const schema = {
@@ -167,8 +146,8 @@ export default function KeywordPage() {
         "@type": "WebPage",
         "@id": `https://www.enuygun.pet/${data.slug}`,
         "url": `https://www.enuygun.pet/${data.slug}`,
-        "name": `${data.keyword} Samsun Atakum | EnuygunPet`,
-        "description": `Samsun Atakum'da ${data.keyword} için EnuygunPet Gross Market. En uygun fiyat, geniş stok.`,
+        "name": keywordAsTitle(data.keyword),
+        "description": buildKeywordDescription(data.keyword),
         "isPartOf": { "@id": "https://www.enuygun.pet/#website" },
         "primaryImageOfPage": {
           "@type": "ImageObject",
@@ -206,46 +185,6 @@ export default function KeywordPage() {
           "name": f.q,
           "acceptedAnswer": { "@type": "Answer", "text": f.a },
         })),
-      },
-      {
-        "@type": "Product",
-        "name": data.keyword,
-        "description": `Samsun Atakum'da ${data.keyword} için EnuygunPet Gross Market. En uygun fiyat, geniş stok, hızlı hizmet.`,
-        "image": {
-          "@type": "ImageObject",
-          "url": imgUrl,
-          "contentUrl": imgUrl,
-          "name": imgAlt,
-          "description": `${data.keyword} - Samsun Atakum EnuygunPet Gross Market petshop'ta stokta.`,
-          "caption": imgAlt,
-        },
-        "brand": {
-          "@type": "Brand",
-          "name": "EnuygunPet Gross Market"
-        },
-        "offers": {
-          "@type": "AggregateOffer",
-          "priceCurrency": "TRY",
-          "lowPrice": priceData.min,
-          "highPrice": priceData.max,
-          "offerCount": "50",
-          "availability": "https://schema.org/InStock",
-          "seller": {
-            "@type": "LocalBusiness",
-            "name": "EnuygunPet Gross Market",
-            "telephone": PHONE,
-            "address": {
-              "@type": "PostalAddress",
-              "streetAddress": STORE_STREET,
-              "addressLocality": "Atakum",
-              "addressRegion": "Samsun",
-              "postalCode": STORE_POSTAL,
-              "addressCountry": "TR"
-            }
-          },
-          "priceValidUntil": new Date(new Date().setFullYear(new Date().getFullYear() + 1)).toISOString().split("T")[0],
-          "url": `https://www.enuygun.pet/${data.slug}`
-        }
       },
       {
         "@type": ["LocalBusiness", "PetStore"],
@@ -317,7 +256,7 @@ export default function KeywordPage() {
         </nav>
 
         <h1 className="text-xl font-bold text-foreground mb-4 leading-tight" data-testid="text-keyword-title">
-          {data.keyword} — Samsun Atakum
+          {keywordAsTitle(data.keyword)}
         </h1>
 
         {isBreedPage && (
@@ -382,20 +321,20 @@ export default function KeywordPage() {
             EnuygunPet Gross Market Hakkında
           </h2>
           <p className="text-xs text-muted-foreground leading-relaxed">
-            EnuygunPet, Samsun Atakum'da 3078. Sokak No:10 adresinde faaliyet gösteren Samsun'un en büyük petshop gross marketidir. Kedi maması, köpek maması, kuş yemi, kedi kumu, tasma, oyuncak, yatak, kafes ve akvaryum malzemeleri dahil on binlerce ürün çeşidi tek çatı altında sunulmaktadır.
+            EnuygunPet, Samsun Atakum'da kedi ve köpek mamaları, kedi kumu, kuş yemi, tasma, oyuncak, taşıma ve bakım ürünleri sunan evcil hayvan ürünleri mağazasıdır.
           </p>
           <p className="text-xs text-muted-foreground leading-relaxed">
-            Gross market modelimiz sayesinde perakende fiyatlarının çok altında alışveriş yapabilirsiniz. Royal Canin, Hills Science Plan, Pro Plan, Brit Care, Reflex, Enjoy, Acana, Orijen, Pedigree, Whiskas ve Felix gibi Türkiye'nin önde gelen markalarının tüm ürün gamlarını stoğumuzda bulunduruyoruz. Büyük gramaj ve toplu alımlarda fiyat avantajı daha da belirginleşmektedir.
+            Ürün satın almadan önce marka, tam ürün adı, gramaj veya ölçüyü belirleyin. Güncel stok ve ürün bilgisi için WhatsApp hattından mağazaya ulaşabilirsiniz.
           </p>
 
           <h3 className="text-sm font-bold text-foreground">Ürün Kategorilerimiz</h3>
           <p className="text-xs text-muted-foreground leading-relaxed">
-            Mağazamızda beş ana kategoride ürün sunmaktayız: <strong>Kedi ürünleri</strong> (mama, kum, oyuncak, tırmalama tahtası, taşıma çantası), <strong>Köpek ürünleri</strong> (mama, tasma, koşum, oyuncak, yatak, bakım ürünleri), <strong>Kuş ürünleri</strong> (yem, kafes, tünek, mineral taşı, vitamin), <strong>Balık ve akvaryum ürünleri</strong> (yem, filtre, ışık, süsleme), <strong>Küçük hayvan ürünleri</strong> (hamster, tavşan, guinea pig yemi ve kafesleri). Her kategoride geniş marka ve gramaj seçenekleri mevcuttur.
+            <strong>Kedi ürünleri</strong>, <strong>köpek ürünleri</strong>, <strong>kuş ürünleri</strong>, <strong>akvaryum ürünleri</strong> ve <strong>küçük hayvan ürünleri</strong> için ürün türlerini ve ölçü seçeneklerini mağazada karşılaştırabilirsiniz.
           </p>
 
-          <h3 className="text-sm font-bold text-foreground">Neden EnuygunPet?</h3>
+          <h3 className="text-sm font-bold text-foreground">Ürün Bilgisi</h3>
           <p className="text-xs text-muted-foreground leading-relaxed">
-            Samsun'da petshop arayan evcil hayvan sahiplerinin EnuygunPet'i tercih etme nedenleri şunlardır: Gross market fiyat avantajı — perakende fiyatların %30–50 altında fiyatlar. Geniş stok — binlerce ürün çeşidi her zaman raflarda, stoksuz kalmak nadiren yaşanır. Uzman danışmanlık — personelimiz beslenme ve bakım konusunda deneyimlidir. Kolay erişim — 3078. Sokak üzerinde, geniş otopark imkânı mevcut.
+            Mama veya sağlık destek ürünü seçerken hayvanın yaşını, kilosunu ve veteriner önerisini esas alın. Aksesuar seçiminde ölçü, malzeme ve güvenlik özelliklerini kontrol edin.
           </p>
 
           <div className="border border-border rounded-lg p-3 space-y-2">
