@@ -302,7 +302,7 @@ function productSections(ctx: Context): SeoSection[] {
 
 function priceSection(ctx: Context): SeoSection {
   return section(
-    `${keywordAsTitle(ctx.keyword)} fiyatını neler etkiler?`,
+    "Fiyat ve paket karşılaştırması",
     `${ctx.keyword} fiyatı marka, ürün serisi, içerik veya malzeme, ${ctx.size ? `${ctx.size} gramaj` : "paket boyu"} ve satış dönemine göre değişebilir. Güncelliğini hızla yitiren sabit bir rakam vermek yerine aynı ölçü ve varyantı karşılaştırmak daha sağlıklıdır.`,
     "Kampanya karşılaştırırken kargo, birim kilogram veya litre maliyeti, ürünün tüketim süresi ve iade koşulları hesaba katılmalıdır. Aşırı düşük fiyatlı, kaynağı belirsiz veya ambalajı bozulmuş ürün tasarruf değil risk oluşturur.",
   );
@@ -352,22 +352,23 @@ export function pickImages(keyword: string): SeoImage[] {
 
 export function buildKeywordDescription(keyword: string): string {
   const ctx = contextFor(keyword);
+  const title = keywordAsTitle(ctx.keyword);
   const descriptions: Record<ProductKind, string> = {
-    "kedi-mama": `${ctx.keyword}: yaş, içerik, gramaj ve mama geçişi hakkında seçim rehberi. Kedi maması ürünlerini doğru karşılaştırmak için önemli bilgiler.`,
-    "kopek-mama": `${ctx.keyword}: ırk büyüklüğü, yaş, içerik ve porsiyon hakkında seçim rehberi. Köpek maması ürünlerini doğru karşılaştırın.`,
-    "kedi-kum": `${ctx.keyword}: bentonit, silika, tofu ve pelet seçenekleri; toz, koku, paket boyu ve doğru kullanım hakkında ürün rehberi.`,
-    tuvalet: `${ctx.keyword}: ölçü, açık-kapalı ve otomatik model farkları, yerleşim, güvenlik ve temizlik hakkında seçim rehberi.`,
-    tasima: `${ctx.keyword}: doğru ölçü, havalandırma, taşıma kapasitesi ve yolculuk güvenliği hakkında ürün seçim rehberi.`,
-    tasma: `${ctx.keyword}: doğru beden, boyun tasması ve göğüs koşumu farkları, malzeme ve güvenlik hakkında seçim rehberi.`,
-    oyuncak: `${ctx.keyword}: yaşa ve oyun biçimine uygun oyuncak, güvenli malzeme, boyut, kullanım ve temizlik hakkında bilgiler.`,
-    yasam: `${ctx.keyword}: doğru ölçü, malzeme, konfor, güvenlik, yerleşim ve temizlik hakkında pet ürünü seçim rehberi.`,
-    kus: `${ctx.keyword}: kuş türüne uygun yem, kafes veya aksesuar seçimi; beslenme, güvenlik ve hijyen hakkında bilgiler.`,
-    akvaryum: `${ctx.keyword}: akvaryum hacmi, filtrasyon, yemleme, su bakımı, ekipman uyumu ve güvenlik hakkında ürün rehberi.`,
-    "kucuk-hayvan": `${ctx.keyword}: hamster, tavşan ve küçük hayvanlar için doğru yem, kafes, altlık ve aksesuar seçimi hakkında bilgiler.`,
-    bakim: `${ctx.keyword}: evcil hayvan türüne uygun bakım ürünü seçimi, güvenli kullanım, hijyen ve saklama hakkında rehber.`,
-    petshop: `${ctx.keyword}: mama, kum, tasma, taşıma, oyuncak ve bakım ürünlerini seçerken dikkat edilmesi gerekenler. EnuygunPet ürün rehberi.`,
-    marka: `${ctx.keyword}: doğru varyant, gramaj, etiket, ambalaj ve benzer ürün karşılaştırması hakkında satın alma rehberi.`,
-    genel: `${ctx.keyword} hakkında ürün özellikleri, ölçü, kullanım, güvenlik ve satın alma öncesi kontrol bilgileri. EnuygunPet ürün rehberi.`,
+    "kedi-mama": `${title}: yaş, içerik, gramaj ve mama geçişi hakkında seçim rehberi. Kedi maması ürünlerini doğru karşılaştırmak için önemli bilgiler.`,
+    "kopek-mama": `${title}: ırk büyüklüğü, yaş, içerik ve porsiyon hakkında seçim rehberi. Köpek maması ürünlerini doğru karşılaştırın.`,
+    "kedi-kum": `${title}: bentonit, silika, tofu ve pelet seçenekleri; toz, koku, paket boyu ve doğru kullanım hakkında ürün rehberi.`,
+    tuvalet: `${title}: ölçü, açık-kapalı ve otomatik model farkları, yerleşim, güvenlik ve temizlik hakkında seçim rehberi.`,
+    tasima: `${title}: doğru ölçü, havalandırma, taşıma kapasitesi ve yolculuk güvenliği hakkında ürün seçim rehberi.`,
+    tasma: `${title}: doğru beden, boyun tasması ve göğüs koşumu farkları, malzeme ve güvenlik hakkında seçim rehberi.`,
+    oyuncak: `${title}: yaşa ve oyun biçimine uygun oyuncak, güvenli malzeme, boyut, kullanım ve temizlik hakkında bilgiler.`,
+    yasam: `${title}: doğru ölçü, malzeme, konfor, güvenlik, yerleşim ve temizlik hakkında pet ürünü seçim rehberi.`,
+    kus: `${title}: kuş türüne uygun yem, kafes veya aksesuar seçimi; beslenme, güvenlik ve hijyen hakkında bilgiler.`,
+    akvaryum: `${title}: akvaryum hacmi, filtrasyon, yemleme, su bakımı, ekipman uyumu ve güvenlik hakkında ürün rehberi.`,
+    "kucuk-hayvan": `${title}: hamster, tavşan ve küçük hayvanlar için doğru yem, kafes, altlık ve aksesuar seçimi hakkında bilgiler.`,
+    bakim: `${title}: evcil hayvan türüne uygun bakım ürünü seçimi, güvenli kullanım, hijyen ve saklama hakkında rehber.`,
+    petshop: `${title}: mama, kum, tasma, taşıma, oyuncak ve bakım ürünlerini seçerken dikkat edilmesi gerekenler. EnuygunPet ürün rehberi.`,
+    marka: `${title}: doğru varyant, gramaj, etiket, ambalaj ve benzer ürün karşılaştırması hakkında satın alma rehberi.`,
+    genel: `${title} hakkında ürün özellikleri, ölçü, kullanım, güvenlik ve satın alma öncesi kontrol bilgileri. EnuygunPet ürün rehberi.`,
   };
   return descriptions[ctx.kind];
 }
