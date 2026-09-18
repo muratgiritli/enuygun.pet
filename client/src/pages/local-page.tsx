@@ -184,7 +184,7 @@ export default function LocalPage() {
             <Store className="w-5 h-5 text-primary-foreground/80" />
             <span className="text-sm text-primary-foreground/80">{locationLabel}</span>
           </div>
-          <h1 className="text-2xl font-bold leading-tight" data-testid="local-h1">{page.h1}</h1>
+          <h1 className="text-2xl font-bold leading-tight" data-testid="local-h1">{keywordAsTitle(page.h1)}</h1>
           <p className="mt-2 text-primary-foreground/80 text-sm leading-relaxed">{buildKeywordDescription(page.h1)}</p>
         </div>
       </header>

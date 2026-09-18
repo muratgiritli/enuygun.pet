@@ -411,12 +411,13 @@ export function getPageMeta(urlPath: string): PageMeta {
     const slug = localMatch[1];
     const l = localMap.get(slug);
     if (l) {
+      const h1 = keywordAsTitle(l.h1);
       return {
-        title: keywordAsTitle(l.h1),
-        h1: l.h1,
+        title: h1,
+        h1,
         description: clipDesc(buildKeywordDesc(l.h1)),
         bodyHtml: buildSeoBodyHtml(
-          l.h1,
+          h1,
           buildLocalArticle({
             keyword: l.h1,
             slug,

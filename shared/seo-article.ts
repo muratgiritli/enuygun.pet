@@ -82,6 +82,7 @@ const BRANDS: Array<[string, string]> = [
 export function cleanSeoKeyword(value: string): string {
   return value
     .replace(/^[\s.]+|[\s.]+$/g, "")
+    .replace(/\s+[—|]\s*Enuygun\s*Pet(?:\s+Gross Market)?(?:\s+Samsun(?:\s+Atakum)?)?$/i, "")
     .replace(/\s+/g, " ")
     .trim();
 }
