@@ -17,13 +17,8 @@ import {
 } from "@shared/seo-article";
 import {
   PHONE_E164 as PHONE,
-  PHONE_INTL,
   PHONE_WHATSAPP_URL as WA_URL,
   STORE_MAPS_URL as MAPS_URL,
-  STORE_STREET,
-  STORE_POSTAL,
-  STORE_LAT,
-  STORE_LNG,
   STORE_ADDRESS_SHORT,
 } from "@shared/store-info";
 
@@ -148,30 +143,15 @@ export default function LocalPage() {
     "@graph": [
       localImgObj,
       {
-        "@type": "LocalBusiness",
-        "@id": `https://www.enuygun.pet/local/${page.slug}#localbusiness`,
-        "name": page.h1,
-        "description": page.desc,
+        "@type": "WebPage",
+        "@id": `https://www.enuygun.pet/local/${page.slug}#webpage`,
+        "name": keywordAsTitle(page.h1),
+        "description": buildKeywordDescription(page.h1),
         "url": `https://www.enuygun.pet/local/${page.slug}`,
-        "telephone": PHONE,
-        "image": STORE_IMAGES,
-        "address": {
-          "@type": "PostalAddress",
-          "streetAddress": STORE_STREET,
-          "addressLocality": "Atakum",
-          "addressRegion": "Samsun",
-          "postalCode": STORE_POSTAL,
-          "addressCountry": "TR"
-        },
-        "geo": { "@type": "GeoCoordinates", "latitude": STORE_LAT, "longitude": STORE_LNG },
-        "openingHoursSpecification": [{
-          "@type": "OpeningHoursSpecification",
-          "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
-          "opens": "09:00",
-          "closes": "21:00"
-        }],
-        "areaServed": { "@type": "City", "name": "Samsun" },
-        "parentOrganization": { "@id": "https://www.enuygun.pet/#organization" }
+        "inLanguage": "tr-TR",
+        "isPartOf": { "@id": "https://www.enuygun.pet/#website" },
+        "about": { "@id": "https://www.enuygun.pet/#petstore" },
+        "primaryImageOfPage": localImgObj
       },
       {
         "@type": "BreadcrumbList",
@@ -181,47 +161,15 @@ export default function LocalPage() {
         ]
       },
       {
-        "@type": "Service",
-        "name": page.h1,
-        "description": page.desc,
-        "serviceType": "Evcil Hayvan Ürünleri Satışı",
-        "provider": { "@id": "https://www.enuygun.pet/#organization" },
-        "areaServed": { "@type": "Place", "name": locationLabel }
-      },
-      {
         "@type": "FAQPage",
-        "mainEntity": [
-          ...page.sections.slice(0, 3).map((sec: { h: string; p: string }) => ({
+        "mainEntity": article.faqs.map((faq) => ({
             "@type": "Question",
-            "name": sec.h,
+            "name": faq.q,
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": sec.p
+              "text": faq.a
             }
-          })),
-          {
-            "@type": "Question",
-            "name": `${locationLabel} bölgesine en yakın petshop nerede?`,
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": `${locationLabel} bölgesine en yakın petshop EnuygunPet Gross Market'tir. Samsun Atakum, ${STORE_ADDRESS_SHORT} adresinde hizmet vermektedir. Haftanın 7 günü 09:00-21:00 açık olup WhatsApp: ${PHONE_INTL} numarasından bilgi alabilirsiniz.`
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "EnuygunPet'te hangi evcil hayvan ürünleri bulunur?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Kedi maması, köpek maması, kuş yemi, kedi kumu, tasma, oyuncak, kafes, akvaryum malzemeleri ve binlerce aksesuar çeşidi gross market fiyatıyla bulunmaktadır. Royal Canin, Hills, Pro Plan, Reflex başta olmak üzere 50'den fazla marka mevcuttur."
-            }
-          }
-        ]
-      },
-      {
-        "@type": "Organization",
-        "@id": "https://www.enuygun.pet/#organization",
-        "name": "EnuygunPet Gross Market",
-        "url": "https://www.enuygun.pet/"
+          }))
       }
     ]
   };
@@ -237,7 +185,7 @@ export default function LocalPage() {
             <span className="text-sm text-primary-foreground/80">{locationLabel}</span>
           </div>
           <h1 className="text-2xl font-bold leading-tight" data-testid="local-h1">{page.h1}</h1>
-          <p className="mt-2 text-primary-foreground/80 text-sm leading-relaxed">{page.intro}</p>
+          <p className="mt-2 text-primary-foreground/80 text-sm leading-relaxed">{buildKeywordDescription(page.h1)}</p>
         </div>
       </header>
 

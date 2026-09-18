@@ -533,11 +533,18 @@ export function getPageMeta(urlPath: string): PageMeta {
 
   if (healthCategoryMeta[bare]) {
     const hc = healthCategoryMeta[bare];
-    const art = generateContent(hc.h1, bare);
+    const animalByHub: Record<string, string> = {
+      "saglik/kedi": "Kedi",
+      "saglik/kopek": "Köpek",
+      "saglik/kus": "Kuş",
+      "saglik/balik": "Balık",
+    };
+    const animal = animalByHub[bare] || "Evcil hayvan";
+    const art = buildHealthArticle(hc.h1, animal, "Bakım ve beslenme", bare);
     return {
-      title: clipTitle(hc.title),
+      title: keywordAsTitle(hc.h1),
       h1: hc.h1,
-      description: clipDesc(hc.description),
+      description: clipDesc(buildKeywordDesc(`${animal} bakım ürünleri`)),
       bodyHtml: buildSeoBodyHtml(hc.h1, art),
     };
   }

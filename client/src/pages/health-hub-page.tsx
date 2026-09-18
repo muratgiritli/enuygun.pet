@@ -6,7 +6,11 @@ import { Phone, MapPin, Clock, ChevronRight } from "lucide-react";
 import { SiWhatsapp } from "react-icons/si";
 import NotFound from "@/pages/not-found";
 import SeoArticleBody from "@/components/seo-article-body";
-import { buildKeywordArticle } from "@shared/seo-article";
+import {
+  buildHealthArticle,
+  buildKeywordDescription,
+  keywordAsTitle,
+} from "@shared/seo-article";
 import {
   PHONE_E164 as PHONE,
   PHONE_DISPLAY,
@@ -73,12 +77,15 @@ export default function HealthHubPage() {
   const [, params] = useRoute("/saglik/:animal");
   const animal = params?.animal || "";
   const guide = GUIDES[animal];
+  const animalTr = ({ kedi: "Kedi", kopek: "Köpek", kus: "Kuş", balik: "Balık" } as Record<string, string>)[animal] || "Evcil hayvan";
   useTrack(guide ? `saglik/${animal}` : "", animal);
 
   useEffect(() => {
     if (!guide) return;
     const canonicalUrl = `https://www.enuygun.pet/saglik/${animal}`;
-    document.title = guide.title;
+    const title = keywordAsTitle(guide.h1);
+    const description = buildKeywordDescription(`${animalTr} bakım ürünleri`);
+    document.title = title;
     const setMeta = (sel: string, attr: string, val: string) => {
       let el = document.querySelector(sel);
       if (!el) { el = document.createElement("meta"); document.head.appendChild(el); }
@@ -90,15 +97,15 @@ export default function HealthHubPage() {
       el.setAttribute("href", href);
     };
     setLink("canonical", canonicalUrl);
-    setMeta('meta[name="description"]', "content", guide.desc);
-    setMeta('meta[property="og:title"]', "content", guide.title);
-    setMeta('meta[property="og:description"]', "content", guide.desc);
+    setMeta('meta[name="description"]', "content", description);
+    setMeta('meta[property="og:title"]', "content", title);
+    setMeta('meta[property="og:description"]', "content", description);
     setMeta('meta[property="og:url"]', "content", canonicalUrl);
-  }, [guide, animal]);
+  }, [guide, animal, animalTr]);
 
   if (!guide) return <NotFound />;
 
-  const article = buildKeywordArticle(guide.h1, `saglik/${animal}`);
+  const article = buildHealthArticle(guide.h1, animalTr, "Bakım ve beslenme", `saglik/${animal}`);
 
   return (
     <div className="min-h-screen bg-background">
