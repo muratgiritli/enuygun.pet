@@ -1,4 +1,3 @@
-import { motion } from "framer-motion";
 import { Link } from "wouter";
 import { Phone, Clock, Star, MapPin } from "lucide-react";
 import { SiWhatsapp } from "react-icons/si";
@@ -84,15 +83,13 @@ export default function SiteHeader({ showShopGrid = true }: { showShopGrid?: boo
         <div className="grid grid-cols-3 gap-2.5 lg:grid-cols-6 lg:gap-4">
           {categories.map((cat, i) => (
             <a key={cat.label} href={SHOP_URL} target="_blank" rel="noopener noreferrer" data-testid={`link-category-${i}`}>
-              <motion.div
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 0.05 * i }}
-                className={`rounded-2xl bg-gradient-to-br ${cat.color} p-3 lg:p-4 flex flex-col items-center justify-center gap-1.5 lg:gap-2.5 shadow-sm lg:hover:shadow-lg lg:hover:-translate-y-0.5 lg:transition-all aspect-square`}
+              <div
+                style={{ animationDelay: `${0.05 * i}s` }}
+                className={`animate-in fade-in zoom-in-95 fill-mode-backwards duration-300 rounded-2xl bg-gradient-to-br ${cat.color} p-3 lg:p-4 flex flex-col items-center justify-center gap-1.5 lg:gap-2.5 shadow-sm lg:hover:shadow-lg lg:hover:-translate-y-0.5 lg:transition-all aspect-square`}
               >
                 <span className="text-2xl lg:text-4xl">{cat.emoji}</span>
                 <span className="text-white text-[11px] lg:text-sm font-bold text-center leading-tight">{cat.label}</span>
-              </motion.div>
+              </div>
             </a>
           ))}
         </div>
