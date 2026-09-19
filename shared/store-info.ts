@@ -30,5 +30,9 @@ export const SITE_ORIGIN = "https://www.enuygun.pet";
 export const SITE_HOST = "www.enuygun.pet";
 export const APEX_HOST = "enuygun.pet";
 export const SHOP_URL = "https://www.enuygunpetshop.com";
+
+/** Google Haritalar işletme kaydı — yorumları okumak ve yazmak için. */
+export const GOOGLE_REVIEWS_URL =
+  "https://www.google.com/maps/search/?api=1&query=EnuygunPet%20Gross%20Market%20Yeni%20Mahalle%203078.%20Sokak%20No%3A10%20Atakum%20Samsun";
 export const STORE_HOURS = "09:00–21:00";
 export const STORE_HOURS_LABEL = "Her gün 09:00–21:00";

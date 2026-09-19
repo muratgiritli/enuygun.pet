@@ -9,6 +9,7 @@ import InternalLinksSection, { detectType } from "@/components/internal-links";
 import { Card } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
 import SeoArticleBody from "@/components/seo-article-body";
+import StoreTrust from "@/components/store-trust";
 import {
   buildCategoryArticle,
   buildKeywordDescription,
@@ -230,6 +231,8 @@ export default function CategoryPage() {
 
       <main className="flex-1 max-w-2xl mx-auto w-full px-4 py-6 space-y-6">
         <SeoArticleBody article={article} testId="category-article" />
+
+        <StoreTrust productLabel={cat.h1} />
 
         {cat.brands && cat.brands.length > 0 && (
           <Card className="p-4">
