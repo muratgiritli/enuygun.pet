@@ -41,11 +41,11 @@ export async function registerRoutes(
 ): Promise<Server> {
 
   const SITEMAP_IMGS = [
-    { loc: "https://static.wixstatic.com/media/63853e_77a3ee3fa9d942a7af5b6f25a0520653~mv2.jpeg", base: "EnuygunPet Samsun Atakum petshop gross market mağaza" },
-    { loc: "https://static.wixstatic.com/media/63853e_f5ae600f104c4dfcae521fe694ba017b~mv2.jpeg", base: "Atakum petshop ürün reyonları kedi köpek mama" },
-    { loc: "https://static.wixstatic.com/media/63853e_4c33bdb1dc274eab8358c2d598f7cfee~mv2.jpeg", base: "Samsun pet shop kedi ürünleri mama kumu aksesuar" },
-    { loc: "https://static.wixstatic.com/media/63853e_ba5ea5e88a5a41409f4742caf8dced1c~mv2.jpeg", base: "Samsun Atakum köpek mama aksesuar petshop" },
-    { loc: "https://static.wixstatic.com/media/63853e_346d0d0b96154639b0a27296b18d70f5~mv2.jpeg", base: "Samsun petshop kuş yemi kafes malzemeleri" },
+    { loc: "https://www.enuygun.pet/images/magaza/magaza-1200.webp", base: "EnuygunPet Samsun Atakum petshop gross market mağaza" },
+    { loc: "https://www.enuygun.pet/images/magaza/reyonlar-1200.webp", base: "Atakum petshop ürün reyonları kedi köpek mama" },
+    { loc: "https://www.enuygun.pet/images/magaza/kedi-1200.webp", base: "Samsun pet shop kedi ürünleri mama kumu aksesuar" },
+    { loc: "https://www.enuygun.pet/images/magaza/kopek-1200.webp", base: "Samsun Atakum köpek mama aksesuar petshop" },
+    { loc: "https://www.enuygun.pet/images/magaza/kus-1200.webp", base: "Samsun petshop kuş yemi kafes malzemeleri" },
   ];
 
   function xmlEscape(str: string): string {
@@ -132,24 +132,24 @@ ${sitemapEntries}
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <image:image>
-      <image:loc>https://static.wixstatic.com/media/63853e_77a3ee3fa9d942a7af5b6f25a0520653~mv2.jpeg</image:loc>
+      <image:loc>https://www.enuygun.pet/images/magaza/magaza-1200.webp</image:loc>
       <image:title>EnuygunPet Samsun Atakum Petshop Gross Market</image:title>
       <image:caption>Samsun Atakum'un en büyük petshop gross marketi - mağaza ön görünüm</image:caption>
     </image:image>
     <image:image>
-      <image:loc>https://static.wixstatic.com/media/63853e_f5ae600f104c4dfcae521fe694ba017b~mv2.jpeg</image:loc>
+      <image:loc>https://www.enuygun.pet/images/magaza/reyonlar-1200.webp</image:loc>
       <image:title>Atakum petshop ürün reyonları</image:title>
     </image:image>
     <image:image>
-      <image:loc>https://static.wixstatic.com/media/63853e_4c33bdb1dc274eab8358c2d598f7cfee~mv2.jpeg</image:loc>
+      <image:loc>https://www.enuygun.pet/images/magaza/kedi-1200.webp</image:loc>
       <image:title>Samsun pet shop kedi ürünleri</image:title>
     </image:image>
     <image:image>
-      <image:loc>https://static.wixstatic.com/media/63853e_ba5ea5e88a5a41409f4742caf8dced1c~mv2.jpeg</image:loc>
+      <image:loc>https://www.enuygun.pet/images/magaza/kopek-1200.webp</image:loc>
       <image:title>Köpek aksesuarları Atakum</image:title>
     </image:image>
     <image:image>
-      <image:loc>https://static.wixstatic.com/media/63853e_346d0d0b96154639b0a27296b18d70f5~mv2.jpeg</image:loc>
+      <image:loc>https://www.enuygun.pet/images/magaza/kus-1200.webp</image:loc>
       <image:title>Kuş yemleri ve kafesleri</image:title>
     </image:image>
   </url>
@@ -214,7 +214,7 @@ ${sitemapEntries}
   });
 
   app.get("/sitemap-health.xml", (_req, res) => {
-    const IMG = "https://static.wixstatic.com/media/63853e_4c33bdb1dc274eab8358c2d598f7cfee~mv2.jpeg";
+    const IMG = "https://www.enuygun.pet/images/magaza/kedi-1200.webp";
     res.set("Content-Type", "application/xml");
     res.set("Cache-Control", "public, max-age=86400");
     res.send(buildHealthSitemap(healthKeywords, IMG, "kedi-hastaliklari"));
@@ -245,21 +245,21 @@ ${urlEntries}
   }
 
   app.get("/sitemap-kopek.xml", (_req, res) => {
-    const IMG = "https://static.wixstatic.com/media/63853e_ba5ea5e30dcd46b1909f6e7b8a63e3df~mv2.jpeg";
+    const IMG = "https://www.enuygun.pet/images/magaza/kopek-1200.webp";
     res.set("Content-Type", "application/xml");
     res.set("Cache-Control", "public, max-age=86400");
     res.send(buildHealthSitemap(kopekKeywords, IMG, "kopek-hastaliklari"));
   });
 
   app.get("/sitemap-papagan.xml", (_req, res) => {
-    const IMG = "https://static.wixstatic.com/media/63853e_346d0d0e8e5e4c9680b61bc0d4d65cf0~mv2.jpeg";
+    const IMG = "https://www.enuygun.pet/images/magaza/kus-1200.webp";
     res.set("Content-Type", "application/xml");
     res.set("Cache-Control", "public, max-age=86400");
     res.send(buildHealthSitemap(papaganKeywords, IMG, "papagan-hastaliklari"));
   });
 
   app.get("/sitemap-muhabbet.xml", (_req, res) => {
-    const IMG = "https://static.wixstatic.com/media/63853e_346d0d0e8e5e4c9680b61bc0d4d65cf0~mv2.jpeg";
+    const IMG = "https://www.enuygun.pet/images/magaza/kus-1200.webp";
     res.set("Content-Type", "application/xml");
     res.set("Cache-Control", "public, max-age=86400");
     res.send(buildHealthSitemap(muhabbetKeywords, IMG, "muhabbet-kusu-hastaliklari"));
@@ -353,10 +353,10 @@ Disallow: /admin
 
   app.get("/rss.xml", (_req, res) => {
     const IMGS: Record<string, string> = {
-      kus: "https://static.wixstatic.com/media/63853e_346d0d0b96154639b0a27296b18d70f5~mv2.jpeg",
-      kopek: "https://static.wixstatic.com/media/63853e_ba5ea5e88a5a41409f4742caf8dced1c~mv2.jpeg",
-      kedi: "https://static.wixstatic.com/media/63853e_4c33bdb1dc274eab8358c2d598f7cfee~mv2.jpeg",
-      genel: "https://static.wixstatic.com/media/63853e_77a3ee3fa9d942a7af5b6f25a0520653~mv2.jpeg",
+      kus: "https://www.enuygun.pet/images/magaza/kus-1200.webp",
+      kopek: "https://www.enuygun.pet/images/magaza/kopek-1200.webp",
+      kedi: "https://www.enuygun.pet/images/magaza/kedi-1200.webp",
+      genel: "https://www.enuygun.pet/images/magaza/magaza-1200.webp",
     };
     function pickRssImg(kw: string) {
       const k = kw.toLowerCase();
@@ -400,7 +400,7 @@ Disallow: /admin
     <lastBuildDate>${pubDate}</lastBuildDate>
     <atom:link href="https://www.enuygun.pet/rss.xml" rel="self" type="application/rss+xml"/>
     <image>
-      <url>https://static.wixstatic.com/media/63853e_77a3ee3fa9d942a7af5b6f25a0520653~mv2.jpeg</url>
+      <url>https://www.enuygun.pet/images/magaza/magaza-1200.webp</url>
       <title>EnuygunPet Gross Market</title>
       <link>https://www.enuygun.pet</link>
     </image>${rssItems}

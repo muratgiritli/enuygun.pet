@@ -3,6 +3,7 @@ import {
   STORE_ADDRESS_LINE,
   STORE_ADDRESS_SHORT,
 } from "./store-info";
+import { STORE_IMAGE_PATHS } from "./store-images";
 
 export type SeoImage = { src: string; alt: string };
 export type SeoSection = { heading: string; paragraphs: string[] };
@@ -16,11 +17,11 @@ export type SeoArticle = {
 };
 
 export const STORE_IMAGES = {
-  general: "https://static.wixstatic.com/media/63853e_77a3ee3fa9d942a7af5b6f25a0520653~mv2.jpeg",
-  reyonlar: "https://static.wixstatic.com/media/63853e_f5ae600f104c4dfcae521fe694ba017b~mv2.jpeg",
-  kedi: "https://static.wixstatic.com/media/63853e_4c33bdb1dc274eab8358c2d598f7cfee~mv2.jpeg",
-  kopek: "https://static.wixstatic.com/media/63853e_ba5ea5e88a5a41409f4742caf8dced1c~mv2.jpeg",
-  kus: "https://static.wixstatic.com/media/63853e_346d0d0b96154639b0a27296b18d70f5~mv2.jpeg",
+  general: STORE_IMAGE_PATHS.magaza,
+  reyonlar: STORE_IMAGE_PATHS.reyonlar,
+  kedi: STORE_IMAGE_PATHS.kedi,
+  kopek: STORE_IMAGE_PATHS.kopek,
+  kus: STORE_IMAGE_PATHS.kus,
 } as const;
 
 const STORE = "EnuygunPet Gross Market";

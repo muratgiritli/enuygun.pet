@@ -69,7 +69,7 @@ const schema = {
       "url": "https://www.enuygun.pet",
       "telephone": PHONE,
       "email": "info@enuygun.pet",
-      "image": "https://static.wixstatic.com/media/63853e_77a3ee3fa9d942a7af5b6f25a0520653~mv2.jpeg",
+      "image": "https://www.enuygun.pet/images/magaza/magaza-1200.webp",
       "priceRange": "₺₺",
       "address": {
         "@type": "PostalAddress",

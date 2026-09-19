@@ -88,10 +88,10 @@ export async function postToInstagram(keyword: string, slug: string): Promise<Po
   }
 
   const IMGS: Record<string, string> = {
-    kus: "https://static.wixstatic.com/media/63853e_346d0d0b96154639b0a27296b18d70f5~mv2.jpeg",
-    kopek: "https://static.wixstatic.com/media/63853e_ba5ea5e88a5a41409f4742caf8dced1c~mv2.jpeg",
-    kedi: "https://static.wixstatic.com/media/63853e_4c33bdb1dc274eab8358c2d598f7cfee~mv2.jpeg",
-    genel: "https://static.wixstatic.com/media/63853e_77a3ee3fa9d942a7af5b6f25a0520653~mv2.jpeg",
+    kus: "https://www.enuygun.pet/images/magaza/kus-1200.webp",
+    kopek: "https://www.enuygun.pet/images/magaza/kopek-1200.webp",
+    kedi: "https://www.enuygun.pet/images/magaza/kedi-1200.webp",
+    genel: "https://www.enuygun.pet/images/magaza/magaza-1200.webp",
   };
   function pickImg(kw: string) {
     const k = kw.toLowerCase();

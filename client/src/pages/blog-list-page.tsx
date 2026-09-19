@@ -47,7 +47,7 @@ export default function BlogListPage() {
   useEffect(() => {
     const title = "Evcil Hayvan Bakım Rehberi — 36 Uzman Makale | EnuygunPet Samsun";
     const desc = "Kedi, köpek, kuş ve evcil hayvan bakımı hakkında 36 uzman rehber. Beslenme, sağlık ve bakım ipuçları. Samsun Atakum EnuygunPet Gross Market'te en uygun fiyatlarla.";
-    const img = "https://static.wixstatic.com/media/63853e_77a3ee3fa9d942a7af5b6f25a0520653~mv2.jpeg";
+    const img = "https://www.enuygun.pet/images/magaza/magaza-1200.webp";
     document.title = title;
     const setMeta = (sel: string, attr: string, val: string) => {
       let el = document.querySelector(sel) as HTMLMetaElement | null;
