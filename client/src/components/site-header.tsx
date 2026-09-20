@@ -9,12 +9,12 @@ import {
 } from "@shared/store-info";
 
 const categories = [
-  { label: "Kedi Maması", emoji: "🐱", color: "from-orange-400 to-amber-500" },
-  { label: "Köpek Maması", emoji: "🐶", color: "from-blue-400 to-blue-600" },
-  { label: "Kuş Ürünleri", emoji: "🦜", color: "from-green-400 to-emerald-600" },
-  { label: "Akvaryum", emoji: "🐠", color: "from-cyan-400 to-blue-500" },
-  { label: "Kemirgen Sürüngen", emoji: "🐹", color: "from-slate-400 to-slate-600" },
-  { label: "Atakum Petshop", emoji: "📍", color: "from-red-400 to-rose-600" },
+  { label: "Kedi Maması", emoji: "🐱", color: "from-orange-400 to-amber-500", href: "/kedi-mamasi" },
+  { label: "Köpek Maması", emoji: "🐶", color: "from-blue-400 to-blue-600", href: "/kopek-mamasi" },
+  { label: "Kuş Ürünleri", emoji: "🦜", color: "from-green-400 to-emerald-600", href: "/kus-urunleri" },
+  { label: "Akvaryum", emoji: "🐠", color: "from-cyan-400 to-blue-500", href: "/balik-urunleri" },
+  { label: "Kemirgen Sürüngen", emoji: "🐹", color: "from-slate-400 to-slate-600", href: "/kucuk-hayvan-urunleri" },
+  { label: "Atakum Petshop", emoji: "📍", color: "from-red-400 to-rose-600", href: "/atakum-petshop" },
 ];
 
 export default function SiteHeader({ showShopGrid = true }: { showShopGrid?: boolean }) {
@@ -82,7 +82,7 @@ export default function SiteHeader({ showShopGrid = true }: { showShopGrid?: boo
         </a>
         <div className="grid grid-cols-3 gap-2.5 lg:grid-cols-6 lg:gap-4">
           {categories.map((cat, i) => (
-            <a key={cat.label} href={SHOP_URL} target="_blank" rel="noopener noreferrer" data-testid={`link-category-${i}`}>
+            <Link key={cat.label} href={cat.href} data-testid={`link-category-${i}`}>
               <div
                 style={{ animationDelay: `${0.05 * i}s` }}
                 className={`animate-in fade-in zoom-in-95 fill-mode-backwards duration-300 rounded-2xl bg-gradient-to-br ${cat.color} p-3 lg:p-4 flex flex-col items-center justify-center gap-1.5 lg:gap-2.5 shadow-sm lg:hover:shadow-lg lg:hover:-translate-y-0.5 lg:transition-all aspect-square`}
@@ -90,7 +90,7 @@ export default function SiteHeader({ showShopGrid = true }: { showShopGrid?: boo
                 <span className="text-2xl lg:text-4xl">{cat.emoji}</span>
                 <span className="text-white text-[11px] lg:text-sm font-bold text-center leading-tight">{cat.label}</span>
               </div>
-            </a>
+            </Link>
           ))}
         </div>
       </section>

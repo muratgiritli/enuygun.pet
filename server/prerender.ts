@@ -482,6 +482,7 @@ export function getPageMeta(urlPath: string): PageMeta {
         h1,
         description: clipDesc(`${kw} hakkında bilgi: belirtiler, nedenler ve ne yapmalısınız? Samsun Atakum EnuygunPet'te ${health.categoryName.toLowerCase()} ürünleri.`),
         bodyHtml: buildSeoBodyHtml(h1, art),
+        noIndex: true,
       };
     }
     return notFoundMeta();
@@ -498,6 +499,7 @@ export function getPageMeta(urlPath: string): PageMeta {
       h1,
       description: clipDesc(buildKeywordDesc(kw)),
       bodyHtml: buildSeoBodyHtml(h1, art),
+      noIndex: true,
     };
   }
 

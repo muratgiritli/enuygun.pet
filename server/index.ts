@@ -51,10 +51,6 @@ app.use((req, res, next) => {
 app.use(compression({
   level: 6,
   threshold: 1024,
-  filter: (req, res) => {
-    if (req.path.startsWith("/api/image-proxy")) return false;
-    return compression.filter(req, res);
-  },
 }));
 
 declare module "http" {

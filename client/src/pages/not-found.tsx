@@ -1,8 +1,20 @@
+import { useEffect } from "react";
 import { Link } from "wouter";
 import { Home, BookOpen, ShoppingBag, ChevronRight } from "lucide-react";
 import { PHONE_WHATSAPP_URL } from "@shared/store-info";
 
 export default function NotFound() {
+  useEffect(() => {
+    document.title = "Sayfa Bulunamadı | EnuygunPet";
+    let robots = document.querySelector('meta[name="robots"]') as HTMLMetaElement | null;
+    if (!robots) {
+      robots = document.createElement("meta");
+      robots.setAttribute("name", "robots");
+      document.head.appendChild(robots);
+    }
+    robots.content = "noindex, nofollow";
+  }, []);
+
   return (
     <div className="min-h-screen w-full flex flex-col items-center justify-center bg-background px-4 py-12">
       <div className="w-full max-w-sm text-center space-y-6">

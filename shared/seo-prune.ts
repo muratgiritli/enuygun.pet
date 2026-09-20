@@ -16,41 +16,98 @@ export const PRUNE_TARGETS = {
   balikUrunleri: "/balik-urunleri",
   kucukHayvanUrunleri: "/kucuk-hayvan-urunleri",
   surungenUrunleri: "/surungen-urunleri",
+  royalCanin: "/royal-canin",
+  proPlan: "/proplan",
 } as const;
 
-/** Kendi petshop sayfalarımız — asla yönlendirilmez. */
-const OWN_PETSHOP_SLUGS = new Set([
+/** Kendi petshop / kategori / marka sayfalarımız — asla yönlendirilmez. */
+const OWN_SLUGS = new Set([
   "petshop-samsun",
   "atakum-petshop",
   "kapida-teslim-petshop",
+  "kedi-mamasi",
+  "kopek-mamasi",
+  "kedi-kumu",
+  "kedi-urunleri",
+  "kopek-urunleri",
+  "kus-urunleri",
+  "balik-urunleri",
+  "kucuk-hayvan-urunleri",
+  "surungen-urunleri",
+  "kedi-mamasi-atakum",
+  "kopek-mamasi-atakum",
+  "hills-science-plan-samsun",
+  "royal-canin",
+  "proplan",
+  "15-kg-kopek-mamasi",
+  "otomatik-kedi-tuvaleti",
+  "royal-canin-kedi-mamasi",
+  "kedi-tasima-cantasi",
+  "kedi-evi",
+  "kopek-kulubesi",
 ]);
 
-const PETSHOP_TOKEN = /(^|-)(petshop|petshoplar|petshoplari|pet-shop|pet-shoplar|pet-market|pet-marketi|pet-store|pet-avm|petmarket|petstore|petsop|pet-sop)($|-)/;
+const PETSHOP_TOKEN =
+  /petshop|pet-shop|petshopl|pet-market|petmarket|petstore|pet-store|pet-avm|petsop|pet-sop/;
+
+/** Samsun'daki rakip petshop / mama mağazası adları. */
+const COMPETITOR_TOKEN =
+  /(^|-)(express-mama|asiyan-pet|biggie-pet|botanik-pet|candas-pet|alkan-pet|kukuli-pet|leon-pet|medusa-pet|melis-pet|mirmir-pet|ysc-pet|pati-pet|th-pet-center|cazip-ve-uygun-pet)($|-)/;
 
 /** Zincir market ve pazaryerleri: stok ve fiyat bizde değil. */
-const OTHER_RETAILER = /(^|-)(a101|a-101|bim|bim-market|sok-market|sokmarket|migros|macrocenter|carrefour|carrefoursa|metro-market|hakmar|tarim-kredi|trendyol|hepsiburada|hepsi-burada|amazon|n11|gittigidiyor|ciceksepeti|pttavm|getir|banabi|teknosa|lcw|ikea|decathlon|watsons|gratis|rossmann|tekzen|koctas|bauhaus)($|-)/;
+const OTHER_RETAILER =
+  /(^|-)(a101|a-101|bim|bim-market|sok-market|sokmarket|migros|macrocenter|carrefour|carrefoursa|metro-market|hakmar|tarim-kredi|trendyol|hepsiburada|hepsi-burada|amazon|n11|gittigidiyor|ciceksepeti|pttavm|getir|banabi|teknosa|lcw|ikea|decathlon|watsons|gratis|rossmann|tekzen|koctas|bauhaus)($|-)/;
 
 /** Yabancı dil ve konum tabanlı genel aramalar. */
-const FOREIGN_QUERY = /(^|-)(near-me|nearme|proximite|cerca-de-mi|cerca|nearby|open-now|delivery|online-shop|pet-supplies|pet-supply|cat-food|dog-food|bird-food|buy-pet-food|pet-food|petfood|best-cat-food|best-dog-food|price-list|where-to-buy)($|-)/;
+const FOREIGN_QUERY =
+  /(^|-)(near-me|nearme|proximite|cerca-de-mi|cerca|nearby|open-now|delivery|online-shop|pet-supplies|pet-supply|cat-food|dog-food|bird-food|buy-pet-food|pet-food|petfood|best-cat-food|best-dog-food|price-list|where-to-buy)($|-)/;
 
 /** İkinci el ilan siteleri ve kullanılmış ürün aramaları. */
-const SECOND_HAND = /(^|-)(2-el|2el|iki-el|ikinci-el|ikinciel|sifir-ayarinda|letgo|sahibinden|dolap|gardrops|spotci|bit-pazari)($|-)/;
+const SECOND_HAND =
+  /(^|-)(2-el|2el|iki-el|ikinci-el|ikinciel|sifir-ayarinda|letgo|sahibinden|dolap|gardrops|spotci|bit-pazari)($|-)/;
 
 /** Canlı hayvan satın alma niyeti taşıyan ifadeler. */
-const LIVE_ANIMAL_INTENT = /(^|-)(satilik|satilir|satis|satisi|satan|satanlar|satan-yerler|satilan|satilan-yerler|nereden-alinir|nereden-alabilirim|nerede-satilir|sahiplendirme|sahiplenme|ucretsiz-sahiplendirme|yavrusu|yavrulari|ilan|ilanlari)($|-)/;
-
-/** Fiyat sorgusu tek başına canlı hayvan niyeti sayılmaz; tür ile birlikte değerlendirilir. */
-const LIVE_ANIMAL_PRICE = /(^|-)(fiyat|fiyati|fiyatlari|kac-tl|ne-kadar|ucuz)($|-)/;
+const LIVE_ANIMAL_INTENT =
+  /(^|-)(satilik|satilir|satis|satisi|satan|satanlar|satan-yerler|satilan|satilan-yerler|nereden-alinir|nereden-alabilirim|nerede-satilir|sahiplendirme|sahiplenme|ucretsiz-sahiplendirme|yavrusu|yavrulari|ilan|ilanlari)($|-)/;
 
 /** Mağazada satılmayan canlı hayvan türleri. */
-const LIVE_SPECIES = /(^|-)(hamster|hamsterlar|tavsan|tavsanlar|kobay|ginepig|gine-domuzu|guinea-pig|chinchilla|sinsilla|cincilla|muhabbet-kusu|muhabbet-kuslari|sultan-papagani|papagan|papaganlar|jako|kakadu|macaw|kanarya|cennet-papagani|forpus|agapornis|iguana|gecko|bukalemun|yilan|piton|kaplumbaga|orumcek|tarantula|japon-baligi|betta|lepistes|melek-balik|discus|oscar-balik|koi|akvaryum-baligi|akvaryum-balilari|kedi-yavrusu|kopek-yavrusu|scottish-fold|british-shorthair|maine-coon|ragdoll|bengal|sfenks|sphynx|golden-retriever|labrador|pomeranian|chihuahua|husky|pug|beagle|rottweiler|doberman|kangal|malinois|poodle|maltese|maltez|shih-tzu|yorkshire|terrier|bulldog|samoyed|akita|chow-chow)($|-)/;
+const LIVE_SPECIES =
+  /(^|-)(hamster|hamsterlar|tavsan|tavsanlar|kobay|ginepig|gine-domuzu|guinea-pig|chinchilla|sinsilla|cincilla|muhabbet-kusu|muhabbet-kuslari|sultan-papagani|papagan|papaganlar|jako|kakadu|macaw|kanarya|cennet-papagani|forpus|agapornis|iguana|gecko|bukalemun|yilan|piton|kaplumbaga|orumcek|tarantula|japon-baligi|betta|lepistes|melek-balik|discus|oscar-balik|koi|akvaryum-baligi|akvaryum-balilari|kedi-yavrusu|kopek-yavrusu|scottish-fold|british-shorthair|maine-coon|ragdoll|bengal|sfenks|sphynx|golden-retriever|labrador|pomeranian|chihuahua|husky|pug|beagle|rottweiler|doberman|kangal|malinois|poodle|maltese|maltez|shih-tzu|yorkshire|terrier|bulldog|samoyed|akita|chow-chow)($|-)/;
 
 /** Ürün niyeti taşıyan kelimeler — bu varsa canlı hayvan kuralı uygulanmaz. */
-const PRODUCT_TOKEN = /(^|-)(mama|mamasi|mamalari|yem|yemi|yemleri|kum|kumu|kumlari|tasma|tasmasi|kosum|oyuncak|oyuncagi|yatak|yatagi|kulube|kulubesi|kafes|kafesi|tuvalet|tuvaleti|tasima|canta|cantasi|tirmalama|suluk|sulugu|mamalik|kap|kabi|sampuan|sampuani|tarak|fircasi|firca|tirnak|makas|vitamin|takviye|probiyotik|parazit|damla|damlasi|pire|kene|talas|altlik|yonca|pelet|konserve|odul|odulu|bisküvi|biskuvi|snack|filtre|motor|isitici|akvaryum-malzeme|dekor|teraryum|mineral|gaga-tasi|banyo|banyoluk|tunek|elbise|mont|kap-mama|otomatik|besleyici|ev|evi|yuva|yuvasi|bez|bezi|kraker|krakeri|tuz|tuzu|kemik|kemigi|ip|ipi|cubuk|cubugu|merdiven|salincak|cark|carki|teker|tekerlek|biberon|aparat|kiyafet|kiyafetleri|halat|urun|urunleri|malzeme|malzemeleri|aksesuar|aksesuari)($|-)/;
+const PRODUCT_TOKEN =
+  /(^|-)(mama|mamasi|mamalari|yem|yemi|yemleri|kum|kumu|kumlari|tasma|tasmasi|kosum|oyuncak|oyuncagi|yatak|yatagi|kulube|kulubesi|kafes|kafesi|tuvalet|tuvaleti|tasima|canta|cantasi|tirmalama|suluk|sulugu|mamalik|kap|kabi|sampuan|sampuani|tarak|fircasi|firca|tirnak|makas|vitamin|takviye|probiyotik|parazit|damla|damlasi|pire|kene|talas|altlik|yonca|pelet|konserve|odul|odulu|bisküvi|biskuvi|snack|filtre|motor|isitici|akvaryum-malzeme|dekor|teraryum|mineral|gaga-tasi|banyo|banyoluk|tunek|elbise|mont|kap-mama|otomatik|besleyici|ev|evi|yuva|yuvasi|bez|bezi|kraker|krakeri|tuz|tuzu|kemik|kemigi|ip|ipi|cubuk|cubugu|merdiven|salincak|cark|carki|teker|tekerlek|biberon|aparat|kiyafet|kiyafetleri|halat|urun|urunleri|malzeme|malzemeleri|aksesuar|aksesuari)($|-)/;
 
 /** Yalnızca tek türe ait mama markaları — tür kelimesi geçmeyen sorgularda ipucu verir. */
-const CAT_ONLY_BRAND = /(^|-)(felix|whiskas|sheba|friskies|kitekat|gourmet|vancat|catsan|lindocat|toi-moi|ever-clean)($|-)/;
+const CAT_ONLY_BRAND =
+  /(^|-)(felix|whiskas|sheba|friskies|kitekat|gourmet|vancat|catsan|lindocat|toi-moi|ever-clean)($|-)/;
 const DOG_ONLY_BRAND = /(^|-)(pedigree|chappi|dogsan|dogstar|cesar|dog-chow)($|-)/;
+
+const BRAND_LANDING: Record<string, string> = {
+  "royal-canin-samsun": PRUNE_TARGETS.royalCanin,
+  "royal-canin-atakum": PRUNE_TARGETS.royalCanin,
+  "royal-canin-samsun-atakum": PRUNE_TARGETS.royalCanin,
+  "pro-plan-samsun": PRUNE_TARGETS.proPlan,
+  "proplan-samsun": PRUNE_TARGETS.proPlan,
+  "pro-plan-atakum": PRUNE_TARGETS.proPlan,
+  "proplan-atakum": PRUNE_TARGETS.proPlan,
+  "pro-plan-samsun-atakum": PRUNE_TARGETS.proPlan,
+};
+
+/** Kategori hub + yalnızca şehir eki → hub. Atakum varyantları ayrı sayfa olarak kalır. */
+const HUB_GEO: Array<[string, string]> = [
+  ["kedi-mamasi", PRUNE_TARGETS.kediMamasi],
+  ["kopek-mamasi", PRUNE_TARGETS.kopekMamasi],
+  ["kedi-kumu", PRUNE_TARGETS.kediKumu],
+  ["kedi-urunleri", PRUNE_TARGETS.kediUrunleri],
+  ["kopek-urunleri", PRUNE_TARGETS.kopekUrunleri],
+  ["kus-urunleri", PRUNE_TARGETS.kusUrunleri],
+  ["balik-urunleri", PRUNE_TARGETS.balikUrunleri],
+  ["kucuk-hayvan-urunleri", PRUNE_TARGETS.kucukHayvanUrunleri],
+  ["surungen-urunleri", PRUNE_TARGETS.surungenUrunleri],
+];
+
+const GEO_ONLY_SUFFIX = /^(samsun|samsunda|samsun-atakum|atakum-samsun)$/;
 
 /** Ürün grubu → kanonik kategori eşlemesi. */
 function categoryFor(slug: string): string {
@@ -58,7 +115,7 @@ function categoryFor(slug: string): string {
   const dog = /(^|-)(kopek|köpek|puppy|dog)($|-)/.test(slug) || DOG_ONLY_BRAND.test(slug);
   const bird = /(^|-)(kus|kuş|muhabbet|papagan|kanarya|sultan)($|-)/.test(slug);
   const fish = /(^|-)(balik|akvaryum|betta|lepistes|discus)($|-)/.test(slug);
-  const small = /(^|-)(hamster|tavsan|kobay|ginepig|guinea-pig|chinchilla|kemirgen)($|-)/.test(slug);
+  const small = /(^|-)(hamster|tavsan|kobay|ginepig|gine-domuzu|guinea-pig|chinchilla|kemirgen)($|-)/.test(slug);
   const reptile = /(^|-)(iguana|gecko|kaplumbaga|yilan|piton|bukalemun|surungen|teraryum)($|-)/.test(slug);
 
   if (cat && /(^|-)(kum|kumu|kumlari)($|-)/.test(slug)) return PRUNE_TARGETS.kediKumu;
@@ -79,22 +136,41 @@ function petshopCanonical(slug: string): string {
     : PRUNE_TARGETS.samsunPetshop;
 }
 
+function hubGeoCanonical(slug: string): string | null {
+  for (const [hub, dest] of HUB_GEO) {
+    if (slug === hub) continue;
+    if (!slug.startsWith(`${hub}-`)) continue;
+    const rest = slug.slice(hub.length + 1);
+    if (GEO_ONLY_SUFFIX.test(rest)) return dest;
+  }
+  return null;
+}
+
 /**
  * Bir slug düşük değerli bir aramaya aitse gideceği kanonik yolu döndürür.
  */
 export function resolvePrunedSlug(slug: string): string | null {
   if (!slug || slug.includes("/")) return null;
-  if (OWN_PETSHOP_SLUGS.has(slug)) return null;
+  if (OWN_SLUGS.has(slug)) return null;
 
+  const brandLanding = BRAND_LANDING[slug];
+  if (brandLanding) return brandLanding;
+
+  const hub = hubGeoCanonical(slug);
+  if (hub) return hub;
+
+  if (COMPETITOR_TOKEN.test(slug)) return petshopCanonical(slug);
   if (PETSHOP_TOKEN.test(slug)) return petshopCanonical(slug);
   if (OTHER_RETAILER.test(slug)) return categoryFor(slug);
   if (FOREIGN_QUERY.test(slug)) return categoryFor(slug);
   if (SECOND_HAND.test(slug)) return categoryFor(slug);
 
   if (LIVE_SPECIES.test(slug) && !PRODUCT_TOKEN.test(slug)) {
-    if (LIVE_ANIMAL_INTENT.test(slug) || LIVE_ANIMAL_PRICE.test(slug)) {
-      return categoryFor(slug);
-    }
+    return categoryFor(slug);
+  }
+
+  if (LIVE_SPECIES.test(slug) && LIVE_ANIMAL_INTENT.test(slug)) {
+    return categoryFor(slug);
   }
 
   return null;

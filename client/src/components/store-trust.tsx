@@ -5,18 +5,16 @@ import {
   PHONE_TEL_HREF,
   STORE_ADDRESS_LINE,
   STORE_HOURS_LABEL,
-  SHOP_URL,
   GOOGLE_REVIEWS_URL,
 } from "@shared/store-info";
+import { shopUrlFor } from "@shared/shop-links";
 
 /**
  * Doğrulanabilir mağaza bilgileri ve gerçek Google yorumlarına bağlantı.
  * Site üzerinde puan veya yorum sayısı iddia edilmez; kaynak Google kaydıdır.
  */
 export default function StoreTrust({ productLabel }: { productLabel?: string }) {
-  const shopHref = productLabel
-    ? `${SHOP_URL}/search?q=${encodeURIComponent(productLabel)}`
-    : SHOP_URL;
+  const shopHref = shopUrlFor(productLabel);
 
   return (
     <section className="space-y-3" aria-label="Mağaza bilgileri ve sipariş">
@@ -54,7 +52,7 @@ export default function StoreTrust({ productLabel }: { productLabel?: string }) 
           className="flex items-center justify-center gap-2 rounded-xl bg-primary text-primary-foreground text-sm font-semibold px-4 py-3 hover:opacity-90 transition-opacity"
         >
           <ShoppingCart className="w-4 h-4" />
-          Online mağazada ara
+          Online mağazada gör
         </a>
         <a
           href={GOOGLE_REVIEWS_URL}

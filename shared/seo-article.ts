@@ -3,7 +3,11 @@ import {
   STORE_ADDRESS_LINE,
   STORE_ADDRESS_SHORT,
 } from "./store-info";
-import { STORE_IMAGE_PATHS } from "./store-images";
+import {
+  CATEGORY_IMAGE_PATHS,
+  STORE_IMAGE_PATHS,
+  categoryImageKeyFor,
+} from "./store-images";
 
 export type SeoImage = { src: string; alt: string };
 export type SeoSection = { heading: string; paragraphs: string[] };
@@ -22,6 +26,12 @@ export const STORE_IMAGES = {
   kedi: STORE_IMAGE_PATHS.kedi,
   kopek: STORE_IMAGE_PATHS.kopek,
   kus: STORE_IMAGE_PATHS.kus,
+  cat: CATEGORY_IMAGE_PATHS.cat,
+  dog: CATEGORY_IMAGE_PATHS.dog,
+  bird: CATEGORY_IMAGE_PATHS.bird,
+  fish: CATEGORY_IMAGE_PATHS.fish,
+  hamster: CATEGORY_IMAGE_PATHS.hamster,
+  petshop: CATEGORY_IMAGE_PATHS.petshop,
 } as const;
 
 const STORE = "EnuygunPet Gross Market";
@@ -341,14 +351,19 @@ function faqsFor(ctx: Context): SeoFaq[] {
 
 export function pickImages(keyword: string): SeoImage[] {
   const ctx = contextFor(keyword);
-  let primary: string = STORE_IMAGES.general;
-  if (ctx.kind === "kedi-mama" || ctx.kind === "kedi-kum" || ctx.kind === "tuvalet" || ctx.animal === "kedi") primary = STORE_IMAGES.kedi;
-  else if (ctx.kind === "kopek-mama" || ctx.kind === "tasma" || ctx.animal === "köpek") primary = STORE_IMAGES.kopek;
-  else if (ctx.kind === "kus") primary = STORE_IMAGES.kus;
+  const catKey = categoryImageKeyFor(`${ctx.keyword} ${ctx.kind} ${ctx.animal}`);
+  let storeShot: string = STORE_IMAGES.general;
+  if (ctx.kind === "kedi-mama" || ctx.kind === "kedi-kum" || ctx.kind === "tuvalet" || ctx.animal === "kedi") {
+    storeShot = STORE_IMAGES.kedi;
+  } else if (ctx.kind === "kopek-mama" || ctx.kind === "tasma" || ctx.animal === "köpek") {
+    storeShot = STORE_IMAGES.kopek;
+  } else if (ctx.kind === "kus") {
+    storeShot = STORE_IMAGES.kus;
+  }
   return [
-    { src: primary, alt: `${ctx.keyword} ürünleri hakkında bilgi` },
+    { src: STORE_IMAGES[catKey], alt: `${ctx.keyword} ürünleri` },
+    { src: storeShot, alt: `${ctx.keyword} reyonu EnuygunPet Atakum` },
     { src: STORE_IMAGES.reyonlar, alt: `${ctx.keyword} seçimi ve ürün karşılaştırması` },
-    { src: STORE_IMAGES.general, alt: `${ctx.keyword} için EnuygunPet mağazası` },
   ];
 }
 
@@ -428,6 +443,29 @@ export function buildHealthArticle(
   };
 }
 
+const DISTRICT_DIRECTIONS: Record<string, string> = {
+  Atakum:
+    "Mağaza Atakum Yeni Mahalle, 3078. Sokak No:10 adresindedir. Sahil yolu veya Cumhuriyet Caddesi üzerinden Yeni Mahalle tabelasını izleyerek birkaç dakikada ulaşılır; otopark mağaza önündedir.",
+  İlkadım:
+    "İlkadım'dan Atakum yönüne sahil yolunu veya Atatürk Bulvarı'nı takip ederek Yeni Mahalle 3078. Sokak'a çıkılır. Mesafe kısa olduğu için 15 kg mama çuvalını aynı ziyarette almak pratiktir.",
+  Canik:
+    "Canik'ten şehir içi bağlantı ve sahil istikametiyle Atakum Yeni Mahalle'ye gelinir. 3078. Sokak No:10 Google Harita'da EnuygunPet olarak görünür.",
+  Tekkeköy:
+    "Tekkeköy'den Samsun–Ordu istikametini Atakum'a doğru izleyip Yeni Mahalle 3078. Sokak'a sapılır. Uzak ilçeden gelenler için stoku WhatsApp'tan önceden sormak zaman kazandırır.",
+  Bafra:
+    "Bafra'dan D010 / sahil güzergâhı ile Atakum'a yaklaşık bir saatlik araç yoludur. Büyük çuval ve kedi kumu için tek seferde toplu alım planlamak daha ekonomik olur.",
+  Çarşamba:
+    "Çarşamba'dan Samsun istikametiyle Atakum Yeni Mahalle'ye gelinir. 3078. Sokak No:10 pinini haritada kaydetmek, şehir içi dönüşte kayıp yaşanmasını önler.",
+  Alaçam:
+    "Alaçam'dan Bafra–Samsun hattını izleyerek Atakum Yeni Mahalle'ye ulaşılır. Uzun yol için stok ve gramajı 0542 462 29 59 üzerinden teyit edin.",
+  Vezirköprü:
+    "Vezirköprü'den Kavak / Samsun güzergâhıyla Atakum'a gelinir. Mesafe uzun olduğu için ihtiyaç listesini önceden yazmak ve WhatsApp'tan sormak yeterlidir.",
+  Ladik:
+    "Ladik'ten Kavak–Samsun hattı ile Atakum Yeni Mahalle 3078. Sokak'a inilir. Tek ziyarette mama, kum ve aksesuarı birlikte almak dönüşü kısaltır.",
+  Samsun:
+    "Samsun genelinden Atakum Yeni Mahalle, 3078. Sokak No:10 adresine araçla gelinir. Haritada EnuygunPet Gross Market yazın; her gün 09:00–21:00 açıktır.",
+};
+
 export function buildLocalArticle(opts: {
   keyword: string;
   slug: string;
@@ -439,9 +477,19 @@ export function buildLocalArticle(opts: {
 }): SeoArticle {
   const place = [opts.neighborhood, opts.district].filter(Boolean).join(", ");
   const base = buildKeywordArticle(opts.keyword || opts.h1, opts.slug);
+  const direction =
+    DISTRICT_DIRECTIONS[opts.district] || DISTRICT_DIRECTIONS.Samsun;
+  const hood = opts.neighborhood
+    ? `${opts.neighborhood} tarafından gelirken 3078. Sokak No:10 adresini EnuygunPet olarak arayın. Dar sokakta yükleme mağaza önünden yapılır.`
+    : `${opts.district} merkezinden 3078. Sokak No:10, Yeni Mahalle Atakum adresine gelinir.`;
   return {
     ...base,
     sections: [
+      section(
+        `${place || "Samsun"} için yol tarifi`,
+        direction,
+        `${hood} WhatsApp ${PHONE_DISPLAY} hattından stok sorulabilir. Mağazada canlı hayvan satılmaz; yalnızca mama, kum, yem ve aksesuar bulunur.`,
+      ),
       section(
         `${keywordAsTitle(opts.h1)} ürün rehberi`,
         `${place || "Samsun"} bölgesinden petshop alışverişi yaparken ürünün tam adı, hayvanın yaşı ve kilosu, istenen gramaj veya ölçü önceden belirlenmelidir. Böylece benzer ambalajlı mama, yanlış beden tasma veya küçük taşıma çantası alma riski azalır.`,

@@ -13,6 +13,7 @@ import categoriesData from "./categories.json";
 import { postToTwitter, postToFacebook, postToInstagram, postToAllPlatforms } from "./social";
 import { PHONE_E164 } from "@shared/store-info";
 import { resolveSeoRedirect } from "@shared/seo-redirects";
+import { CATEGORY_IMAGE_URLS, categoryImageKeyFor } from "@shared/store-images";
 
 type HealthKw = { keyword: string; slug: string; category: string; categoryName: string };
 const keywords = keywordsData as Array<{ keyword: string; slug: string }>;
@@ -40,25 +41,23 @@ export async function registerRoutes(
   app: Express
 ): Promise<Server> {
 
-  const SITEMAP_IMGS = [
-    { loc: "https://www.enuygun.pet/images/magaza/magaza-1200.webp", base: "EnuygunPet Samsun Atakum petshop gross market mağaza" },
-    { loc: "https://www.enuygun.pet/images/magaza/reyonlar-1200.webp", base: "Atakum petshop ürün reyonları kedi köpek mama" },
-    { loc: "https://www.enuygun.pet/images/magaza/kedi-1200.webp", base: "Samsun pet shop kedi ürünleri mama kumu aksesuar" },
-    { loc: "https://www.enuygun.pet/images/magaza/kopek-1200.webp", base: "Samsun Atakum köpek mama aksesuar petshop" },
-    { loc: "https://www.enuygun.pet/images/magaza/kus-1200.webp", base: "Samsun petshop kuş yemi kafes malzemeleri" },
-  ];
+  const SITEMAP_IMGS = {
+    magaza: { loc: "https://www.enuygun.pet/images/magaza/magaza-1200.webp", base: "EnuygunPet Samsun Atakum petshop gross market mağaza" },
+    cat: { loc: CATEGORY_IMAGE_URLS.cat, base: "Kedi maması, kum ve kedi ürünleri" },
+    dog: { loc: CATEGORY_IMAGE_URLS.dog, base: "Köpek maması, tasma ve köpek ürünleri" },
+    bird: { loc: CATEGORY_IMAGE_URLS.bird, base: "Kuş yemi, kafes ve kuş ürünleri" },
+    fish: { loc: CATEGORY_IMAGE_URLS.fish, base: "Akvaryum malzemeleri ve balık yemi" },
+    hamster: { loc: CATEGORY_IMAGE_URLS.hamster, base: "Hamster, tavşan ve küçük hayvan ürünleri" },
+    petshop: { loc: CATEGORY_IMAGE_URLS.petshop, base: "EnuygunPet Atakum petshop ürünleri" },
+  };
 
   function xmlEscape(str: string): string {
     return str.replace(/&(?!amp;|lt;|gt;|quot;|apos;)/g, "&amp;");
   }
 
   function pickSitemapImg(kw: string) {
-    const k = kw.toLowerCase();
-    if (k.includes("kuş") || k.includes("kus") || k.includes("papağan") || k.includes("kanarya")) return SITEMAP_IMGS[4];
-    if (k.includes("köpek") || k.includes("kopek")) return SITEMAP_IMGS[3];
-    if (k.includes("kedi") && (k.includes("kum") || k.includes("ödül") || k.includes("odul"))) return SITEMAP_IMGS[2];
-    if (k.includes("kedi")) return SITEMAP_IMGS[2];
-    return SITEMAP_IMGS[0];
+    const key = categoryImageKeyFor(kw);
+    return SITEMAP_IMGS[key] || SITEMAP_IMGS.magaza;
   }
 
   function buildKeywordUrl(k: { keyword: string; slug: string }, today: string): string | null {
@@ -213,56 +212,41 @@ ${sitemapEntries}
     res.send(sitemap);
   });
 
-  app.get("/sitemap-health.xml", (_req, res) => {
-    const IMG = "https://www.enuygun.pet/images/magaza/kedi-1200.webp";
-    res.set("Content-Type", "application/xml");
-    res.set("Cache-Control", "public, max-age=86400");
-    res.send(buildHealthSitemap(healthKeywords, IMG, "kedi-hastaliklari"));
-  });
-
-  function buildHealthSitemap(list: HealthKw[], imgUrl: string, urlPrefix: string): string {
+  function healthHubSitemap(loc: string): string {
     const today = new Date().toISOString().split("T")[0];
-    const urlEntries = list.map(k => {
-      const title = xmlEscape(`${k.keyword} - ${k.categoryName} - EnuygunPet`);
-      const caption = xmlEscape(`${k.categoryName} - ${k.keyword} - Samsun Atakum Petshop`);
-      return `  <url>
-    <loc>https://www.enuygun.pet/${urlPrefix}/${k.slug}</loc>
+    return `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>${loc}</loc>
     <lastmod>${today}</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <image:image>
-      <image:loc>${imgUrl}</image:loc>
-      <image:title>${title}</image:title>
-      <image:caption>${caption}</image:caption>
-    </image:image>
-  </url>`;
-    }).join("\n");
-    return `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
-${urlEntries}
+    <priority>0.6</priority>
+  </url>
 </urlset>`;
   }
 
-  app.get("/sitemap-kopek.xml", (_req, res) => {
-    const IMG = "https://www.enuygun.pet/images/magaza/kopek-1200.webp";
+  app.get("/sitemap-health.xml", (_req, res) => {
     res.set("Content-Type", "application/xml");
     res.set("Cache-Control", "public, max-age=86400");
-    res.send(buildHealthSitemap(kopekKeywords, IMG, "kopek-hastaliklari"));
+    res.send(healthHubSitemap("https://www.enuygun.pet/saglik/kedi"));
+  });
+
+  app.get("/sitemap-kopek.xml", (_req, res) => {
+    res.set("Content-Type", "application/xml");
+    res.set("Cache-Control", "public, max-age=86400");
+    res.send(healthHubSitemap("https://www.enuygun.pet/saglik/kopek"));
   });
 
   app.get("/sitemap-papagan.xml", (_req, res) => {
-    const IMG = "https://www.enuygun.pet/images/magaza/kus-1200.webp";
     res.set("Content-Type", "application/xml");
     res.set("Cache-Control", "public, max-age=86400");
-    res.send(buildHealthSitemap(papaganKeywords, IMG, "papagan-hastaliklari"));
+    res.send(healthHubSitemap("https://www.enuygun.pet/saglik/papagan"));
   });
 
   app.get("/sitemap-muhabbet.xml", (_req, res) => {
-    const IMG = "https://www.enuygun.pet/images/magaza/kus-1200.webp";
     res.set("Content-Type", "application/xml");
     res.set("Cache-Control", "public, max-age=86400");
-    res.send(buildHealthSitemap(muhabbetKeywords, IMG, "muhabbet-kusu-hastaliklari"));
+    res.send(healthHubSitemap("https://www.enuygun.pet/saglik/muhabbet"));
   });
 
   // Sitemap for blog (must be BEFORE /sitemap-:n.xml catch-all)
@@ -414,11 +398,13 @@ Disallow: /admin
 
   app.get("/api/keywords", (_req, res) => {
     res.set("Cache-Control", "public, max-age=3600");
-    res.json(keywords);
+    res.json(keywords.filter((k) => !resolveSeoRedirect(`/${k.slug}`)));
   });
 
   app.get("/api/keyword/:slug", (req, res) => {
     const { slug } = req.params;
+    const dest = resolveSeoRedirect(`/${slug}`);
+    if (dest) return res.status(404).json({ message: "Not found", redirect: dest });
     const kw = keywordBySlug.get(slug);
     if (!kw) return res.status(404).json({ message: "Not found" });
 
@@ -522,68 +508,8 @@ Disallow: /admin
     res.json(page);
   });
 
-  app.get("/api/image-proxy", async (req, res) => {
-    const imageUrl = req.query.url as string;
-    const width = parseInt(req.query.w as string) || 0;
-    const height = parseInt(req.query.h as string) || (width > 0 ? Math.round(width * 0.625) : 0);
-    const quality = parseInt(req.query.q as string) || 82;
-
-    if (!imageUrl) {
-      return res.status(400).json({ message: "Missing url parameter" });
-    }
-
-    const allowedDomains = ["static.wixstatic.com"];
-    try {
-      const parsedUrl = new URL(imageUrl);
-      if (!allowedDomains.some(d => parsedUrl.hostname.includes(d))) {
-        return res.status(403).json({ message: "Domain not allowed" });
-      }
-    } catch {
-      return res.status(400).json({ message: "Invalid URL" });
-    }
-
-    try {
-      const acceptsWebP = (req.headers.accept || "").includes("image/webp");
-      const mimeType = acceptsWebP ? "image/webp" : "image/jpeg";
-
-      let fetchUrl = imageUrl;
-      if (width > 0 && height > 0) {
-        const baseName = imageUrl.split("/").pop() || "image.jpeg";
-        const ext = acceptsWebP ? "webp" : baseName.split(".").pop() || "jpeg";
-        const fileName = baseName.replace(/\.[^.]+$/, `.${ext}`);
-        fetchUrl = `${imageUrl}/v1/fill/w_${width},h_${height},al_c,q_${quality},usm_0.50_1.00_0.00/${fileName}`;
-      }
-
-      const response = await fetch(fetchUrl);
-      if (!response.ok) {
-        const fallbackResponse = await fetch(imageUrl);
-        if (!fallbackResponse.ok) {
-          return res.status(502).json({ message: "Failed to fetch image" });
-        }
-        res.set({
-          "Content-Type": fallbackResponse.headers.get("content-type") || "image/jpeg",
-          "Cache-Control": "public, max-age=604800, stale-while-revalidate=86400",
-          "Vary": "Accept",
-        });
-        const buffer = Buffer.from(await fallbackResponse.arrayBuffer());
-        return res.send(buffer);
-      }
-
-      res.set({
-        "Content-Type": response.headers.get("content-type") || mimeType,
-        "Cache-Control": "public, max-age=604800, stale-while-revalidate=86400",
-        "Vary": "Accept",
-      });
-
-      const buffer = Buffer.from(await response.arrayBuffer());
-      return res.send(buffer);
-    } catch (err) {
-      return res.status(500).json({ message: "Image proxy error" });
-    }
-  });
-
-  const ADMIN_USER = "enuygun";
-  const ADMIN_PASS = "samsun3455";
+  const ADMIN_USER = process.env.ADMIN_USER || "enuygun";
+  const ADMIN_PASS = process.env.ADMIN_PASS || process.env.ADMIN_PASSWORD || "samsun3455";
 
   app.post("/api/analytics/hit", async (req, res) => {
     try {
@@ -625,7 +551,7 @@ Disallow: /admin
 
   app.post("/api/analytics/login", (req, res) => {
     const { username, password } = req.body;
-    if (username === ADMIN_USER && password === ADMIN_PASS) {
+    if (ADMIN_USER && ADMIN_PASS && username === ADMIN_USER && password === ADMIN_PASS) {
       const token = createSession();
       return res.json({ token });
     }

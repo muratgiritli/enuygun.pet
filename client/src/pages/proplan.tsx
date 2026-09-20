@@ -16,6 +16,7 @@ import {
   STORE_ADDRESS_LINE,
   STORE_ADDRESS_SHORT,
 } from "@shared/store-info";
+import { shopSearchUrl } from "@shared/shop-links";
 
 const IMG = "/images/proplan";
 const logoImg = `${IMG}/logo.jpg`;
@@ -30,7 +31,7 @@ const gastroImg = `${IMG}/gastrointestinal.jpg`;
 const hypoImg = `${IMG}/hypoallergenic.webp`;
 
 const WHATSAPP_URL = `${PHONE_WHATSAPP_URL}?text=${encodeURIComponent("Merhaba, Pro Plan ürünleri hakkında bilgi almak istiyorum.")}`;
-const SHOP_URL = "https://www.enuygunpetshop.com";
+const SHOP_URL = shopSearchUrl("Pro Plan");
 
 const catProducts = [
   { img: kittenImg, alt: "pro plan kitten kedi maması", label: "Kitten" },

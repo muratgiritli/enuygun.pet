@@ -83,6 +83,7 @@ export default function HealthPage() {
       };
       const canonicalUrl = `https://www.enuygun.pet/${data.urlPrefix}/${data.slug}`;
       setLink("canonical", canonicalUrl);
+      setMeta('meta[name="robots"]', "content", "noindex, follow");
       setMeta('meta[name="description"]', "content", desc);
       setMeta('meta[property="og:title"]', "content", title);
       setMeta('meta[property="og:description"]', "content", desc);

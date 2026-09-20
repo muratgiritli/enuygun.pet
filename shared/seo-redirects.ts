@@ -43,6 +43,8 @@ const COMPETITOR_SLUGS = new Set([
   "th-pet-center-samsun",
   "cazip-ve-uygun-pet-samsun",
   "express-mama-samsun",
+  "express-mama",
+  "botanik-pet-center",
   "samsun-petshop-botanik",
   "samsun-pethouse-petshop-samsun-akvaryum",
   "express-mama-yerine-atakum-petshop",
