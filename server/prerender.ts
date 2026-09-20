@@ -22,7 +22,10 @@ import {
   STORE_ADDRESS_LINE,
   SHOP_URL,
   GOOGLE_REVIEWS_URL,
+  STORE_MAPS_EMBED_URL,
+  STORE_MAPS_URL,
 } from "../shared/store-info";
+import { SHOP_COLLECTIONS } from "../shared/shop-links";
 
 interface PageMeta {
   title: string;
@@ -126,7 +129,11 @@ function footerHtml(): string {
 </ul></nav>
 <h3>Mağaza bilgileri</h3>
 <p>Ürünler kapalı ambalajında satılır; son kullanma tarihi ve etiket mağazada kontrol edilebilir. Mağazada canlı hayvan satışı yapılmaz.</p>
-<p><a href="${SHOP_URL}" rel="noopener">Online mağaza: enuygunpetshop.com</a> · <a href="${GOOGLE_REVIEWS_URL}" rel="noopener nofollow">Google yorumlarını oku</a></p>
+<p><a href="${SHOP_URL}" rel="noopener">Online mağaza: enuygunpetshop.com</a>
+ · <a href="${SHOP_COLLECTIONS.kediMamasi}" rel="noopener">Kedi maması</a>
+ · <a href="${SHOP_COLLECTIONS.kopekMamasi}" rel="noopener">Köpek maması</a>
+ · <a href="${SHOP_COLLECTIONS.kediKumu}" rel="noopener">Kedi kumu</a>
+ · <a href="${GOOGLE_REVIEWS_URL}" rel="noopener nofollow">Google yorumlarını oku</a></p>
 <address>EnuygunPet Gross Market — ${STORE_ADDRESS_SHORT} — Tel: ${PHONE_INTL} — Her gün 09:00–21:00</address>
 </aside>`;
 }
@@ -257,8 +264,9 @@ export function getPageMeta(urlPath: string): PageMeta {
           { h: "Adres", p: `${STORE_ADDRESS_LINE}. Ücretsiz otopark imkânı bulunmaktadır.` },
           { h: "Telefon ve WhatsApp", p: `${PHONE_DISPLAY} numaralı hattımızdan arayabilir veya WhatsApp üzerinden stok ve fiyat sorabilirsiniz.` },
           { h: "Çalışma Saatleri", p: "Haftanın her günü 09:00–21:00 saatleri arasında açığız. Resmi tatillerde de hizmet veriyoruz." },
+          { h: "Harita", p: `Mağaza konumu Google Harita'da 3078. Sokak No:10, Atakum pinindedir. Yol tarifi için haritayı açın.` },
         ]
-      ),
+      ) + `<p><a href="${STORE_MAPS_URL}" rel="noopener">Google Harita yol tarifi</a> · <a href="${GOOGLE_REVIEWS_URL}" rel="noopener nofollow">Yorumlar</a></p><iframe title="EnuygunPet Atakum mağaza konumu" src="${STORE_MAPS_EMBED_URL}" width="600" height="320" style="border:0;width:100%;max-width:600px;height:320px" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>`,
     };
   }
 
