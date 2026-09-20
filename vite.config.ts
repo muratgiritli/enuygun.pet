@@ -30,6 +30,17 @@ export default defineConfig({
   build: {
     outDir: path.resolve(import.meta.dirname, "dist/public"),
     emptyOutDir: true,
+    rollupOptions: {
+      output: {
+        manualChunks(id) {
+          if (!id.includes("node_modules")) return undefined;
+          if (id.includes("react-dom") || id.includes("/react/") || id.includes("scheduler")) return "react";
+          if (id.includes("@tanstack") || id.includes("wouter")) return "data";
+          if (id.includes("@radix-ui") || id.includes("lucide-react") || id.includes("react-icons")) return "ui";
+          return "vendor";
+        },
+      },
+    },
   },
   server: {
     fs: {

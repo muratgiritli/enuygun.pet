@@ -9,6 +9,7 @@ import InternalLinksSection, { detectType } from "@/components/internal-links";
 import { Card } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
 import SeoArticleBody from "@/components/seo-article-body";
+import StoreTrust from "@/components/store-trust";
 import {
   buildCategoryArticle,
   buildKeywordDescription,
@@ -50,7 +51,7 @@ export default function CategoryPage() {
   useEffect(() => {
     if (!cat || (cat as any).error) return;
     const canonicalUrl = `https://www.enuygun.pet/${cat.slug}`;
-    const img = "https://static.wixstatic.com/media/63853e_77a3ee3fa9d942a7af5b6f25a0520653~mv2.jpeg";
+    const img = "https://www.enuygun.pet/images/magaza/magaza-1200.webp";
     const title = keywordAsTitle(cat.h1);
     const description = buildKeywordDescription(cat.h1);
     document.title = title;
@@ -97,11 +98,11 @@ export default function CategoryPage() {
   const article = buildCategoryArticle(cat.h1, cat.slug);
 
   const CAT_SLUG_IMAGES: Record<string, string> = {
-    "kedi-urunleri": "https://static.wixstatic.com/media/63853e_4c33bdb1dc274eab8358c2d598f7cfee~mv2.jpeg",
-    "kopek-urunleri": "https://static.wixstatic.com/media/63853e_ba5ea5e88a5a41409f4742caf8dced1c~mv2.jpeg",
-    "kus-urunleri": "https://static.wixstatic.com/media/63853e_346d0d0b96154639b0a27296b18d70f5~mv2.jpeg",
+    "kedi-urunleri": "https://www.enuygun.pet/images/magaza/kedi-1200.webp",
+    "kopek-urunleri": "https://www.enuygun.pet/images/magaza/kopek-1200.webp",
+    "kus-urunleri": "https://www.enuygun.pet/images/magaza/kus-1200.webp",
   };
-  const catImg = CAT_SLUG_IMAGES[cat.slug] || "https://static.wixstatic.com/media/63853e_77a3ee3fa9d942a7af5b6f25a0520653~mv2.jpeg";
+  const catImg = CAT_SLUG_IMAGES[cat.slug] || "https://www.enuygun.pet/images/magaza/magaza-1200.webp";
   const catImgObj = {
     "@type": "ImageObject",
     "url": catImg,
@@ -173,11 +174,11 @@ export default function CategoryPage() {
         "url": "https://www.enuygun.pet/",
         "telephone": PHONE,
         "image": [
-          "https://static.wixstatic.com/media/63853e_77a3ee3fa9d942a7af5b6f25a0520653~mv2.jpeg",
-          "https://static.wixstatic.com/media/63853e_f5ae600f104c4dfcae521fe694ba017b~mv2.jpeg",
-          "https://static.wixstatic.com/media/63853e_4c33bdb1dc274eab8358c2d598f7cfee~mv2.jpeg",
-          "https://static.wixstatic.com/media/63853e_ba5ea5e88a5a41409f4742caf8dced1c~mv2.jpeg",
-          "https://static.wixstatic.com/media/63853e_346d0d0b96154639b0a27296b18d70f5~mv2.jpeg"
+          "https://www.enuygun.pet/images/magaza/magaza-1200.webp",
+          "https://www.enuygun.pet/images/magaza/reyonlar-1200.webp",
+          "https://www.enuygun.pet/images/magaza/kedi-1200.webp",
+          "https://www.enuygun.pet/images/magaza/kopek-1200.webp",
+          "https://www.enuygun.pet/images/magaza/kus-1200.webp"
         ],
         "address": {
           "@type": "PostalAddress",
@@ -230,6 +231,8 @@ export default function CategoryPage() {
 
       <main className="flex-1 max-w-2xl mx-auto w-full px-4 py-6 space-y-6">
         <SeoArticleBody article={article} testId="category-article" />
+
+        <StoreTrust productLabel={cat.h1} />
 
         {cat.brands && cat.brands.length > 0 && (
           <Card className="p-4">

@@ -22,6 +22,8 @@ import {
   STORE_STREET,
   STORE_POSTAL,
   STORE_ADDRESS_LINE,
+  STORE_MAPS_EMBED_URL,
+  GOOGLE_REVIEWS_URL,
 } from "@shared/store-info";
 
 const INSTAGRAM_URL = "https://www.instagram.com/enuygun.pet/";
@@ -69,7 +71,7 @@ const schema = {
       "url": "https://www.enuygun.pet",
       "telephone": PHONE,
       "email": "info@enuygun.pet",
-      "image": "https://static.wixstatic.com/media/63853e_77a3ee3fa9d942a7af5b6f25a0520653~mv2.jpeg",
+      "image": "https://www.enuygun.pet/images/magaza/magaza-1200.webp",
       "priceRange": "₺₺",
       "address": {
         "@type": "PostalAddress",
@@ -219,26 +221,42 @@ export default function IletisimPage() {
           </a>
         </div>
 
-        <a
-          href={MAPS_URL}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="block"
-          data-testid="link-google-maps"
-        >
-          <Card className="border border-card-border">
-            <div className="p-4 flex items-center gap-3">
-              <div className="w-10 h-10 rounded-full bg-muted flex items-center justify-center shrink-0">
-                <SiGoogle className="w-5 h-5 text-muted-foreground" />
-              </div>
-              <div className="flex-1">
-                <p className="text-sm font-semibold text-foreground">Google Harita'da Aç</p>
-                <p className="text-[11px] text-muted-foreground">Yol tarifi ve değerlendirmeler</p>
-              </div>
-              <Navigation className="w-4 h-4 text-primary" />
+        <Card className="border border-card-border overflow-hidden" data-testid="embed-google-maps">
+          <iframe
+            title="EnuygunPet Atakum mağaza konumu"
+            src={STORE_MAPS_EMBED_URL}
+            className="w-full h-56 border-0"
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+            allowFullScreen
+          />
+          <div className="p-4 flex items-center gap-3">
+            <div className="w-10 h-10 rounded-full bg-muted flex items-center justify-center shrink-0">
+              <SiGoogle className="w-5 h-5 text-muted-foreground" />
             </div>
-          </Card>
-        </a>
+            <div className="flex-1">
+              <a
+                href={MAPS_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-sm font-semibold text-foreground hover:text-primary"
+                data-testid="link-google-maps"
+              >
+                Google Harita'da Aç
+              </a>
+              <p className="text-[11px] text-muted-foreground">Yol tarifi ve değerlendirmeler</p>
+            </div>
+            <a
+              href={GOOGLE_REVIEWS_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[11px] font-semibold text-primary"
+              data-testid="link-google-reviews-iletisim"
+            >
+              Yorumlar
+            </a>
+          </div>
+        </Card>
 
         <div>
           <h2 className="text-sm font-semibold text-foreground mb-3" data-testid="text-social-title">Sosyal Medya</h2>

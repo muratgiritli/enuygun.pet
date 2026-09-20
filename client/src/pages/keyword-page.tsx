@@ -3,12 +3,13 @@ import { useRoute, Link } from "wouter";
 import { useQuery } from "@tanstack/react-query";
 import { useTrack } from "@/hooks/use-track";
 import SiteHeader from "@/components/site-header";
-import { Phone, MapPin, Clock, Navigation, ChevronRight, Home, ArrowLeft } from "lucide-react";
+import { Phone, Navigation, ChevronRight, Home, ArrowLeft } from "lucide-react";
 import InternalLinksSection, { detectType } from "@/components/internal-links";
 import { SiWhatsapp } from "react-icons/si";
 import { Card } from "@/components/ui/card";
 import NotFound from "@/pages/not-found";
 import SeoArticleBody from "@/components/seo-article-body";
+import StoreTrust from "@/components/store-trust";
 import {
   buildKeywordArticle,
   buildKeywordDescription,
@@ -16,10 +17,8 @@ import {
 } from "@shared/seo-article";
 import {
   PHONE_E164 as PHONE,
-  PHONE_DISPLAY,
   PHONE_WHATSAPP_URL as WHATSAPP_URL,
   STORE_MAPS_URL as MAPS_URL,
-  STORE_ADDRESS_SHORT as ADDRESS,
   STORE_STREET,
   STORE_POSTAL,
   STORE_LAT,
@@ -195,11 +194,11 @@ export default function KeywordPage() {
         "url": "https://www.enuygun.pet/",
         "telephone": PHONE,
         "image": [
-          "https://static.wixstatic.com/media/63853e_77a3ee3fa9d942a7af5b6f25a0520653~mv2.jpeg",
-          "https://static.wixstatic.com/media/63853e_f5ae600f104c4dfcae521fe694ba017b~mv2.jpeg",
-          "https://static.wixstatic.com/media/63853e_4c33bdb1dc274eab8358c2d598f7cfee~mv2.jpeg",
-          "https://static.wixstatic.com/media/63853e_ba5ea5e88a5a41409f4742caf8dced1c~mv2.jpeg",
-          "https://static.wixstatic.com/media/63853e_346d0d0b96154639b0a27296b18d70f5~mv2.jpeg"
+          "https://www.enuygun.pet/images/magaza/magaza-1200.webp",
+          "https://www.enuygun.pet/images/magaza/reyonlar-1200.webp",
+          "https://www.enuygun.pet/images/magaza/kedi-1200.webp",
+          "https://www.enuygun.pet/images/magaza/kopek-1200.webp",
+          "https://www.enuygun.pet/images/magaza/kus-1200.webp"
         ],
         "address": {
           "@type": "PostalAddress",
@@ -315,47 +314,9 @@ export default function KeywordPage() {
           </div>
         </section>
 
-        <section className="mb-5 space-y-4" aria-label="Mağaza hakkında">
-          <h2 className="text-base font-bold text-foreground flex items-center gap-2">
-            <MapPin className="w-4 h-4 text-primary" />
-            EnuygunPet Gross Market Hakkında
-          </h2>
-          <p className="text-xs text-muted-foreground leading-relaxed">
-            EnuygunPet, Samsun Atakum'da kedi ve köpek mamaları, kedi kumu, kuş yemi, tasma, oyuncak, taşıma ve bakım ürünleri sunan evcil hayvan ürünleri mağazasıdır.
-          </p>
-          <p className="text-xs text-muted-foreground leading-relaxed">
-            Ürün satın almadan önce marka, tam ürün adı, gramaj veya ölçüyü belirleyin. Güncel stok ve ürün bilgisi için WhatsApp hattından mağazaya ulaşabilirsiniz.
-          </p>
-
-          <h3 className="text-sm font-bold text-foreground">Ürün Kategorilerimiz</h3>
-          <p className="text-xs text-muted-foreground leading-relaxed">
-            <strong>Kedi ürünleri</strong>, <strong>köpek ürünleri</strong>, <strong>kuş ürünleri</strong>, <strong>akvaryum ürünleri</strong> ve <strong>küçük hayvan ürünleri</strong> için ürün türlerini ve ölçü seçeneklerini mağazada karşılaştırabilirsiniz.
-          </p>
-
-          <h3 className="text-sm font-bold text-foreground">Ürün Bilgisi</h3>
-          <p className="text-xs text-muted-foreground leading-relaxed">
-            Mama veya sağlık destek ürünü seçerken hayvanın yaşını, kilosunu ve veteriner önerisini esas alın. Aksesuar seçiminde ölçü, malzeme ve güvenlik özelliklerini kontrol edin.
-          </p>
-
-          <div className="border border-border rounded-lg p-3 space-y-2">
-            <h3 className="text-sm font-bold text-foreground flex items-center gap-2">
-              <MapPin className="w-3.5 h-3.5 text-primary" />
-              Mağaza Bilgileri
-            </h3>
-            <div className="flex items-center gap-2 text-xs text-muted-foreground">
-              <MapPin className="w-3 h-3 text-primary shrink-0" />
-              <span>{ADDRESS}</span>
-            </div>
-            <div className="flex items-center gap-2 text-xs text-muted-foreground">
-              <Clock className="w-3 h-3 text-primary shrink-0" />
-              <span>Haftanın her günü 09:00 – 21:00</span>
-            </div>
-            <div className="flex items-center gap-2 text-xs text-muted-foreground">
-              <Phone className="w-3 h-3 text-primary shrink-0" />
-              <a href={`tel:${PHONE}`} className="hover:text-primary">{PHONE}</a>
-            </div>
-          </div>
-        </section>
+        <div className="mb-5">
+          <StoreTrust productLabel={data.keyword} />
+        </div>
 
         {data.related.length > 0 && (
           <section className="mb-5" aria-label="Benzer ürünler">

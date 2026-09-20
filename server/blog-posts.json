@@ -911,5 +911,243 @@
       }
     ],
     "slug": "hills-kedi-mamasi-veteriner-onerisi-mi"
+  },
+  {
+    "slug": "kedi-kumu-turleri-bentonit-tofu-silika-pelet-karsilastirma",
+    "title": "Kedi Kumu Türleri: Bentonit, Tofu, Silika ve Pelet Karşılaştırması",
+    "cat": "kedi",
+    "desc": "Bentonit, tofu, silika ve pelet kedi kumu arasındaki farklar; topaklanma, toz, koku kontrolü ve litre başına maliyet açısından karşılaştırmalı rehber.",
+    "products": [
+      "kedi-kumu",
+      "bentonit-kedi-kumu",
+      "tofu-kedi-kumu"
+    ],
+    "sections": [
+      {
+        "h": "Kedi kumu neye göre seçilir?",
+        "p": "Kedi kumu seçiminde dört ölçüt birlikte değerlendirilir: topaklanma gücü, toz miktarı, koku kontrolü ve tane yapısının kedinin patisine uygunluğu. Bir kum bu ölçütlerin hepsinde birden en iyi olmak zorunda değildir; ev içindeki önceliğinize göre denge kurmanız gerekir. Tek kedili bir evde kolay temizlik öne çıkarken, çok kedili bir evde koku kontrolü ve tüketim hızı belirleyici olur. Solunum hassasiyeti olan bir kedi ya da insan varsa toz miktarı diğer tüm ölçütlerin önüne geçer."
+      },
+      {
+        "h": "Bentonit kum: en yaygın seçenek",
+        "p": "Bentonit, sıvıyla temas ettiğinde sert topak oluşturan doğal bir kil mineralidir. Topaklar kürekle bütün hâlde çıktığı için günlük temizlik pratiktir ve kabın tamamını sık sık boşaltma ihtiyacı azalır. Tane boyutu inceldikçe topaklanma güçlenir fakat toz oranı da artar. Aktif karbon eklenmiş bentonit ürünler koku kontrolünde daha iyi sonuç verebilir. Bentonit kumun tuvalete dökülmemesi gerekir; tesisatta sertleşerek tıkanmaya yol açar."
+      },
+      {
+        "h": "Tofu kum: düşük toz, hafif ağırlık",
+        "p": "Tofu kumu soya posasından üretilir; bitkisel kaynaklı olduğu için tozu belirgin biçimde düşüktür ve taşıması bentonite göre çok daha hafiftir. Topaklanır fakat topak yapısı bentonit kadar sert olmayabilir. Yavru kediler ve toza duyarlı evler için rahat bir seçenektir. Nemli ortamda bekletildiğinde küflenme riski taşıdığından açılan paketin kuru bir yerde saklanması önemlidir. Bazı tofu ürünleri suda çözünür; üreticinin tuvalete dökme konusundaki uyarısını okuyun."
+      },
+      {
+        "h": "Silika kristal kum: nem tutan yapı",
+        "p": "Silika jel kumu sıvıyı kristallerin içine hapseder ve idrarın bir bölümünü buharlaştırır. Topaklanmadığı için kürekle yalnızca katı atık alınır; kum belirli aralıklarla tamamen değiştirilir. Kullanım süresi kedi sayısına ve ürünün kapasitesine göre değişir, ambalajdaki öneriyi aşmayın. Tane yapısı sert ve keskin olabildiğinden hassas patili veya yeni ameliyat olmuş kediler bu dokuyu reddedebilir."
+      },
+      {
+        "h": "Çam peleti ve bitkisel kumlar",
+        "p": "Pelet kumlar sıkıştırılmış ahşap veya bitkisel liften üretilir. Sıvıyla temas edince dağılarak talaşa dönüşür; bu nedenle elekli tuvalet kabıyla birlikte kullanıldığında temizlik kolaylaşır. Doğal reçine kokusu bazı evlerde amonyak kokusunu maskeler. Topak beklentisiyle alınırsa hayal kırıklığı yaratır; çalışma mantığı farklıdır. Tane boyutu iri olduğu için etrafa saçılma bentonite göre genelde daha azdır."
+      },
+      {
+        "h": "Litre mi kilogram mı: maliyeti doğru hesaplayın",
+        "p": "Kedi kumu ambalajları bazen litre, bazen kilogram üzerinden satılır ve bu iki birim doğrudan karşılaştırılamaz. Bentonit ağır, tofu ve pelet hafiftir; aynı litre hacmi çok farklı kilogramlara denk gelir. Gerçek maliyeti görmek için paketin fiyatını değil, kabın bir ay boyunca kaç kez doldurulduğunu ve her doldurmada ne kadar ürün gittiğini ölçün. Ucuz görünen küçük paket, hızlı tükeniyorsa aylık maliyeti yükseltebilir."
+      },
+      {
+        "h": "Yeni kuma geçiş nasıl yapılır?",
+        "p": "Kediler tuvalet dokusuna alışkındır; kumu bir günde tamamen değiştirmek reddetmeye ve kap dışına tuvalet yapmaya yol açabilir. Yeni kumu eski kumla karıştırarak başlayın ve birkaç gün içinde oranı kademeli olarak artırın. Geçiş döneminde kabın yerini değiştirmeyin, aynı anda başka bir yeniliği devreye sokmayın. Kedi yeni kumu ısrarla reddediyorsa zorlamak yerine eski ürüne dönüp farklı bir doku deneyin."
+      },
+      {
+        "h": "Koku kontrolünün asıl sırrı",
+        "p": "Parfümlü ürünler kokuyu örtmeye çalışır fakat yoğun parfüm bazı kedilerde kabı terk etme davranışını tetikler. Koku kontrolünün temeli üründe değil rutindedir: topakların her gün alınması, kabın üretici önerisine uygun aralıkta tamamen boşaltılıp yıkanması ve yeterli sayıda tuvalet bulundurulması. Genel öneri, kedi sayısından bir fazla tuvalet kabı bulundurmaktır. Amonyak kokusu keskinleşiyorsa önce temizlik sıklığını, sonra ürünü gözden geçirin."
+      }
+    ]
+  },
+  {
+    "slug": "otomatik-kedi-tuvaleti-alirken-dikkat-edilmesi-gerekenler",
+    "title": "Otomatik Kedi Tuvaleti Alırken Dikkat Edilmesi Gerekenler",
+    "cat": "kedi",
+    "desc": "Otomatik kedi tuvaletinde güvenlik sensörü, kilo sınırı, uyumlu kum türü, atık haznesi ve temizlik bakımı hakkında bilmeniz gereken her şey.",
+    "products": [
+      "otomatik-kedi-tuvaleti",
+      "kedi-tuvaleti",
+      "kedi-kumu"
+    ],
+    "sections": [
+      {
+        "h": "Otomatik tuvalet ne işe yarar, neyi çözmez?",
+        "p": "Otomatik kedi tuvaletleri, kedi kabı terk ettikten belirli bir süre sonra topakları eleyerek ayrı bir hazneye aktarır. Bu, günlük kürek işini ortadan kaldırır ve koku oluşumunu geciktirir. Ancak cihaz kabın tamamen temizlenmesi, yıkanması ve kumun periyodik olarak yenilenmesi ihtiyacını ortadan kaldırmaz. Uzun süre evde olmayacağınız durumlar için de sınırsız bir çözüm değildir; atık haznesi dolduğunda cihaz durur."
+      },
+      {
+        "h": "Güvenlik: kilo sınırı ve sensörler",
+        "p": "En kritik teknik ayrıntı, cihazın minimum kilo eşiği ve sensör yapısıdır. Çoğu model belirli bir ağırlığın altındaki kedileri algılamayabilir; bu nedenle yavru kediler ve çok küçük ırklar için üretici tarafından açıkça uygun bulunmayan modeller kullanılmamalıdır. Kızılötesi veya ağırlık sensörünün kedi kaba geri girdiğinde döngüyü anında durdurup durdurmadığı, satın almadan önce doğrulanmalıdır. Elektrik kesintisi sonrası cihazın hangi konumda kaldığı da güvenlik açısından önemlidir."
+      },
+      {
+        "h": "Hangi kum türüyle çalışır?",
+        "p": "Otomatik tuvaletlerin büyük bölümü sert topak yapan bentonit kum için tasarlanır. Dağılan pelet, iri taneli bitkisel kum veya topaklanmayan silika, eleme mekanizmasını tıkayabilir ya da atık haznesine gereğinden fazla ürün taşıyabilir. Cihazın kılavuzunda belirtilen kum türünün dışına çıkmak hem performansı düşürür hem de garanti kapsamı dışında arızaya yol açabilir. Kum seviyesinin işaretli çizgiyi aşmaması da mekanizmanın düzgün çalışması için gereklidir."
+      },
+      {
+        "h": "İç ölçü ve giriş yüksekliği",
+        "p": "Cihazın dış gövdesi büyük görünse de kedinin fiilen kullandığı iç hacim daha küçüktür. Kedi içeride rahatça dönebilmeli, kazma hareketini yapabilmelidir. Büyük ırk veya uzun gövdeli kedilerde iç çap kritik hâle gelir. Giriş yüksekliği yavrular, yaşlı kediler ve eklem sorunu olanlar için düşük olmalıdır; gerekirse basamak kullanılmalıdır. Kapalı küre tasarımlarda kedinin içeride kendini sıkışmış hissetmemesi için havalandırma ve ışık da önemlidir."
+      },
+      {
+        "h": "Atık haznesi, koku ve sarf malzemesi",
+        "p": "Atık haznesinin hacmi ve kapağının sızdırmazlığı koku performansını doğrudan belirler. Bazı modeller yalnızca kendi markasının poşetiyle çalışır; bu, kullanım ömrü boyunca süregelen bir sarf maliyeti demektir. Standart çöp poşetiyle uyumlu modeller uzun vadede daha ekonomik olabilir. Haznenin kaç günde bir boşaltılması gerektiğini kedi sayısına göre hesaplayın; dolduğunda cihazın uyarı verip vermediğine bakın."
+      },
+      {
+        "h": "Temizlik ve yedek parça",
+        "p": "Otomatik tuvalet de düzenli olarak tamamen sökülüp yıkanmalıdır. Elektronik aksamı olan modellerde hangi parçaların suyla temas edebileceği kılavuzda yazar; motor bölümü kesinlikle suya sokulmaz. Tarak, elek, hazne kapağı ve conta gibi parçaların yedeğinin bulunabilir olması cihazın kullanım ömrünü belirler. Türkiye'de servis ve yedek parça desteği olmayan bir model, küçük bir arızada tamamen kullanılamaz hâle gelebilir."
+      },
+      {
+        "h": "Kediyi alıştırma",
+        "p": "Yeni cihazı ilk günlerde motoru kapalı biçimde, normal bir tuvalet gibi kullandırın. Kedi kabı benimsedikten sonra otomatik döngüyü devreye alın. Mümkünse eski tuvaleti bir süre daha aynı odada bırakın; seçenek varken kedinin stresi azalır. Motor sesinden ürken kediler için döngüyü kedinin odada olmadığı zamana denk getiren gecikme ayarı işe yarar. Kedi cihazı ısrarla reddediyorsa klasik kaba dönmek, tuvalet dışına yapma alışkanlığı geliştirmesinden iyidir."
+      }
+    ]
+  },
+  {
+    "slug": "15-kg-mama-alirken-saklama-ve-tazelik-rehberi",
+    "title": "15 kg Mama Alırken Saklama ve Tazelik Rehberi",
+    "cat": "genel",
+    "desc": "Büyük gramaj mama gerçekten ekonomik mi? Açıldıktan sonra tazelik, doğru saklama kabı, nem ve yağ acılaşması hakkında pratik rehber.",
+    "products": [
+      "15-kg-kopek-mamasi",
+      "15-kg-kedi-mamasi",
+      "kedi-mamasi"
+    ],
+    "sections": [
+      {
+        "h": "Büyük paket her zaman ekonomik midir?",
+        "p": "Büyük gramaj mamada kilogram başına maliyet genellikle düşer; bu nedenle çok hayvanlı evlerde ve büyük ırk köpeklerde mantıklıdır. Ancak hesabın diğer yarısı tüketim hızıdır. Tek bir kedinin günde ortalama 50-60 gram kuru mama tükettiği bir evde 15 kilogramlık bir paket aylarca açık kalır. Bu sürede ürünün tazeliği ve besin değeri, ilk günkü hâliyle aynı kalmaz. Ekonomik olan, birim fiyatı en düşük paket değil, bozulmadan tüketebileceğiniz en büyük pakettir."
+      },
+      {
+        "h": "Açıldıktan sonra mamaya ne olur?",
+        "p": "Kuru mamanın dış yüzeyindeki yağlar havayla temas ettiğinde oksitlenmeye başlar. Bu süreç ürünü görünür biçimde bozmadan önce kokusunu ve lezzetini değiştirir; seçici hayvanlar bunu insandan önce fark eder ve mamayı yemeyi bırakabilir. Nem ise ikinci sorundur: nemlenen mama küf ve bakteri için uygun ortam hâline gelir. Sıcaklık her iki süreci de hızlandırır, bu yüzden balkon ve mutfak dolabının ocak yanı en kötü saklama yerleridir."
+      },
+      {
+        "h": "Doğru saklama: çuvalı atmayın",
+        "p": "En yaygın hata, mamayı çuvaldan çıkarıp doğrudan plastik bir kovaya boşaltmaktır. Mama ambalajları genellikle içeriden ışığı ve nemi kesecek şekilde üretilir; plastik kova ise zamanla yağ tutar ve eski partinin acılaşmış yağı yeni mamaya bulaşır. Doğru yöntem, mamayı kendi ambalajında bırakıp ağzını katlayarak kapatmak ve bu ambalajı kapaklı bir saklama kabının içine koymaktır. Kabı arada bir sıcak sabunlu suyla yıkayıp tamamen kurutun."
+      },
+      {
+        "h": "Günlük kullanım kabı ayrı olsun",
+        "p": "Ana stoktan her gün kapak açıp kapatmak yerine, birkaç günlük miktarı küçük bir kaba ayırın. Böylece büyük paket daha az havayla temas eder. Mamayı ölçerken kabın içine elinizi veya hayvanın mama kabını sokmayın; ayrı bir ölçü kepçesi kullanın. Kepçeyi ıslak bırakmayın, nem doğrudan pakete taşınır. Son kullanma tarihini ve parti numarasını ambalajdan kesip saklama kabına yapıştırmak, ilerleyen aylarda hangi ürünü kullandığınızı hatırlamanızı sağlar."
+      },
+      {
+        "h": "Bozulmuş mamayı tanıma",
+        "p": "Ekşimsi veya boya inceltici anımsatan keskin bir koku, yağların acılaştığını gösterir. Tanelerin birbirine yapışması, yüzeyde beyaz veya yeşilimsi toz görünümü küf işaretidir. Ambalajın içinde küçük böcekler veya ağ benzeri yapı görmek güve bulaşmasına işaret eder. Bu belirtilerden herhangi biri varsa ürün ayıklanarak kurtarılmaya çalışılmamalı, tamamen elden çıkarılmalıdır. Hayvan mamayı aniden reddetmeye başladıysa önce ürünü koklayın."
+      },
+      {
+        "h": "Satın alırken kontrol listesi",
+        "p": "Ambalajın yırtık, delinmiş veya şişmiş olmadığını kontrol edin. Son kullanma tarihine en az birkaç ay olduğundan emin olun; büyük paket için bu süre tüketim hızınızdan uzun olmalıdır. Çuvalın deposu güneş gören veya rutubetli bir yerde bekletilmiş görünüyorsa başka bir paket isteyin. İlk kez denediğiniz bir mamada doğrudan 15 kilograma geçmeyin; hayvanın ürünü kabul ettiğini küçük pakette gördükten sonra büyük gramaja geçin."
+      }
+    ]
+  },
+  {
+    "slug": "kopek-tasmasi-ve-gogus-kosumu-dogru-beden-secimi",
+    "title": "Köpek Tasması ve Göğüs Koşumu: Doğru Beden Nasıl Seçilir?",
+    "cat": "kopek",
+    "desc": "Boyun ve göğüs çevresi ölçüsü, iki parmak kuralı, boyun tasması ile göğüs koşumu farkı, malzeme ve güvenlik kontrolleri.",
+    "products": [
+        "kopek-tasmasi",
+        "kopek-gogus-tasmasi",
+        "kedi-tasmasi"
+    ],
+    "sections": [
+      {
+        "h": "Önce ölçün, sonra seçin",
+        "p": "Tasma ve koşum seçiminde ırk adı tek başına yeterli bir ölçü değildir; aynı ırk içinde bile gövde yapısı belirgin biçimde değişir. Yumuşak bir terzi mezurasıyla boyun çevresini kulakların hemen altından değil, tasmanın oturacağı noktadan ölçün. Göğüs koşumu için ön bacakların hemen arkasından geçen en geniş gövde çevresini alın. Ölçüyü köpek ayaktayken ve sakinken yapın; her üreticinin beden tablosu farklı olduğu için santimetre değerini kullanın."
+      },
+      {
+        "h": "İki parmak kuralı",
+        "p": "Takılan tasmanın altından iki parmağınız rahatça geçmeli, ancak tasma köpeğin başından sıyrılmamalıdır. Çok gevşek tasma, ürken bir köpeğin geri çekilme hareketiyle kolayca çıkar ve trafikte ciddi tehlike yaratır. Çok sıkı tasma ise nefes almayı kısıtlar, tüy dökülmesine ve deride tahrişe yol açar. Yavru köpeklerde büyüme hızlıdır; tasma boyu en az ayda bir yeniden kontrol edilmelidir."
+      },
+      {
+        "h": "Boyun tasması mı, göğüs koşumu mu?",
+        "p": "Boyun tasması kimlik künyesi taşımak ve sakin yürüyen köpeklerde günlük kullanım için uygundur. Tasmayı sürekli çeken, öksürme veya nefes tıkanması yaşayan, soluk borusu hassasiyeti olan köpeklerde ise göğüs koşumu tercih edilir; koşum yükü boyundan alıp göğüs kafesine yayar. Basık burunlu ırklarda solunum zaten kısıtlı olduğu için koşum çoğu zaman daha güvenlidir. Koşumun koltuk altına sürtmediğinden emin olun."
+      },
+      {
+        "h": "Malzeme ve donanım",
+        "p": "Naylon dokuma hafif, dayanıklı ve yıkanabilir olduğu için en yaygın seçenektir. Deri zamanla gövdeye oturur fakat düzenli bakım ister ve ıslandığında sertleşebilir. Asıl dikkat edilmesi gereken kumaş değil, metal aksamdır: karabina, halka ve toka köpeğin çekme gücüne dayanacak kalınlıkta olmalıdır. Dikişlerin uç noktalarında pekiştirme dikişi bulunup bulunmadığına bakın; koşumda yük bu noktalarda toplanır."
+      },
+      {
+        "h": "Gece yürüyüşü ve görünürlük",
+        "p": "Akşam yürüyüşlerinde reflektif şeritli tasma veya koşum, araç farlarında köpeğin fark edilmesini sağlar. Yanıp sönen küçük ışık aparatları ek görünürlük verir. Otomatik uzayan gezdirme kayışları açık alanda kullanışlıdır fakat yol kenarında ve kalabalıkta kısa konumda kilitlenmelidir; ince ipin ani gerilmesi hem köpeği hem çevredekileri yaralayabilir. Kimlik künyesinde telefon numarası okunur durumda olmalıdır."
+      },
+      {
+        "h": "Alıştırma ve düzenli kontrol",
+        "p": "Yeni tasma veya koşumu ilk kez doğrudan yürüyüşte kullanmayın. Evde kısa süreli takıp ödülle olumlu çağrışım kurun, süreyi kademeli artırın. Kullanımda olan ürünü ayda bir elden geçirin: aşınan dikiş, çatlayan plastik toka, eğilmiş karabina veya incelen kayış fark ettiğinizde ürünü değiştirin. Islanan ürünleri üretici talimatına göre temizleyip tamamen kurutun; nemli bırakılan deri küflenir, naylon ise koku tutar."
+      }
+    ]
+  },
+  {
+    "slug": "kedi-tasima-cantasi-secimi-ve-yolculuk-guvenligi",
+    "title": "Kedi Taşıma Çantası Seçimi ve Yolculuk Güvenliği",
+    "cat": "kedi",
+    "desc": "Sert kutu, kumaş çanta ve sırt çantası farkları; doğru iç ölçü, havalandırma, araç güvenliği ve kediyi çantaya alıştırma yöntemleri.",
+    "products": [
+      "kedi-tasima-cantasi",
+      "kedi-tasima-kabi",
+      "kedi-cantasi"
+    ],
+    "sections": [
+      {
+        "h": "Doğru ölçü nasıl belirlenir?",
+        "p": "Taşıma ürününün iç ölçüsü, kedinin ayakta durabileceği, rahatça dönebileceği ve uzanabileceği büyüklükte olmalıdır. Ölçüyü kedi ayaktayken burun ucundan kuyruk dibine ve omuzdan zemine alın; iç uzunluk bu değerin üzerinde olmalıdır. Aşırı büyük bir kutu da ideal değildir; araç içinde ani frende kedi kutunun içinde savrulur. Amaç, güvenli biçimde sarmalayan fakat sıkıştırmayan bir alan kurmaktır."
+      },
+      {
+        "h": "Sert kutu, kumaş çanta ve sırt çantası",
+        "p": "Sert plastik taşıma kutuları darbeye karşı en korumalı seçenektir; üstten açılan modeller kediyi zorlamadan yerleştirmeyi kolaylaştırır. Kumaş çantalar hafiftir ve dolapta az yer kaplar fakat tabanının çökmemesi, fermuarların sağlam ve mümkünse kilitlenebilir olması gerekir. Şeffaf pencereli sırt çantalarında hava dolaşımı kritik ölçüde önemlidir; kapalı kubbe güneş altında hızla ısınır ve kedi için tehlikeli hâle gelir."
+      },
+      {
+        "h": "Havalandırma ve taşıma kapasitesi",
+        "p": "Ürünün en az iki farklı yüzünde havalandırma açıklığı bulunmalıdır; yalnızca ön kapaktan hava alan modeller kapalı araçta yetersiz kalır. Etiketteki taşıma kapasitesi kedinin kilosunun belirgin biçimde üzerinde olmalıdır, sınırda kalan bir değer taban ve askı dikişlerini zorlar. Askı ve sap dikişlerinin gövdeye nasıl bağlandığını kontrol edin; yük bu noktalarda toplanır. Tabanın altına kaymayı önleyen bir yüzey veya destek plakası bulunması taşıma konforunu artırır."
+      },
+      {
+        "h": "Araç içinde güvenlik",
+        "p": "Kedi araçta asla serbest bırakılmamalı, taşıma ürünü emniyet kemeri veya sabitleme kayışıyla koltuğa bağlanmalıdır. En güvenli konum genellikle arka koltuktadır; hava yastığı bulunan ön koltuk, ani açılma durumunda taşıma kutusuna zarar verebilir. Uzun yolculuklarda kutunun tabanına emici bir ped serin ve düzenli aralıklarla su verin. Aracı park edip ayrıldığınızda kediyi içeride bırakmayın; kapalı araç içi sıcaklık çok kısa sürede tehlikeli seviyeye çıkar."
+      },
+      {
+        "h": "Uçak ve otobüs kuralları",
+        "p": "Havayolu ve otobüs firmalarının kabin içi evcil hayvan kuralları birbirinden farklıdır ve zaman içinde değişir. Kabul edilen maksimum ölçüler, kutu ile hayvanın toplam ağırlığı ve kabul edilen malzeme türü satın almadan önce ilgili firmadan doğrulanmalıdır. Bazı firmalar sert kutuyu kabin içinde kabul etmez, bazıları ise kumaş çantada belirli ölçü sınırı uygular. Sağlık raporu ve aşı kartı gibi belgelerin geçerlilik süresini de seyahatten önce kontrol edin."
+      },
+      {
+        "h": "Kediyi çantaya alıştırmak",
+        "p": "Taşıma çantası yalnızca veteriner ziyaretlerinde ortaya çıkarsa kedi onu olumsuz bir deneyimle ilişkilendirir ve her seferinde direnç gösterir. Çantayı evin sakin bir köşesinde kapağı açık biçimde sürekli bırakın; içine tanıdık kokulu bir örtü ve arada ödül koyun. Kedi kendi isteğiyle girip çıkmaya başladığında kısa süreli kapatma denemeleri yapın. Her kullanımdan sonra iç yüzeyi hayvanlar için uygun bir ürünle temizleyip tamamen kurutun."
+      }
+    ]
+  },
+  {
+    "slug": "kedi-ve-kopekte-ic-dis-parazit-urunleri-veteriner-siniri",
+    "title": "Kedi ve Köpekte İç-Dış Parazit Ürünleri: Nerede Veteriner Sınırı Başlar?",
+    "cat": "genel",
+    "desc": "Parazit koruma ürünlerinde tür, kilo ve doz neden kritiktir? Petshop ürünü ile veteriner reçetesi arasındaki sınır ve güvenli kullanım kuralları.",
+    "products": [
+      "kedi-ic-dis-parazit-damlasi",
+      "kopek-pire-tasmasi",
+      "kedi-sampuani"
+    ],
+    "sections": [
+      {
+        "h": "Bu konuda neden dikkatli olmak gerekir?",
+        "p": "Parazit ürünleri, etiketinde aktif madde bulunan ve vücutta etki gösteren ürünlerdir. Bu yönleriyle bir oyuncak veya mama kabından tamamen farklı bir kategoridedir. Yanlış tür, yanlış kilo aralığı veya yanlış uygulama biçimi, koruma sağlamamakla kalmaz; zehirlenmeye varan ciddi sonuçlara yol açabilir. Bu nedenle parazit koruması, internet tavsiyesiyle değil hayvanı muayene eden veterinerin planıyla yürütülmelidir."
+      },
+      {
+        "h": "Köpek ürünü kediye uygulanmaz",
+        "p": "En tehlikeli hatalardan biri, köpekler için üretilmiş dış parazit ürünlerinin kediye uygulanmasıdır. Köpek ürünlerinin bir bölümünde bulunan bazı aktif maddeler kediler için toksiktir ve kedinin metabolizması bu maddeleri güvenli biçimde parçalayamaz. Aynı evde her iki tür yaşıyorsa, köpeğe uygulanan üründen kedinin yalayarak veya temasla etkilenmemesi için ayırma süresine dikkat edilmelidir. Etikette hangi türe ait olduğu mutlaka okunmalıdır."
+      },
+      {
+        "h": "Kilo aralığı ve yaş sınırı",
+        "p": "Parazit damlaları ve tabletleri belirli kilo aralıkları için ambalajlanır. Büyük bir hayvana küçük doz vermek koruma sağlamaz; küçük bir hayvana büyük dozu bölerek vermek ise güvenli değildir çünkü ürün homojen dağılmayabilir. Yavrularda çoğu ürünün alt yaş ve kilo sınırı bulunur; bu sınırın altındaki hayvanlarda veterinerin önereceği farklı bir yaklaşım gerekir. Gebe ve emziren hayvanlarda ürün seçimi ayrıca değerlendirilir."
+      },
+      {
+        "h": "Dış parazit ürünlerinin doğru uygulanması",
+        "p": "Damla formundaki ürünler tüyün üzerine değil, hayvanın yalayamayacağı bir noktada deriye temas edecek şekilde uygulanır; genellikle ense bölgesi tarif edilir. Uygulamadan sonra belirtilen süre boyunca hayvan yıkanmamalı ve yağmurda ıslanmamalıdır. Pire tasmalarında tasmanın boyuna doğru mesafede oturması ve fazla ucunun kesilmesi gerekir. Evde birden fazla hayvan varsa birbirlerini yalamalarını önlemek için uygulama sonrası kısa süreli ayırma düşünülmelidir."
+      },
+      {
+        "h": "İç parazit: takvim veterinerin işi",
+        "p": "İç parazit ilaçlarının hangi aralıkla verileceği hayvanın yaşına, yaşam tarzına, dışarı çıkıp çıkmadığına ve bölgedeki risklere göre belirlenir. Dışarı çıkan ve çiğ et tüketen hayvanlarda program farklıdır. Bazı parazitler insana da geçebildiği için evde çocuk bulunması da planı etkiler. Dışkıda solucan görülmesi acil bir muayene nedenidir; gözle görülmüyor olması ise parazit bulunmadığı anlamına gelmez."
+      },
+      {
+        "h": "Uygulama sonrası nelere dikkat edilir?",
+        "p": "Uygulamadan sonraki ilk saatlerde hayvanı gözlemleyin. Aşırı salya, titreme, dengesiz yürüme, kusma, uygulama bölgesinde yoğun kızarıklık veya kaşıntı gelişirse ürünü hemen durdurup veterinere başvurun; ambalajı yanınızda götürün. Ürünleri orijinal kutusunda, çocukların ve hayvanların erişemeyeceği bir yerde saklayın. Son kullanma tarihi geçmiş veya ambalajı zarar görmüş ürünleri kullanmayın."
+      },
+      {
+        "h": "Petshopun rolü nedir?",
+        "p": "Bir petshop, veterinerin belirlediği ürünü temin etmenize ve düzenli bakım ürünlerine erişmenize yardımcı olur. Mağaza personeli ürünün ambalajında yazan kilo aralığını ve kullanım talimatını sizinle birlikte okuyabilir, stok durumunu bildirebilir. Ancak hangi etkin maddenin hayvanınıza uygun olduğu, hangi aralıkla uygulanacağı ve mevcut bir şikâyetin parazite bağlı olup olmadığı tıbbi bir değerlendirme gerektirir. Bu sınır, hayvanın güvenliği için korunmalıdır."
+      }
+    ]
   }
 ]

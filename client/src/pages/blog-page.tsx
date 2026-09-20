@@ -56,11 +56,11 @@ export default function BlogPage() {
     const title = rawTitle.length <= 62 ? rawTitle : rawTitle.slice(0, 62).replace(/\s+\S*$/, "").trim();
     const canonicalUrl = `https://www.enuygun.pet/blog/${post.slug}`;
     const CAT_IMGS: Record<string, string> = {
-      kedi: "https://static.wixstatic.com/media/63853e_4c33bdb1dc274eab8358c2d598f7cfee~mv2.jpeg",
-      kopek: "https://static.wixstatic.com/media/63853e_ba5ea5e88a5a41409f4742caf8dced1c~mv2.jpeg",
-      kus: "https://static.wixstatic.com/media/63853e_346d0d0b96154639b0a27296b18d70f5~mv2.jpeg",
+      kedi: "https://www.enuygun.pet/images/magaza/kedi-1200.webp",
+      kopek: "https://www.enuygun.pet/images/magaza/kopek-1200.webp",
+      kus: "https://www.enuygun.pet/images/magaza/kus-1200.webp",
     };
-    const img = CAT_IMGS[post.cat] || "https://static.wixstatic.com/media/63853e_77a3ee3fa9d942a7af5b6f25a0520653~mv2.jpeg";
+    const img = CAT_IMGS[post.cat] || "https://www.enuygun.pet/images/magaza/magaza-1200.webp";
     const desc = post.desc.length < 100
       ? `${post.desc} Samsun Atakum EnuygunPet Gross Market'te uzman tavsiye ve ürün desteği.`
       : post.desc;
@@ -112,11 +112,11 @@ export default function BlogPage() {
   );
 
   const BLOG_CAT_IMGS: Record<string, string> = {
-    kedi: "https://static.wixstatic.com/media/63853e_4c33bdb1dc274eab8358c2d598f7cfee~mv2.jpeg",
-    kopek: "https://static.wixstatic.com/media/63853e_ba5ea5e88a5a41409f4742caf8dced1c~mv2.jpeg",
-    kus: "https://static.wixstatic.com/media/63853e_346d0d0b96154639b0a27296b18d70f5~mv2.jpeg",
+    kedi: "https://www.enuygun.pet/images/magaza/kedi-1200.webp",
+    kopek: "https://www.enuygun.pet/images/magaza/kopek-1200.webp",
+    kus: "https://www.enuygun.pet/images/magaza/kus-1200.webp",
   };
-  const postImg = BLOG_CAT_IMGS[post.cat] || "https://static.wixstatic.com/media/63853e_77a3ee3fa9d942a7af5b6f25a0520653~mv2.jpeg";
+  const postImg = BLOG_CAT_IMGS[post.cat] || "https://www.enuygun.pet/images/magaza/magaza-1200.webp";
   const postImgObj = {
     "@type": "ImageObject",
     "url": postImg,
@@ -215,11 +215,11 @@ export default function BlogPage() {
         "url": "https://www.enuygun.pet/",
         "telephone": PHONE,
         "image": [
-          "https://static.wixstatic.com/media/63853e_77a3ee3fa9d942a7af5b6f25a0520653~mv2.jpeg",
-          "https://static.wixstatic.com/media/63853e_f5ae600f104c4dfcae521fe694ba017b~mv2.jpeg",
-          "https://static.wixstatic.com/media/63853e_4c33bdb1dc274eab8358c2d598f7cfee~mv2.jpeg",
-          "https://static.wixstatic.com/media/63853e_ba5ea5e88a5a41409f4742caf8dced1c~mv2.jpeg",
-          "https://static.wixstatic.com/media/63853e_346d0d0b96154639b0a27296b18d70f5~mv2.jpeg"
+          "https://www.enuygun.pet/images/magaza/magaza-1200.webp",
+          "https://www.enuygun.pet/images/magaza/reyonlar-1200.webp",
+          "https://www.enuygun.pet/images/magaza/kedi-1200.webp",
+          "https://www.enuygun.pet/images/magaza/kopek-1200.webp",
+          "https://www.enuygun.pet/images/magaza/kus-1200.webp"
         ],
         "address": {
           "@type": "PostalAddress",

@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { useTrack } from "@/hooks/use-track";
-import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "wouter";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -20,13 +19,13 @@ import {
   Search,
 } from "lucide-react";
 import { SiWhatsapp, SiInstagram } from "react-icons/si";
-import storeHeroImg from "@assets/enuygunpet_magaza_1783254091827.png";
-import catImg from "@assets/stock_images/cat_category.jpg";
-import dogImg from "@assets/stock_images/dog_category.jpg";
-import birdImg from "@assets/stock_images/bird_category.jpg";
-import fishImg from "@assets/stock_images/fish_category.jpg";
-import hamsterImg from "@assets/stock_images/hamster_category.jpg";
-import petshopImg from "@assets/stock_images/petshop_category.jpg";
+const storeHeroImg = "/images/kategori/hero-magaza-1200.webp";
+const catImg = "/images/kategori/cat-600.webp";
+const dogImg = "/images/kategori/dog-600.webp";
+const birdImg = "/images/kategori/bird-600.webp";
+const fishImg = "/images/kategori/fish-600.webp";
+const hamsterImg = "/images/kategori/hamster-600.webp";
+const petshopImg = "/images/kategori/petshop-600.webp";
 import {
   PHONE_E164 as PHONE,
   PHONE_DISPLAY,
@@ -43,15 +42,15 @@ const INSTAGRAM_URL = "https://www.instagram.com/enuygun.pet/";
 
 const STORE_HERO = storeHeroImg;
 const STORE_PHOTOS = [
-  "https://static.wixstatic.com/media/63853e_f5ae600f104c4dfcae521fe694ba017b~mv2.jpeg",
-  "https://static.wixstatic.com/media/63853e_4c33bdb1dc274eab8358c2d598f7cfee~mv2.jpeg",
-  "https://static.wixstatic.com/media/63853e_ba5ea5e88a5a41409f4742caf8dced1c~mv2.jpeg",
-  "https://static.wixstatic.com/media/63853e_346d0d0b96154639b0a27296b18d70f5~mv2.jpeg",
+  "https://www.enuygun.pet/images/magaza/reyonlar-1200.webp",
+  "https://www.enuygun.pet/images/magaza/kedi-1200.webp",
+  "https://www.enuygun.pet/images/magaza/kopek-1200.webp",
+  "https://www.enuygun.pet/images/magaza/kus-1200.webp",
 ];
 
 function optimizedImg(url: string, width: number = 0) {
-  if (!url.includes("wixstatic.com")) return url;
-  return `/api/image-proxy?url=${encodeURIComponent(url)}${width > 0 ? `&w=${width}` : ""}`;
+  if (width > 0 && width <= 800) return url.replace("-1200.webp", "-800.webp");
+  return url;
 }
 
 const categories = [
@@ -307,16 +306,14 @@ export default function Home() {
           <div className="grid grid-cols-3 gap-2.5 lg:grid-cols-6 lg:gap-4">
             {categories.map((cat, i) => (
               <a key={cat.slug} href={SHOP_URL} target="_blank" rel="noopener noreferrer" data-testid={`link-category-${i}`}>
-                  <motion.div
-                    initial={{ opacity: 0, scale: 0.95 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ delay: 0.05 * i }}
-                    className="relative rounded-2xl overflow-hidden shadow-sm lg:hover:shadow-lg lg:hover:-translate-y-0.5 lg:transition-all aspect-square"
+                  <div
+                    style={{ animationDelay: `${0.05 * i}s` }}
+                    className="animate-in fade-in zoom-in-95 fill-mode-backwards duration-300 relative rounded-2xl overflow-hidden shadow-sm lg:hover:shadow-lg lg:hover:-translate-y-0.5 lg:transition-all aspect-square"
                   >
                     <img src={cat.img} alt={cat.label} loading="lazy" className="absolute inset-0 w-full h-full object-cover" />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/25 to-transparent" />
                     <span className="absolute bottom-1.5 left-1.5 right-1.5 text-white text-[11px] lg:text-sm font-bold text-center leading-tight drop-shadow-md">{cat.label}</span>
-                  </motion.div>
+                  </div>
                 </a>
             ))}
           </div>
@@ -327,19 +324,13 @@ export default function Home() {
           <h2 className="text-base lg:text-xl font-bold text-gray-800 mb-3" data-testid="text-gallery-title">📸 Mağazamızdan</h2>
           <div className="relative rounded-2xl overflow-hidden shadow-sm border border-gray-200 bg-white">
             <div className="relative h-48 lg:h-[440px]">
-              <AnimatePresence mode="wait">
-                <motion.img
-                  key={activeGallery}
-                  src={optimizedImg(galleryImages[activeGallery].src, 600)}
-                  alt={galleryImages[activeGallery].alt}
-                  className="w-full h-full object-cover"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 0.4 }}
-                  loading="lazy"
-                />
-              </AnimatePresence>
+              <img
+                key={activeGallery}
+                src={optimizedImg(galleryImages[activeGallery].src, 600)}
+                alt={galleryImages[activeGallery].alt}
+                className="w-full h-full object-cover animate-in fade-in duration-500"
+                loading="lazy"
+              />
             </div>
             <div className="flex items-center justify-center gap-2 py-2.5">
               {galleryImages.map((_, i) => (
@@ -549,18 +540,11 @@ function FaqItem({ question, answer }: { question: string; answer: string }) {
         <span className="text-sm font-semibold text-gray-700">{question}</span>
         <ChevronDown className={`w-4 h-4 text-gray-400 shrink-0 transition-transform ${open ? "rotate-180" : ""}`} />
       </button>
-      <AnimatePresence>
-        {open && (
-          <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.2 }}
-          >
-            <p className="text-xs text-gray-500 px-3.5 pb-3.5 leading-relaxed border-t border-gray-100 pt-2">{answer}</p>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      {open && (
+        <div className="animate-in fade-in slide-in-from-top-1 duration-200">
+          <p className="text-xs text-gray-500 px-3.5 pb-3.5 leading-relaxed border-t border-gray-100 pt-2">{answer}</p>
+        </div>
+      )}
     </div>
   );
 }

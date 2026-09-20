@@ -920,29 +920,6 @@
     ]
   },
   {
-    "slug": "hancerli-petshop",
-    "title": "Hançerli Petshop | Samsun İlkadım | EnuygunPet",
-    "h1": "Hançerli Petshop — EnuygunPet Gross Market",
-    "district": "İlkadım",
-    "neighborhood": "Hançerli",
-    "desc": "Samsun İlkadım Hançerli bölgesinde kedi, köpek, kuş maması ve evcil hayvan ürünleri için EnuygunPet Gross Market.",
-    "intro": "Samsun İlkadım Hançerli mahallesindeki evcil hayvan sahiplerine hizmet veriyoruz. EnuygunPet Gross Market olarak 3078. Sokak adresimizden Hançerli mahallesine kısa mesafede bulunmaktayız.",
-    "sections": [
-      {
-        "h": "Hançerli Mahallesinden EnuygunPet'e Ulaşım",
-        "p": "İlkadım ilçesinin Hançerli mahallesinden mağazamıza kolayca ulaşabilirsiniz. Geniş otopark imkânımız ve 09:00-21:00 açık saatlerimizle hizmetinizdeyiz. WhatsApp hattımızdan stok sorgulaması ve yol tarifi alabilirsiniz."
-      },
-      {
-        "h": "Hançerli Evcil Hayvan Sahipleri Için Ürünler",
-        "p": "Kedi maması, köpek maması, kedi kumu, tasma, kafes, oyuncak ve sağlık ürünleri dahil binlerce çeşit stokta mevcuttur. Royal Canin, Hills, Pro Plan, Reflex gibi premium markaları gross market fiyatıyla sunuyoruz."
-      },
-      {
-        "h": "WhatsApp ile Hızlı Sipariş",
-        "p": "Mağazaya gelmeden önce WhatsApp üzerinden ürün sorgulaması yapabilirsiniz. Ağır mama çuvalları için araç yanı yükleme yardımı sunulmaktadır. +90 542 462 29 59 numaramızı kaydedin."
-      }
-    ]
-  },
-  {
     "slug": "yenidogan-petshop",
     "title": "Yenidoğan Petshop | Samsun İlkadım | EnuygunPet",
     "h1": "Yenidoğan Petshop — EnuygunPet Gross Market",
@@ -1219,29 +1196,6 @@
     ]
   },
   {
-    "slug": "kisla-petshop",
-    "title": "Kışla Petshop | Samsun Canik | EnuygunPet",
-    "h1": "Kışla Petshop — EnuygunPet Gross Market",
-    "district": "Canik",
-    "neighborhood": "Kışla",
-    "desc": "Samsun Canik Kışla bölgesinde kedi, köpek, kuş maması ve evcil hayvan ürünleri için EnuygunPet Gross Market.",
-    "intro": "Samsun Canik Kışla mahallesindeki evcil hayvan sahiplerine hizmet veriyoruz. EnuygunPet Gross Market olarak 3078. Sokak adresimizden Kışla mahallesine kısa mesafede bulunmaktayız.",
-    "sections": [
-      {
-        "h": "Kışla Mahallesinden EnuygunPet'e Ulaşım",
-        "p": "Canik ilçesinin Kışla mahallesinden mağazamıza kolayca ulaşabilirsiniz. Geniş otopark imkânımız ve 09:00-21:00 açık saatlerimizle hizmetinizdeyiz. WhatsApp hattımızdan stok sorgulaması ve yol tarifi alabilirsiniz."
-      },
-      {
-        "h": "Kışla Evcil Hayvan Sahipleri Için Ürünler",
-        "p": "Kedi maması, köpek maması, kedi kumu, tasma, kafes, oyuncak ve sağlık ürünleri dahil binlerce çeşit stokta mevcuttur. Royal Canin, Hills, Pro Plan, Reflex gibi premium markaları gross market fiyatıyla sunuyoruz."
-      },
-      {
-        "h": "WhatsApp ile Hızlı Sipariş",
-        "p": "Mağazaya gelmeden önce WhatsApp üzerinden ürün sorgulaması yapabilirsiniz. Ağır mama çuvalları için araç yanı yükleme yardımı sunulmaktadır. +90 542 462 29 59 numaramızı kaydedin."
-      }
-    ]
-  },
-  {
     "slug": "tuzcuoglu-petshop",
     "title": "Tuzcuoğlu Petshop | Samsun Canik | EnuygunPet",
     "h1": "Tuzcuoğlu Petshop — EnuygunPet Gross Market",
@@ -1279,29 +1233,6 @@
       },
       {
         "h": "Hasköy Evcil Hayvan Sahipleri Için Ürünler",
-        "p": "Kedi maması, köpek maması, kedi kumu, tasma, kafes, oyuncak ve sağlık ürünleri dahil binlerce çeşit stokta mevcuttur. Royal Canin, Hills, Pro Plan, Reflex gibi premium markaları gross market fiyatıyla sunuyoruz."
-      },
-      {
-        "h": "WhatsApp ile Hızlı Sipariş",
-        "p": "Mağazaya gelmeden önce WhatsApp üzerinden ürün sorgulaması yapabilirsiniz. Ağır mama çuvalları için araç yanı yükleme yardımı sunulmaktadır. +90 542 462 29 59 numaramızı kaydedin."
-      }
-    ]
-  },
-  {
-    "slug": "saitbey-petshop",
-    "title": "Saitbey Petshop | Samsun Canik | EnuygunPet",
-    "h1": "Saitbey Petshop — EnuygunPet Gross Market",
-    "district": "Canik",
-    "neighborhood": "Saitbey",
-    "desc": "Samsun Canik Saitbey bölgesinde kedi, köpek, kuş maması ve evcil hayvan ürünleri için EnuygunPet Gross Market.",
-    "intro": "Samsun Canik Saitbey mahallesindeki evcil hayvan sahiplerine hizmet veriyoruz. EnuygunPet Gross Market olarak 3078. Sokak adresimizden Saitbey mahallesine kısa mesafede bulunmaktayız.",
-    "sections": [
-      {
-        "h": "Saitbey Mahallesinden EnuygunPet'e Ulaşım",
-        "p": "Canik ilçesinin Saitbey mahallesinden mağazamıza kolayca ulaşabilirsiniz. Geniş otopark imkânımız ve 09:00-21:00 açık saatlerimizle hizmetinizdeyiz. WhatsApp hattımızdan stok sorgulaması ve yol tarifi alabilirsiniz."
-      },
-      {
-        "h": "Saitbey Evcil Hayvan Sahipleri Için Ürünler",
         "p": "Kedi maması, köpek maması, kedi kumu, tasma, kafes, oyuncak ve sağlık ürünleri dahil binlerce çeşit stokta mevcuttur. Royal Canin, Hills, Pro Plan, Reflex gibi premium markaları gross market fiyatıyla sunuyoruz."
       },
       {
@@ -1449,29 +1380,6 @@
     ]
   },
   {
-    "slug": "ondokuzmayis-petshop",
-    "title": "Ondokuzmayıs Petshop | Samsun Tekkeköy | EnuygunPet",
-    "h1": "Ondokuzmayıs Petshop — EnuygunPet Gross Market",
-    "district": "Tekkeköy",
-    "neighborhood": "Ondokuzmayıs",
-    "desc": "Samsun Tekkeköy Ondokuzmayıs bölgesinde kedi, köpek, kuş maması ve evcil hayvan ürünleri için EnuygunPet Gross Market.",
-    "intro": "Samsun Tekkeköy Ondokuzmayıs mahallesindeki evcil hayvan sahiplerine hizmet veriyoruz. EnuygunPet Gross Market olarak 3078. Sokak adresimizden Ondokuzmayıs mahallesine kısa mesafede bulunmaktayız.",
-    "sections": [
-      {
-        "h": "Ondokuzmayıs Mahallesinden EnuygunPet'e Ulaşım",
-        "p": "Tekkeköy ilçesinin Ondokuzmayıs mahallesinden mağazamıza kolayca ulaşabilirsiniz. Geniş otopark imkânımız ve 09:00-21:00 açık saatlerimizle hizmetinizdeyiz. WhatsApp hattımızdan stok sorgulaması ve yol tarifi alabilirsiniz."
-      },
-      {
-        "h": "Ondokuzmayıs Evcil Hayvan Sahipleri Için Ürünler",
-        "p": "Kedi maması, köpek maması, kedi kumu, tasma, kafes, oyuncak ve sağlık ürünleri dahil binlerce çeşit stokta mevcuttur. Royal Canin, Hills, Pro Plan, Reflex gibi premium markaları gross market fiyatıyla sunuyoruz."
-      },
-      {
-        "h": "WhatsApp ile Hızlı Sipariş",
-        "p": "Mağazaya gelmeden önce WhatsApp üzerinden ürün sorgulaması yapabilirsiniz. Ağır mama çuvalları için araç yanı yükleme yardımı sunulmaktadır. +90 542 462 29 59 numaramızı kaydedin."
-      }
-    ]
-  },
-  {
     "slug": "yayla-petshop",
     "title": "Yayla Petshop | Samsun Tekkeköy | EnuygunPet",
     "h1": "Yayla Petshop — EnuygunPet Gross Market",
@@ -1587,52 +1495,6 @@
     ]
   },
   {
-    "slug": "merkez-petshop",
-    "title": "Merkez Petshop | Samsun Bafra | EnuygunPet",
-    "h1": "Merkez Petshop — EnuygunPet Gross Market",
-    "district": "Bafra",
-    "neighborhood": "Merkez",
-    "desc": "Samsun Bafra Merkez bölgesinde kedi, köpek, kuş maması ve evcil hayvan ürünleri için EnuygunPet Gross Market.",
-    "intro": "Samsun Bafra Merkez mahallesindeki evcil hayvan sahiplerine hizmet veriyoruz. EnuygunPet Gross Market olarak 3078. Sokak adresimizden Merkez mahallesine kısa mesafede bulunmaktayız.",
-    "sections": [
-      {
-        "h": "Merkez Mahallesinden EnuygunPet'e Ulaşım",
-        "p": "Bafra ilçesinin Merkez mahallesinden mağazamıza kolayca ulaşabilirsiniz. Geniş otopark imkânımız ve 09:00-21:00 açık saatlerimizle hizmetinizdeyiz. WhatsApp hattımızdan stok sorgulaması ve yol tarifi alabilirsiniz."
-      },
-      {
-        "h": "Merkez Evcil Hayvan Sahipleri Için Ürünler",
-        "p": "Kedi maması, köpek maması, kedi kumu, tasma, kafes, oyuncak ve sağlık ürünleri dahil binlerce çeşit stokta mevcuttur. Royal Canin, Hills, Pro Plan, Reflex gibi premium markaları gross market fiyatıyla sunuyoruz."
-      },
-      {
-        "h": "WhatsApp ile Hızlı Sipariş",
-        "p": "Mağazaya gelmeden önce WhatsApp üzerinden ürün sorgulaması yapabilirsiniz. Ağır mama çuvalları için araç yanı yükleme yardımı sunulmaktadır. +90 542 462 29 59 numaramızı kaydedin."
-      }
-    ]
-  },
-  {
-    "slug": "karakoy-petshop",
-    "title": "Karaköy Petshop | Samsun Bafra | EnuygunPet",
-    "h1": "Karaköy Petshop — EnuygunPet Gross Market",
-    "district": "Bafra",
-    "neighborhood": "Karaköy",
-    "desc": "Samsun Bafra Karaköy bölgesinde kedi, köpek, kuş maması ve evcil hayvan ürünleri için EnuygunPet Gross Market.",
-    "intro": "Samsun Bafra Karaköy mahallesindeki evcil hayvan sahiplerine hizmet veriyoruz. EnuygunPet Gross Market olarak 3078. Sokak adresimizden Karaköy mahallesine kısa mesafede bulunmaktayız.",
-    "sections": [
-      {
-        "h": "Karaköy Mahallesinden EnuygunPet'e Ulaşım",
-        "p": "Bafra ilçesinin Karaköy mahallesinden mağazamıza kolayca ulaşabilirsiniz. Geniş otopark imkânımız ve 09:00-21:00 açık saatlerimizle hizmetinizdeyiz. WhatsApp hattımızdan stok sorgulaması ve yol tarifi alabilirsiniz."
-      },
-      {
-        "h": "Karaköy Evcil Hayvan Sahipleri Için Ürünler",
-        "p": "Kedi maması, köpek maması, kedi kumu, tasma, kafes, oyuncak ve sağlık ürünleri dahil binlerce çeşit stokta mevcuttur. Royal Canin, Hills, Pro Plan, Reflex gibi premium markaları gross market fiyatıyla sunuyoruz."
-      },
-      {
-        "h": "WhatsApp ile Hızlı Sipariş",
-        "p": "Mağazaya gelmeden önce WhatsApp üzerinden ürün sorgulaması yapabilirsiniz. Ağır mama çuvalları için araç yanı yükleme yardımı sunulmaktadır. +90 542 462 29 59 numaramızı kaydedin."
-      }
-    ]
-  },
-  {
     "slug": "kizilirmak-petshop",
     "title": "Kızılırmak Petshop | Samsun Bafra | EnuygunPet",
     "h1": "Kızılırmak Petshop — EnuygunPet Gross Market",
@@ -1725,52 +1587,6 @@
     ]
   },
   {
-    "slug": "merkez-petshop",
-    "title": "Merkez Petshop | Samsun Çarşamba | EnuygunPet",
-    "h1": "Merkez Petshop — EnuygunPet Gross Market",
-    "district": "Çarşamba",
-    "neighborhood": "Merkez",
-    "desc": "Samsun Çarşamba Merkez bölgesinde kedi, köpek, kuş maması ve evcil hayvan ürünleri için EnuygunPet Gross Market.",
-    "intro": "Samsun Çarşamba Merkez mahallesindeki evcil hayvan sahiplerine hizmet veriyoruz. EnuygunPet Gross Market olarak 3078. Sokak adresimizden Merkez mahallesine kısa mesafede bulunmaktayız.",
-    "sections": [
-      {
-        "h": "Merkez Mahallesinden EnuygunPet'e Ulaşım",
-        "p": "Çarşamba ilçesinin Merkez mahallesinden mağazamıza kolayca ulaşabilirsiniz. Geniş otopark imkânımız ve 09:00-21:00 açık saatlerimizle hizmetinizdeyiz. WhatsApp hattımızdan stok sorgulaması ve yol tarifi alabilirsiniz."
-      },
-      {
-        "h": "Merkez Evcil Hayvan Sahipleri Için Ürünler",
-        "p": "Kedi maması, köpek maması, kedi kumu, tasma, kafes, oyuncak ve sağlık ürünleri dahil binlerce çeşit stokta mevcuttur. Royal Canin, Hills, Pro Plan, Reflex gibi premium markaları gross market fiyatıyla sunuyoruz."
-      },
-      {
-        "h": "WhatsApp ile Hızlı Sipariş",
-        "p": "Mağazaya gelmeden önce WhatsApp üzerinden ürün sorgulaması yapabilirsiniz. Ağır mama çuvalları için araç yanı yükleme yardımı sunulmaktadır. +90 542 462 29 59 numaramızı kaydedin."
-      }
-    ]
-  },
-  {
-    "slug": "gelemen-petshop",
-    "title": "Gelemen Petshop | Samsun Çarşamba | EnuygunPet",
-    "h1": "Gelemen Petshop — EnuygunPet Gross Market",
-    "district": "Çarşamba",
-    "neighborhood": "Gelemen",
-    "desc": "Samsun Çarşamba Gelemen bölgesinde kedi, köpek, kuş maması ve evcil hayvan ürünleri için EnuygunPet Gross Market.",
-    "intro": "Samsun Çarşamba Gelemen mahallesindeki evcil hayvan sahiplerine hizmet veriyoruz. EnuygunPet Gross Market olarak 3078. Sokak adresimizden Gelemen mahallesine kısa mesafede bulunmaktayız.",
-    "sections": [
-      {
-        "h": "Gelemen Mahallesinden EnuygunPet'e Ulaşım",
-        "p": "Çarşamba ilçesinin Gelemen mahallesinden mağazamıza kolayca ulaşabilirsiniz. Geniş otopark imkânımız ve 09:00-21:00 açık saatlerimizle hizmetinizdeyiz. WhatsApp hattımızdan stok sorgulaması ve yol tarifi alabilirsiniz."
-      },
-      {
-        "h": "Gelemen Evcil Hayvan Sahipleri Için Ürünler",
-        "p": "Kedi maması, köpek maması, kedi kumu, tasma, kafes, oyuncak ve sağlık ürünleri dahil binlerce çeşit stokta mevcuttur. Royal Canin, Hills, Pro Plan, Reflex gibi premium markaları gross market fiyatıyla sunuyoruz."
-      },
-      {
-        "h": "WhatsApp ile Hızlı Sipariş",
-        "p": "Mağazaya gelmeden önce WhatsApp üzerinden ürün sorgulaması yapabilirsiniz. Ağır mama çuvalları için araç yanı yükleme yardımı sunulmaktadır. +90 542 462 29 59 numaramızı kaydedin."
-      }
-    ]
-  },
-  {
     "slug": "taskopru-petshop",
     "title": "Taşköprü Petshop | Samsun Çarşamba | EnuygunPet",
     "h1": "Taşköprü Petshop — EnuygunPet Gross Market",
@@ -1785,75 +1601,6 @@
       },
       {
         "h": "Taşköprü Evcil Hayvan Sahipleri Için Ürünler",
-        "p": "Kedi maması, köpek maması, kedi kumu, tasma, kafes, oyuncak ve sağlık ürünleri dahil binlerce çeşit stokta mevcuttur. Royal Canin, Hills, Pro Plan, Reflex gibi premium markaları gross market fiyatıyla sunuyoruz."
-      },
-      {
-        "h": "WhatsApp ile Hızlı Sipariş",
-        "p": "Mağazaya gelmeden önce WhatsApp üzerinden ürün sorgulaması yapabilirsiniz. Ağır mama çuvalları için araç yanı yükleme yardımı sunulmaktadır. +90 542 462 29 59 numaramızı kaydedin."
-      }
-    ]
-  },
-  {
-    "slug": "terme-petshop",
-    "title": "Terme Petshop | EnuygunPet Gross Market",
-    "h1": "Terme Petshop — EnuygunPet",
-    "district": "Terme",
-    "neighborhood": null,
-    "desc": "Terme bölgesinde kedi, köpek, kuş maması ve evcil hayvan ürünleri için EnuygunPet Gross Market. Samsun Atakum'da hizmetinizde.",
-    "intro": "Samsun Terme bölgesindeki evcil hayvan sahiplerine hizmet vermekten gurur duyuyoruz. EnuygunPet Gross Market olarak 3078. Sokak Atakum adresimizden Terme'a kolayca ulaşabilirsiniz. Geniş ürün yelpazemiz ve uygun fiyatlarımızla tüm evcil hayvan ihtiyaçlarınızı karşılıyoruz.",
-    "sections": [
-      {
-        "h": "Terme Bölgesinde Petshop Seçimi",
-        "p": "Terme çevresinde yaşayan evcil hayvan sahipleri için doğru ürünü bulmak zor olabilir. EnuygunPet Gross Market binlerce ürün çeşidiyle en kapsamlı petshop seçeneğini sunar. Royal Canin, Hills, Pro Plan, Pedigree, Whiskas gibi dünyaca ünlü markaları en uygun fiyatlarla bulabilirsiniz."
-      },
-      {
-        "h": "Terme'dan EnuygunPet'e Ulaşım",
-        "p": "Samsun Atakum 3078. Sokak'taki mağazamıza Terme bölgesinden kolayca ulaşabilirsiniz. Büyük otopark alanımızla araçla gelme kolaylığı sunuyoruz. Ayrıca WhatsApp hattımızdan ürün sorgulaması yapabilirsiniz."
-      },
-      {
-        "h": "Ürün Çeşitlerimiz ve Fiyat Avantajı",
-        "p": "Gross market formatımız sayesinde perakende fiyatlarının çok altında ürünler sunabiliyoruz. Kedi maması, köpek maması, kedi kumu, aksesuar, oyuncak ve sağlık ürünleri dahil on binlerce ürünü stoğumuzda bulundurmaktayız. Haftanın her günü 09:00-21:00 hizmetinizdeyiz."
-      }
-    ]
-  },
-  {
-    "slug": "merkez-petshop",
-    "title": "Merkez Petshop | Samsun Terme | EnuygunPet",
-    "h1": "Merkez Petshop — EnuygunPet Gross Market",
-    "district": "Terme",
-    "neighborhood": "Merkez",
-    "desc": "Samsun Terme Merkez bölgesinde kedi, köpek, kuş maması ve evcil hayvan ürünleri için EnuygunPet Gross Market.",
-    "intro": "Samsun Terme Merkez mahallesindeki evcil hayvan sahiplerine hizmet veriyoruz. EnuygunPet Gross Market olarak 3078. Sokak adresimizden Merkez mahallesine kısa mesafede bulunmaktayız.",
-    "sections": [
-      {
-        "h": "Merkez Mahallesinden EnuygunPet'e Ulaşım",
-        "p": "Terme ilçesinin Merkez mahallesinden mağazamıza kolayca ulaşabilirsiniz. Geniş otopark imkânımız ve 09:00-21:00 açık saatlerimizle hizmetinizdeyiz. WhatsApp hattımızdan stok sorgulaması ve yol tarifi alabilirsiniz."
-      },
-      {
-        "h": "Merkez Evcil Hayvan Sahipleri Için Ürünler",
-        "p": "Kedi maması, köpek maması, kedi kumu, tasma, kafes, oyuncak ve sağlık ürünleri dahil binlerce çeşit stokta mevcuttur. Royal Canin, Hills, Pro Plan, Reflex gibi premium markaları gross market fiyatıyla sunuyoruz."
-      },
-      {
-        "h": "WhatsApp ile Hızlı Sipariş",
-        "p": "Mağazaya gelmeden önce WhatsApp üzerinden ürün sorgulaması yapabilirsiniz. Ağır mama çuvalları için araç yanı yükleme yardımı sunulmaktadır. +90 542 462 29 59 numaramızı kaydedin."
-      }
-    ]
-  },
-  {
-    "slug": "gelemen-petshop",
-    "title": "Gelemen Petshop | Samsun Terme | EnuygunPet",
-    "h1": "Gelemen Petshop — EnuygunPet Gross Market",
-    "district": "Terme",
-    "neighborhood": "Gelemen",
-    "desc": "Samsun Terme Gelemen bölgesinde kedi, köpek, kuş maması ve evcil hayvan ürünleri için EnuygunPet Gross Market.",
-    "intro": "Samsun Terme Gelemen mahallesindeki evcil hayvan sahiplerine hizmet veriyoruz. EnuygunPet Gross Market olarak 3078. Sokak adresimizden Gelemen mahallesine kısa mesafede bulunmaktayız.",
-    "sections": [
-      {
-        "h": "Gelemen Mahallesinden EnuygunPet'e Ulaşım",
-        "p": "Terme ilçesinin Gelemen mahallesinden mağazamıza kolayca ulaşabilirsiniz. Geniş otopark imkânımız ve 09:00-21:00 açık saatlerimizle hizmetinizdeyiz. WhatsApp hattımızdan stok sorgulaması ve yol tarifi alabilirsiniz."
-      },
-      {
-        "h": "Gelemen Evcil Hayvan Sahipleri Için Ürünler",
         "p": "Kedi maması, köpek maması, kedi kumu, tasma, kafes, oyuncak ve sağlık ürünleri dahil binlerce çeşit stokta mevcuttur. Royal Canin, Hills, Pro Plan, Reflex gibi premium markaları gross market fiyatıyla sunuyoruz."
       },
       {
@@ -1886,29 +1633,6 @@
     ]
   },
   {
-    "slug": "merkez-petshop",
-    "title": "Merkez Petshop | Samsun Alaçam | EnuygunPet",
-    "h1": "Merkez Petshop — EnuygunPet Gross Market",
-    "district": "Alaçam",
-    "neighborhood": "Merkez",
-    "desc": "Samsun Alaçam Merkez bölgesinde kedi, köpek, kuş maması ve evcil hayvan ürünleri için EnuygunPet Gross Market.",
-    "intro": "Samsun Alaçam Merkez mahallesindeki evcil hayvan sahiplerine hizmet veriyoruz. EnuygunPet Gross Market olarak 3078. Sokak adresimizden Merkez mahallesine kısa mesafede bulunmaktayız.",
-    "sections": [
-      {
-        "h": "Merkez Mahallesinden EnuygunPet'e Ulaşım",
-        "p": "Alaçam ilçesinin Merkez mahallesinden mağazamıza kolayca ulaşabilirsiniz. Geniş otopark imkânımız ve 09:00-21:00 açık saatlerimizle hizmetinizdeyiz. WhatsApp hattımızdan stok sorgulaması ve yol tarifi alabilirsiniz."
-      },
-      {
-        "h": "Merkez Evcil Hayvan Sahipleri Için Ürünler",
-        "p": "Kedi maması, köpek maması, kedi kumu, tasma, kafes, oyuncak ve sağlık ürünleri dahil binlerce çeşit stokta mevcuttur. Royal Canin, Hills, Pro Plan, Reflex gibi premium markaları gross market fiyatıyla sunuyoruz."
-      },
-      {
-        "h": "WhatsApp ile Hızlı Sipariş",
-        "p": "Mağazaya gelmeden önce WhatsApp üzerinden ürün sorgulaması yapabilirsiniz. Ağır mama çuvalları için araç yanı yükleme yardımı sunulmaktadır. +90 542 462 29 59 numaramızı kaydedin."
-      }
-    ]
-  },
-  {
     "slug": "vezirkopru-petshop",
     "title": "Vezirköprü Petshop | EnuygunPet Gross Market",
     "h1": "Vezirköprü Petshop — EnuygunPet",
@@ -1928,29 +1652,6 @@
       {
         "h": "Ürün Çeşitlerimiz ve Fiyat Avantajı",
         "p": "Gross market formatımız sayesinde perakende fiyatlarının çok altında ürünler sunabiliyoruz. Kedi maması, köpek maması, kedi kumu, aksesuar, oyuncak ve sağlık ürünleri dahil on binlerce ürünü stoğumuzda bulundurmaktayız. Haftanın her günü 09:00-21:00 hizmetinizdeyiz."
-      }
-    ]
-  },
-  {
-    "slug": "merkez-petshop",
-    "title": "Merkez Petshop | Samsun Vezirköprü | EnuygunPet",
-    "h1": "Merkez Petshop — EnuygunPet Gross Market",
-    "district": "Vezirköprü",
-    "neighborhood": "Merkez",
-    "desc": "Samsun Vezirköprü Merkez bölgesinde kedi, köpek, kuş maması ve evcil hayvan ürünleri için EnuygunPet Gross Market.",
-    "intro": "Samsun Vezirköprü Merkez mahallesindeki evcil hayvan sahiplerine hizmet veriyoruz. EnuygunPet Gross Market olarak 3078. Sokak adresimizden Merkez mahallesine kısa mesafede bulunmaktayız.",
-    "sections": [
-      {
-        "h": "Merkez Mahallesinden EnuygunPet'e Ulaşım",
-        "p": "Vezirköprü ilçesinin Merkez mahallesinden mağazamıza kolayca ulaşabilirsiniz. Geniş otopark imkânımız ve 09:00-21:00 açık saatlerimizle hizmetinizdeyiz. WhatsApp hattımızdan stok sorgulaması ve yol tarifi alabilirsiniz."
-      },
-      {
-        "h": "Merkez Evcil Hayvan Sahipleri Için Ürünler",
-        "p": "Kedi maması, köpek maması, kedi kumu, tasma, kafes, oyuncak ve sağlık ürünleri dahil binlerce çeşit stokta mevcuttur. Royal Canin, Hills, Pro Plan, Reflex gibi premium markaları gross market fiyatıyla sunuyoruz."
-      },
-      {
-        "h": "WhatsApp ile Hızlı Sipariş",
-        "p": "Mağazaya gelmeden önce WhatsApp üzerinden ürün sorgulaması yapabilirsiniz. Ağır mama çuvalları için araç yanı yükleme yardımı sunulmaktadır. +90 542 462 29 59 numaramızı kaydedin."
       }
     ]
   },
@@ -1978,29 +1679,6 @@
     ]
   },
   {
-    "slug": "merkez-petshop",
-    "title": "Merkez Petshop | Samsun Ladik | EnuygunPet",
-    "h1": "Merkez Petshop — EnuygunPet Gross Market",
-    "district": "Ladik",
-    "neighborhood": "Merkez",
-    "desc": "Samsun Ladik Merkez bölgesinde kedi, köpek, kuş maması ve evcil hayvan ürünleri için EnuygunPet Gross Market.",
-    "intro": "Samsun Ladik Merkez mahallesindeki evcil hayvan sahiplerine hizmet veriyoruz. EnuygunPet Gross Market olarak 3078. Sokak adresimizden Merkez mahallesine kısa mesafede bulunmaktayız.",
-    "sections": [
-      {
-        "h": "Merkez Mahallesinden EnuygunPet'e Ulaşım",
-        "p": "Ladik ilçesinin Merkez mahallesinden mağazamıza kolayca ulaşabilirsiniz. Geniş otopark imkânımız ve 09:00-21:00 açık saatlerimizle hizmetinizdeyiz. WhatsApp hattımızdan stok sorgulaması ve yol tarifi alabilirsiniz."
-      },
-      {
-        "h": "Merkez Evcil Hayvan Sahipleri Için Ürünler",
-        "p": "Kedi maması, köpek maması, kedi kumu, tasma, kafes, oyuncak ve sağlık ürünleri dahil binlerce çeşit stokta mevcuttur. Royal Canin, Hills, Pro Plan, Reflex gibi premium markaları gross market fiyatıyla sunuyoruz."
-      },
-      {
-        "h": "WhatsApp ile Hızlı Sipariş",
-        "p": "Mağazaya gelmeden önce WhatsApp üzerinden ürün sorgulaması yapabilirsiniz. Ağır mama çuvalları için araç yanı yükleme yardımı sunulmaktadır. +90 542 462 29 59 numaramızı kaydedin."
-      }
-    ]
-  },
-  {
     "slug": "samsun-petshop",
     "title": "Samsun Petshop | EnuygunPet Gross Market",
     "h1": "Samsun Petshop — EnuygunPet",
@@ -2020,29 +1698,6 @@
       {
         "h": "Samsun'da Hizmet Alanımız",
         "p": "Samsun merkez ve tüm ilçelerden müşterilerimize hizmet veriyoruz. Atakum, İlkadım, Canik, Tekkeköy, Bafra ve Çarşamba'dan her gün ziyaretçiler mağazamızı tercih etmektedir."
-      }
-    ]
-  },
-  {
-    "slug": "atakum-petshop",
-    "title": "Atakum Petshop | EnuygunPet Gross Market",
-    "h1": "Atakum Petshop — EnuygunPet",
-    "district": "Atakum",
-    "neighborhood": null,
-    "desc": "Samsun Atakum'da en uygun fiyatlı kedi, köpek ve kuş ürünleri için EnuygunPet.",
-    "intro": "Samsun Atakum'da yer alan EnuygunPet Gross Market, bölgenin en kapsamlı petshop mağazasıdır.",
-    "sections": [
-      {
-        "h": "Atakum'un Petshop Adresi",
-        "p": "3078. Sokak'taki mağazamız Atakum'un tam kalbinde yer almaktadır. Geniş otopark, uzman personel ve binlerce ürün çeşidiyle sizi bekliyoruz."
-      },
-      {
-        "h": "Atakum'da Evcil Hayvan Sahipliği",
-        "p": "Atakum, Samsun'un modern ve yaşanabilir bir ilçesidir. Evcil hayvan sahipliği oranı yüksek olan bu bölgede kaliteli petshop hizmetine olan ihtiyaç sürekli artmaktadır. EnuygunPet bu ihtiyacı gross market formatıyla karşılıyor."
-      },
-      {
-        "h": "Neden EnuygunPet",
-        "p": "Perakende fiyatlarının çok altında gross market fiyatları, 7 gün açık, WhatsApp destek hattı ve zengin ürün çeşidiyle Atakum'un en çok tercih edilen petshopuyuz."
       }
     ]
   },

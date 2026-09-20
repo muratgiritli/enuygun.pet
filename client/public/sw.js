@@ -44,10 +44,7 @@ self.addEventListener('fetch', (event) => {
     return;
   }
 
-  if (
-    request.destination === 'image' ||
-    url.pathname.startsWith('/api/image-proxy')
-  ) {
+  if (request.destination === 'image') {
     event.respondWith(cacheFirstImage(request));
     return;
   }

@@ -15,7 +15,17 @@ import {
   pickImages,
   type SeoArticle,
 } from "../shared/seo-article";
-import { PHONE_DISPLAY, PHONE_INTL, STORE_ADDRESS_SHORT, STORE_ADDRESS_LINE } from "../shared/store-info";
+import {
+  PHONE_DISPLAY,
+  PHONE_INTL,
+  STORE_ADDRESS_SHORT,
+  STORE_ADDRESS_LINE,
+  SHOP_URL,
+  GOOGLE_REVIEWS_URL,
+  STORE_MAPS_EMBED_URL,
+  STORE_MAPS_URL,
+} from "../shared/store-info";
+import { SHOP_COLLECTIONS } from "../shared/shop-links";
 
 interface PageMeta {
   title: string;
@@ -102,103 +112,6 @@ function generateContent(keyword: string, slug: string): SeoArticle {
   return buildKeywordArticle(keyword, slug);
 }
 
-const COMMON_SECTION = `<section>
-<h2>EnuygunPet Gross Market Hakkında</h2>
-<p>EnuygunPet, Samsun Atakum'da ${STORE_ADDRESS_SHORT} adresinde faaliyet gösteren Samsun'un en büyük petshop gross marketidir. Mağazamızda kedi maması, köpek maması, kuş yemi, kedi kumu, tasma, oyuncak, yatak, kafes, akvaryum malzemeleri ve daha pek çok kategoriyi kapsayan on binlerce ürün çeşidi bulunmaktadır.</p>
-<p>Gross market formatımız sayesinde müşterilerimize perakende mağazaların çok altında fiyatlar sunabiliyoruz. Özellikle büyük gramaj ve toplu alımlarda fiyat avantajımız belirgin biçimde hissedilmektedir. Royal Canin, Hills Science Plan, Pro Plan, Brit Care, Reflex, Enjoy, Acana, Orijen, Pedigree, Whiskas, Felix gibi dünyanın önde gelen markalarının tüm ürün gamlarını stokta bulunduruyoruz.</p>
-<h3>Ürün Kategorileri</h3>
-<p>Mağazamızda beş ana kategoride ürün sunmaktayız: Kedi ürünleri (mama, kum, oyuncak, tırmalama tahtası, taşıma çantası), Köpek ürünleri (mama, tasma, koşum, oyuncak, yatak, bakım ürünleri), Kuş ürünleri (yem, kafes, tünek, mineral taşı, vitamin), Balık ve akvaryum ürünleri (yem, filtre, ışık, süsleme), Küçük hayvan ürünleri (hamster, tavşan, guinea pig yemi ve kafesleri). Her kategoride geniş marka ve gramaj seçenekleri mevcuttur.</p>
-<h3>Neden EnuygunPet?</h3>
-<p>Samsun'da petshop arayışındaki evcil hayvan sahipleri EnuygunPet'i şu nedenlerle tercih etmektedir: Birincisi, gross market fiyat avantajı — perakende fiyatların yüzde otuz ila elli altında fiyatlar sunuyoruz. İkincisi, geniş stok — binlerce ürün çeşidi her zaman raflarımızda mevcuttur, stoksuz kalmak nadiren yaşanır. Üçüncüsü, uzman danışmanlık — mağazamızdaki personelimiz evcil hayvan beslenme ve bakımı konusunda deneyimlidir, size en doğru ürünü önerir. Dördüncüsü, kolay erişim — 3078. Sokak üzerinde konumlanan mağazamıza ulaşmak oldukça kolaydır ve geniş otopark imkânı sunmaktadır.</p>
-<h3>Online Sipariş ve Teslimat</h3>
-<p>Mağazamıza gelmeden de sipariş verebilirsiniz. WhatsApp hattımız (${PHONE_INTL}) üzerinden ürün fotoğrafı ve fiyat listesi isteyebilir, sipariş oluşturabilirsiniz. Samsun içi teslimat seçeneğimizle ürünleri kapınıza kadar getiriyoruz. Büyük gramaj veya ağır ürünlerde özellikle bu hizmet tercih edilmektedir. Instagram sayfamız (@enuygun.pet) üzerinden ürün kataloğumuzu inceleyebilir, yeni gelen ürünleri takip edebilirsiniz.</p>
-<h3>İletişim ve Konum</h3>
-<p>Mağazamıza ulaşmak için Google Harita üzerinden "EnuygunPet" araması yapabilir veya doğrudan yol tarifi alabilirsiniz. Adresimiz: ${STORE_ADDRESS_SHORT}. WhatsApp hattımız (${PHONE_INTL}) üzerinden ürün stok sorgusu, fiyat bilgisi ve genel sorularınız için bize ulaşabilirsiniz. Haftanın her günü saat 09:00 ile 21:00 saatleri arasında sizlere hizmet veriyoruz; resmi tatillerde de mağazamız açıktır. Samsun Atakum'da güvenilir, uygun fiyatlı ve geniş stoklu bir evcil hayvan mağazası arıyorsanız EnuygunPet Gross Market'e bekliyoruz.</p>
-</section>
-<nav aria-label="Site içi bağlantılar">
-<h3>Ana Kategoriler</h3>
-<ul>
-<li><a href="/kedi-urunleri">Kedi Ürünleri — Mama, Kum, Oyuncak, Bakım</a></li>
-<li><a href="/kopek-urunleri">Köpek Ürünleri — Mama, Tasma, Oyuncak, Yatak</a></li>
-<li><a href="/kus-urunleri">Kuş Ürünleri — Yem, Kafes, Tünek, Vitamin</a></li>
-<li><a href="/balik-urunleri">Balık ve Akvaryum Ürünleri — Yem, Filtre, Süsleme</a></li>
-<li><a href="/kucuk-hayvan-urunleri">Küçük Hayvan Ürünleri — Hamster, Tavşan, Guinea Pig</a></li>
-<li><a href="/surungen-urunleri">Sürüngen ve Egzotik Hayvan Ürünleri</a></li>
-</ul>
-<h3>Popüler Kedi Aramaları</h3>
-<ul>
-<li><a href="/kedi-mamasi-samsun">Kedi Maması Samsun — Gross Market Fiyatı</a></li>
-<li><a href="/kedi-mamasi-atakum">Kedi Maması Atakum — EnuygunPet</a></li>
-<li><a href="/kedi-kumu-samsun">Kedi Kumu Samsun — Toplu Alım İndirimi</a></li>
-<li><a href="/kisir-kedi-mamasi">Kısır Kedi Maması — Sterilised Ürünler</a></li>
-<li><a href="/kisir-kedi-mamasi">Sterilised Kedi Maması — Royal Canin, Hills</a></li>
-<li><a href="/yavru-kedi-mamasi">Yavru Kedi Maması — Kitten Formülleri</a></li>
-</ul>
-<h3>Popüler Köpek Aramaları</h3>
-<ul>
-<li><a href="/kopek-mamasi-samsun">Köpek Maması Samsun — Uygun Fiyat</a></li>
-<li><a href="/kopek-mamasi-atakum">Köpek Maması Atakum — EnuygunPet</a></li>
-<li><a href="/yavru-kopek-mamasi">Yavru Köpek Maması — Puppy Formülleri</a></li>
-<li><a href="/kucuk-irk-kopek-mamasi">Küçük Irk Köpek Maması — Mini Breed</a></li>
-<li><a href="/buyuk-irk-kopek-mamasi">Büyük Irk Köpek Maması — Maxi Breed</a></li>
-<li><a href="/kopek-tasmasi">Köpek Tasması — Geniş Seçenek</a></li>
-</ul>
-<h3>Popüler Marka Aramaları</h3>
-<ul>
-<li><a href="/royal-canin-samsun">Royal Canin Samsun — Orijinal Ürün Garantisi</a></li>
-<li><a href="/hills-science-plan-samsun">Hills Science Plan Samsun — Veteriner Önerisi</a></li>
-<li><a href="/pro-plan-samsun">Pro Plan Samsun — Geniş Stok</a></li>
-<li><a href="/brit-care-samsun">Brit Care Samsun — Tahılsız Formüller</a></li>
-<li><a href="/acana">Acana Samsun — Premium Mama</a></li>
-<li><a href="/gold-wings-muhabbet-yemi">Gold Wings Muhabbet Yemi — Kuş Ürünleri</a></li>
-</ul>
-<h3>Petshop Samsun — Semte Göre</h3>
-<ul>
-<li><a href="/atakum-petshop">Atakum Petshop — EnuygunPet Gross Market</a></li>
-<li><a href="/local/yeni-mahalle-petshop">Yeni Mahalle Petshop — Atakum</a></li>
-<li><a href="/local/kurupelit-petshop">Kurupelit Petshop — Atakum</a></li>
-<li><a href="/local/ondokuzmayis-petshop">19 Mayıs Petshop — Atakum</a></li>
-<li><a href="/local/gazi-petshop">Gazi Mahallesi Petshop — Atakum</a></li>
-<li><a href="/local/universite-petshop">Üniversite Mahallesi Petshop</a></li>
-<li><a href="/local/ilkadim-petshop">İlkadım Petshop — Samsun Merkez</a></li>
-<li><a href="/local/canik-petshop">Canik Petshop — Uygun Fiyat</a></li>
-<li><a href="/local/tekkekoy-petshop">Tekkeköy Petshop</a></li>
-<li><a href="/local/bafra-petshop">Bafra Petshop</a></li>
-<li><a href="/local/carsamba-petshop">Çarşamba Petshop</a></li>
-<li><a href="/local/terme-petshop">Terme Petshop</a></li>
-</ul>
-<h3>Kedi Sağlık ve Bakım Rehberleri</h3>
-<ul>
-<li><a href="/saglik/kedi">Kedi Sağlığı ve Beslenme Rehberi</a></li>
-<li><a href="/blog/kisir-kedi-mamasi-hangisi">Kısır Kedi Maması Hangisi Seçilmeli?</a></li>
-<li><a href="/blog/en-iyi-kedi-mamasi-hangisi-2025-rehberi">En İyi Kedi Maması 2025 Rehberi</a></li>
-<li><a href="/blog/yavru-kedi-nasil-beslenir-kapsamli-rehber">Yavru Kedi Nasıl Beslenir?</a></li>
-<li><a href="/blog/kedi-tuy-dokulmesi-nedenleri-ve-cozumler">Kedi Tüy Dökülmesi — Nedenleri ve Çözümler</a></li>
-</ul>
-<h3>Köpek Sağlık ve Bakım Rehberleri</h3>
-<ul>
-<li><a href="/saglik/kopek">Köpek Sağlığı ve Beslenme Rehberi</a></li>
-<li><a href="/blog/kopek-mamasi-secimi-tam-rehber-2025">Köpek Maması Seçimi 2025 Rehberi</a></li>
-<li><a href="/blog/kopek-neden-mama-yemez-7-neden-ve-cozumler">Köpek Neden Mama Yemez?</a></li>
-<li><a href="/blog/yavru-kopek-bakim-rehberi-ilk-haftalar">Yavru Köpek Bakım Rehberi</a></li>
-</ul>
-<h3>Kuş ve Diğer Hayvan Rehberleri</h3>
-<ul>
-<li><a href="/saglik/kus">Kuş Sağlığı ve Beslenme Rehberi</a></li>
-<li><a href="/saglik/balik">Balık ve Akvaryum Bakım Rehberi</a></li>
-<li><a href="/blog/muhabbet-kusu-nasil-beslenir-dogru-diyet">Muhabbet Kuşu Nasıl Beslenir?</a></li>
-<li><a href="/blog/hamster-bakim-rehberi-yeni-baslayanlar-icin">Hamster Bakım Rehberi</a></li>
-<li><a href="/blog">Tüm Blog Yazıları — Evcil Hayvan Bakım Rehberi</a></li>
-</ul>
-<h3>EnuygunPet — Hızlı Erişim</h3>
-<ul>
-<li><a href="/">EnuygunPet Gross Market — Ana Sayfa</a></li>
-<li><a href="/petshop-samsun">Petshop Samsun — Gross Market Fiyatları</a></li>
-<li><a href="/atakum-petshop">Petshop Atakum — Haftanın 7 Günü Açık</a></li>
-<li><a href="/kapida-teslim-petshop">Kapıda Teslim Petshop — Samsun</a></li>
-</ul>
-</nav>`;
-
 function imgTag(src: string, alt: string, eager = false): string {
   return `<figure><img src="${escapeHtml(src)}" alt="${escapeHtml(alt)}" title="${escapeHtml(alt)}" width="800" height="450" loading="${eager ? "eager" : "lazy"}"><figcaption>${escapeHtml(alt)}</figcaption></figure>`;
 }
@@ -214,6 +127,13 @@ function footerHtml(): string {
 <li><a href="/balik-urunleri">Akvaryum ürünleri</a></li>
 <li><a href="/kucuk-hayvan-urunleri">Küçük hayvan ürünleri</a></li>
 </ul></nav>
+<h3>Mağaza bilgileri</h3>
+<p>Ürünler kapalı ambalajında satılır; son kullanma tarihi ve etiket mağazada kontrol edilebilir. Mağazada canlı hayvan satışı yapılmaz.</p>
+<p><a href="${SHOP_URL}" rel="noopener">Online mağaza: enuygunpetshop.com</a>
+ · <a href="${SHOP_COLLECTIONS.kediMamasi}" rel="noopener">Kedi maması</a>
+ · <a href="${SHOP_COLLECTIONS.kopekMamasi}" rel="noopener">Köpek maması</a>
+ · <a href="${SHOP_COLLECTIONS.kediKumu}" rel="noopener">Kedi kumu</a>
+ · <a href="${GOOGLE_REVIEWS_URL}" rel="noopener nofollow">Google yorumlarını oku</a></p>
 <address>EnuygunPet Gross Market — ${STORE_ADDRESS_SHORT} — Tel: ${PHONE_INTL} — Her gün 09:00–21:00</address>
 </aside>`;
 }
@@ -344,8 +264,9 @@ export function getPageMeta(urlPath: string): PageMeta {
           { h: "Adres", p: `${STORE_ADDRESS_LINE}. Ücretsiz otopark imkânı bulunmaktadır.` },
           { h: "Telefon ve WhatsApp", p: `${PHONE_DISPLAY} numaralı hattımızdan arayabilir veya WhatsApp üzerinden stok ve fiyat sorabilirsiniz.` },
           { h: "Çalışma Saatleri", p: "Haftanın her günü 09:00–21:00 saatleri arasında açığız. Resmi tatillerde de hizmet veriyoruz." },
+          { h: "Harita", p: `Mağaza konumu Google Harita'da 3078. Sokak No:10, Atakum pinindedir. Yol tarifi için haritayı açın.` },
         ]
-      ),
+      ) + `<p><a href="${STORE_MAPS_URL}" rel="noopener">Google Harita yol tarifi</a> · <a href="${GOOGLE_REVIEWS_URL}" rel="noopener nofollow">Yorumlar</a></p><iframe title="EnuygunPet Atakum mağaza konumu" src="${STORE_MAPS_EMBED_URL}" width="600" height="320" style="border:0;width:100%;max-width:600px;height:320px" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>`,
     };
   }
 
@@ -569,6 +490,7 @@ export function getPageMeta(urlPath: string): PageMeta {
         h1,
         description: clipDesc(`${kw} hakkında bilgi: belirtiler, nedenler ve ne yapmalısınız? Samsun Atakum EnuygunPet'te ${health.categoryName.toLowerCase()} ürünleri.`),
         bodyHtml: buildSeoBodyHtml(h1, art),
+        noIndex: true,
       };
     }
     return notFoundMeta();
@@ -585,6 +507,7 @@ export function getPageMeta(urlPath: string): PageMeta {
       h1,
       description: clipDesc(buildKeywordDesc(kw)),
       bodyHtml: buildSeoBodyHtml(h1, art),
+      noIndex: true,
     };
   }
 

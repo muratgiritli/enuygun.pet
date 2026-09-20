@@ -3,6 +3,8 @@
  * Keep this list pattern-based so client + server share one map.
  */
 
+import { resolvePrunedSlug } from "./seo-prune";
+
 const ATAKUM_CANONICAL = "/atakum-petshop";
 const SAMSUN_CANONICAL = "/petshop-samsun";
 const DELIVERY_CANONICAL = "/kapida-teslim-petshop";
@@ -41,6 +43,8 @@ const COMPETITOR_SLUGS = new Set([
   "th-pet-center-samsun",
   "cazip-ve-uygun-pet-samsun",
   "express-mama-samsun",
+  "express-mama",
+  "botanik-pet-center",
   "samsun-petshop-botanik",
   "samsun-pethouse-petshop-samsun-akvaryum",
   "express-mama-yerine-atakum-petshop",
@@ -87,6 +91,13 @@ export function resolveSeoRedirect(pathname: string): string | null {
 
   if (slug !== "samsun-petshop" && /^(samsun-petshop)(-|$)/.test(slug)) {
     return SAMSUN_CANONICAL;
+  }
+
+  // Mahalle sayfaları kendi başlarına yerel içerik taşır; tasfiye kuralı yalnızca
+  // üst düzey anahtar kelime URL'lerine uygulanır.
+  if (!path.startsWith("/local/")) {
+    const pruned = resolvePrunedSlug(slug);
+    if (pruned && pruned !== path) return pruned;
   }
 
   return null;

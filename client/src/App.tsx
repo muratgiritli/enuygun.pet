@@ -1,5 +1,5 @@
 import { Switch, Route, useLocation } from "wouter";
-import { useEffect } from "react";
+import { useEffect, lazy, Suspense } from "react";
 import { queryClient } from "./lib/queryClient";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
@@ -7,18 +7,20 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import Home from "@/pages/home";
 import NotFound from "@/pages/not-found";
 import KeywordPage from "@/pages/keyword-page";
-import HealthPage from "@/pages/health-page";
-import BlogListPage from "@/pages/blog-list-page";
-import BlogPage from "@/pages/blog-page";
 import CategoryPage from "@/pages/category-page";
-import LocalPage from "@/pages/local-page";
-import RoyalCaninPage from "@/pages/royal-canin";
-import ProPlanPage from "@/pages/proplan";
-import IletisimPage from "@/pages/iletisim";
-import AdminPage from "@/pages/admin";
-import HealthHubPage from "@/pages/health-hub-page";
 import { AnalyticsProvider } from "@/components/analytics-provider";
 import { resolveSeoRedirect } from "@shared/seo-redirects";
+
+// Daha seyrek ziyaret edilen sayfalar ilk yüklemeyi büyütmemek için ayrı paketlenir.
+const HealthPage = lazy(() => import("@/pages/health-page"));
+const BlogListPage = lazy(() => import("@/pages/blog-list-page"));
+const BlogPage = lazy(() => import("@/pages/blog-page"));
+const LocalPage = lazy(() => import("@/pages/local-page"));
+const RoyalCaninPage = lazy(() => import("@/pages/royal-canin"));
+const ProPlanPage = lazy(() => import("@/pages/proplan"));
+const IletisimPage = lazy(() => import("@/pages/iletisim"));
+const AdminPage = lazy(() => import("@/pages/admin"));
+const HealthHubPage = lazy(() => import("@/pages/health-hub-page"));
 
 function Router() {
   const [location, setLocation] = useLocation();
@@ -31,6 +33,7 @@ function Router() {
   if (dest) return null;
 
   return (
+    <Suspense fallback={null}>
     <Switch>
       <Route path="/" component={Home} />
       <Route path="/admin" component={AdminPage} />
@@ -63,6 +66,7 @@ function Router() {
       <Route path="/:slug" component={KeywordPage} />
       <Route component={NotFound} />
     </Switch>
+    </Suspense>
   );
 }
 

@@ -16,6 +16,7 @@ import {
   STORE_ADDRESS_LINE,
   STORE_ADDRESS_SHORT,
 } from "@shared/store-info";
+import { shopSearchUrl } from "@shared/shop-links";
 
 const IMG = "/images/royal-canin";
 const logoImg = `${IMG}/logo.png`;
@@ -29,7 +30,7 @@ const gastroImg = `${IMG}/gastrointestinal.jpg`;
 const hypoImg = `${IMG}/hypoallergenic.jpg`;
 
 const WHATSAPP_URL = `${PHONE_WHATSAPP_URL}?text=${encodeURIComponent("Merhaba, Royal Canin ürünleri hakkında bilgi almak istiyorum.")}`;
-const SHOP_URL = "https://www.enuygunpetshop.com";
+const SHOP_URL = shopSearchUrl("Royal Canin");
 
 const catProducts = [
   { img: kittenImg, alt: "royal canin kitten", label: "Kitten" },
