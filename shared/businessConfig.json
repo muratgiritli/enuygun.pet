@@ -1,0 +1,100 @@
+{
+  "name": "Enuygun.pet",
+  "legalName": "Enuygun.pet Atakum Evcil Hayvan Mağazası",
+  "tagline": "Samsun Atakum Pet Market",
+  "slogan": "Sen İste Biz Kapına Getirelim",
+  "phone": "+90 532 354 40 55",
+  "phoneRaw": "+905323544055",
+  "phoneDisplay": "0 532 354 40 55",
+  "phoneHref": "tel:05323544055",
+  "whatsappDisplay": "0 532 354 40 55",
+  "whatsappHref": "https://wa.me/905323544055?text=Merhaba,%20Sen%20İste%20Biz%20Kapına%20Getirelim!%20Sipariş%20vermek%20istiyorum",
+  "address": {
+    "street": "Yenimahalle, 3078. Sokak No:10 A",
+    "neighborhood": "Yenimahalle",
+    "district": "Atakum",
+    "city": "Samsun",
+    "postalCode": "55200",
+    "country": "TR",
+    "fullAddress": "Yenimahalle, 3078. Sokak No:10 A, 55200 Atakum / Samsun",
+    "landmark": "Sahil & Tramvay Hattı Yakını"
+  },
+  "geo": {
+    "latitude": 41.350163,
+    "longitude": 36.242180
+  },
+  "openingHours": {
+    "display": "Pazartesi – Cumartesi: 09:30 – 20:00 | Pazar: 12:00 – 19:00",
+    "weekdays": "09:30 - 20:00",
+    "sunday": "12:00 - 19:00",
+    "schema": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday"
+        ],
+        "opens": "09:30",
+        "closes": "20:00"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+          "Sunday"
+        ],
+        "opens": "12:00",
+        "closes": "19:00"
+      }
+    ]
+  },
+  "urls": {
+    "website": "https://www.enuygun.pet",
+    "googleMaps": "https://www.google.com/maps/place//data=!4m2!3m1!1s0x408879084590d33b:0x47f16b6777453014?sa=X&ved=1t:8290&ictx=111",
+    "instagram": "https://www.instagram.com/enuygun.pet"
+  },
+  "delivery": {
+    "atakum": {
+      "method": "Kendi araçlarımızla adrese ve kata teslimat",
+      "slogan": "Sen İste Biz Kapına Getirelim",
+      "fee": 0,
+      "feeDisplay": "Ücretsiz",
+      "minOrder": 600,
+      "minOrderDisplay": "600 ₺",
+      "deliveryHours": "12:00 - 18:00 (Her gün)",
+      "deliveryTime": "Her gün 12:00 - 18:00 arası aynı gün adrese teslimat",
+      "paymentMethods": "Kapıda Nakit veya Kredi Kartı",
+      "neighborhoods": [
+        "Cumhuriyet",
+        "Yenimahalle",
+        "Mimarsinan",
+        "Atakent",
+        "Körfez",
+        "İncesu",
+        "Güzelyurt",
+        "Kamalı",
+        "Esenevler"
+      ]
+    },
+    "otherDistricts": {
+      "method": "Anlaşmalı kargo ile adrese gönderim (Kendi araçlarımızla sadece Atakum içi teslimat yapılır)",
+      "fee": 150,
+      "feeDisplay": "150 ₺ Kargo Ücreti",
+      "minOrder": 1500,
+      "minOrderDisplay": "1.500 ₺",
+      "deliveryTime": "Kargo teslim süresine göre",
+      "districts": [
+        "İlkadım",
+        "Canik",
+        "Tekkeköy",
+        "Bafra",
+        "Çarşamba",
+        "Diğer İlçeler"
+      ]
+    }
+  },
+  "tracking": {}
+}

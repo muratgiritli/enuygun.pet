@@ -1,0 +1,26 @@
+node_modules
+dist
+.DS_Store
+server/public
+vite.config.ts.*
+*.tar.gz
+.env
+.env.*
+!.env.example
+# Auto-ignored heavy directories & >45MB files
+node_modules/
+**/node_modules/
+.venv/
+**/.venv/
+venv/
+**/venv/
+__pycache__/
+**/__pycache__/
+.next/cache/
+**/.next/cache/
+.cache/
+*.bundle
+*.tgz
+*.zip
+*.sql.gz
+*.log

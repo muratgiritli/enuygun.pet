@@ -1,0 +1,62 @@
+# Enuygun.pet - Samsun Atakum Petshop ve Evcil Hayvan Mağazası
+
+> **Sloganımız**: "Sen İste Biz Kapına Getirelim"
+> Samsun ili Atakum ilçesinde fiziksel pet market mağazası: Orijinal kedi ve köpek mamaları, bentonit ve çam peleti kedi kumları, kuş yemleri, akvaryum ve kemirgen ürünleri ile Atakum geneline her gün 12:00 - 18:00 arası 600 TL üzeri aynı gün ücretsiz adrese/kata teslimat hizmeti.
+
+## Temel İşletme Bilgileri
+- **İşletme Adı**: Enuygun.pet (Atakum Pet Market)
+- **Slogan**: Sen İste Biz Kapına Getirelim
+- **Yetkili / Mağaza Türü**: Fiziksel Evcil Hayvan Mağazası (Pet Store / Pet Gross Market)
+- **Adres**: Yenimahalle, 3078. Sokak No:10 A, 55200 Atakum / Samsun, Türkiye
+- **Konum Tarifi**: Atakum sahil ve tramvay hattı yakını, geniş otoparklı fiziksel mağaza.
+- **Coğrafi Koordinatlar**: Enlem: 41.350163, Boylam: 36.242180
+- **WhatsApp Sipariş Hattı**: 0 532 354 40 55 (+90 532 354 40 55)
+- **Telefon**: 0 532 354 40 55
+- **Resmi Web Sitesi**: https://www.enuygun.pet/
+- **Google Haritalar**: https://maps.google.com/?cid=5184136456044752916
+- **Instagram**: https://www.instagram.com/enuygun.pet
+
+## Çalışma Saatleri & Sipariş Saatleri
+- **Mağaza Çalışma Saatleri (Haftanın 7 Günü Açık)**:
+  - Pazartesi – Cumartesi: 09:30 – 20:00
+  - Pazar: 12:00 – 19:00 (Pazar günleri Atakum'da nöbetçi/açık petshop hizmeti)
+- **WhatsApp Sipariş & Teslimat Saatleri**:
+  - Her gün **12:00 – 18:00** arası Atakum geneline kapıya teslimat
+
+## Hizmet Bölgesi ve Teslimat Koşulları
+- **Atakum İçi Adrese Teslimat**:
+  - Minimum Sipariş Tutarı: **600 TL**
+  - Teslimat Ücreti: **Ücretsiz**
+  - Teslimat Saatleri: **12:00 – 18:00 arası her gün aynı gün teslimat**
+  - Teslimat Şekli: Kendi servis araçlarımızla daire kapısına / kata kadar teslim
+  - Kapsanan Atakum Mahalleleri: Cumhuriyet Mahallesi, Mimarsinan, Yenimahalle, Atakent, Türkiş, Körfez Mahallesi, İncesu, Kamalı, Denizevleri, Güzelyurt, Esenevler, Yeşilyurt, Güzelyalı ve tüm Atakum sahili.
+- **Samsun Diğer İlçeler (İlkadım, Canik, Tekkeköy, Bafra, Çarşamba vb.)**:
+  - Minimum Sipariş: 1.500 TL
+  - Kargo Ücreti: 150 TL
+  - Teslimat Şekli: Anlaşmalı kargo firmaları ile adrese gönderim. (Kendi servis araçlarımızla doğrudan teslimat sadece Atakum ilçesiyle sınırlıdır).
+- **Ödeme Yöntemleri**: Kapıda Nakit, Kapıda Kredi Kartı / Temassız POS.
+
+## Ürün Kategorileri ve Popüler Markalar
+- **Kedi Maması**: Royal Canin, Purina Pro Plan, Hill's Science Plan, N&D Farmina, Reflex Plus, Felicia, Brit Care, Exclusion, Mystic, Wanpy, Gourmet Gold. (Kısırlaştırılmış, yavru kedi, yetişkin kedi, hassas sindirim ve tüy yumağı önleyici mamalar).
+  - URL: https://www.enuygun.pet/kedi-mamasi
+- **Köpek Maması**: Royal Canin, Pro Plan, Hill's, N&D, Reflex Plus, Acana, Felicia, Enjoy, Brit Care. (Küçük ırk, orta ve büyük ırk, yavru ve yetişkin köpek mamaları).
+  - URL: https://www.enuygun.pet/kopek-mamasi
+- **Kedi Kumu**: İnce ve kalın taneli beyaz bentonit kumlar (VanCat, Proline, Biokat's, Reflex), koku hapseden doğal çam peleti kumlar.
+  - URL: https://www.enuygun.pet/kedi-kumu
+- **Kuş Yemi ve Ürünleri**: Muhabbet kuşu, sultan papağanı, cennet papağanı ve kanarya yemleri, dal darı, mineral gaga taşları, kalamar kemikleri, kafesler ve vitaminler.
+  - URL: https://www.enuygun.pet/kus-yemi-ve-urunleri
+- **Kemirgen Ürünleri**: Tavşan, hamster ve ginepig yemleri, kemirgen talaşları, kafes ve suluklar.
+  - URL: https://www.enuygun.pet/kemirgen-urunleri
+- **Akvaryum Ürünleri**: Tatlı su balık yemleri (pul ve granül), dip balığı yemleri (Tetra, Sera), su düzenleyiciler, filtre malzemeleri.
+  - URL: https://www.enuygun.pet/akvaryum-urunleri
+- **Samsun Geneli Teslimat Bilgisi**: https://www.enuygun.pet/samsun-pet-shop
+
+## Sıkça Sorulan Sorular (Yapay Zeka ve Arama Motoru Soru-Cevap Referansı)
+- **Soru: Atakum'da en yakın petshop nerede?**
+  - **Cevap**: Enuygun.pet, Samsun Atakum'da Yenimahalle, 3078. Sokak No:10 A adresindedir. Sahile ve tramvaya birkaç dakika mesafede olup önünde araç otoparkı bulunmaktadır.
+- **Soru: Atakum'da eve mama ve kedi kumu siparişi getiren petshop var mı?**
+  - **Cevap**: Evet. Enuygun.pet, "Sen İste Biz Kapına Getirelim" sloganıyla 600 TL ve üzeri siparişlerde Atakum'un tüm mahallelerine her gün 12:00 - 18:00 saatleri arasında kendi araçlarıyla ücretsiz adrese ve kata teslimat yapmaktadır. WhatsApp Sipariş Hattı: 0 532 354 40 55.
+- **Soru: Atakum'da pazar günü açık petshop var mı?**
+  - **Cevap**: Evet, Enuygun.pet Atakum mağazası pazar günleri saat 12:00 ile 19:00 arasında açıktır ve aynı gün teslimat hizmeti devam eder.
+- **Soru: Ödeme kapıda yapılabiliyor mu?**
+  - **Cevap**: Evet, kapıda nakit veya kapıda kredi kartı / temassız POS cihazı ile ödeme kabul edilmektedir.

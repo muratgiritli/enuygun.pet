@@ -1,0 +1,740 @@
+uploads = []
+generated = []
+
+[[outputs]]
+id = "Zdyy8Nx97jMM0mOhs-uuH"
+uri = "file://tum-url-listesi.txt"
+type = "text"
+title = "EnuygunPet - Tüm URL Listesi (2952 sayfa)"
+
+[[outputs]]
+id = "_3q8lb2ybtpocYdhx0coC"
+uri = "file://urun-sayfalari-url-listesi.txt"
+type = "text"
+title = "Mama Ü rün Sayfaları - 131 URL"
+
+[[outputs]]
+id = "6LFXi2eYJCKoqeqUMG_1v"
+uri = "file://kedi-kumu-url-listesi.txt"
+type = "text"
+title = "Kedi Kumu Ü rün Sayfaları - 89 URL"
+
+[[outputs]]
+id = "njhtiFWRyvKPzSSMWGaUI"
+uri = "file://kopek-mamasi-url-listesi.txt"
+type = "text"
+title = "Köpek Maması Ürün Sayfaları - 124 URL"
+
+[[outputs]]
+id = "ocXS1DoLzHGQrUbgrB7T6"
+uri = "file://kopek-konservesi-url-listesi.txt"
+type = "text"
+title = "Köpek Konservesi Sayfaları - 102 URL"
+
+[[outputs]]
+id = "E0jkmwRE4ZF-zdsfU-_8i"
+uri = "file://kedi-odul-url-listesi.txt"
+type = "text"
+title = "Kedi Ödül Sayfaları - 184 URL"
+
+[[outputs]]
+id = "SzidlZ7et4VH1Ze1c7__1"
+uri = "file://kedi-odul-marka-url-listesi.txt"
+type = "text"
+title = "Kedi Ödül Marka Sayfaları - 101 URL"
+
+[[outputs]]
+id = "8vygewurKHEcBExuKPrfb"
+uri = "file://kedi-odul-cesit-url-listesi.txt"
+type = "text"
+title = "Kedi Ödül Çeşit Sayfaları - 20 URL"
+
+[[outputs]]
+id = "9__18YBZyVyneRWUiKjih"
+uri = "file://kopek-cis-pedi-url-listesi.txt"
+type = "text"
+title = "Köpek Çiş Pedi Sayfaları - 50 URL"
+
+[[outputs]]
+id = "TjuL2tMOmtjQCtk77kBbi"
+uri = "file://kopek-cis-pedi-marka-url-listesi.txt"
+type = "text"
+title = "Köpek Çiş Pedi Marka Sayfaları - 60 URL"
+
+[[outputs]]
+id = "giE-0lMNDXWvt2bu-jKej"
+uri = "file://kus-urunleri-url-listesi.txt"
+type = "text"
+title = "Kuş Ürünleri Sayfaları - 94 URL"
+
+[[outputs]]
+id = "w23m8a9OYkr6tSL0ybZZa"
+uri = "file://kus-marka-url-listesi.txt"
+type = "text"
+title = "Kuş Marka Ürün Sayfaları - 116 URL"
+
+[[outputs]]
+id = "jidFyXYcgVd-aaVpR3ldB"
+uri = "file://kedi-tuvaleti-url-listesi.txt"
+type = "text"
+title = "Kedi Tuvaleti Sayfaları - 42 URL"
+
+[[outputs]]
+id = "2AY-Yz_2dC6ZdIivhT1qU"
+uri = "file://oyuncak-url-listesi.txt"
+type = "text"
+title = "Kedi & Köpek Oyuncak Sayfaları - 60 URL"
+
+[[outputs]]
+id = "jLj74ExUL8MXAyV_23gxC"
+uri = "file://mama-kabi-url-listesi.txt"
+type = "text"
+title = "Mama & Su Kabı Sayfaları - 49 URL"
+
+[[outputs]]
+id = "Gmqljik983aFktxsj0a1P"
+uri = "file://tasma-tasima-url-listesi.txt"
+type = "text"
+title = "Tasma & Taşıma Ürün Sayfaları - 51 URL"
+
+[[outputs]]
+id = "viUY6i2vn4-0tYzPw2wAt"
+uri = "file://kedi-malt-url-listesi.txt"
+type = "text"
+title = "Kedi Malt Macunu Sayfaları - 54 URL"
+
+[[outputs]]
+id = "FW3vPGLnILPfYSTfjY9GI"
+uri = "file://pire-urunleri-url-listesi.txt"
+type = "text"
+title = "Pire Ürünleri Sayfaları - 65 URL"
+
+[[outputs]]
+id = "vWyG6IVcQoObb6C2CtfQh"
+uri = "file://sampuan-url-listesi.txt"
+type = "text"
+title = "Kedi & Köpek Şampuan Sayfaları - 66 URL"
+
+[[outputs]]
+id = "JcWXLiaht3LOCP-vxPYWV"
+uri = "file://goz-kulak-bakim-url-listesi.txt"
+type = "text"
+title = "Göz & Kulak Bakım Sayfaları - 44 URL"
+
+[[outputs]]
+id = "gcq7CTm3hJiK9FPVBcdoC"
+uri = "file://kiyafet-url-listesi.txt"
+type = "text"
+title = "Kedi & Köpek Kıyafet Sayfaları - 58 URL"
+
+[[outputs]]
+id = "SKQ_cq0ejDXeYekrk--64"
+uri = "file://tirmalama-url-listesi.txt"
+type = "text"
+title = "Kedi Tırmalama Ürün Sayfaları - 45 URL"
+
+[[outputs]]
+id = "6p4l-VjbtMYyrCjgcSz08"
+uri = "file://tasima-cantasi-url-listesi.txt"
+type = "text"
+title = "Taşıma Çantası & Kafes Sayfaları - 52 URL"
+
+[[outputs]]
+id = "k242TTz5NeBXjroEwoNxQ"
+uri = "file://yatak-url-listesi.txt"
+type = "text"
+title = "Kedi & Köpek Yatak Sayfaları - 66 URL"
+
+[[outputs]]
+id = "BvYgNct8EkxKwODCaVG0s"
+uri = "file://kopek-odul-kemik-url-listesi.txt"
+type = "text"
+title = "Köpek Ödül & Çiğneme Kemiği Sayfaları - 64 URL"
+
+[[outputs]]
+id = "vtE_75q5Oo9zDxLEr-IO5"
+uri = "file://kopek-odul-marka-url-listesi.txt"
+type = "text"
+title = "Markalı Köpek Ödül Sayfaları - 58 URL"
+
+[[outputs]]
+id = "a1br9Dz19CQZWhSjrJT_L"
+uri = "file://gimcat-macun-url-listesi.txt"
+type = "text"
+title = "GimCat Macun Sayfaları - 18 URL"
+
+[[outputs]]
+id = "Lq9cPRmBdZzNU19HBsFrB"
+uri = "file://gimcat-odul-url-listesi.txt"
+type = "text"
+title = "GimCat Ödül Sayfaları - 14 URL"
+
+[[outputs]]
+id = "ofcgjUkIxgSsoHLsMNB6n"
+uri = "file://gimcat-sticks-url-listesi.txt"
+type = "text"
+title = "GimCat Sticks Sayfaları - 10 URL"
+
+[[outputs]]
+id = "vV8znK0mI78tMdoKJpEiv"
+uri = "file://gimcat-snackcream-url-listesi.txt"
+type = "text"
+title = "GimCat Snack Cream Sayfaları - 16 URL"
+
+[[outputs]]
+id = "vl-2q_TMyNSbRPFlc5yHA"
+uri = "file://gimcat-shinycat-url-listesi.txt"
+type = "text"
+title = "GimCat Shinycat Konserve Sayfaları - 8 URL"
+
+[[outputs]]
+id = "DpTOlLqYDUTzGjr4VY3vE"
+uri = "file://reflex-kedi-odul-url-listesi.txt"
+type = "text"
+title = "Reflex Kedi Ödül Sayfaları - 38 URL"
+
+[[outputs]]
+id = "vt-Y4LlZ705Oxpe-LNJwb"
+uri = "file://reflex-kopek-odul-url-listesi.txt"
+type = "text"
+title = "Reflex Köpek Ödül Sayfaları - 36 URL"
+
+[[outputs]]
+id = "s64Md6NB1MZr3w78yttrK"
+uri = "file://meo-creamy-url-listesi.txt"
+type = "text"
+title = "Me-O Creamy Treats Sayfaları - 36 URL"
+
+[[outputs]]
+id = "ZLz6352EdKxkqGBTgTBn2"
+uri = "file://wanpy-odul-url-listesi.txt"
+type = "text"
+title = "Wanpy Ödül Sayfaları - 64 URL"
+
+[[outputs]]
+id = "Fh-QqYwYXVFzmPJRYGNYg"
+uri = "file://8in1-url-listesi.txt"
+type = "text"
+title = "8in1 Ürün Sayfaları - 56 URL"
+
+[[outputs]]
+id = "HpjMuHOkdPIQ-Phge3j5Q"
+uri = "file://delibon-url-listesi.txt"
+type = "text"
+title = "Delibon Ürün Sayfaları - 38 URL"
+
+[[outputs]]
+id = "sI_Bv9Nl7ZPNTqHjd42RP"
+uri = "file://whiskas-url-listesi.txt"
+type = "text"
+title = "Whiskas Kedi Mama Sayfaları - 56 URL"
+
+[[outputs]]
+id = "JQr1Lzm_VqdJQNOAe-NIp"
+uri = "file://felix-url-listesi.txt"
+type = "text"
+title = "Felix Kedi Mama Sayfaları - 58 URL"
+
+[[outputs]]
+id = "xAR2lMe4B-08B4lAJVxfQ"
+uri = "file://hills-kopek-url-listesi.txt"
+type = "text"
+title = "Hill's Science Plan Köpek Mama Sayfaları - 38 URL"
+
+[[outputs]]
+id = "KxjQBxXZw_7s5e-Js9lRc"
+uri = "file://reflex-kopek-mama-url-listesi.txt"
+type = "text"
+title = "Reflex Köpek Mama Sayfaları - 30 URL"
+
+[[outputs]]
+id = "t3ha69yecAAOeC0TjGI_5"
+uri = "file://reflex-kedi-mama-url-listesi.txt"
+type = "text"
+title = "Reflex Kedi Mama Sayfaları - 28 URL"
+
+[[outputs]]
+id = "vQuFLWTBA1CWs8Z-ZYHn8"
+uri = "file://proplan-kopek-url-listesi.txt"
+type = "text"
+title = "Pro Plan Köpek Mama Sayfaları - 26 URL"
+
+[[outputs]]
+id = "aMyh_eqLgjxpBLmL73ga_"
+uri = "file://proplan-kedi-url-listesi.txt"
+type = "text"
+title = "Pro Plan Kedi Mama Sayfaları - 22 URL"
+
+[[outputs]]
+id = "jsdbA4I2DStvsOputT47_"
+uri = "file://royalcanin-kopek-url-listesi.txt"
+type = "text"
+title = "Royal Canin Köpek Mama Sayfaları - 50 URL"
+
+[[outputs]]
+id = "DBvdv7KMKCASbVqW0i1Ba"
+uri = "file://royalcanin-kedi-url-listesi.txt"
+type = "text"
+title = "Royal Canin Kedi Mama Sayfaları - 51 URL"
+
+[[outputs]]
+id = "7yrAg21qARrPNNnYJgcBa"
+uri = "file://karisik-marka-mama-url-listesi.txt"
+type = "text"
+title = "Karışık Marka Mama Sayfaları - 88 URL"
+
+[[outputs]]
+id = "PCtNCvVuOCOvYxIFMZpFq"
+uri = "file://kedi-mama-karisik-url-listesi.txt"
+type = "text"
+title = "Karışık Kedi Mama Sayfaları - 78 URL"
+
+[[outputs]]
+id = "6mmOZn4QkQbeIXDhROOMy"
+uri = "file://kedi-mama2-url-listesi.txt"
+type = "text"
+title = "Kedi Mama Sayfaları 2 - 42 URL"
+
+[[outputs]]
+id = "y4SeuZPTsSv9ufxVldjmZ"
+uri = "file://kedi-mama3-url-listesi.txt"
+type = "text"
+title = "Kedi Mama Sayfaları 3 - 67 URL"
+
+[[outputs]]
+id = "deV_REA5C7ZgZLmdNzixg"
+uri = "file://kedi-yas-mama-url-listesi.txt"
+type = "text"
+title = "Kedi Yaş Mama & Konserve Sayfaları - 214 URL"
+
+[[outputs]]
+id = "DqDzCOj6XYai_ClFt3PyC"
+uri = "file://son-1-saat-sitemap.xml"
+type = "unspecified"
+title = "Son 1 Saat Sitemap - 507 URL"
+
+[[outputs]]
+id = "7AJYeoQF9d6z9Tc7jJal-"
+uri = "file://son-1-saat-url-listesi.txt"
+type = "text"
+title = "Son 1 Saat - 507 URL Listesi (Düz Metin)"
+
+[[outputs]]
+id = "aA_4g01QqkK5dezWLokB_"
+uri = "file://buyuk-katalog-url-listesi.txt"
+type = "text"
+title = "Büyük Katalog - 876 Yeni URL"
+
+[[outputs]]
+id = "kwxSOIBUN4QUyrE60IuyM"
+uri = "file://yerel-seo-url-listesi.txt"
+type = "text"
+title = "Son Eklenen Yerel SEO - 135 URL"
+
+[[outputs]]
+id = "iw-pO03opr6F7hGKroz83"
+uri = "file://samsun-google-url-listesi.txt"
+type = "text"
+title = "Samsun Google Aramaları - 872 URL"
+
+[[outputs]]
+id = "Vq-pJwcHHCfszsiUsSzzN"
+uri = "file://cazip-enuygun-url-listesi.txt"
+type = "text"
+title = "Cazip & EnUygun Sayfaları - 107 URL"
+
+[[outputs]]
+id = "rp4i6HSJ10KNJKRS-gC_8"
+uri = "file://samsun-atakum-yeni-url.txt"
+type = "text"
+title = "Samsun/Atakum Yeni Sayfalar - 15 URL"
+
+[[outputs]]
+id = "IFTD_ad3Gwx_HnH7fXF6-"
+uri = "file://cazippet-url.txt"
+type = "text"
+title = "Cazip Pet Rakip Sayfaları - 47 URL"
+
+[[outputs]]
+id = "rgtylUM91uxuSBN_HKt-M"
+uri = "file://reflex-kedi-url.txt"
+type = "text"
+title = "Reflex Kedi Mama Sayfaları - 42 URL"
+
+[[outputs]]
+id = "f55jB7Y5H5k1rvhdUl5Iz"
+uri = "file://royal-canin-kedi-url.txt"
+type = "text"
+title = "Royal Canin Kedi Mama Sayfaları - 41 URL"
+
+[[outputs]]
+id = "dPlHFEw5GoMp1CysVoSIp"
+uri = "file://royal-canin-kopek-url.txt"
+type = "text"
+title = "Royal Canin Köpek Mama Sayfaları - 44 URL"
+
+[[outputs]]
+id = "zyrrBf2RYn-gRjKcF7GMv"
+uri = "file://hills-kedi-url.txt"
+type = "text"
+title = "Hill's Kedi Mama Sayfaları - 44 URL"
+
+[[outputs]]
+id = "uHlM_7JxQtdi7e6nI1HXo"
+uri = "file://hills-kopek-url.txt"
+type = "text"
+title = "Hill's Köpek Mama Sayfaları - 46 URL"
+
+[[outputs]]
+id = "ktYhkyLXgfdHpv-YCUxEZ"
+uri = "file://proplan-kopek-url.txt"
+type = "text"
+title = "Pro Plan Köpek Mama Sayfaları - 47 URL"
+
+[[outputs]]
+id = "PRa5wGk3bz-aN1JRHglJv"
+uri = "file://proplan-kedi-url.txt"
+type = "text"
+title = "Pro Plan Kedi Mama Sayfaları - 40 URL"
+
+[[outputs]]
+id = "a0-dS9Rg1NVxP1zFe58bS"
+uri = "file://nd-kedi-url.txt"
+type = "text"
+title = "N&D Kedi Mama Sayfaları - 45 URL"
+
+[[outputs]]
+id = "AqWrALAJh7maG0puSOEy9"
+uri = "file://nd-kopek-url.txt"
+type = "text"
+title = "N&D Köpek Mama Sayfaları - 47 URL"
+
+[[outputs]]
+id = "hz4dvFvZGUkCEMEL7f2ZU"
+uri = "file://brit-care-kedi-url.txt"
+type = "text"
+title = "Brit Care Kedi Mama Sayfaları - 43 URL"
+
+[[outputs]]
+id = "6viC3LyZej6ZmXDSs3e83"
+uri = "file://brit-care-kopek-url.txt"
+type = "text"
+title = "Brit Care Köpek Mama Sayfaları - 48 URL"
+
+[[outputs]]
+id = "nbom_k36BvrF__m-o9OJb"
+uri = "file://lavital-kedi-url.txt"
+type = "text"
+title = "LaVital Kedi Mama Sayfaları - 47 URL"
+
+[[outputs]]
+id = "n0gRDEb0YubFY5QAupgre"
+uri = "file://lavital-kopek-url.txt"
+type = "text"
+title = "LaVital Köpek Mama Sayfaları - 50 URL"
+
+[[outputs]]
+id = "xU-OokS_3lj8bUcH4F90z"
+uri = "file://pronature-kedi-url.txt"
+type = "text"
+title = "Pronature Kedi Mama Sayfaları - 46 URL"
+
+[[outputs]]
+id = "IDQfREVLIQuiBM-b4Ijid"
+uri = "file://pronature-kopek-url.txt"
+type = "text"
+title = "Pronature Köpek Mama Sayfaları - 48 URL"
+
+[[outputs]]
+id = "TR87QHYEw1qngFWbkYRh7"
+uri = "file://felicia-kedi-url.txt"
+type = "text"
+title = "Felicia Kedi Mama Sayfaları - 46 URL"
+
+[[outputs]]
+id = "_w6l45TnwBx4eUHK0OpjZ"
+uri = "file://felicia-kopek-url.txt"
+type = "text"
+title = "Felicia Köpek Mama Sayfaları - 49 URL"
+
+[[outputs]]
+id = "-1ri27DX1524SbH1UfUOF"
+uri = "file://wanpy-kedi-url.txt"
+type = "text"
+title = "Wanpy Kedi Ödül Mama Sayfaları - 46 URL"
+
+[[outputs]]
+id = "Z27lZ9LwvKAGUrjvQgMkc"
+uri = "file://wanpy-kopek-url.txt"
+type = "text"
+title = "Wanpy Köpek Ödül Sayfaları - 50 URL"
+
+[[outputs]]
+id = "YTj8INOhoVwsTAUG30XTj"
+uri = "file://gimcat-url.txt"
+type = "text"
+title = "GimCat Sayfaları - 45 URL"
+
+[[outputs]]
+id = "jIuIvh8HQrelK2u1VqaMt"
+uri = "file://kedi-tuvaleti-xxl-url.txt"
+type = "text"
+title = "XXL Kedi Tuvaleti Sayfaları - 48 URL"
+
+[[outputs]]
+id = "wWKweBCCjtAniLj5nZMA8"
+uri = "file://vancat-kedi-kumu-url.txt"
+type = "text"
+title = "Vancat Kedi Kumu Sayfaları - 47 URL"
+
+[[outputs]]
+id = "7sPgYW2lgxyQ025PK1L_S"
+uri = "file://biokats-kedi-kumu-url.txt"
+type = "text"
+title = "Biokat's Kedi Kumu Sayfaları - 48 URL"
+
+[[outputs]]
+id = "XL2GhvmwF7ACmy7eD3oYj"
+uri = "file://kopek-kulubesi-url.txt"
+type = "text"
+title = "Köpek Kulübesi Sayfaları - 46 URL"
+
+[[outputs]]
+id = "VleKuTW2noK5CRqKygmnE"
+uri = "file://kedi-dogum-evi-url.txt"
+type = "text"
+title = "Kedi Doğum Evi Sayfaları - 49 URL"
+
+[[outputs]]
+id = "hlGBfoeO7RLsXgjbzZ9o4"
+uri = "file://kedi-sut-tozu-url.txt"
+type = "text"
+title = "Kedi Süt Tozu Sayfaları - 48 URL"
+
+[[outputs]]
+id = "zQ6UmEA0ZRtnIKP59e3gR"
+uri = "file://kopek-cis-pedi-url.txt"
+type = "text"
+title = "Köpek Çiş Pedi Sayfaları - 49 URL"
+
+[[outputs]]
+id = "yIJYFQcLykS0_r-NpDoMt"
+uri = "file://sleepy-cis-pedi-url.txt"
+type = "text"
+title = "Sleepy Köpek Çiş Pedi Sayfaları - 50 URL"
+
+[[outputs]]
+id = "aWk1t3KlW-qxBOSHW4I9S"
+uri = "file://proline-kedi-kumu-url.txt"
+type = "text"
+title = "Proline Kedi Kumu Sayfaları - 46 URL"
+
+[[outputs]]
+id = "-FPJIoxrjlhlG1uwWN8GH"
+uri = "file://kopek-tasima-cantasi-url.txt"
+type = "text"
+title = "Köpek Taşıma Çantası Sayfaları - 48 URL"
+
+[[outputs]]
+id = "w7AZNR4P4LJiVjT4yTgw9"
+uri = "file://kedi-tasima-cantasi-url.txt"
+type = "text"
+title = "Kedi Taşıma Çantası Sayfaları - 46 URL"
+
+[[outputs]]
+id = "Shmer8miI60R8uxiEnhUt"
+uri = "file://gold-wings-url.txt"
+type = "text"
+title = "Gold Wings Muhabbet Yemi Sayfaları - 47 URL"
+
+[[outputs]]
+id = "zGayJcyoIE6SvWx5ySYe_"
+uri = "file://quik-talaş-url.txt"
+type = "text"
+title = "Quik Kemirgen Talaşı Sayfaları - 49 URL"
+
+[[outputs]]
+id = "qjWTbQoxPcy0eyIJTtALf"
+uri = "file://kemirgen-otu-url.txt"
+type = "text"
+title = "Kemirgen Otu / Yonca Sayfaları - 50 URL"
+
+[[outputs]]
+id = "-xfF46V21h59f8NcjMPrY"
+uri = "file://pelet-kum-url.txt"
+type = "text"
+title = "Pelet Kum / Pellet Kedi Kumu Sayfaları - 47 URL"
+
+[[outputs]]
+id = "XisZg9TWdypxAbnSmbWX7"
+uri = "file://enjoy-kopek-mamasi-url.txt"
+type = "text"
+title = "Enjoy Köpek Maması Sayfaları - 46 URL"
+
+[[outputs]]
+id = "uVymwhPD-CXuNbl5PmpfG"
+uri = "file://proline-karbonlu-url.txt"
+type = "text"
+title = "Proline Aktif Karbonlu Kedi Kumu Sayfaları - 38 URL"
+
+[[outputs]]
+id = "s0cDW5LdugBEcMyFoLTyE"
+uri = "file://furminator-url.txt"
+type = "text"
+title = "Furminator Sayfaları - 47 URL"
+
+[[outputs]]
+id = "CU_J5QggyOq8-cfrcC9bH"
+uri = "file://kopek-tasmasi-url.txt"
+type = "text"
+title = "Köpek Tasması Sayfaları - 47 URL"
+
+[[outputs]]
+id = "UG6QlCzmQ6QmG4NcIjX-X"
+uri = "file://kedi-tirmalama-url.txt"
+type = "text"
+title = "Kedi Tırmalama Sayfaları - 43 URL"
+
+[[outputs]]
+id = "WA7mBps8-QVQ2PnshRTO6"
+uri = "file://kopek-sampuani-url.txt"
+type = "text"
+title = "Köpek Şampuanı Sayfaları - 47 URL"
+
+[[outputs]]
+id = "XPneEJqQ2AK6IwTBZ1WJ3"
+uri = "file://papagan-kafesi-url.txt"
+type = "text"
+title = "Papağan Kafesi Sayfaları - 46 URL"
+
+[[outputs]]
+id = "2M7PPnaFKVm5Nxu8aB9IY"
+uri = "file://muhabbet-kusu-kafesi-url.txt"
+type = "text"
+title = "Muhabbet Kuşu Kafesi Sayfaları - 48 URL"
+
+[[outputs]]
+id = "nFi8M_gSmJ5DNTTGUKQxV"
+uri = "file://properformance-kedi-mamasi-url.txt"
+type = "text"
+title = "Properformance Kedi Maması Sayfaları - 47 URL"
+
+[[outputs]]
+id = "hmaGuz81kU7YaHbaF4PEs"
+uri = "file://properformance-kopek-mamasi-url.txt"
+type = "text"
+title = "Properformance Köpek Maması Sayfaları - 48 URL"
+
+[[outputs]]
+id = "_QEzmJry-FHc0qIT5huRR"
+uri = "file://prochoice-kedi-mamasi-url.txt"
+type = "text"
+title = "Prochoice Kedi Maması Sayfaları - 46 URL"
+
+[[outputs]]
+id = "NULX7WJd-acV-U62HsIXN"
+uri = "file://prochoice-kopek-mamasi-url.txt"
+type = "text"
+title = "Prochoice Köpek Maması Sayfaları - 48 URL"
+
+[[outputs]]
+id = "it1t_Y3LosolkrqcAoNQ2"
+uri = "file://exports/marka-pet-sayfa-uzantilari.txt"
+type = "text"
+title = "Sayfa Uzantıları (12.117 path)"
+
+[[outputs]]
+id = "G4jQHpz2yhkXU9106W__1"
+uri = "file://exports/enuygunpet-tum-url-listesi.txt"
+type = "text"
+title = "Tüm URL Listesi (tam adres)"
+
+[[outputs]]
+id = "I1pzC1S2tkfJX99evkFrZ"
+uri = "file://exports/karadenizpetshop-tum-url-listesi.txt"
+type = "text"
+title = "karadenizpetshop.com - Tüm URL Listesi (12.117)"
+
+[[outputs]]
+id = "MaygVuydmB5bY4Ps4kXaS"
+uri = "file://exports/atakumpet-tum-url-listesi.txt"
+type = "text"
+title = "atakumpet.com - Tüm URL Listesi (12.117)"
+
+[[outputs]]
+id = "O9BJRekat61P7ctjtIDs3"
+uri = "file://exports/jetgo-pet-tum-url-listesi.txt"
+type = "text"
+title = "jetgo.pet - Tüm URL Listesi (12.117)"
+
+[[outputs]]
+id = "h8aJ-K6moTten12a_pQ7n"
+uri = "file://exports/jetgo-shop-tum-url-listesi.txt"
+type = "text"
+title = "jetgo.shop - Tüm URL Listesi (12.117)"
+
+[[outputs]]
+id = "N18SUcYYXhc8JsBaNYVFc"
+uri = "file://exports/marka-pet-tum-url-listesi.txt"
+type = "text"
+title = "marka.pet - Tüm URL Listesi (12.117)"
+
+[[outputs]]
+id = "jo_LRKOZYdLLJI-_ggGW0"
+uri = "file://exports/jetgomarket-tum-url-listesi.txt"
+type = "text"
+title = "jetgomarket.com - Tüm URL Listesi (12.117)"
+
+[[outputs]]
+id = "D5v7dwP1sNVlFFMjOWTsk"
+uri = "file://exports/atakumpetshop-tum-url-listesi.txt"
+type = "text"
+title = "atakumpetshop.com - Tüm URL Listesi (12.117)"
+
+[[outputs]]
+id = "uu-jxuRAWg7BSHToHGQDF"
+uri = "file://exports/atakum-biz-tum-url-listesi.txt"
+type = "text"
+title = "atakum.biz - Tüm URL Listesi (12.117)"
+
+[[outputs]]
+id = "Nkzr59ZFBQvLx4sEvhXXP"
+uri = "file://exports/murat-com-tum-url-listesi.txt"
+type = "text"
+title = "murat.com - Tüm URL Listesi (12.117)"
+
+[[outputs]]
+id = "vbkbTkqm6jixNzVdmLPNm"
+uri = "file://attached_assets/stock_images/bird_category.jpg"
+type = "image"
+title = "colorful parrot pet bird perched, vibrant feathers close up"
+
+[[outputs]]
+id = "pqj4iqOkm8NPsMK5gi-f0"
+uri = "file://attached_assets/stock_images/dog_category.jpg"
+type = "image"
+title = "happy golden retriever puppy portrait close up, bright"
+
+[[outputs]]
+id = "kTRZeXAzwWqX3xXW5wu8Y"
+uri = "file://attached_assets/stock_images/cat_category.jpg"
+type = "image"
+title = "adorable domestic cat looking at camera, close up portrait, soft light"
+
+[[outputs]]
+id = "wQzDhnjS8zCS5KucZgqfW"
+uri = "file://attached_assets/stock_images/fish_category.jpg"
+type = "image"
+title = "colorful tropical aquarium fish underwater vibrant"
+
+[[outputs]]
+id = "19YTD1GJCViiVm6UDGYXr"
+uri = "file://attached_assets/stock_images/petshop_category.jpg"
+type = "image"
+title = "cat and dog together happy pets studio"
+
+[[outputs]]
+id = "wDCXggqdVexrw7ZPwoo5u"
+uri = "file://attached_assets/stock_images/hamster_category.jpg"
+type = "image"
+title = "cute hamster small pet close up"
