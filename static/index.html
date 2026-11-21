@@ -1,0 +1,1164 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Mama Fiyat Karşılaştırma (28 Site)</title>
+  <style>
+    :root {
+      --bg: #f4f6f9;
+      --card: #ffffff;
+      --text: #111827;
+      --muted: #6b7280;
+      --border: #e5e7eb;
+      --primary: #2563eb;
+      --primary-hover: #1d4ed8;
+      --cheap-bg: #ecfdf5;
+      --cheap-border: #10b981;
+      --cheap-text: #065f46;
+      --out-bg: #f3f4f6;
+      --out-text: #9ca3af;
+      --warn-bg: #fef3c7;
+      --warn-text: #92400e;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.45;
+      padding-bottom: 40px;
+    }
+
+    header {
+      background: #0f172a;
+      color: #fff;
+      padding: 12px 16px;
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+    }
+
+    .header-inner {
+      max-width: 1150px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .brand {
+      font-size: 1.05rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .tabs {
+      display: flex;
+      background: #1e293b;
+      border-radius: 10px;
+      padding: 3px;
+      gap: 4px;
+    }
+
+    .tab-btn {
+      border: none;
+      background: transparent;
+      color: #cbd5e1;
+      font-size: 0.9rem;
+      font-weight: 600;
+      padding: 7px 14px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+
+    .tab-btn.active {
+      background: var(--primary);
+      color: #fff;
+    }
+
+    .container {
+      max-width: 1150px;
+      margin: 14px auto 0;
+      padding: 0 12px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 14px;
+      margin-bottom: 14px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    }
+
+    /* Search Form */
+    .search-form {
+      display: flex;
+      gap: 8px;
+    }
+
+    .search-input-wrap {
+      position: relative;
+      flex: 1;
+    }
+
+    .search-input {
+      width: 100%;
+      padding: 12px 38px 12px 14px;
+      font-size: 1rem;
+      border: 2px solid #cbd5e1;
+      border-radius: 10px;
+      outline: none;
+      transition: border-color 0.15s;
+    }
+
+    .search-input:focus {
+      border-color: var(--primary);
+    }
+
+    .clear-btn {
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      border: none;
+      background: #e2e8f0;
+      color: #475569;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      font-size: 13px;
+      cursor: pointer;
+      display: none;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .search-btn {
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      padding: 0 20px;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: background 0.15s;
+    }
+
+    .search-btn:hover {
+      background: var(--primary-hover);
+    }
+
+    .search-btn:disabled {
+      background: #94a3b8;
+      cursor: not-allowed;
+    }
+
+    /* Progress & Site Chips */
+    .progress-area {
+      margin-top: 12px;
+      display: none;
+    }
+
+    .progress-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-bottom: 6px;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .progress-bar-bg {
+      width: 100%;
+      height: 8px;
+      background: #e2e8f0;
+      border-radius: 99px;
+      overflow: hidden;
+    }
+
+    .progress-bar-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, #2563eb, #10b981);
+      transition: width 0.25s ease;
+    }
+
+    .site-chips-toggle {
+      background: none;
+      border: none;
+      color: var(--primary);
+      font-size: 0.82rem;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: underline;
+    }
+
+    .site-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+      margin-top: 10px;
+      max-height: 135px;
+      overflow-y: auto;
+      padding: 4px 2px;
+    }
+
+    .chip {
+      font-size: 0.73rem;
+      padding: 3px 8px;
+      border-radius: 99px;
+      border: 1px solid var(--border);
+      background: #f8fafc;
+      color: #475569;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .chip.ok {
+      background: #dcfce7;
+      border-color: #86efac;
+      color: #166534;
+      font-weight: 600;
+    }
+
+    .chip.timeout {
+      background: var(--warn-bg);
+      border-color: #fcd34d;
+      color: var(--warn-text);
+      font-weight: 600;
+    }
+
+    .chip.empty {
+      background: #f1f5f9;
+      color: #64748b;
+    }
+
+    .chip.error {
+      background: #fee2e2;
+      border-color: #fca5a5;
+      color: #991b1b;
+    }
+
+    /* Best Price Banner */
+    .best-banner {
+      display: none;
+      background: var(--cheap-bg);
+      border: 2px solid var(--cheap-border);
+      border-radius: 12px;
+      padding: 12px 14px;
+      margin-bottom: 14px;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+      text-decoration: none;
+      color: var(--cheap-text);
+      transition: transform 0.1s;
+    }
+
+    .best-banner:active {
+      transform: scale(0.99);
+    }
+
+    .best-banner-left {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .best-badge {
+      display: inline-block;
+      background: #059669;
+      color: #fff;
+      font-size: 0.72rem;
+      font-weight: 800;
+      padding: 2px 7px;
+      border-radius: 6px;
+      text-transform: uppercase;
+      margin-bottom: 3px;
+    }
+
+    .best-title {
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: #064e3b;
+    }
+
+    .best-price-box {
+      text-align: right;
+    }
+
+    .best-price-val {
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: #047857;
+    }
+
+    .best-site-name {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: #065f46;
+    }
+
+    /* Toolbar above table */
+    .table-toolbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .sort-group {
+      display: flex;
+      gap: 6px;
+      align-items: center;
+    }
+
+    .sort-btn {
+      border: 1px solid #cbd5e1;
+      background: #f8fafc;
+      color: #334155;
+      padding: 6px 11px;
+      border-radius: 8px;
+      font-size: 0.83rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .sort-btn.active {
+      background: var(--primary);
+      border-color: var(--primary);
+      color: #fff;
+    }
+
+    /* Results Table */
+    .table-wrap {
+      width: 100%;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 640px;
+      font-size: 0.88rem;
+    }
+
+    th, td {
+      padding: 10px 8px;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+      vertical-align: middle;
+    }
+
+    th {
+      background: #f8fafc;
+      font-weight: 700;
+      color: #334155;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+      user-select: none;
+      white-space: nowrap;
+    }
+
+    th.sortable {
+      cursor: pointer;
+      color: var(--primary);
+    }
+
+    th.sortable:hover {
+      background: #eff6ff;
+    }
+
+    tr.cheapest-row {
+      background-color: var(--cheap-bg) !important;
+      border-left: 4px solid var(--cheap-border);
+    }
+
+    tr.cheapest-row td {
+      font-weight: 600;
+      color: #064e3b;
+    }
+
+    tr.out-of-stock-row {
+      background-color: var(--out-bg) !important;
+      color: var(--out-text) !important;
+    }
+
+    tr.out-of-stock-row td,
+    tr.out-of-stock-row .price-cell,
+    tr.out-of-stock-row .site-pill {
+      color: var(--out-text) !important;
+    }
+
+    .site-pill {
+      font-weight: 700;
+      color: #1e293b;
+      font-size: 0.83rem;
+      white-space: nowrap;
+    }
+
+    .cheapest-tag {
+      display: inline-block;
+      background: #10b981;
+      color: #fff;
+      font-size: 0.68rem;
+      font-weight: 800;
+      padding: 1px 6px;
+      border-radius: 4px;
+      margin-left: 5px;
+      vertical-align: middle;
+    }
+
+    .prod-title-cell {
+      max-width: 340px;
+      word-break: break-word;
+    }
+
+    .gramaj-badge {
+      display: inline-block;
+      background: #f1f5f9;
+      color: #334155;
+      padding: 2px 7px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.8rem;
+      white-space: nowrap;
+    }
+
+    .price-cell {
+      font-weight: 800;
+      font-size: 0.98rem;
+      color: #0f172a;
+      white-space: nowrap;
+    }
+
+    .unit-price-cell {
+      font-weight: 600;
+      color: #475569;
+      font-size: 0.83rem;
+      white-space: nowrap;
+    }
+
+    .stock-ok {
+      color: #15803d;
+      font-weight: 700;
+      font-size: 0.8rem;
+      white-space: nowrap;
+    }
+
+    .stock-out {
+      color: #9ca3af;
+      font-weight: 600;
+      font-size: 0.8rem;
+      white-space: nowrap;
+    }
+
+    .go-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      background: #eff6ff;
+      color: var(--primary);
+      border: 1px solid #bfdbfe;
+      padding: 5px 10px;
+      border-radius: 7px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.8rem;
+      white-space: nowrap;
+    }
+
+    .go-link:hover {
+      background: var(--primary);
+      color: #fff;
+    }
+
+    /* History Tab */
+    .filter-bar {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    .period-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .period-btn {
+      border: 1px solid #cbd5e1;
+      background: #f8fafc;
+      color: #334155;
+      padding: 6px 12px;
+      border-radius: 99px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .period-btn.active {
+      background: #0f172a;
+      border-color: #0f172a;
+      color: #fff;
+    }
+
+    .custom-date-row {
+      display: none;
+      gap: 8px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .date-input {
+      padding: 7px 10px;
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+      font-size: 0.85rem;
+    }
+
+    .history-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .history-item {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 12px;
+      background: #fff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .history-left {
+      flex: 1;
+      min-width: 210px;
+    }
+
+    .history-query-btn {
+      background: none;
+      border: none;
+      text-align: left;
+      font-size: 1rem;
+      font-weight: 800;
+      color: var(--primary);
+      cursor: pointer;
+      padding: 0;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .history-query-btn:hover {
+      text-decoration: underline;
+    }
+
+    .history-meta {
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-top: 4px;
+    }
+
+    .history-right {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .history-cheapest-link {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: flex-end;
+      background: var(--cheap-bg);
+      border: 1.5px solid var(--cheap-border);
+      padding: 6px 11px;
+      border-radius: 8px;
+      text-decoration: none;
+      color: var(--cheap-text);
+      transition: background 0.15s;
+    }
+
+    .history-cheapest-link:hover {
+      background: #d1fae5;
+    }
+
+    .history-cheapest-price {
+      font-size: 1rem;
+      font-weight: 800;
+      color: #047857;
+    }
+
+    .history-cheapest-site {
+      font-size: 0.74rem;
+      font-weight: 700;
+      color: #065f46;
+    }
+
+    .view-saved-btn {
+      border: 1px solid #cbd5e1;
+      background: #f8fafc;
+      color: #334155;
+      padding: 7px 10px;
+      border-radius: 8px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .view-saved-btn:hover {
+      background: #e2e8f0;
+    }
+
+    .empty-state {
+      text-align: center;
+      padding: 32px 16px;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    @media (max-width: 640px) {
+      .search-btn {
+        padding: 0 15px;
+      }
+      th, td {
+        padding: 8px 6px;
+        font-size: 0.82rem;
+      }
+      .prod-title-cell {
+        max-width: 190px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="header-inner">
+      <div class="brand">🐾 Mama Fiyat Karşılaştırma</div>
+      <div class="tabs">
+        <button id="tabSearchBtn" class="tab-btn active" onclick="switchTab('search')">🔍 Fiyat Ara</button>
+        <button id="tabHistoryBtn" class="tab-btn" onclick="switchTab('history')">🕒 Geçmiş</button>
+      </div>
+    </div>
+  </header>
+
+  <div class="container">
+    <!-- ==================== ARAMA SEKMESİ ==================== -->
+    <div id="searchTab">
+      <div class="card">
+        <form class="search-form" onsubmit="handleSearchSubmit(event)">
+          <div class="search-input-wrap">
+            <input
+              id="searchInput"
+              type="text"
+              class="search-input"
+              placeholder="Mama adı yazın (örn. Royal Canin Kitten 2 kg)"
+              autocomplete="off"
+              oninput="toggleClearBtn()"
+            />
+            <button type="button" id="clearBtn" class="clear-btn" onclick="clearSearchInput()">✕</button>
+          </div>
+          <button type="submit" id="searchBtn" class="search-btn">Ara</button>
+        </form>
+
+        <div id="progressArea" class="progress-area">
+          <div class="progress-top">
+            <span id="progressText">Aranıyor... (0/28 site)</span>
+            <button type="button" class="site-chips-toggle" onclick="toggleSiteChips()">Site durumlarını göster/gizle</button>
+          </div>
+          <div class="progress-bar-bg">
+            <div id="progressBarFill" class="progress-bar-fill"></div>
+          </div>
+          <div id="siteChips" class="site-chips"></div>
+        </div>
+      </div>
+
+      <!-- En Ucuz Özet Kutusu (Tıklayınca direkt ürüne gider) -->
+      <a id="bestBanner" class="best-banner" href="#" target="_blank" rel="noopener noreferrer">
+        <div class="best-banner-left">
+          <span class="best-badge">🔥 EN UCUZ STOKTA ÜRÜN — TIKLA ÜRÜNE GİT</span>
+          <div id="bestBannerTitle" class="best-title"></div>
+        </div>
+        <div class="best-price-box">
+          <div id="bestBannerPrice" class="best-price-val"></div>
+          <div id="bestBannerSite" class="best-site-name"></div>
+        </div>
+      </a>
+
+      <!-- Sonuç Tablosu Kartı -->
+      <div class="card">
+        <div class="table-toolbar">
+          <div id="resultsSummary" style="font-size:0.88rem; font-weight:700; color:#334155;">
+            Henüz arama yapılmadı
+          </div>
+          <div class="sort-group">
+            <span style="font-size:0.8rem; color:#64748b;">Sırala:</span>
+            <button id="sortPriceBtn" class="sort-btn active" onclick="setSortMode('price')">Fiyat (₺) ▲</button>
+            <button id="sortUnitBtn" class="sort-btn" onclick="setSortMode('price_per_kg')">₺/kg ▲</button>
+          </div>
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Site</th>
+                <th>Ürün Adı</th>
+                <th>Gramaj</th>
+                <th class="sortable" onclick="setSortMode('price')">Fiyat (₺) ⇅</th>
+                <th class="sortable" onclick="setSortMode('price_per_kg')">₺/kg ⇅</th>
+                <th>Stok</th>
+                <th>Link</th>
+              </tr>
+            </thead>
+            <tbody id="resultsBody">
+              <tr>
+                <td colspan="7" class="empty-state">
+                  Yukarıdaki kutuya mama adını yazıp <b>Ara</b> butonuna basın.<br/>
+                  28 site aynı anda taranacak ve sonuçlar anlık olarak listelenecektir.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== GEÇMİŞ SEKMESİ ==================== -->
+    <div id="historyTab" style="display:none;">
+      <div class="card">
+        <div class="filter-bar">
+          <div class="period-pills">
+            <button class="period-btn active" data-period="all" onclick="setHistoryPeriod('all')">Tümü</button>
+            <button class="period-btn" data-period="today" onclick="setHistoryPeriod('today')">Bugün</button>
+            <button class="period-btn" data-period="yesterday" onclick="setHistoryPeriod('yesterday')">Dün</button>
+            <button class="period-btn" data-period="7d" onclick="setHistoryPeriod('7d')">Son 7 gün</button>
+            <button class="period-btn" data-period="30d" onclick="setHistoryPeriod('30d')">Son 30 gün</button>
+            <button class="period-btn" data-period="custom" onclick="setHistoryPeriod('custom')">📅 Tarih aralığı seç</button>
+          </div>
+
+          <div id="customDateRow" class="custom-date-row">
+            <input type="date" id="startDateInput" class="date-input" onchange="loadHistory()" />
+            <span>—</span>
+            <input type="date" id="endDateInput" class="date-input" onchange="loadHistory()" />
+          </div>
+
+          <div>
+            <input
+              type="text"
+              id="historySearchInput"
+              class="search-input"
+              style="padding:9px 12px; font-size:0.9rem;"
+              placeholder="Geçmişte ürün adına göre filtrele..."
+              oninput="debounceLoadHistory()"
+            />
+          </div>
+        </div>
+
+        <div style="font-size:0.78rem; color:#64748b; margin-bottom:10px;">
+          💡 <b>Ürün adına</b> tıklarsanız hemen yeniden aranır. <b>En uygun fiyat kutusuna</b> tıklarsanız doğrudan o ürünün mağaza sayfasına gider.
+        </div>
+
+        <div id="historyList" class="history-list">
+          <div class="empty-state">Yükleniyor...</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let currentResults = [];
+    let currentSortMode = 'price'; // 'price' | 'price_per_kg'
+    let activeEventSource = null;
+    let historyPeriod = 'all';
+    let historyDebounceTimer = null;
+
+    function switchTab(tab) {
+      const sTab = document.getElementById('searchTab');
+      const hTab = document.getElementById('historyTab');
+      const sBtn = document.getElementById('tabSearchBtn');
+      const hBtn = document.getElementById('tabHistoryBtn');
+
+      if (tab === 'search') {
+        sTab.style.display = 'block';
+        hTab.style.display = 'none';
+        sBtn.classList.add('active');
+        hBtn.classList.remove('active');
+      } else {
+        sTab.style.display = 'none';
+        hTab.style.display = 'block';
+        sBtn.classList.remove('active');
+        hBtn.classList.add('active');
+        loadHistory();
+      }
+    }
+
+    function toggleClearBtn() {
+      const val = document.getElementById('searchInput').value;
+      document.getElementById('clearBtn').style.display = val.length > 0 ? 'inline-flex' : 'none';
+    }
+
+    function clearSearchInput() {
+      const inp = document.getElementById('searchInput');
+      inp.value = '';
+      toggleClearBtn();
+      inp.focus();
+    }
+
+    function toggleSiteChips() {
+      const el = document.getElementById('siteChips');
+      el.style.display = el.style.display === 'none' ? 'flex' : 'none';
+    }
+
+    function formatTL(val) {
+      if (val === null || val === undefined || isNaN(val)) return '-';
+      return Number(val).toLocaleString('tr-TR', {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+      }) + ' ₺';
+    }
+
+    function escapeHtml(str) {
+      if (!str) return '';
+      return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;');
+    }
+
+    function setSortMode(mode) {
+      currentSortMode = mode;
+      document.getElementById('sortPriceBtn').classList.toggle('active', mode === 'price');
+      document.getElementById('sortUnitBtn').classList.toggle('active', mode === 'price_per_kg');
+      renderResultsTable();
+    }
+
+    function handleSearchSubmit(e) {
+      e.preventDefault();
+      const q = document.getElementById('searchInput').value.trim();
+      if (q.length < 2) return;
+      startLiveSearch(q);
+    }
+
+    function startLiveSearch(query) {
+      // Switch to search tab if called from history
+      switchTab('search');
+      document.getElementById('searchInput').value = query;
+      toggleClearBtn();
+
+      if (activeEventSource) {
+        activeEventSource.close();
+        activeEventSource = null;
+      }
+
+      currentResults = [];
+      renderResultsTable();
+
+      const progressArea = document.getElementById('progressArea');
+      const progressText = document.getElementById('progressText');
+      const progressBarFill = document.getElementById('progressBarFill');
+      const siteChips = document.getElementById('siteChips');
+      const searchBtn = document.getElementById('searchBtn');
+
+      progressArea.style.display = 'block';
+      progressBarFill.style.width = '2%';
+      progressText.textContent = `"${query}" için 28 site paralel aranıyor...`;
+      siteChips.innerHTML = '';
+      searchBtn.disabled = true;
+      searchBtn.textContent = 'Aranıyor...';
+
+      const url = `/api/search/stream?q=${encodeURIComponent(query)}`;
+      const es = new EventSource(url);
+      activeEventSource = es;
+
+      es.onmessage = (evt) => {
+        try {
+          const data = JSON.parse(evt.data);
+          if (data.type === 'start') {
+            siteChips.innerHTML = data.sites.map(s =>
+              `<span id="chip-${s.id}" class="chip">⏳ ${escapeHtml(s.name)}</span>`
+            ).join('');
+          } else if (data.type === 'site_result') {
+            const pct = Math.round((data.completed_count / data.total_sites) * 100);
+            progressBarFill.style.width = `${pct}%`;
+            progressText.textContent = `Tamamlanan: ${data.completed_count}/${data.total_sites} site — Bulunan ürün: ${currentResults.length + (data.results ? data.results.length : 0)}`;
+
+            const chip = document.getElementById(`chip-${data.site_id}`);
+            if (chip) {
+              chip.className = `chip ${data.status}`;
+              let icon = '•';
+              if (data.status === 'ok') icon = '✔';
+              else if (data.status === 'timeout') icon = '⏱';
+              else if (data.status === 'error') icon = '⚠';
+              chip.textContent = `${icon} ${data.site} (${data.message})`;
+            }
+
+            if (data.results && data.results.length > 0) {
+              currentResults.push(...data.results);
+              renderResultsTable();
+            }
+          } else if (data.type === 'done') {
+            progressBarFill.style.width = '100%';
+            progressText.textContent = `Arama tamamlandı: ${data.total_sites} siteden ${data.sites_with_results} tanesinde toplam ${data.total_results} sonuç bulundu.`;
+            searchBtn.disabled = false;
+            searchBtn.textContent = 'Ara';
+            es.close();
+            activeEventSource = null;
+          }
+        } catch (err) {
+          console.error(err);
+        }
+      };
+
+      es.onerror = () => {
+        searchBtn.disabled = false;
+        searchBtn.textContent = 'Ara';
+        es.close();
+        activeEventSource = null;
+      };
+    }
+
+    function renderResultsTable() {
+      const tbody = document.getElementById('resultsBody');
+      const summary = document.getElementById('resultsSummary');
+      const bestBanner = document.getElementById('bestBanner');
+
+      if (!currentResults || currentResults.length === 0) {
+        bestBanner.style.display = 'none';
+        summary.textContent = 'Sonuç bekleniyor...';
+        tbody.innerHTML = `
+          <tr>
+            <td colspan="7" class="empty-state">Sonuçlar geldikçe bu tabloya anlık olarak eklenecektir...</td>
+          </tr>
+        `;
+        return;
+      }
+
+      // Find the absolute cheapest in-stock product
+      const inStockItems = currentResults.filter(r => r.in_stock && r.price);
+      let cheapestUrlKey = null;
+      let cheapestItem = null;
+      if (inStockItems.length > 0) {
+        cheapestItem = inStockItems.reduce((min, cur) => (cur.price < min.price ? cur : min), inStockItems[0]);
+        cheapestUrlKey = `${cheapestItem.site}|${cheapestItem.url}|${cheapestItem.price}`;
+      }
+
+      if (cheapestItem) {
+        bestBanner.style.display = 'flex';
+        bestBanner.href = cheapestItem.url;
+        document.getElementById('bestBannerTitle').textContent = cheapestItem.title;
+        document.getElementById('bestBannerPrice').textContent = formatTL(cheapestItem.price);
+        document.getElementById('bestBannerSite').textContent = `${cheapestItem.site} (${cheapestItem.gramaj || '-'}) ↗`;
+      } else {
+        bestBanner.style.display = 'none';
+      }
+
+      // Sort copy of results:
+      // 1. Out of stock always at the bottom
+      // 2. If sorting by price_per_kg, items with valid price_per_kg come before items without it
+      const sorted = [...currentResults].sort((a, b) => {
+        const aStock = a.in_stock ? 0 : 1;
+        const bStock = b.in_stock ? 0 : 1;
+        if (aStock !== bStock) return aStock - bStock;
+
+        if (currentSortMode === 'price_per_kg') {
+          const aPkg = a.price_per_kg !== null && a.price_per_kg !== undefined ? a.price_per_kg : 9999999;
+          const bPkg = b.price_per_kg !== null && b.price_per_kg !== undefined ? b.price_per_kg : 9999999;
+          if (aPkg !== bPkg) return aPkg - bPkg;
+        }
+        return (a.price || 9999999) - (b.price || 9999999);
+      });
+
+      const uniqueSites = new Set(sorted.map(r => r.site)).size;
+      summary.textContent = `${sorted.length} ürün listeleniyor (${uniqueSites} site)`;
+
+      let cheapestMarked = false;
+      tbody.innerHTML = sorted.map(item => {
+        const key = `${item.site}|${item.url}|${item.price}`;
+        const isCheapest = !cheapestMarked && item.in_stock && key === cheapestUrlKey;
+        if (isCheapest) cheapestMarked = true;
+
+        const rowClass = !item.in_stock
+          ? 'out-of-stock-row'
+          : (isCheapest ? 'cheapest-row' : '');
+
+        const pkgText = item.price_per_kg ? `${formatTL(item.price_per_kg)}/kg` : '-';
+        const stockHtml = item.in_stock
+          ? `<span class="stock-ok">Stokta</span>`
+          : `<span class="stock-out">Stokta Yok</span>`;
+
+        return `
+          <tr class="${rowClass}">
+            <td>
+              <span class="site-pill">${escapeHtml(item.site)}</span>
+              ${isCheapest ? '<span class="cheapest-tag">EN UCUZ</span>' : ''}
+            </td>
+            <td class="prod-title-cell">${escapeHtml(item.title)}</td>
+            <td><span class="gramaj-badge">${escapeHtml(item.gramaj || '-')}</span></td>
+            <td class="price-cell">${formatTL(item.price)}</td>
+            <td class="unit-price-cell">${pkgText}</td>
+            <td>${stockHtml}</td>
+            <td>
+              <a class="go-link" href="${escapeHtml(item.url)}" target="_blank" rel="noopener noreferrer">
+                Ürüne Git ↗
+              </a>
+            </td>
+          </tr>
+        `;
+      }).join('');
+    }
+
+    // ==================== GEÇMİŞ İŞLEMLERİ ====================
+    function setHistoryPeriod(period) {
+      historyPeriod = period;
+      document.querySelectorAll('.period-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.getAttribute('data-period') === period);
+      });
+      const customRow = document.getElementById('customDateRow');
+      customRow.style.display = period === 'custom' ? 'flex' : 'none';
+      loadHistory();
+    }
+
+    function debounceLoadHistory() {
+      clearTimeout(historyDebounceTimer);
+      historyDebounceTimer = setTimeout(loadHistory, 250);
+    }
+
+    async function loadHistory() {
+      const listEl = document.getElementById('historyList');
+      const q = document.getElementById('historySearchInput').value.trim();
+      const start = document.getElementById('startDateInput').value;
+      const end = document.getElementById('endDateInput').value;
+
+      const params = new URLSearchParams({ period: historyPeriod });
+      if (q) params.set('q', q);
+      if (historyPeriod === 'custom') {
+        if (start) params.set('start_date', start);
+        if (end) params.set('end_date', end);
+      }
+
+      try {
+        const resp = await fetch(`/api/history?${params.toString()}`);
+        const data = await resp.json();
+        const items = data.items || [];
+
+        if (items.length === 0) {
+          listEl.innerHTML = `<div class="empty-state">Seçilen kriterlere uygun arama geçmişi bulunamadı.</div>`;
+          return;
+        }
+
+        listEl.innerHTML = items.map(item => {
+          const hasCheapest = item.cheapest_price && item.cheapest_url;
+          const cheapestHtml = hasCheapest
+            ? `
+              <a class="history-cheapest-link" href="${escapeHtml(item.cheapest_url)}" target="_blank" rel="noopener noreferrer" title="En uygun fiyatlı ürünün sayfasına git">
+                <span class="history-cheapest-price">${formatTL(item.cheapest_price)} ↗</span>
+                <span class="history-cheapest-site">${escapeHtml(item.cheapest_site)}</span>
+              </a>
+            `
+            : `<span style="font-size:0.8rem; color:#94a3b8;">Fiyat bulunamadı</span>`;
+
+          return `
+            <div class="history-item">
+              <div class="history-left">
+                <button
+                  type="button"
+                  class="history-query-btn"
+                  onclick="rerunFromHistory(${ JSON.stringify(item.query).replace(/"/g, '&quot;') })"
+                  title="Tıklayınca bu ürünü hemen yeniden arar"
+                >
+                  🔄 ${escapeHtml(item.query)}
+                </button>
+                <div class="history-meta">
+                  📅 ${escapeHtml(item.created_at)} &nbsp;•&nbsp;
+                  📊 ${item.sites_with_results}/${item.total_sites} siteden sonuç geldi
+                </div>
+              </div>
+              <div class="history-right">
+                ${cheapestHtml}
+                <button type="button" class="view-saved-btn" onclick="viewSavedSearch(${item.id})">
+                  Tabloyu Aç
+                </button>
+              </div>
+            </div>
+          `;
+        }).join('');
+      } catch (err) {
+        listEl.innerHTML = `<div class="empty-state">Geçmiş yüklenirken hata oluştu.</div>`;
+      }
+    }
+
+    function rerunFromHistory(query) {
+      startLiveSearch(query);
+    }
+
+    async function viewSavedSearch(searchId) {
+      try {
+        const resp = await fetch(`/api/history/${searchId}`);
+        if (!resp.ok) return;
+        const data = await resp.json();
+
+        switchTab('search');
+        document.getElementById('searchInput').value = data.query || '';
+        toggleClearBtn();
+
+        currentResults = data.results || [];
+        renderResultsTable();
+
+        const progressArea = document.getElementById('progressArea');
+        const progressText = document.getElementById('progressText');
+        const progressBarFill = document.getElementById('progressBarFill');
+        const siteChips = document.getElementById('siteChips');
+
+        progressArea.style.display = 'block';
+        progressBarFill.style.width = '100%';
+        progressText.textContent = `Geçmiş kayıt (${data.created_at}): "${data.query}" — ${data.sites_with_results}/${data.total_sites} siteden sonuç`;
+
+        if (data.site_statuses) {
+          siteChips.innerHTML = data.site_statuses.map(st => {
+            let icon = '•';
+            if (st.status === 'ok') icon = '✔';
+            else if (st.status === 'timeout') icon = '⏱';
+            else if (st.status === 'error') icon = '⚠';
+            return `<span class="chip ${st.status}">${icon} ${escapeHtml(st.site)} (${escapeHtml(st.message)})</span>`;
+          }).join('');
+        }
+      } catch (e) {
+        console.error(e);
+      }
+    }
+  </script>
+</body>
+</html>

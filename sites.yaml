@@ -1,0 +1,176 @@
+sites:
+  # --- T-Soft Altyapılı Siteler ---
+  - id: mamatoptancisi
+    name: mamatoptancisi.com
+    domain: www.mamatoptancisi.com
+    adapter: tsoft
+    search_url: "https://www.mamatoptancisi.com/arama?q={query}"
+
+  - id: mamaciteyze
+    name: mamaciteyze.com
+    domain: www.mamaciteyze.com
+    adapter: tsoft
+    search_url: "https://www.mamaciteyze.com/arama?q={query}"
+
+  - id: mukaspazarlama
+    name: mukaspazarlama.com
+    domain: mukaspazarlama.com
+    adapter: tsoft
+    search_url: "https://mukaspazarlama.com/arama?q={query}"
+
+  - id: mamamax
+    name: mamamax.com.tr
+    domain: www.mamamax.com.tr
+    adapter: tsoft
+    search_url: "https://www.mamamax.com.tr/arama?q={query}"
+
+  - id: evinemama
+    name: evinemama.com
+    domain: www.evinemama.com
+    adapter: tsoft
+    search_url: "https://www.evinemama.com/arama?q={query}"
+
+  - id: kolaymama
+    name: kolaymama.com
+    domain: www.kolaymama.com
+    adapter: tsoft
+    search_url: "https://www.kolaymama.com/arama?q={query}"
+
+  # --- Ticimax Altyapılı Siteler ---
+  - id: ikizleryem
+    name: ikizleryem.com
+    domain: www.ikizleryem.com
+    adapter: ticimax
+    search_url: "https://www.ikizleryem.com/Arama?1&kelime={query}"
+
+  - id: cabukmama
+    name: cabukmama.com
+    domain: www.cabukmama.com
+    adapter: ticimax
+    search_url: "https://www.cabukmama.com/Arama?1&kelime={query}"
+
+  - id: zoo
+    name: zoo.com.tr
+    domain: www.zoo.com.tr
+    adapter: ticimax
+    search_url: "https://www.zoo.com.tr/Arama?1&kelime={query}"
+
+  - id: indirgetir
+    name: indirgetir.com
+    domain: www.indirgetir.com
+    adapter: ticimax
+    search_url: "https://www.indirgetir.com/Arama?1&kelime={query}"
+
+  - id: kuzeypazarlama
+    name: kuzeypazarlama.com
+    domain: www.kuzeypazarlama.com
+    adapter: ticimax
+    search_url: "https://www.kuzeypazarlama.com/Arama?1&kelime={query}"
+
+  - id: expressmama
+    name: expressmama.com
+    domain: www.expressmama.com
+    adapter: ticimax
+    search_url: "https://www.expressmama.com/Arama?1&kelime={query}"
+
+  # --- Shopify Altyapılı Siteler ---
+  - id: markamama
+    name: markamama.com.tr
+    domain: markamama.com.tr
+    adapter: shopify
+    search_url: "https://markamama.com.tr/search/suggest.json?q={query}&resources[type]=product&resources[limit]=10"
+    web_search_url: "https://markamama.com.tr/search?q={query}&type=product"
+
+  # --- ikas / Özel API Altyapılı Siteler ---
+  - id: petgross
+    name: petgross.com.tr
+    domain: petgross.com.tr
+    adapter: ikas_petgross
+    search_url: "https://petgross.com.tr/search?s={query}"
+    bot_id: "3bd46c4f-5f93-4615-a02f-fcee00d5440c"
+
+  - id: teartrade
+    name: teartrade.com
+    domain: teartrade.com
+    adapter: teartrade
+    search_url: "https://teartrade.com/products?search={query}"
+
+  - id: yemgross
+    name: yemgross.com.tr
+    domain: yemgross.com.tr
+    adapter: yemgross
+    search_url: "https://yemgross.com.tr/arama?q={query}"
+
+  - id: turgutyem
+    name: turgutyem.com.tr
+    domain: turgutyem.com.tr
+    adapter: turgutyem
+    search_url: "https://turgutyem.com.tr/api/products?search={query}"
+
+  - id: petlebi
+    name: petlebi.com
+    domain: www.petlebi.com
+    adapter: petlebi
+    search_url: "https://www.petlebi.com/alisveris/ara?k={query}"
+
+  # --- Fiyat Karşılaştırma & Süpermarket ---
+  - id: akakce
+    name: akakce.com
+    domain: www.akakce.com
+    adapter: akakce
+    search_url: "https://www.akakce.com/arama/?q={query}"
+
+  - id: cimri
+    name: cimri.com
+    domain: www.cimri.com
+    adapter: cimri
+    search_url: "https://www.cimri.com/arama?q={query}"
+
+  - id: migros
+    name: migros.com.tr/pet
+    domain: www.migros.com.tr
+    adapter: migros
+    search_url: "https://www.migros.com.tr/rest/search/screens/products?q={query}"
+
+  - id: a101
+    name: a101.com.tr/pati
+    domain: www.a101.com.tr
+    adapter: a101
+    search_url: "https://www.a101.com.tr/arama?k={query}"
+
+  # --- Pazaryerleri (httpx + Playwright Fallback) ---
+  - id: trendyol
+    name: trendyol.com
+    domain: www.trendyol.com
+    adapter: trendyol
+    search_url: "https://www.trendyol.com/sr?q={query}"
+
+  - id: hepsiburada
+    name: hepsiburada.com
+    domain: www.hepsiburada.com
+    adapter: hepsiburada
+    search_url: "https://www.hepsiburada.com/ara?q={query}"
+
+  - id: amazon
+    name: amazon.com.tr
+    domain: www.amazon.com.tr
+    adapter: amazon
+    search_url: "https://www.amazon.com.tr/s?k={query}"
+
+  - id: n11
+    name: n11.com
+    domain: www.n11.com
+    adapter: n11
+    search_url: "https://www.n11.com/arama?q={query}"
+
+  - id: pttavm
+    name: pttavm.com
+    domain: www.pttavm.com
+    adapter: pttavm
+    search_url: "https://www.pttavm.com/arama?q={query}"
+
+  - id: idefix
+    name: idefix.com
+    domain: www.idefix.com
+    adapter: idefix
+    search_url: "https://www.idefix.com/arama?q={query}"

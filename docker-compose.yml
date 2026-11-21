@@ -1,0 +1,17 @@
+services:
+  mamafiyat:
+    build: .
+    container_name: mamafiyat-app
+    restart: unless-stopped
+    env_file:
+      - .env
+    ports:
+      - "127.0.0.1:${PORT:-5070}:8000"
+    volumes:
+      - mamafiyat_data:/data
+      - ./sites.yaml:/app/sites.yaml:ro
+    shm_size: "1gb"
+
+volumes:
+  mamafiyat_data:
+    name: mamafiyat_data
