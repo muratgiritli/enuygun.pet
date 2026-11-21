@@ -1,0 +1,20 @@
+
+# Auto-ignored heavy directories & >45MB files
+node_modules/
+**/node_modules/
+.venv/
+**/.venv/
+venv/
+**/venv/
+__pycache__/
+**/__pycache__/
+.next/cache/
+**/.next/cache/
+.cache/
+*.bundle
+*.tar.gz
+*.tgz
+*.zip
+*.sql.gz
+*.log
+.DS_Store

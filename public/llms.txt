@@ -1,0 +1,28 @@
+# Enuygun Petshop
+
+> Samsun Atakum ilçesinde evcil hayvan maması, kedi kumu ve pet bakım ürünleri sunan yerel petshop mağazası ve WhatsApp adrese teslim sipariş hattı (`0 532 354 40 55`).
+
+Enuygun Petshop, Samsun Atakum içindeki 12 mahalleye her gün **12.00 – 18.00** saatleri arasında kapıda ödeme imkânıyla aynı gün teslimat yapar. Minimum paket servis sipariş tutarı **600 TL**'dir.
+
+## Temel Bilgiler
+- **Resmi Web Sitesi:** https://www.enuygunpetshop.com/
+- **WhatsApp & Telefon Sipariş Hattı:** +90 532 354 40 55 (`0 532 354 40 55`)
+- **Teslimat & Sipariş Saatleri:** Her gün 12.00 – 18.00 arası
+- **Minimum Sipariş Tutarı:** 600 TL (Atakum içi)
+- **Ödeme Seçenekleri:** Kapıda ödeme (Nakit / Kredi Kartı)
+- **Mağaza Adresi:** Yeni Mahalle, 3078. Sokak No:10, 55270 Atakum / Samsun, Türkiye
+- **Konum Koordinatları:** 41.34991, 36.24213
+
+## Teslimat Yapılan Atakum Mahalleleri (12 Mahalle)
+Yenimahalle, Atakent, Güzelyalı, Mimarsinan, Denizevleri, Körfez, Kurupelit, Esenevler, Yeşilyurt, Cumhuriyet, Kamalı ve İncesu.
+
+## Ürün Kategorileri
+- **Kedi Ürünleri:** Kuru ve yaş kedi mamaları, topaklanan/silika kedi kumları, ödül mamaları, vitamin ve bakım ürünleri.
+- **Köpek Ürünleri:** Yavru ve yetişkin köpek mamaları, tasma, gezdirme kayışı, ödül ve çiğneme ürünleri.
+- **Kuş Ürünleri:** Muhabbet kuşu, papağan ve kanarya yemleri, kafesler, gaga taşları ve vitaminler.
+- **Tavşan & Ginepig (Kemirgen) Ürünleri:** Kemirgen yemleri, kuru yonca/ot, taban talaşı, suluk ve kafes ekipmanları.
+- **Akvaryum Ürünleri:** Balık yemleri, su düzenleyiciler, filtre ve akvaryum bakım ekipmanları.
+
+## Kaynaklar
+- [Ana Sayfa ve Sipariş Bilgileri](https://www.enuygunpetshop.com/): Kategori listesi, teslimat bölgeleri, sıkça sorulan sorular ve mağaza haritası.
+- [Detaylı Yapay Zeka Bilgi Dosyası (llms-full.txt)](https://www.enuygunpetshop.com/llms-full.txt): Sıkça sorulan sorular, tam teslimat kuralları ve iletişim rehberi.

@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/sitemap.xsl"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>https://www.enuygunpetshop.com/</loc>
+    <lastmod>2026-11-15T23:03:00+03:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.00</priority>
+    <xhtml:link rel="alternate" hreflang="tr-TR" href="https://www.enuygunpetshop.com/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.enuygunpetshop.com/" />
+    <image:image>
+      <image:loc>https://www.enuygunpetshop.com/img/og-share.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.enuygunpetshop.com/img/hero-pets-880.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.enuygunpetshop.com/img/cat.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.enuygunpetshop.com/img/dog.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.enuygunpetshop.com/img/bird.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.enuygunpetshop.com/img/fish.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.enuygunpetshop.com/img/hamster.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.enuygunpetshop.com/atakum-petshop</loc>
+    <lastmod>2026-11-15T23:03:00+03:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.95</priority>
+    <xhtml:link rel="alternate" hreflang="tr-TR" href="https://www.enuygunpetshop.com/atakum-petshop" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.enuygunpetshop.com/atakum-petshop" />
+    <image:image>
+      <image:loc>https://www.enuygunpetshop.com/img/hero-pets-520.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.enuygunpetshop.com/img/og-share.jpg</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.enuygunpetshop.com/atakent-yeni-mahalle-petshop</loc>
+    <lastmod>2026-11-15T23:03:00+03:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+    <xhtml:link rel="alternate" hreflang="tr-TR" href="https://www.enuygunpetshop.com/atakent-yeni-mahalle-petshop" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.enuygunpetshop.com/atakent-yeni-mahalle-petshop" />
+    <image:image>
+      <image:loc>https://www.enuygunpetshop.com/img/cat.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.enuygunpetshop.com/img/og-share.jpg</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.enuygunpetshop.com/en-yakin-petshop-yol-tarifi</loc>
+    <lastmod>2026-11-15T23:03:00+03:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+    <xhtml:link rel="alternate" hreflang="tr-TR" href="https://www.enuygunpetshop.com/en-yakin-petshop-yol-tarifi" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.enuygunpetshop.com/en-yakin-petshop-yol-tarifi" />
+    <image:image>
+      <image:loc>https://www.enuygunpetshop.com/img/dog.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.enuygunpetshop.com/img/og-share.jpg</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.enuygunpetshop.com/acik-petshop-pazar-hafta-sonu</loc>
+    <lastmod>2026-11-15T23:03:00+03:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.90</priority>
+    <xhtml:link rel="alternate" hreflang="tr-TR" href="https://www.enuygunpetshop.com/acik-petshop-pazar-hafta-sonu" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.enuygunpetshop.com/acik-petshop-pazar-hafta-sonu" />
+    <image:image>
+      <image:loc>https://www.enuygunpetshop.com/img/hero-pets-520.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.enuygunpetshop.com/img/og-share.jpg</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.enuygunpetshop.com/en-uygun-petshop-fiyatlari</loc>
+    <lastmod>2026-11-15T23:03:00+03:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="tr-TR" href="https://www.enuygunpetshop.com/en-uygun-petshop-fiyatlari" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.enuygunpetshop.com/en-uygun-petshop-fiyatlari" />
+    <image:image>
+      <image:loc>https://www.enuygunpetshop.com/img/cat.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.enuygunpetshop.com/img/og-share.jpg</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.enuygunpetshop.com/pet-gross-buyuk-petshop-magazasi</loc>
+    <lastmod>2026-11-15T23:03:00+03:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="tr-TR" href="https://www.enuygunpetshop.com/pet-gross-buyuk-petshop-magazasi" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.enuygunpetshop.com/pet-gross-buyuk-petshop-magazasi" />
+    <image:image>
+      <image:loc>https://www.enuygunpetshop.com/img/dog.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.enuygunpetshop.com/img/og-share.jpg</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.enuygunpetshop.com/kedi-kopek-mamasi-kedi-market</loc>
+    <lastmod>2026-11-15T23:03:00+03:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="tr-TR" href="https://www.enuygunpetshop.com/kedi-kopek-mamasi-kedi-market" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.enuygunpetshop.com/kedi-kopek-mamasi-kedi-market" />
+    <image:image>
+      <image:loc>https://www.enuygunpetshop.com/img/cat.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.enuygunpetshop.com/img/og-share.jpg</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.enuygunpetshop.com/kus-yemi-muhabbet-kusu-malzemeleri</loc>
+    <lastmod>2026-11-15T23:03:00+03:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="tr-TR" href="https://www.enuygunpetshop.com/kus-yemi-muhabbet-kusu-malzemeleri" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.enuygunpetshop.com/kus-yemi-muhabbet-kusu-malzemeleri" />
+    <image:image>
+      <image:loc>https://www.enuygunpetshop.com/img/bird.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.enuygunpetshop.com/img/og-share.jpg</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.enuygunpetshop.com/samsun-ilkadim-petshop-ulasim</loc>
+    <lastmod>2026-11-15T23:03:00+03:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.80</priority>
+    <xhtml:link rel="alternate" hreflang="tr-TR" href="https://www.enuygunpetshop.com/samsun-ilkadim-petshop-ulasim" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.enuygunpetshop.com/samsun-ilkadim-petshop-ulasim" />
+    <image:image>
+      <image:loc>https://www.enuygunpetshop.com/img/fish.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.enuygunpetshop.com/img/og-share.jpg</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.enuygunpetshop.com/pet-store-atakum-samsun</loc>
+    <lastmod>2026-11-15T23:03:00+03:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.80</priority>
+    <xhtml:link rel="alternate" hreflang="tr-TR" href="https://www.enuygunpetshop.com/pet-store-atakum-samsun" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.enuygunpetshop.com/pet-store-atakum-samsun" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.enuygunpetshop.com/pet-store-atakum-samsun" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.enuygunpetshop.com/pet-store-atakum-samsun" />
+    <image:image>
+      <image:loc>https://www.enuygunpetshop.com/img/hamster.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.enuygunpetshop.com/img/og-share.jpg</image:loc>
+    </image:image>
+  </url>
+</urlset>
